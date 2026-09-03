@@ -11,3 +11,5 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+# 敏感原文备份（不推送 GitHub）
+_private_bak/
