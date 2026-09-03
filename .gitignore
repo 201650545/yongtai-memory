@@ -1,0 +1,13 @@
+# Obsidian 运行时（勿入库）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace-linux.json
+.obsidian/workspace-sync.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
+.obsidian/plugins/*/main.js
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
