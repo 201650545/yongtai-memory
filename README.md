@@ -4,7 +4,7 @@
 
 本目录是 Agent 对话的本地快速读取记忆源，与飞书多维表格「记忆」双向同步。
 
-- 飞书多维表格 base_token：`<FEISHU_BASE_TOKEN>`
+- 飞书多维表格 base_token：`<FEISHU_BASE_TOKEN>`（本地 `.env`/配置持有，不入库；来源见飞书 app 网关配置）
 - 飞书表格链接：https://my.feishu.cn/base/<FEISHU_BASE_TOKEN>
 
 ## 飞书多维表格内部结构
