@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
-  modified: 2026-09-03T15:33:01.710Z
+  modified: 2026-09-03T17:19:21.757Z
 ---
 
 教师拍板（2026-08-06）的 GPT 对话流程：每次向 ChatGPT 发包前必做三步——
@@ -33,4 +33,4 @@ metadata:
 - **切换 Extended·新 UI（2026-09-01 vip 实测，vip-48 也适用）**：pill 变为 `button.__composer-pill`（文本 Auto）。**opencli 原生 click 与键盘 ArrowDown 都开不了 Radix 菜单**；必须 eval 合成**完整指针序列**（pointerover→pointermove→pointerdown→mousedown→pointerup→mouseup→click，带 pointerId/pointerType）打在 pill 中心。菜单项：`[role=menuitemradio]` 的 "Auto" / "Thinking• Extended" / "GPT-5.6 Luna"。选完 pill 显示 "Extended"。
 - **注入提问（关键坑）**：**新对话页** composer 是 textarea（placeholder "Ask anything"）→ 用原生 value setter + input 事件；**历史对话页** composer 是 contenteditable div（那个 textarea 是 0×0 的 `wcDTda_fallbackTextarea`，注进去不显示！）→ 必须 focus + `execCommand('insertText')`（先 selectAll 清旧内容）。中文用 base64+atob+TextDecoder 解码后注入。**2026-09-03 vip-48 实测**：`opencli browser <s> fill "[contenteditable=true]" "<text>"`（CDP 设值）对 ProseMirror 一次成功（filled:true，941 字符全进），比 eval 注入简单——优先 fill。发送=[data-testid=send-button] 同样用完整事件序列；流式中=[data-testid=stop-button] 存在；回答=[data-message-author-role=assistant] 最后一条。
 - **深度问题至少等 15 分钟**（Extended 思考 1-3 分钟后才出字，streaming:true len:0 属正常）。教师强调搜索要给足提示词、选思考模型+Extended。
-- **提速原则（2026-09-03 教师拍板，固定流程）**：这个点击流程「明明很简单」——固定 4 步：①开池先扫**绿色活跃**账号卡、受限直接跳过别点（找可用账号最慢，先扫再点是头号加速）；②点 `innerText 首 "GPT-5"` 的第一个 `.n-card span`（非 Plus 徽章），先劫持 `window.open` 存 `__openUrl` 再点、再 `location.href=__openUrl` 破弹窗拦截秒跳；③扫聊天记录——同主题聊过就复用原窗口（保上下文），全新主题立马新开 tab；④切 Extended=pill `button.__composer-pill` 只能 eval 合成完整指针序列点开、`[role=menuitemradio]` 选 "Thinking• Extended"、pill 变 Extended 才生效。**提速最大杠杆=选择器一次固化写死不复探 + 菜单一律合成指针序列（原生 click/键盘开不了 Radix）**。完整固定流程与选择器速查表已落**Obsidian 知识库**：`D:\AI平台\docs\运行手册\GPT镜像站送审流程.md`（ai-platform 仓）。关联 link 见该文档。
+- **提速原则（2026-09-03 教师拍板，固定流程）**：这个点击流程「明明很简单」——固定 4 步：①开池先扫**绿色活跃**账号卡、受限直接跳过别点（找可用账号最慢，先扫再点是头号加速）；②点 `innerText 首 "GPT-5"` 的第一个 `.n-card span`（非 Plus 徽章），先劫持 `window.open` 存 `__openUrl` 再点、再 `location.href=__openUrl` 破弹窗拦截秒跳；③扫聊天记录——同主题聊过就复用原窗口（保上下文），全新主题立马新开 tab；④切 Extended=pill `button.__composer-pill` 只能 eval 合成完整指针序列点开、`[role=menuitemradio]` 选 "Thinking• Extended"、pill 变 Extended 才生效。**提速最大杠杆=选择器一次固化写死不复探 + 菜单一律合成指针序列（原生 click/键盘开不了 Radix）**。完整固定流程与选择器速查表已落**Obsidian 知识库**：`D:\Work\AI平台\docs\运行手册\GPT镜像站送审流程.md`（ai-platform 仓；2026-09-03 Obsidian 五库→两库整合后挂载点移入 Work，原 `D:\AI平台` 已并入）。关联 link 见该文档。
