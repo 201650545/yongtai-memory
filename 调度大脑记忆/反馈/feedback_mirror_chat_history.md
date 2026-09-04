@@ -1,15 +1,21 @@
 ---
 name: mirror-chat-history-limit
-description: ChatGPT 镜像版聊天历史 ≤30 条，每到 30 删一半（非删 10 条）
+description: ChatGPT 镜像版聊天记录保留最近 10 条即可，超了就删最旧的（Delete 真删）；列表顶部=最近、底部=最旧，从末尾往上删
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: f059f218-e941-4b54-98ea-83c91434329e
-  modified: 2026-08-30T06:58:10.290Z
+  modified: 2026-09-04T14:32:11.860Z
 ---
 
-用 ChatGPT 镜像版（AI问答宝/vip 实例）时，**最近的聊天历史记录不能超过 30 条；每达到 30 条就删除一半**（保留最近 15 条）。此前规则是「每 30 删 10」，2026-08-30 用户改为「每 30 删一半」。
+用 ChatGPT 镜像版（AI问答宝/vip 实例）时，**聊天记录保留最近 10 条**；超了就从最旧的删起（列表顶部=最近、底部=最旧，**从末尾往上删**），删到剩 10 条最近为止。
 
-**Why:** 历史会话过长会拖慢镜像站页面、混入旧上下文干扰当前问诊；用户明确要求收紧清理力度。
+**规则细节：**
+- 删除方式 = **Delete 真删**（不可逆），不用 Archive。
+- 只删**旧会话**，顶部最近的 10 条最看好保留。
+- 批量用**脚本循环**一次删到位，不逐条手点（手点太慢）。
+- 每条删除：精确定位该会话项的 `button[aria-label="Open conversation options for <title>"]`（**别用通用匹配，会抓成顶部那条**）→ 菜单 Delete → 确认框 Delete。
 
-**How to apply:** 在镜像站操作过程中留意会话列表条数，≥30 时清理一半（删除最旧的一半，保留最近 15 条）。关联 [[gpt-mirror-account-switch]]、TOOLS.md §4 会话纪律（每任务 ≤3 轮、每窗口 ≤12 轮）。
+**Why:** 历史会话过长拖慢镜像站页面、混入旧上下文干扰当前问诊。2026-09-04 用户从「每 30 删一半」收紧为「保留最近 10 条、删最旧」。
+
+**How to apply:** 在镜像站操作时留意会话列表条数，>10 就走脚本删末尾至剩 10。关联 [[feedback-gpt-mirror-account-switch]]、[[feedback-gpt-mirror-subagent-flow]]、手册 §四（账号与窗口纪律）。
