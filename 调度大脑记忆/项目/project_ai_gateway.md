@@ -1,6 +1,6 @@
 ---
 name: project-ai-gateway
-description: 统一 AI 网关（D:\项目\services\search_gateway；:3000 搜索聚合 + :3100 API 转发，原 D:\游戏\ds_v4_cli 已迁移）——opencli 4 引擎 + LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）
+description: 统一 AI 网关（D:\项目\ai-hub\search_gateway；:3000 搜索聚合 + :3100 API 转发，原 D:\游戏\ds_v4_cli 已迁移）——opencli 4 引擎 + LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）
 metadata:
   node_type: memory
   type: project
@@ -15,7 +15,7 @@ metadata:
 
 ## 这是什么
 
-统一 AI 搜索聚合网关，运行于 `D:\项目\services\search_gateway\`（:3000 搜索 + :3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。仓库副本：`D:\Work\AI平台\apps\search-gateway`（:3000）+ `D:\Work\AI平台\apps\api-gateway`（:3100）。
+统一 AI 搜索聚合网关，运行于 `D:\项目\ai-hub\search_gateway\`（:3000 搜索 + :3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。仓库副本：`D:\Work\AI平台\apps\search-gateway`（:3000）+ `D:\Work\AI平台\apps\api-gateway`（:3100）。
 
 - **:3000 搜索聚合**：`unified_gateway.py`，多引擎 opencli 浏览器检索 + `/v1/chat/completions` + `/api/search_json`，定位为 AI 的无头搜索工具。
 - **:3100 API 转发**：`api_gateway.py`，OpenAI 兼容 LLM 渠道聚合转发，独立于 :3000，含路由编排/总开关/用量/限流/熔断/记账。
@@ -23,7 +23,7 @@ metadata:
 
 ## 关键不变量 / 易错点（必读）
 
-- **路径**：运行体 = `D:\项目\services\search_gateway`（不是 `ai-hub\search_gateway`）；`apps/api-gateway` 是仓库自包含副本。两处 `api_page.html` 必须保持**同一内容**，改一边记得同步另一边。
+- **路径**：运行体 = `D:\项目\ai-hub\search_gateway`（实测存在，2026-09 核实；此前多处误写 `D:\项目\services\search_gateway`，该路径不存在）；`apps/api-gateway` 是仓库自包含副本。两处 `api_page.html` 必须保持**同一内容**，改一边记得同步另一边。
 - **GATEWAY_ID 陷阱**：`channels.GATEWAY_ID` 在 `import channels` 时**即冻结**；要某网关账本独立，必须在 import 前 `os.environ.setdefault("GATEWAY_ID","<id>")`，否则账全混进默认 `ds_v4_cli`。:3100 已设为 `api_gateway`，账本独立。
 - **重启免 UAC**：网关必须普通权限运行。禁止 `Start-Process -Verb RunAs` 启动 python（会变提权进程 → 下次杀它 Access denied → 恶性循环）。重启 = 普通进程 Stop + 普通进程 Start。
 - **重启要杀全部同脚本进程**：`api_gateway.py` 若旧进程没死干净，新端点会 404 且旧端点照常，易误判「新代码没生效」。判断一律以 `netstat -ano | findstr :<端口>` LISTENING 为准。
@@ -43,12 +43,12 @@ metadata:
 - **2026-08-24·25 · 前端四套艺术风格主题 → liquid 液态玻璃 + 配色/高级感精修**（详情在归档）。
 - **2026-08-24 · 统一模型组 + 光线编排、渠道模型选择三级页、model_overrides、首页三七分、四套风格主题起点**。
 - **2026-08-21 · 前端 v3 大改版**（launcher 单屏、黑夜模式、渠道启停、接入信息页）；:3100 补入 runtime.yaml 管理。
-- **2026-08-13 · 迁移**：网关迁至 `D:\项目\services\search_gateway\`，5 opencli 引擎（yuanbao/doubao/kimi/qianwen/metaai）。
+- **2026-08-13 · 迁移**：网关迁至 `D:\项目\ai-hub\search_gateway\`，5 opencli 引擎（yuanbao/doubao/kimi/qianwen/metaai）。
 - **2026-08-04 · 落地**：由郭老师交接文档驱动搭建，同日升级 v2 多渠道聚合站。
 
 ## 源文件
 
 - 完整操作级/踩坑级详情、各轮实现细节 → `项目/归档/project_ai_gateway_完整详细记录.md`
 - 主题设计文档/预览图 → `D:\Work\AI平台\apps\api-gateway\docs\`（主题体系.md、主题设置-*.md、预览图-*.png）
-- 三拆配置 / 运行数据 → `D:\项目\services\search_gateway\data\model_catalog.json`、`model_routes.json`、`channel_registry.json`、`quota.json`、`api_state.json`
+- 三拆配置 / 运行数据 → `D:\项目\ai-hub\search_gateway\data\model_catalog.json`、`model_routes.json`、`channel_registry.json`、`quota.json`、`api_state.json`
 - 网关服务文档（Obsidian）→ `D:\Work\AI平台\docs\design\AI基础设施\服务\api_gateway.md`、`search_gateway.md`
