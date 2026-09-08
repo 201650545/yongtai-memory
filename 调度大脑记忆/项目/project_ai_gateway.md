@@ -8,7 +8,18 @@ metadata:
   modified: 2026-09-01T00:41:14.311Z
 ---
 
-统一 AI 搜索聚合网关位于 `D:\游戏\ds_v4_cli\`（2026-08-04 由郭老师交接文档驱动落地，同日升级为 v2 多渠道聚合站）。
+**2026-09-08 第六套主题「玄白 · 建筑极简」（data-style="mono"，黑白建筑极简/MONO）落地**：
+- 背景：多轮主题收敛后，郭老师最终定 **4 主题体系**（弃「归一」凑数）——黑白建筑极简(玄白/mono，理性专业长期工作) / 云海天舟(东方山水流动) / 星河枢机(东方观星) / 月夜穹顶(西式夜间总控)；完整定义+预览图存 Obsidian `D:\Work\AI平台\apps\api-gateway\docs\主题设置-*.md` + `主题体系.md`（每主题含视觉隐喻表/配色/材质/UI/动效/一句话定义）。
+- **实现（本次会话真改真落）**：`api_page.html`（repo `D:\Work\AI平台\apps\api-gateway\services\web\` 与 runtime `D:\项目\services\search_gateway\services\web\` 逐字节一致已同步）：
+  - **路径提醒**：转发网关 RUNNING workdir 是 `D:\项目\services\search_gateway`（不是 `D:\项目\ai-hub\search_gateway`）；`apps/api-gateway` 是仓库自包含副本。两个 `api_page.html` 必须保持同一内容，改一边记得同步另一边。
+  - 落点一律 **data-style 新风格、不新增主题系统**；不伪造、不改数据逻辑：
+  ① `console` 区插 ⑥ mono 块：`--fh` 无衬线、`--radius:6px/--radius-s:4px` 直角、shadow 减淡；黑白灰纯灰度状态色（绿/橙/红/紫→灰阶，用透明度/权重分档）；光斑 `.blobs i` opacity 0 + 动画 none；`.glass` 近实平板（blur 3px saturate 95%、shadow 减淡）；`.h-title/.h-stat/.hl-num` 数字加重；`.rank-medal g1/g2/g3` 金→建筑灰；`.icm` 纯色灰。
+  ② 明暗两套：light `bg:#F3F2EE/#EBEAE6, t:#1b1a18/#30302e/#858583/#b4b4b0, line rgba(17,17,17,.17/.075)`；dark `bg:#0e0e0d/#151514, t:#ecece8…#5a5a57`；`prefers-reduced-motion` 关动画。
+  ③ JS `STYLES` 加 `mono:{n:'玄白 · 建筑极简', palettes:[素黑 #111/#45413d, 冷石灰 #3a4149/#1b2129, 暖灰 #2e2a26/#5f584e]}`（各带 t/td 文字色，走 applyTextColors 泛型分支，非 liquid 特判）。调色盘/换肤持久化 `gw-style` 自动生效；icons 因无 `/img/styles/mono/` 回落 mask 剪影（正合单色需求）。
+- **交付/验证**：运行体与 repo hash 一致；:3100 health 仍 401(鉴权活)；无新增 01-05 准入面板/遥测/动态加权假实现（那些是设计稿画面，真实 DOM 没有，未凑）。浏览器打开 `http://localhost:3100/`→右上 🎨 选「玄白 · 建筑极简」即见。可选：把 4 主题 docs 归入本次主题体系提交。
+- 记忆政策沿用：交付只发文件路径，不给表格/详情。
+
+# 统一 AI 搜索聚合网关位于 `D:\游戏\ds_v4_cli\`（2026-08-04 由郭老师交接文档驱动落地，同日升级为 v2 多渠道聚合站）。
 
 **位置更新（2026-08-13）**：网关已迁移到 `D:\项目\services\search_gateway\`（runtime 实际运行位置），`D:\游戏\ds_v4_cli\` 是旧副本（两处 engines.py 内容一致）。引擎实际 5 个：`ENGINE_ORDER = ["yuanbao","doubao","kimi","qianwen","metaai"]`（4 个已登录可用，Meta AI 未登录）。
 
