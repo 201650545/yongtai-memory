@@ -14,3 +14,6 @@ desktop.ini
 # 敏感原文备份（不推送 GitHub）
 _private_bak/
 .obsidian/core-plugins.json
+
+# 外部技能目录（符号链接，指向本库之外，不入库）
+_Skills/
