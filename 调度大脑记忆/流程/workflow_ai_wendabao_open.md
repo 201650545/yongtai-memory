@@ -110,7 +110,30 @@ opencli browser n8hh7hyn tab list
 
 ## ★★★ 标签页为什么会消失（2026-09-15 实测锁定，郭老师要求"固定它"）★★★
 
-### 🚫 真凶：`bind` 命令 —— **永久禁用**
+### ⚠️ 2026-09-18 实测更正（opencli v1.8.6）：`bind` 的 about:blank 故障**已修复**
+
+**实测**：`bind` 返回真实 URL 与标题（`https://vip-14.67673.live/c/6aabe39b-...`／「㉔ 优化心理课设计」），
+`tab list` 同步返回该页，**无 about:blank**，用户标签页未被关闭。会话历史（u=11 / a=12）完整保留。
+
+**结论修正**：`bind` 是**接管用户已打开标签页的唯一官方途径**，不再是禁用命令。
+主要风险变成「**绑错页**」（bind 绑定的是**当前激活**标签页；实测曾绑到 `127.0.0.1:3100` 网关页）。
+
+| 场景 | 做法 |
+|---|---|
+| 接管用户已开的镜像站页 | 用户把该页切前台 → `bind` → 立刻 `tab list` 验证 URL |
+| 绑错页 | 立即 `unbind`（不关闭用户页）→ 用户切页 → 重新 `bind` |
+| 槽位空且用户无现成页 | `tab new` |
+
+**bind 模式两条硬约束（v1.8.6 实测）**：
+1. bind 后**页面自动锚定**，无需也无法再 `tab select`。
+2. bind 下 `tab new`/`tab select`/`tab close` 全被拒：`bound_tab_mutation_blocked — requires an owned OpenCLI session` → 想改绑先 `unbind`。
+
+**`tab list` 无法枚举 Chrome 全部标签页**：`op:'list'` 带 session／`all:true`／contextId 都只返回本 session 占用的 1 个页；
+不带 session 报 `Browser session is required`。→ **找已开标签页只能靠 bind 前台页，不能靠枚举**。
+
+**daemon HTTP**：`http://127.0.0.1:19825` 必须带头 `X-OpenCLI: 1`（否则 403）。端点仅 `/ping` `/status` `/logs` `/shutdown`，**无 /tabs**。
+
+### 🚫 真凶：`bind` 命令 —— **历史故障，v1.8.6 已修复；绑错立即 unbind**
 
 **实测后果**：执行 `bind` 后，session 槽位被绑到 **`about:blank`**，
 `tab list` 显示 `page: D5110476...` + `url: about:blank`（**不再是镜像站**）。
@@ -194,8 +217,10 @@ opencli browser n8hh7hyn tab list
    ```
    opencli browser n8hh7hyn tab list
    ```
-   有 `vip-XX.67673.live` → 直接 `tab select <pageId>` 进步骤 2。
-   没有 → 走步骤 1。
+   有 `vip-XX.67673.live` → 直接复用（bind 模式已自动锚定）进步骤 2。
+   **返回 `[]` 但用户浏览器里开着镜像站页** → **不要 tab new**：请用户把该页切到前台，
+   执行 `bind`，再 `tab list` 验证 URL 是目标页（v1.8.6 实测安全）。这是保住原会话历史的唯一方法。
+   都没有 → 走步骤 1。
 
 1. **开新标签页**（**仅在无现成镜像站标签页时**）：
    ```
