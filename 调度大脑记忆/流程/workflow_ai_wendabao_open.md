@@ -452,6 +452,15 @@ node main.js browser <session> type "#prompt-textarea" "<全文>"
 - 长回复有时整段不在 DOM（生成完毕但未渲染）→ 先 `window.scrollTo(0,document.body.scrollHeight)` 再查，必要时截图肉眼确认。
 - 若某轮**回复真的为空**（节点存在但长度始终 0）：**原样重发一次**即可。实测材料三第一次为空，重发后正常。
 
+### ★ 要保住格式（加粗／引用块／表格）→ 取 innerHTML 再转 md
+
+`innerText` 出来的是纯文本，**加粗、引用块、表格结构全丢**；而"给评委看的稿子要重点突出"正靠这些。做法：取容器 `innerHTML` → 用 `markdownify` 转回 markdown（脚本 `_pull_html2.py`）。
+
+两条必须遵守：
+
+1. **分片返回值必须 `JSON.stringify` → `json.loads`**。若像普通字符串那样取，`stdout.split("\n")[0]` 会被内容里的换行截断——现象是长度**稳定**卡在某个数（实测 7923/9378），看着像渲染问题，其实是取值问题。
+2. **校验拼接长度 == 首次探测长度**，不等就重试；定位要用**特征串**而非固定索引（虚拟化滚动会让索引漂移）。实测比赛版第一版就因取值截断少了「教学反思」「教学资源」两个模块。
+
 ### 页面／会话掉了怎么回
 
 - `tab list` 返空、`bind` 落 `about:blank`（账号池入口 `ai.wendabao-f.net` 点卡片会被弹窗拦成空白页）→ 直接 `tab new https://vip-14.67673.live/`。
@@ -470,6 +479,7 @@ node main.js browser <session> type "#prompt-textarea" "<全文>"
 | `_reply.py status/users` | 查看会话状态、最近几条用户消息 |
 | `_build_overview.py` | 把 `05_上课设计` 内的 md 合成单页自包含 HTML 总览 |
 | `_clip.py <文件>` | 写入 Windows 系统剪贴板（ctypes，备用路径） |
+| **`_pull_html2.py draft1\|draft3`** | **★ 要格式就用它**：按特征定位容器 → 分片取 `innerHTML`（长度校验＋重试）→ markdownify 转 md |
 
 > ⚠️ **各轮请求与回复草稿（`_roundN.md`／`_reply_roundN.md`）已于 2026-09-18 按郭老师"旧理念不要留着污染上下文"全部删除**，不要再按轮次文件找历史原稿。当前唯一依据＝`05_上课设计\00_母稿_《不会的时候》详细教学设计（自用版）.md`。
 
