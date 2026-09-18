@@ -280,6 +280,27 @@ const pill = document.querySelector("button.__composer-pill");
   **占了 `Model` 就点击必扑空**，必须先轮询等 pill 变成 `Auto`/`Thinking` 再操作。
 - **验证**：pill 文本变为 `Thinking`（或 `Model`）。未变则重试，最多 3 次；仍失败**停下问用户**，不要硬发。
 
+### ⚠️ 2026-09-18 实测更正（opencli v1.8.6 + 站点新版）：有更省事的路
+
+**✅ 首选路径——用 opencli 自带的 `click` 命令（发真实鼠标事件），不必自己在 eval 里合成 8 步指针序列：**
+
+```bash
+opencli browser n8hh7hyn click 'button.__composer-pill'                       # 打开模式菜单
+opencli browser n8hh7hyn click --role menuitemradio --name "Thinking"          # 点 Thinking 行
+opencli browser n8hh7hyn eval "document.querySelector('button.__composer-pill').innerText"   # 复核应为 Extended
+```
+
+**实测数据（本轮）**：页面刚加载时 pill 读作 `Model`（hydration 占位）→ 加载完读 `Auto`；点完 Thinking 行后读 **`Extended`**。
+菜单实际结构（文本一次读全）：
+
+```
+Latest • 5.6 | Auto | Thinking（右侧显示 "• Extended"）| GPT-5.6 Luna | Configure...
+```
+
+- **pill 的稳定值有两个含义不同的词**：`Auto` / `Extended` 指的是**思考档**，不是模型名；**读作 `Extended` 就是已选中**，不要再按"必须显示 Thinking"判失败。
+- `eval` 里的 `.click()` 打不开菜单（本轮实测 `ov:[]`）；`opencli click` 一次成功。
+- 菜单元素用 `[class*="thinking-effort-row"]` 会匹配到 4 个 → 报 `selector_ambiguous`，**改用 `--role menuitemradio --name "Thinking"`**。
+
 ## 固化一键脚本法（2026-09-04 实测，零→Extended ≤15s，最优选）
 
 > 比逐段手点快 5–6 倍（74s→9.6s）。脚本在 `D:\Work\AI平台\docs\运行手册\scripts\`。两个脚本直接照抄，复探只会在跨实例时踩 hydration 坑。
@@ -367,7 +388,22 @@ opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/运行手册/scripts
 
 把原稿每个非空行拿去成品文档里做子串匹配（表格行先把 Tab 归一化成竖线加空格）。本次靠它抓出 2 处真丢失：「课题：《不会的时候》」、资源表整行「空白磁性词卡」。**省掉这一步，丢了内容不会被发现。**
 
-### 四、bind 绑的是当前激活标签页
+### 四、回复可能"开了头就停住"——只输出几个字
+
+**现象**：本轮发出一条正式请求后，回复只渲染出三个字（"建议将 …"）就不再增长；`stop` 按钮已消失、`regenerate` 按钮不出现、连续探测 15 分钟长度不变。节点 `textContent` 只有 3 字符，`innerText` 为 0。
+
+**判定**：这不是"还在生成"，而是**生成中断**。区分办法：连续探测 2—3 次（每次间隔数秒）长度是否增长；不增长且 `stop=false`，即已中止。
+
+**处置（不要刷新页面）**：直接**再发一条"重新完整输出"的消息**，在消息里把要什么再列一遍（并注明"上一条回复中断了"）。本轮这样做后一次拿到完整回复（3522 字），**无需 reload**——reload 有把 Extended 重置回 Auto、甚至刷丢上下文的风险。
+
+**另外**：一个空的/中断的 assistant 节点会一直留在会话里，取回时按**最后一个节点**取会取到它 → 必须确认节点 `textContent` 长度 > 0 再取。
+
+### 五、节点长度取回的坑（补充）
+
+`data-message-author-role=assistant` 节点的 `innerText` 在**虚拟化离屏**时为 0（本轮 17 个节点 `innerText` 全为 0，`textContent` 才有效）。
+**取回时用 `textContent` 判长、用 `_pull.py` 按索引取**，不要用 `innerText` 判定"回复为空"。
+
+### 六、bind 绑的是当前激活标签页
 
 `tab list` 返空数组（session 过期）时 bind 是正确入口，但本次**首绑绑到了用户另一个页**（vip-21 英语听力方案）。
 
