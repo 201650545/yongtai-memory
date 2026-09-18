@@ -483,6 +483,40 @@ node main.js browser <session> type "#prompt-textarea" "<全文>"
 
 > ⚠️ **各轮请求与回复草稿（`_roundN.md`／`_reply_roundN.md`）已于 2026-09-18 按郭老师"旧理念不要留着污染上下文"全部删除**，不要再按轮次文件找历史原稿。当前唯一依据＝`05_上课设计\00_母稿_《不会的时候》详细教学设计（自用版）.md`。
 
+## ★ 交互操作三个新坑（2026-09-18 夜实测，全部已验证解法）
+
+### 坑 1：`button.__composer-pill`（模式选择器）用 opencli `click` 打不开
+
+**症状**：`click "button.__composer-pill"` 返回 `clicked: true, matches_n: 1`，但 `aria-expanded` 仍是 `false`，菜单**没展开**；随后 `click --role menuitemradio --name "Thinking"` 报 `semantic_not_found`。`--window foreground`、`keys Enter`、`focus + Enter` 都试过，**全部无效**。
+
+**根因**：Radix 的 trigger 只认 `pointerdown`，opencli 的 click 走的合成事件不被它接住。
+
+**解法（已验证）**——用 `eval` 派发完整指针序列，坐标取 `getBoundingClientRect()` 中心：
+
+```js
+const p=document.querySelector("button.__composer-pill");
+const r=p.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+const o={bubbles:true,cancelable:true,composed:true,clientX:x,clientY:y,button:0,buttons:1,pointerId:1,pointerType:"mouse",isPrimary:true};
+p.dispatchEvent(new PointerEvent("pointerdown",o));
+p.dispatchEvent(new PointerEvent("pointerup",Object.assign({},o,{buttons:0}));
+```
+→ 展开后 `aria-expanded` 变 `true`，`[role=menuitemradio]` 出现。
+**选中菜单项用同一套序列**（外加一次 `MouseEvent("click")`），已验证 `pill: Auto → Thinking` 成功。
+
+> 本机当前菜单三项：**Auto ／ Thinking ／ GPT-5.6 Luna**（"Extended"这个名字已不用，判据仍是"推理档"）。
+
+### 坑 2：**新对话页 `keys Enter` 不触发发送**
+
+**症状**：输入框有内容（实测 1365 字符）、`[data-testid=send-button].disabled === false`，`keys Enter` 返回 `Pressed: Enter`，但 `u`（用户消息数）始终 0、URL 停在 `/`。
+**解法（已验证）**：用**同一套指针序列点 `[data-testid=send-button]`** → 发送成功（URL 跳到 `/c/<id>`，`u:1`，`stop:true`）。
+**注意**：老会话里 `keys Enter` 是灵的；**新开的对话要用点按**。另外新对话发送后 composer 会重新挂载，别在发送瞬间读输入框判成败。
+
+### 坑 3：**一条长会话对后续"短请求"持续返回空**
+
+**症状**：会话上下文约 5 万字后，接连 4 次请求（3 次"只改一句"、1 次"重出整节"）**全部返回空回复**（assistant 节点在、长度 0），无报错、无红色提示；换新对话后仍只输出 8 字就中断（`八、教学评价与课`）。
+**判定**：与措辞无关，是**该通道此刻对续写／复述类短请求不稳定**。
+**处置**：① 别反复重试超过 2 次，浪费时间；② 需要改一个字这种小事，**宁可换新对话把原文一起贴过去重写**；③ 仍不成功就**停下来汇报用户**，不要自己动成品文字（尤其"零创作"类项目）。
+
 ## 关联
 
 - [[feedback_gpt_mirror_subagent_flow]] — 子 Agent 送审三条纪律 + Extended 切换法
