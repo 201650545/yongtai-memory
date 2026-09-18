@@ -421,17 +421,55 @@ opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/运行手册/scripts
 - **凡要操作那个窗口之前，先问一句"您现在是不是正在那个窗口里写东西？"**
 - 顺带一条：发送前核验（pill／输入框长度／发送键是否禁用）本来就有，这次正是靠它拦住的——**不要把发送前核验省掉**。
 
+## ★ 注入与取回（2026-09-18 实测锁定，推翻此前做法）
+
+### 注入：只能用 `opencli type`
+
+```bash
+node main.js browser <session> type "#prompt-textarea" "<全文>"
+```
+
+- **`execCommand('insertText')` 只能把字塞进 DOM，进不了 React state** → 发送按钮一直是 `disabled`，回车也不发。这是本轮卡最久的一处。
+- 合成 `paste`（DataTransfer）、合成 `keydown/keypress/keyup` 全部无效。
+- 剪贴板＋真实 `keys "Control+v"` 只在"框里已有内容、先 Ctrl+A 全选"时成功过一次；**空框粘贴失败** → 不作主路径。
+- 长文本用 Python `subprocess` 传参调 type（不走 shell，避开转义与命令行长度问题）。实测 10739 字一次通过。
+- **type 把换行变成段落分隔**（innerText 里 `\n` → `\n\n`），不影响阅读，只影响长度核验。
+- type 会**覆盖**已有内容，不必先清空；真要清空用 `keys "Control+a"` + `keys "Backspace"`。
+
+### 发送：`keys Enter`
+
+送出后表现为：`[data-testid=send-button]` 重新 `disabled`、`#prompt-textarea` 长度归 0 → 即发送成功。
+
+### ★ pill 每发一次就会重置回 Auto
+
+- 发完一条，pill 就回 `Auto`。**下一条发送前必须重切**：`click "button.__composer-pill"` → `click --role menuitemradio --name "Thinking"`（菜单项叫 Thinking，切好后 pill 上显示 `Extended`）。
+- 这一步**每条消息都要做**——不只是刷新后要。
+
+### 取回：别信 assistant 节点
+
+- 页面是**虚拟化渲染**：`[data-message-author-role=assistant]` 的 innerText **经常为 0**；滚动会让节点挂载/卸载，索引随之漂移。
+- 可靠做法＝取**最后一个有内容的 `.markdown` 容器**：`_pull_last.py <out>`（先枚举全部 `.markdown` 长度，取最后一个 >200 的；分片读取时每次重新定位，不用跨调用变量）。
+- 长回复有时整段不在 DOM（生成完毕但未渲染）→ 先 `window.scrollTo(0,document.body.scrollHeight)` 再查，必要时截图肉眼确认。
+- 若某轮**回复真的为空**（节点存在但长度始终 0）：**原样重发一次**即可。实测材料三第一次为空，重发后正常。
+
+### 页面／会话掉了怎么回
+
+- `tab list` 返空、`bind` 落 `about:blank`（账号池入口 `ai.wendabao-f.net` 点卡片会被弹窗拦成空白页）→ 直接 `tab new https://vip-14.67673.live/`。
+- **会话在服务端，不会丢**：左侧历史列里找到它（如「⑭ 教学设计底本确认」），`eval 'location.href="/c/<会话id>"'` 直接回去。
+- 新开的空会话要先注底本、等它回一句"已读完"，再往下发正题。
+
 ## 九、脚本当前位置（2026-09-18 更新）
 
-本轮工作（课程思政《不会的时候》）的活脚本在 **`D:\workbuddy 工作空间\2026-09-17-16-44-58\`**，只保留 5 个：
+本轮工作（课程思政《不会的时候》）的活脚本在 **`D:\workbuddy 工作空间\2026-09-17-16-44-58\`**，保留 6 个：
 
 | 脚本 | 作用 |
 |---|---|
-| `_inject.py` | 注入长文（**已带输入框防呆**，非空拒绝；确认覆盖才 `FORCE=1`） |
-| `_pull.py -1 <out>` | 取回最后一条 assistant 回复 |
-| `_wait.py <秒>` | 轮询等待生成完成 |
-| `_reply.py` | 组装/发送回复请求 |
-| `_build_overview.py` | 把 `05_上课设计` 内 md 合成单页自包含 HTML 总览 |
+| **`_type.py <文件>`** | **★ 注入主路径**：走 `opencli type` 真实输入通道，React 能同步（上面的 `_inject.py` 已废弃删除） |
+| **`_pull_last.py <out>`** | **★ 取回主路径**：取最后一个有内容的 `.markdown` 容器 |
+| `_wait.py <秒>` | 轮询等待生成完成（判据：`stop` 按钮消失且末条长度 >500） |
+| `_reply.py status/users` | 查看会话状态、最近几条用户消息 |
+| `_build_overview.py` | 把 `05_上课设计` 内的 md 合成单页自包含 HTML 总览 |
+| `_clip.py <文件>` | 写入 Windows 系统剪贴板（ctypes，备用路径） |
 
 > ⚠️ **各轮请求与回复草稿（`_roundN.md`／`_reply_roundN.md`）已于 2026-09-18 按郭老师"旧理念不要留着污染上下文"全部删除**，不要再按轮次文件找历史原稿。当前唯一依据＝`05_上课设计\00_母稿_《不会的时候》详细教学设计（自用版）.md`。
 
