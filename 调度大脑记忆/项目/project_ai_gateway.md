@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: cc570cb5-bfc6-41c1-a63b-84533fa58583
-  modified: 2026-09-08T00:00:00.000Z
+  modified: 2026-09-21T00:00:00.000Z
 ---
 
 # 统一 AI 网关（search_gateway）
@@ -32,6 +32,7 @@ metadata:
 
 ## 时间线（近→远）
 
+- **2026-09-21 · 三档免费模型线重建 + 渠道单模型规则**：free-fast/balanced/heavy 三档（members[] 保序回落链，别名直调）；郭老师逐渠道定规则并落成**唯一真源文档 `search_gateway\渠道编排规则.md`**（monorepo 已同步）：zscc 只用 deepseek-v4.1-flash-cc（-cc 后缀才可用，失效须提醒郭老师拍板）、modelscope 只用 DeepSeek-V4.1-Flash、groq 只用 compound(T1首跳 166tok/s 复合智能体+联网)+gpt-oss-120b(T2)（qwen3.8-27b 限流大户已剔）、zenmux 免费白嫖渠道激活（新 key + 每日 00:23 巡检 `ZenMuxFreeScan`，脚本 `scripts/zenmux_free_scan.py`）。能力硬底线=通用模型且 ≥qwen3.8-27b（本尊可过）；规则层级=「只用N个」硬约束优先。探针 revision=6。三档最终 4/12/2 员，热加载免重启。openrouter/cloudflare/xiaohongshu/agnes/longcat/nvidia 同日定稿；zhipu 踢出（账号无套餐，免费仅 glm-4.7-flash 限流凶）；bai 免费期结束（限免也扣credits）打入冷宫，周任务 BaiWelfareCheck 周一 09:17 探监、福利回归报警。每日 ChannelDailyRefresh 00:23 实测编排全量成员。
 - **2026-09-08 · 主题体系完整落地（六套 data-style）**：4 主题总览见 `D:\Work\AI平台\apps\api-gateway\docs\主题体系.md`，各主题定义+预览图在 `docs\主题设置-*.md`（黑白建筑极简/云海天舟/星河枢机/月夜穹顶，「归一」已弃）。第六套 `data-style="mono"`（玄白·建筑极简）已在 `api_page.html` 落成并 byte 同步至运行体，浏览器 `http://localhost:3100/` → 🎨 选即见。
 - **2026-08-31 · 派发中心二级页 + 删除 dashscope 渠道**。
 - **2026-08-30 · 火山方舟 Coding Plan 接入**（49.9/月，单渠道 `ark-coding` 勿拆多；免 UAC 重启；剥离 reasoning_content；`deepseek-paid` 付费链）。
