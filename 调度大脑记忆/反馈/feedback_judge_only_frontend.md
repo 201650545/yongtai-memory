@@ -13,6 +13,6 @@ metadata:
 **Why:** 他不想被后端技术选择打扰，只以前端呈现与链路可用性作为验收，认为中间实现是执行层的事。
 
 **How to apply:**
-- 技术取舍先自定，倾向让「前端始终能显示、链路始终可用」；只有影响前端呈现、或必须 owner 拍板的业务语义，才用紧凑选项问（见 [[feedback-decision-only-reporting]]）。
-- 前端相关问题（UI/渲染/页面 bug）优先打包给 **Claude Sonnet 5** 回答（他认可其前端能力），走高级 AI 问诊流程（见 [[feedback-proactive-improvement]]）。
+- 技术取舍先自定，倾向让「前端始终能显示、链路始终可用」；只有影响前端呈现、或必须 owner 拍板的业务语义，才用紧凑选项问（见 [[feedback_decision_only_reporting]]）。
+- 前端相关问题（UI/渲染/页面 bug）优先打包给 **Claude Sonnet 5** 回答（他认可其前端能力），走高级 AI 问诊流程（见 [[feedback_proactive_improvement]]）。
 - AI 搜索集成/网关的验收 = 「能不能返回结果」，不纠结结果内容质量。

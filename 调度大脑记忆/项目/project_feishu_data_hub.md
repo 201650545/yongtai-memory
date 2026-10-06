@@ -33,4 +33,4 @@ metadata:
 
 **新增项目流程**：在飞书 Base 建 `AI 公开导出` 视图 → 授权统一飞书应用只读 → 更新 GitHub Secret → `npm run project:add -- --slug <slug> --title "..." --base-key <key>` → 配置 YAML 白名单 → dry-run → 安全扫描 → 手动部署。
 
-关联：[[reference-feishu-app-qclaw]] [[project-ai-resource-hub-bridge]] [[project-ai-hub]]
+关联：[[reference_feishu_app_qclaw]] [[project_ai_resource_hub_bridge]] [[project_ai_hub]]

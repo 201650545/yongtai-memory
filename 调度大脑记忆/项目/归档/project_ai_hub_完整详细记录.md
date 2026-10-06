@@ -48,7 +48,7 @@ metadata:
 - 判断分支是否「真正丢失工作」要看**内容**而非提交血缘：squash/迁移合并会把源码提交换成新哈希，血缘上算未合并，但 blob 可能完全一致。用 `git rev-parse <ref>:<path>` 对比 blob hash、`git diff --stat` 看差异量级即可判别。
 - GitHub 归档仓库要删残留分支：先 opencli 到 `/settings` 解除归档（对话框只需输入仓库名验证，不要求密码/2FA），删完可再归档回去。归档仓库多数设置被隐藏，设危险区操作需解除归档后才显示。
 
-关联：[[project-ai-gateway]] [[project-ai-resource-hub-bridge]] [[project-shared-memory]] [[project-github-sync]]
+关联：[[project_ai_gateway]] [[project_ai_resource_hub_bridge]] [[project_shared_memory]] [[project_github_sync]]
 ## 总网关前端 v2 交付（2026-09-06，GPT 镜像 Extended 完成）
 - 交付物：D:\项目\services\central\generated\总网关前端_v2\ai-gateway-console-deliverable.zip（解压目录 ai-gateway-console\，含自包含 index.html 437KB、DESIGN.md、README.md、3 主题图标厂牌+背景）
 - 已部署：D:\项目\services\central\dashboard\（index.html + assets\，:8000 根路径即新前端）

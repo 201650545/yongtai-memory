@@ -18,6 +18,6 @@ metadata:
 | modelscope FLUX.1-schnell | ❌ 仅异步模式（头 X-ModelScope-Async-Mode: true），同步 40212 |
 | siliconflow FLUX.1 | ❌ 403 Model disabled |
 
-**Why:** [[seedream-5-paused]] 后所有生图任务需要替代路由；避免重复逐条试错。
+**Why:** [[seedream-5-paused]]（⚠️ 断链，目标不存在，2026-10-01 审计） 后所有生图任务需要替代路由；避免重复逐条试错。
 
-**How to apply:** 生图脚本默认走 agnes（中文提示词）；批量补量用 CF flux（英文提示词翻译一轮）；4.5 留给需要 16:9 大图/仙逆官方画风的场景。CF account id 修正代码已在 [[project-ai-gateway]] channels.json 处理前先取前 32 位。产物规格：主题背景 2048×1152 JPEG q90（其他比例 PIL 裁切，top-biased 0.42）。
+**How to apply:** 生图脚本默认走 agnes（中文提示词）；批量补量用 CF flux（英文提示词翻译一轮）；4.5 留给需要 16:9 大图/仙逆官方画风的场景。CF account id 修正代码已在 [[project_ai_gateway]] channels.json 处理前先取前 32 位。产物规格：主题背景 2048×1152 JPEG q90（其他比例 PIL 裁切，top-biased 0.42）。

@@ -20,4 +20,4 @@ metadata:
 
 **Why:** 聊天窗口提示词过长会让镜像站响应慢/易中断（实测续问空回复）；传 GitHub 让 GPT 读仓库比贴全文更准更快。
 
-**How to apply:** 问 GPT 前先把相关代码/数据/提示词整理成仓库文档并 push（如 ai-hub 的 docs/），提示词只写"请读取 <repo/path> 后…"，监控用 15s 轮询，发下一轮前先确认 stop 按钮消失。关联 [[gpt-mirror-account-switch]]、[[mirror-chat-history-limit]]、[[workflow-gpt-repo-sync]]。
+**How to apply:** 问 GPT 前先把相关代码/数据/提示词整理成仓库文档并 push（如 ai-hub 的 docs/），提示词只写"请读取 <repo/path> 后…"，监控用 15s 轮询，发下一轮前先确认 stop 按钮消失。关联 [[gpt-mirror-account-switch]]（⚠️ 断链，目标不存在，2026-10-01 审计）、[[mirror-chat-history-limit]]（⚠️ 断链，目标不存在，2026-10-01 审计）、[[workflow_gpt_repo_sync]]。

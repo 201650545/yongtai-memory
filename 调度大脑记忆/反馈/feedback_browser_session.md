@@ -17,7 +17,7 @@ metadata:
 **正确工具（用户 2026-08-11 反复强调，记死）：浏览器操作一律用 Open CLI（opencli），不要用 chrome-devtools-mcp！**
 - opencli Browser Bridge 通过扩展连接用户**日常在用的 Chrome**（daemon:19825，profile `n8hh7hyn default`）。`opencli doctor` 可诊断连通性。
 - 用法：`opencli browser <会话名> <命令>`（bind/state/tab list/open/click/type/fill/eval/screenshot 等）；`--profile <name>` 指定 profile。会话首次用 `opencli browser <新会话名> open <url>` 建立。
-- 网关项目已用它驱动 4 大 AI 搜索（D:\游戏\ds_v4_cli，setup_engines.py 绑会话）。AI 引擎实测经验见 [[project-ai-gateway]]。
+- 网关项目已用它驱动 4 大 AI 搜索（D:\项目\ai-hub\search_gateway，setup_engines.py 绑会话）（2026-10-01 审计修正：原写 `D:\游戏\ds_v4_cli`，实测该目录不存在，运行体真身＝`D:\项目\ai-hub\search_gateway`，其 `services\setup_engines.py` 实测在）。AI 引擎实测经验见 [[project_ai_gateway]]。
 - chrome-devtools-mcp 只能控制它自己 `--remote-debugging-pipe` 启动的隔离实例，**物理上无法附加到已在运行的 Chrome**——用户已明确不满，别再用它当默认浏览器工具。
 
 **技术事实（2026-08-11 实测，供参考）：**

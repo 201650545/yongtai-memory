@@ -12,4 +12,4 @@ GPT 镜像站（AI问答宝，Plus账号多卡制）提问时：**当前账号�
 
 **Why:** 镜像站提供多个 Plus 账号卡（如 受限 ⑩/⑲/⑫/⑮/⑪/⑬、GPT-5 ②/㉓ 等），账号有使用限制，用受限账号提问会失败或卡住。
 
-**How to apply:** 在 AI问答宝（ai.wendabao.net / ai.wendabao-f.net）操作时，若当前账号受限/无响应，点击右上角切换账号入口，选择标记「活跃」的账号卡继续。关联 [[workflow-gpt-repo-sync]] [[feedback-browser-session]]。
+**How to apply:** 在 AI问答宝（ai.wendabao.net / ai.wendabao-f.net）操作时，若当前账号受限/无响应，点击右上角切换账号入口，选择标记「活跃」的账号卡继续。关联 [[workflow_gpt_repo_sync]] [[feedback_browser_session]]。

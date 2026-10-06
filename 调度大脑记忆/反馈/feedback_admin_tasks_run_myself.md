@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 2026-08-15 郭老师明确发火：我能跑的任务不要叫他跑（"你是傻逼吧…你自己不会打开管理员权限的PowerShell"）。让用户手动开管理员 PowerShell 粘贴命令是错误做法。
 
-**How to apply:** 需要提权的脚本写成「自提权」模式：开头检测 IsInRole(Administrator)，非管理员则 Start-Process -Verb RunAs 重启自己并等待结果文件；提权前明确告知用户「马上弹 UAC 点「是」」。相关：[[feedback-decision-only-reporting]]
+**How to apply:** 需要提权的脚本写成「自提权」模式：开头检测 IsInRole(Administrator)，非管理员则 Start-Process -Verb RunAs 重启自己并等待结果文件；提权前明确告知用户「马上弹 UAC 点「是」」。相关：[[feedback_decision_only_reporting]]

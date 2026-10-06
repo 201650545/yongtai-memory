@@ -15,4 +15,4 @@ metadata:
 - **能达到同样效果的路径**：让子 Agent 只当**执行壳**，把任务 POST 到网关 `:3100/v1/chat/completions`（model=deepseek-free，魔塔打头），由网关真调魔塔/DeepSeek官方/B.AI 的 API，拿到结果再落地。这样**网关 rate-ledger/用度日志有真实记录，额度真烧在那些平台**。
 
 **Why:** 郭老师要的是"用那几个平台的 API 额度+看得见用度"，不是让 sub-agent 空转在我的算力上；日志无记录他会立刻发现并追问。
-**How to apply:** 派执行类子 Agent 时，凡是要"烧网关渠道"的任务，让子 Agent 封装参数调 `:3100`（deepseek-free，路由魔塔优先）并把返回写盘落地，而不是子 Agent 自己推理完事；网关日志作为验收证据。关联 [[feedback-ask-user-only-urgent]] [[project-ai-gateway]]。
+**How to apply:** 派执行类子 Agent 时，凡是要"烧网关渠道"的任务，让子 Agent 封装参数调 `:3100`（deepseek-free，路由魔塔优先）并把返回写盘落地，而不是子 Agent 自己推理完事；网关日志作为验收证据。关联 [[feedback_ask_user_only_urgent]] [[project_ai_gateway]]。

@@ -8,7 +8,7 @@ metadata:
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
 ---
 
-郭老师（2026-09-03）指正：我在镜像版（AI问答宝 vip-XX.67673.live）问架构咨询时**没切到 extend 扩展模式，用了默认模型（AU）就发了**，他把视点说成浪费了一轮。架构/高智力问题本该用最先进模型把关（呼应 [[feedback-architecture-over-content]]）。
+郭老师（2026-09-03）指正：我在镜像版（AI问答宝 vip-XX.67673.live）问架构咨询时**没切到 extend 扩展模式，用了默认模型（AU）就发了**，他把视点说成浪费了一轮。架构/高智力问题本该用最先进模型把关（呼应 [[feedback_architecture_over_content]]）。
 
 **Why:** 架构是"最先进模型把关"的范畴，默认模型回答偏浅；郭老师盯得细，用错模型他会立刻发现并批评。
-**How to apply:** 在镜像版发起任何**架构/方案第二个意见/高智力咨询**前，先在对话区把模型从默认切到 **extend（扩展思考）**再发送；只有跑量/日常才用默认。提交前确认扩展开关已开（发送按钮旁模型指示应非 AU）。关联 [[feedback-ask-user-only-urgent]] [[feedback-subagent-gateway-burn]]。
+**How to apply:** 在镜像版发起任何**架构/方案第二个意见/高智力咨询**前，先在对话区把模型从默认切到 **extend（扩展思考）**再发送；只有跑量/日常才用默认。提交前确认扩展开关已开（发送按钮旁模型指示应非 AU）。关联 [[feedback_ask_user_only_urgent]] [[feedback_subagent_gateway_burn]]。

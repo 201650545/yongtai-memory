@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 他做信息中转，时间有限；叙事式进度汇报占掉他处理真正决策的时间；已完成工作他已知晓，重复是噪音。
 
-**How to apply:** 回复保持简短，默认不重述已完成工作；每轮只列"等你拍板"的选项（用 AskUserQuestion 或紧凑选项列表，给推荐项）；转发类交付仍按 [[end-turn-forward-block]] 结尾。相关：[[handoff-require-brief-report]]。
+**How to apply:** 回复保持简短，默认不重述已完成工作；每轮只列"等你拍板"的选项（用 AskUserQuestion 或紧凑选项列表，给推荐项）；转发类交付仍按 [[end_turn_forward_block]] 结尾。相关：[[handoff_require_brief_report]]。

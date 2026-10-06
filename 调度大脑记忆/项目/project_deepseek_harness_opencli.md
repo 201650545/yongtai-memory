@@ -16,5 +16,5 @@ metadata:
 3. 任务做完，通过 Open CLI 就能看到结果。
 4. 可并发开**10 个窗口**给 Harness 同时干活。
 
-**Why:** 用户的真实目的是让子 Agent 的活**用上网关里那几个渠道的模型额度**（魔塔/DeepSeek官方/B.AI）而非跑在我的算力上，且要从日志/窗口看到真执行。fork 子 Agent 本体是 Claude 换不了模型，这是替代通道（呼应 [[feedback-subagent-gateway-burn]]）。
-**How to apply:** 当需要"独立对话窗口 + 指定模型 + 烧 DeepSeek 额度"的执行任务时，用 opencli 控制 DeepSeek Harness；每个任务一个独立窗口，跑完 opencli 读结果。可与镜像版（AI问答宝，extend 模式）分工：镜像版负责架构/设计把关，Harness 负责执行/烧额度。关联 [[project-trae-solo-control]]（同为 opencli 控制的对话式 agent）[[feedback-mirror-extend-for-architecture]]。
+**Why:** 用户的真实目的是让子 Agent 的活**用上网关里那几个渠道的模型额度**（魔塔/DeepSeek官方/B.AI）而非跑在我的算力上，且要从日志/窗口看到真执行。fork 子 Agent 本体是 Claude 换不了模型，这是替代通道（呼应 [[feedback_subagent_gateway_burn]]）。
+**How to apply:** 当需要"独立对话窗口 + 指定模型 + 烧 DeepSeek 额度"的执行任务时，用 opencli 控制 DeepSeek Harness；每个任务一个独立窗口，跑完 opencli 读结果。可与镜像版（AI问答宝，extend 模式）分工：镜像版负责架构/设计把关，Harness 负责执行/烧额度。关联 [[project_trae_solo_control]]（同为 opencli 控制的对话式 agent）[[feedback_mirror_extend_for_architecture]]。

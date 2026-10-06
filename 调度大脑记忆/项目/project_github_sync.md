@@ -14,4 +14,4 @@ GitHub 仓库 `github.com/201650545/english-teaching-production`（本地 stagin
 
 **2026-08-11 本地清理影响**：外部 Agent 清掉了本地 `D:\英语教学\README.md`、`00_工具\analyze_answers.py`、`样例课件\` 整目录（3 件 L01 HTML）。教师决策=**仓库保留、本地不恢复**。`00_工具` 目录结构完整（`ops\publish_all.py`/`feishu_sync.py`、`engine\verify_v2.py` 等子目录均在）。publish_all.py 只增不删，本地清理不传播；README/样例课件无本地源后不会更新，但仓库里仍是 d918636 的旧版，需要时可从 staging 找回。
 
-**给 AI 的前提**：问 GPT/外部 AI 前先 `git pull` 拉最新规范（已写入 README「同步机制」节）。相关：[[project-ai-gateway]] [[workflow-gpt-repo-sync]]
+**给 AI 的前提**：问 GPT/外部 AI 前先 `git pull` 拉最新规范（已写入 README「同步机制」节）。相关：[[project_ai_gateway]] [[workflow_gpt_repo_sync]]

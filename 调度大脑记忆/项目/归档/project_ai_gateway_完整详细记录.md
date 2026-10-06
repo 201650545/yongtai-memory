@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-01T00:41:14.311Z
 ---
 
+> ⚠️ 2026-10-01 审计：本件是归档快照，其中网关路径已废。运行体真源以 [[调度大脑记忆/项目/project_ai_gateway]] 为准。
+
 **2026-09-08 第六套主题「玄白 · 建筑极简」（data-style="mono"，黑白建筑极简/MONO）落地**：
 - 背景：多轮主题收敛后，郭老师最终定 **4 主题体系**（弃「归一」凑数）——黑白建筑极简(玄白/mono，理性专业长期工作) / 云海天舟(东方山水流动) / 星河枢机(东方观星) / 月夜穹顶(西式夜间总控)；完整定义+预览图存 Obsidian `D:\Work\AI平台\apps\api-gateway\docs\主题设置-*.md` + `主题体系.md`（每主题含视觉隐喻表/配色/材质/UI/动效/一句话定义）。
 - **实现（本次会话真改真落）**：`api_page.html`（repo `D:\Work\AI平台\apps\api-gateway\services\web\` 与 runtime `D:\项目\services\search_gateway\services\web\` 逐字节一致已同步）：

@@ -303,14 +303,14 @@ Latest • 5.6 | Auto | Thinking（右侧显示 "• Extended"）| GPT-5.6 Luna 
 
 ## 固化一键脚本法（2026-09-04 实测，零→Extended ≤15s，最优选）
 
-> 比逐段手点快 5–6 倍（74s→9.6s）。脚本在 `D:\Work\AI平台\docs\运行手册\scripts\`。两个脚本直接照抄，复探只会在跨实例时踩 hydration 坑。
+> 比逐段手点快 5–6 倍（74s→9.6s）。脚本在 `D:\Work\AI平台\docs\runbooks\scripts\`（2026-10-01 审计修正：原写 `docs\运行手册\`，实测该目录不存在，真身已改名 `docs\runbooks\`，本文件 :312/:313/:525 同改）。两个脚本直接照抄，复探只会在跨实例时踩 hydration 坑。
 
 ```bash
 opencli browser n8hh7hyn tab new "https://ai.wendabao-f.net/?utm_source=hidden-ncn"
 sleep 2
 opencli browser n8hh7hyn tab select <pageId>                                                  # ★ 锚定
-opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/运行手册/scripts/evalA_jump.js')"   # A：卡0 GPT-5→劫持window.open→跳 vip-XX
-opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/运行手册/scripts/evalB_ext.js')"    # B：全自动切 Extended 并验证
+opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/runbooks/scripts/evalA_jump.js')"   # A：卡0 GPT-5→劫持window.open→跳 vip-XX
+opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/runbooks/scripts/evalB_ext.js')"    # B：全自动切 Extended 并验证
 ```
 
 - **evalA_jump.js**：`window.open` 劫持存 `__openUrl`→点 `.n-card[0]` 第一个 GPT-5 span→`location.href=__openUrl` 秒跳。
@@ -522,6 +522,6 @@ p.dispatchEvent(new PointerEvent("pointerup",Object.assign({},o,{buttons:0}));
 - [[feedback_gpt_mirror_subagent_flow]] — 子 Agent 送审三条纪律 + Extended 切换法
 - [[feedback_gpt_mirror_account_switch]] — 账号受限切活跃
 - [[feedback_fork_forbidden]] — 本流程全员（含子 Agent）一律 fresh 上下文，禁止 fork
-- 手册：`D:\Work\AI平台\docs\运行手册\GPT镜像站送审流程.md`（§三·五 固化一键脚本法）
+- 手册：`D:\Work\AI平台\docs\runbooks\GPT镜像站送审流程.md`（§三·五 固化一键脚本法）（2026-10-01 审计修正：原写 `docs\运行手册\`，实测真身为 `docs\runbooks\`，该 md 实测在）
 - GitHub 同步：Obsidian 为主（`D:\记忆` 真源）→ `yongtai-memory` 镜像（脱敏后）
-- 技能同步：`C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`（WorkBuddy 侧强制执行清单）
+- 技能同步（WorkBuddy 侧强制执行清单）：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。

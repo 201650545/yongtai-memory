@@ -10,7 +10,7 @@ metadata:
 
 # DeepSeek Harness（DSH）基本情况
 
-> 开源的 AI Agent 宿主/运行时。定制项目 `D:\Work\dsh-personal-host`（源码盘点在 `00-inventory/`，本篇是给人读的精简认知版）。
+> 开源的 AI Agent 宿主/运行时。定制项目 `D:\Work\_归档\dsh-personal-host`（2026-09-29 已归档；源码盘点在 `00-inventory/`，本篇是给人读的精简认知版）。
 
 ## 一、它有什么（模块构成）
 
@@ -84,7 +84,7 @@ settings（属于某能力自己的用户配置）
 
 ## 关联
 
-- 定制项目唯一事实源：`D:\Work\dsh-personal-host`（README/盘点文档）。
+- 定制项目文档：`D:\Work\_归档\dsh-personal-host`（README/盘点文档，2026-09-29 归档）。⚠️ **2026-09-29 实测更正**：它原自称"唯一事实源"，但 `20-implementation\`、`scripts\`、`tests\` 经 find 确认为**空骨架**，文档停在 2026-09-05；插件真码实际在 `~/.dsh/nitian-stage/src` 与 `D:\Work\逆天主题\dsh-plugin\pkg`，官方源备份在 `D:\DeepSeek\dsh-source-backup`（README 所写 `D:\DeepSeek\deepseek-harness` 已不存在）。所以这里只是**设计文档**，不是事实源。
 - 网关侧模型组真源：[[project_cherry_dsh_sync]]。
 - 后备执行通道：[[project_deepseek_harness_opencli]]。
 - 需求定位：接管 Claude 短板（界面/交互/视觉），第一步验收=能派多模态子 agent。

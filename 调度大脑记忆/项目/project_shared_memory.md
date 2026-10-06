@@ -14,4 +14,4 @@ metadata:
 
 协作协议：执行前先读 STATE.md + DECISIONS.md；做完在 CHANGELOG.md 追加一条；用户敲板追加进 DECISIONS.md。GPT 两条纠正已写入：① append-only 不免疫冲突 → 不同 Agent 不改同一文件；② 协议只做引导、强制靠 hook。
 
-关联 [[on-demand-orchestration]] [[ai-gateway]]。
+关联 [[on-demand-orchestration]]（⚠️ 断链，目标不存在，2026-10-01 审计） [[ai-gateway]]（⚠️ 断链，目标不存在，2026-10-01 审计）。

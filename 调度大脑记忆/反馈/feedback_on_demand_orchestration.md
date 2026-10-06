@@ -13,8 +13,8 @@ metadata:
 工具地图（已注册，首次用先验证鉴权）：
 - opencli 外部 CLI：lark-cli=飞书、gh=GitHub、tg、wecom-cli=企业微信、wx=微信、notion、obsidian、longbridge 等
 - opencli browser 控 AI 引擎：doubao-app / chatgpt-app / codex / cursor 等 adapter
-- 统一网关(:3000, D:\游戏\ds_v4_cli，opencli 控 4 大搜索) 见 [[ai-gateway]]
-- 编排器(:8791) 课件生成，见 [[english-teaching]] 相关
+- 统一网关(:3100, D:\项目\ai-hub\search_gateway，opencli 控 4 大搜索)（2026-10-01 审计修正：原写 `:3000, D:\游戏\ds_v4_cli`；实测 netstat :3100 LISTENING/PID 22744、:3000 无监听，ds_v4_cli 目录不存在，真身＝`D:\项目\ai-hub\search_gateway`） 见 [[ai-gateway]]（⚠️ 断链，目标不存在，2026-10-01 审计）
+- 编排器(:8791) 课件生成，见 [[english-teaching]]（⚠️ 断链，目标不存在，2026-10-01 审计） 相关
 
 **Why:** 用户强调「人是会遗忘的」，想让 AI 记住工具地图并自主路由；同时明确不需要任何接收 AI 汇报/提醒的平台。
 **How to apply:** 接到自然语言请求，先想「该打哪个已连接工具」并自动去查（飞书表→lark-cli、仓库→gh、搜索→网关多引擎、额度→台账），不要反问「去哪个窗口」、不要提议搭提醒/汇报平台。

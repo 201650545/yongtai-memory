@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 用户 2026-08-30 明确要求：这类任务简单但耗时耗 token，应优先找更快更省的方式——交给子 Agent 独立跑（不污染主会话上下文）、用 :3100 网关免费快速模型做判断、能缓存就缓存、能并行就并行。主会话只做调度与复核。
 
-**How to apply:** 遇到"反复测试/批量探测"类工作，优先 fork 子 Agent 执行、主会话收结果；子 Agent 内部需要 LLM 判断时用 :3100 免费模型（deepseek-free、qwen3.8-flash、@cf/ 系列等）而非 DeepSeek 官方 API。关联 [[on-demand-orchestration]] [[ai-gateway]]。
+**How to apply:** 遇到"反复测试/批量探测"类工作，优先 fork 子 Agent 执行、主会话收结果；子 Agent 内部需要 LLM 判断时用 :3100 免费模型（deepseek-free、qwen3.8-flash、@cf/ 系列等）而非 DeepSeek 官方 API。关联 [[on-demand-orchestration]]（⚠️ 断链，目标不存在，2026-10-01 审计） [[ai-gateway]]（⚠️ 断链，目标不存在，2026-10-01 审计）。

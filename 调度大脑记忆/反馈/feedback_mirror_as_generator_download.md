@@ -16,8 +16,8 @@ metadata:
 
 **压缩包是发一个"下载链接"**，我要点链接去下载。**下载后可能需要手动点击选择保存路径——郭老师晚上睡觉不会帮我点，我必须想办法自己把它保存下来，不能卡在交互弹窗上。**
 
-**Why:** 用户的核心理念=架构用最先进模型把关、内容/执行尽量让镜像直接产出，我少写代码少复制，直接落他的高级成果（呼应 [[feedback-architecture-over-content]] [[feedback-proactive-improvement]]）。
-**How to apply:** 委派镜像生成交付物时：①先让它在同一线程延展做出来；②拿到下载链接后用**自己的方法**落盘（见下），别指望他点；③压缩包解压到目标目录再复核内容。关联 [[feedback-browser-element-nav]]（opencli 抓取/点击）[[feedback-mirror-extend-for-architecture]]。
+**Why:** 用户的核心理念=架构用最先进模型把关、内容/执行尽量让镜像直接产出，我少写代码少复制，直接落他的高级成果（呼应 [[feedback_architecture_over_content]] [[feedback_proactive_improvement]]）。
+**How to apply:** 委派镜像生成交付物时：①先让它在同一线程延展做出来；②拿到下载链接后用**自己的方法**落盘（见下），别指望他点；③压缩包解压到目标目录再复核内容。关联 [[feedback_browser_element_nav]]（opencli 抓取/点击）[[feedback_mirror_extend_for_architecture]]。
 
 ## 下载链接自存方案（备选，按文件类型选）
 

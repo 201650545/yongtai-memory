@@ -14,4 +14,4 @@ ai-resource-hub（github.com/201650545/ai-resource-hub）公开数据桥 exporte
 
 **Why:** 避免未来 AI 因历史遗留的硬编码 token 重复提议破坏性清理（filter-repo/轮换），浪费时间且有风险。
 
-**How to apply:** 涉及 ai-resource-hub 时，直接沿用现状；新增公开字段须走「飞书建字段 → whitelist+classifications 声明 → mock+validate 验证 → push」流程。关联 [[reference-feishu-app-qclaw]] [[project-ai-gateway]]。
+**How to apply:** 涉及 ai-resource-hub 时，直接沿用现状；新增公开字段须走「飞书建字段 → whitelist+classifications 声明 → mock+validate 验证 → push」流程。关联 [[reference_feishu_app_qclaw]] [[project_ai_gateway]]。

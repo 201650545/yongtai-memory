@@ -17,4 +17,4 @@ metadata:
 - 开发者后台「凭证与基础信息」页：https://open.feishu.cn/app/cli_a933ead8cdf85ccc/baseinfo（显示密钥需点眼睛图标，勿点「重置」）。
 - 注意：旧记忆/文件曾误记 cli_a923220b38f89cb1（龙虾1号）——那是另一个应用，**数据桥用的是 qclaw**。
 
-相关：[[feedback-browser-session]] [[project-ai-gateway]]
+相关：[[feedback_browser_session]] [[project_ai_gateway]]

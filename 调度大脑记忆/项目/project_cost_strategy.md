@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 任务难度不高，大部分 AI 已能覆盖；用户有多个渠道可领积分，够用。**ChatGPT 镜像版可用 Extended（GPT-5.6/Sora）**——复杂任务也能覆盖。省钱优先。
 
-**How to apply:** 调度/规划时不推荐付费订阅（Codex Plus、中转站等）；优先 :3100 免费编排组、免费官方 CLI（Qoder CLI 免费 Credits 等）、各渠道领积分。若未来任务难度上升再重新评估。关联 [[claude-scheduler-brain]] [[feedback-model-policy]]。
+**How to apply:** 调度/规划时不推荐付费订阅（Codex Plus、中转站等）；优先 :3100 免费编排组、免费官方 CLI（Qoder CLI 免费 Credits 等）、各渠道领积分。若未来任务难度上升再重新评估。关联 [[claude-scheduler-brain]]（⚠️ 断链，目标不存在，2026-10-01 审计） [[feedback_model_policy]]。

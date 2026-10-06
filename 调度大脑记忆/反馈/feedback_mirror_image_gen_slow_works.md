@@ -25,4 +25,4 @@ metadata:
 4. **`.tmp` 就是完整 PNG**（magic `89504e47`）——Chrome 因镜像的 Content-Disposition 未 finalize 改名。直接 `cp` 出来改名为目标名即可。用 Python 读 IHDR（bytes16:24）可校验宽高。
 
 **Why:** 镜像 chat 后端延迟极高但可用；下载走页面按钮 + 从 Downloads 捞 `.tmp` 是最稳路径（curl 会被沙箱网络挡）。
-**How to apply:** 再经该镜像生图：①Extended 切不动就 Auto 兜底（不强求）；②发送后耐心等 3–8 分钟，以「出现 estuary/content 的 <img>」为完成信号；③点击「Download this image」→ 去 `C:\Users\郭永涛\Downloads` 取最新 `.tmp` → 复制改名落目标目录。关联 [[feedback-mirror-as-generator-download]] [[feedback-mirror-extend-for-architecture]] [[feedback-mirror-send-speed]]。
+**How to apply:** 再经该镜像生图：①Extended 切不动就 Auto 兜底（不强求）；②发送后耐心等 3–8 分钟，以「出现 estuary/content 的 <img>」为完成信号；③点击「Download this image」→ 去 `C:\Users\郭永涛\Downloads` 取最新 `.tmp` → 复制改名落目标目录。关联 [[feedback_mirror_as_generator_download]] [[feedback_mirror_extend_for_architecture]] [[feedback_mirror_send_speed]]。

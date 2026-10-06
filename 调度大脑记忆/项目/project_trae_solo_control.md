@@ -18,4 +18,4 @@ metadata:
 - 当前聊天模型 DeepSeek-V4-Flash 正式（:3100 网关免费模型），符合「测试用免费模型」规矩。
 - 布局：项目列表（无输入框）↔ 聊天工作区；侧边栏任务列表与聊天主区可共存。
 
-**How to apply:** 需要让 Trae 干活（写代码/分析/文档）时直接用 `opencli trae-solo open-task --project X` + `opencli trae-solo send "任务"`。关联 [[browser-session]]（opencli 机制）、[[feedback-on-demand-orchestration]]。
+**How to apply:** 需要让 Trae 干活（写代码/分析/文档）时直接用 `opencli trae-solo open-task --project X` + `opencli trae-solo send "任务"`。关联 [[browser-session]]（⚠️ 断链，目标不存在，2026-10-01 审计）（opencli 机制）、[[feedback_on_demand_orchestration]]。

@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 用户 2026-08-30 明确：「你用它的模型只能用 DeepSeek V4 flash 正式版。这是你已经打开的对话中默认使用的模型」。
 
-**How to apply:** `opencli trae-solo model` 只读确认当前模型，不要 switch 到别的模型；substring 匹配时若想验证，直接读当前即可。关联 [[trae-solo-opencli-control]] [[model-policy]]。
+**How to apply:** `opencli trae-solo model` 只读确认当前模型，不要 switch 到别的模型；substring 匹配时若想验证，直接读当前即可。关联 [[trae-solo-opencli-control]]（⚠️ 断链，目标不存在，2026-10-01 审计） [[model-policy]]（⚠️ 断链，目标不存在，2026-10-01 审计）。

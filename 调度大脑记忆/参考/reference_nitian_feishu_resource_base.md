@@ -17,4 +17,4 @@ metadata:
 
 读法：`node "/c/Users/郭永涛/AppData/Roaming/npm/node_modules/@larksuite/cli/scripts/run.js" base +record-list --base-token StmDbTXQWaujshs9NpIc3UFpnAc --table-id <名或id> --format json --limit N`（lark-cli 全局 node 路径坏，须用 nodejs 的 node 直调 run.js）。
 
-接入方式待拍板（规划 §九补）：倾向「逆天主题只读消费该 base，单一真源；生产渠道用资源表做准入闸」。关联 [[reference-feishu-app-qclaw]] [[project-ai-resource-hub-bridge]] [[feedback-model-policy]]。
+接入方式待拍板（规划 §九补）：倾向「逆天主题只读消费该 base，单一真源；生产渠道用资源表做准入闸」。关联 [[reference_feishu_app_qclaw]] [[project_ai_resource_hub_bridge]] [[feedback_model_policy]]。

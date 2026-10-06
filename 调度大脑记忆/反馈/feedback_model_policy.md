@@ -16,4 +16,4 @@ metadata:
 
 **Why:** 他按性价比维护编排组；乱用未编排/失效模型会直接失败或烧不值当的额度。
 
-**How to apply:** 任何 LLM 调用前先查 /api/unified 拿组名清单，payload.model 只填组名（fast/glm-5.2/deepseek-v4-flash/ox…）；子代理 spawn 前注意会话默认模型是否指向有效编排组。相关：[[project-ai-gateway]] [[feedback-judge-only-frontend]]
+**How to apply:** 任何 LLM 调用前先查 /api/unified 拿组名清单，payload.model 只填组名（fast/glm-5.2/deepseek-v4-flash/ox…）；子代理 spawn 前注意会话默认模型是否指向有效编排组。相关：[[project_ai_gateway]] [[feedback_judge_only_frontend]]

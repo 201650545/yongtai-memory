@@ -14,6 +14,6 @@ metadata:
 
 **How to apply:**
 - 凡是**架构/规范/方案/结构**级工作 → 按最高标准认真做，不偷懒、不省成本（先进模型、仔细规划、可反复打磨）。
-- 凡是**执行/内容/批量**级工作 → 交给执行 Agent + 性价比模型跑（见 [[feedback-role-division]] 分工边界）。
+- 凡是**执行/内容/批量**级工作 → 交给执行 Agent + 性价比模型跑（见 [[feedback_role_division]] 分工边界）。
 - 多利用 **GitHub 作为数据桥**：数据导到 GitHub Pages 公开 JSON，AI 工具（官网/镜像）经连接器读取即可介入，不必绕 API。
-- 关联：[[project-ai-gateway]]（多引擎 AI 搜索/网关是"性价比模型"的载体）、[[workflow-human-ai-research]]（人机互查方法）。
+- 关联：[[project_ai_gateway]]（多引擎 AI 搜索/网关是"性价比模型"的载体）、[[workflow_human_ai_research]]（人机互查方法）。

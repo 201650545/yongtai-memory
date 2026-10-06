@@ -14,7 +14,7 @@ metadata:
 
 **How to apply:**
 - 落在「AI 侧」的东西(文档预览 md、docs、Obsidian、GitHub、飞书台账)默认是 AI 的记忆与交接物,**不用**让郭老师去读去点。
-- 给郭老师看的两类才算人看层:①能拍板的**交互预览**(卷子/原型);②**要她决策的问题(AskUserQuestion/紧凑选项)**。已完成的工作不汇报([[feedback-decision-only-reporting]])。
+- 给郭老师看的两类才算人看层:①能拍板的**交互预览**(卷子/原型);②**要她决策的问题(AskUserQuestion/紧凑选项)**。已完成的工作不汇报([[feedback_decision_only_reporting]])。
 - 开工前产出一段极短「契约」(几行:这项目是什么/交付物/验收),只供扫一眼点头,不含技术。
-- 架构用最强模型把关、内容用性价比模型执行,我只写命令+复核([[feedback-architecture-over-content]])。
+- 架构用最强模型把关、内容用性价比模型执行,我只写命令+复核([[feedback_architecture_over_content]])。
 - 类似预览/看板这类拍板物,若配了「卷子」形态(如 婴变期需求审查问卷,答案 POST 回本地接收端落盘),郭老师答完我自动读,他不必报告详情。

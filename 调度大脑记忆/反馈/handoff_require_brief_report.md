@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 郭老师明确要求（2026-08-04）。中继核对与归档都需要执行方自述，不能只交文件不交汇报。
 
-**How to apply:** 写交接文档时，「验收输出」节模板写：完成后回报：① 模块×验收项 PASS/FAIL 表 ② 变更文件清单 ③ 验证结果 ④ 已知偏差。相关：[[workflow-human-ai-research]]、[[reference_skill_tech_cofounder]]。
+**How to apply:** 写交接文档时，「验收输出」节模板写：完成后回报：① 模块×验收项 PASS/FAIL 表 ② 变更文件清单 ③ 验证结果 ④ 已知偏差。相关：[[workflow_human_ai_research]]、[[reference_skill_tech_cofounder]]。

@@ -26,4 +26,4 @@ Codex(ChatGPT 桌面端) 的 `deepseek` 辅助 agent 通过本地代理访问 De
 - 重启应用：`Stop-Process` 全部 ChatGPT/codex 进程后，`Start-Process explorer.exe shell:AppsFolder\OpenAI.Codex_2p2nqsd0c76g0!App`。
 - 当前可用配置：`model="deepseek-v4-flash"` + `model_provider="deepseek-zscc"` + `sandbox="unelevated"`（不含 model_catalog_json / MCP 段）。
 
-相关：[[feedback-diagnosis]]
+相关：[[feedback_diagnosis]]

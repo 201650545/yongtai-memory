@@ -21,7 +21,7 @@ metadata:
 
 **Why：** 发送是最常卡的一环；重探 DOM + 标签漂移 + 误注隐藏 textarea + 合成 Enter 不提交 = 四个慢点叠一起。郭老师明确要速度，卡一次扣一分信任。
 
-**How to apply：** 进镜像发问 = tab new→select 钉死→evalA 跳→evalB 切 Extended(ok:true)→注入 #prompt-textarea→点 send-button→background 守望 streaming:false。关联 [[feedback-gpt-mirror-subagent-flow]] [[workflow-ai-wendabao-open]] [[feedback-browser-element-nav]]
+**How to apply：** 进镜像发问 = tab new→select 钉死→evalA 跳→evalB 切 Extended(ok:true)→注入 #prompt-textarea→点 send-button→background 守望 streaming:false。关联 [[feedback_gpt_mirror_subagent_flow]] [[workflow_ai_wendabao_open]] [[feedback_browser_element_nav]]
 
 **预览/看板/成品构建，先问 GPT 再动手**：郭老师明确要求"预览的构建去问 GPT（镜像 Extended，架构优先进口）"——凡是给"能拍板"的预览（Obsidian 预览页、HTML 原型、界面骨架）前，先问 GPT 形态选型与复用/新建，别自己擅建静态 md 复制了事。2026-09-04 我没问就复制了一份预览 md，被抓。「架构优先用最先进模型把关；生成专属执行 Agent 只写命令+复核」也照此。
 
@@ -61,5 +61,5 @@ metadata:
 ### 双写要求（郭老师明确）
 
 **这些记忆不仅要在 WorkBuddy 中记载，更要写入 Obsidian 记忆仓库。**
-- WorkBuddy 侧：`C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`（强制执行清单）
+- WorkBuddy 侧强制执行清单：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。
 - Obsidian 侧：`D:\记忆\调度大脑记忆\流程\workflow_ai_wendabao_open.md` + 本文件

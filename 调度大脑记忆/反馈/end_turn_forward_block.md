@@ -12,4 +12,4 @@ metadata:
 
 **Why:** 郭老师 2026-08-04 明确要求。他做信息中继，需要一键拿到"转给谁、转什么文件"。
 
-**How to apply:** 结尾格式：`**转发：**\`路径\` —— 一句话（发给谁、做什么）。` 只有真需转发时才写，闲聊/纯汇报不写。相关：[[handoff-require-brief-report]]、[[workflow-human-ai-research]]。
+**How to apply:** 结尾格式：`**转发：**\`路径\` —— 一句话（发给谁、做什么）。` 只有真需转发时才写，闲聊/纯汇报不写。相关：[[handoff_require_brief_report]]、[[workflow_human_ai_research]]。

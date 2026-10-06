@@ -18,4 +18,4 @@ metadata:
 
 **Why:** 历史会话过长拖慢镜像站页面、混入旧上下文干扰当前问诊。2026-09-04 用户从「每 30 删一半」收紧为「保留最近 10 条、删最旧」。
 
-**How to apply:** 在镜像站操作时留意会话列表条数，>10 就走脚本删末尾至剩 10。关联 [[feedback-gpt-mirror-account-switch]]、[[feedback-gpt-mirror-subagent-flow]]、手册 §四（账号与窗口纪律）。
+**How to apply:** 在镜像站操作时留意会话列表条数，>10 就走脚本删末尾至剩 10。关联 [[feedback_gpt_mirror_account_switch]]、[[feedback_gpt_mirror_subagent_flow]]、手册 §四（账号与窗口纪律）。
