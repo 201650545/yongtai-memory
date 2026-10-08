@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: cc570cb5-bfc6-41c1-a63b-84533fa58583
-  modified: 2026-09-21T00:00:00.000Z
+  modified: 2026-10-08T00:00:00.000Z
 ---
 
 # 统一 AI 网关（search_gateway）
@@ -25,13 +25,20 @@ metadata:
 
 - **路径**：运行体 = `D:\项目\ai-hub\search_gateway`（实测存在，2026-09 核实；此前多处误写 `D:\项目\services\search_gateway`，该路径不存在）；`apps/api-gateway` 是仓库自包含副本。两处 `api_page.html` 必须保持**同一内容**，改一边记得同步另一边。
 - **GATEWAY_ID 陷阱**：`channels.GATEWAY_ID` 在 `import channels` 时**即冻结**；要某网关账本独立，必须在 import 前 `os.environ.setdefault("GATEWAY_ID","<id>")`，否则账全混进默认 `ds_v4_cli`。:3100 已设为 `api_gateway`，账本独立。
-- **重启免 UAC**：网关必须普通权限运行。禁止 `Start-Process -Verb RunAs` 启动 python（会变提权进程 → 下次杀它 Access denied → 恶性循环）。重启 = 普通进程 Stop + 普通进程 Start。
+- **重启口径（2026-10-08 郭老师裁定改写，原「重启免 UAC」条款作废）**：`:3100` 由 nssm 服务 `ai-gateway-3100` 以 **LocalSystem** 持有 —— 这是郭老师**有意选的**（原话「就是我让它这样搞的，我不希望它一直弹那个弹窗，好烦，而且还开机自启动」），目的＝**不弹控制台窗 + 开机自启**。⇒ 改 **代码** 后重启统一走 **`nssm restart ai-gateway-3100`（需提权，UAC 弹一次）**；**改 `data/*.json` 配置不需要重启**（mtime 热加载，见 `/healthz` 的 `loaded_routes_sha256` 变化）。旧的「普通进程 Stop + 普通进程 Start」写法已作废。详见 [[调度大脑记忆/教训/lesson_gateway_restart_privilege_trap]] 第四节。
 - **重启要杀全部同脚本进程**：`api_gateway.py` 若旧进程没死干净，新端点会 404 且旧端点照常，易误判「新代码没生效」。判断一律以 `netstat -ano | findstr :<端口>` LISTENING 为准。
 - **四种状态勿混淆**：成员冷却（`_model_cooldown` 30s）≠ 渠道限流（`rate_limit.py` open/throttled/blocked，15/30/60/120/300s 退避）≠ 共享代理故障域熔断（`fault_domains.is_tripped`，DIRECT 不入域）。
 - **主题落地方式**：一律走 `api_page.html` 的 `data-style` 新增风格（不另起主题系统）；不伪造、不假装「额度+延迟动态加权」。
 
 ## 时间线（近→远）
 
+- **2026-10-08 · 实测核对 + 文档仓对齐（WorkBuddy 接手轮）**：`:3100` 活着（`/healthz` ok），**持有者 PID 6260，父 `nssm.exe`，服务 `ai-gateway-3100`（Auto）** —— 文档仓原记 PID 35192 已过时。实测：路由名 **16**（`/v1/models`）、渠道 **21**（`/api/channels`）、累计 calls 7941 / input 8.14 亿 tok / errors 0。编排席位数 free-flash **14** / free-high **8** / fast **8** / video-gen **1**（`data/model_routes.json`）。
+  - **文档仓 `D:\Work\API转发网关` 改 4 处活文档**：`README.md`＋`SYSTEM_OVERVIEW.md` 目录树头 `D:\Work\api-gateway\`→`API转发网关`；`AGENTS.md` **`/api/channels/status` 是错的（实测 not found）→ 正确为 `/api/channels`**；`PROGRESS_TRACKER.md` PID→6260、M3 路径改名。带日期的历史件有意不改。
+  - **口径修正（旧结论作废）**：09-30 记的「文档仓 `渠道编排规则.md` 停在 09-22 stale／双真源分叉」**已不成立** —— 该文件现仅存于运行体 `D:\项目\ai-hub\search_gateway\渠道编排规则.md`（40 KB，mtime 09-29 20:16），文档仓已无此文件。
+  - **郭老师当场裁决并已执行（同日 11:5x，热加载零重启）**：① **删失效模型** —— `model_routes.json` 摘 4 枚：free-flash 的 `openrouter/qwen/qwen3.8-27b:free`、`openrouter/poolside/laguna-s-2.1:free`、`openrouter/stealth/space-bunny-alpha`；free-high 的 `openrouter/google/gemma-4-31b-it:free`；**另 `测试模型` 线的备份席也是同一枚已下架的 `stealth/space-bunny-alpha`，一并摘除** ⇒ 席位数 free-flash **14→11**、free-high **8→7**、测试模型 **3→2**。② **删方舟渠道** —— `channels.json` 摘 `keys.ark` ＋ `channel_enabled.ark=false`；`quota_guard.json` 加 `ark: deny_all`；`channel_notes.json`/`channel_expiry.json` 摘 ark 条目；**停用计划任务 `ArkQuotaScan`**。见证：`/api/channels` 已无 `ark`，`/healthz` 的 `loaded_routes_sha256` `048d9090…`→`c60969e8…`。
+  - **退役口径（重要，勿再照旧改）**：本仓退役渠道的既有惯例是 **封存 + 隐藏 + 停用 + 摘 key**，`services/channels.py` 的代码桩**保留不删**（deepseek/zhipu/bai/gmi 同款）——删代码桩会撞 `channel_profiles.py` 的 `REDLINE_CHANNELS`↔`probe_free_channels.FORBIDDEN` 一致性断言。备份在 `data/_bak_20261008/`。
+  - **持久性**：12:00 的 `or_free_refresh.py` 只追加**探活通过**的席位（`probe_ok` 真调四重前置），四枚失效模型探活必失败 ⇒ 不会自动回填。
+  - **未决项（待郭老师拍板，本轮未动）**：② video-gen 单点哑线（他裁"暂时不管"）；③ 方舟额度警戒（已随渠道删除一并消失）；④ 僵尸路由名 `测试模型`/`测试模型1`（他说没看懂，待解释）；⑤ 重启权限死结（nssm 服务身份 vs「重启免 UAC」冲突，A/B/C 待裁）。
 - **2026-09-30 · 联合点补登记（网关侧第一次认下自己的下游与底座）**：`:3100` 不只在本地——**阿里 99 ECS 上已有一份 `:3100` 在跑**（与 frps 中转、Uptime Kuma 同机，2026-09-29 决策档实证），本地那份才是运行体真源 `D:\项目\ai-hub\search_gateway`。被 9 个项目依赖这件事也进了 [[调度大脑记忆/项目/project_relation_graph]]。**跨项目联合点总表见 [[调度大脑记忆/参考/reference_云服务器底座与跨项目联合点]]**（改渠道/路由/端点前先查它，别砸到贾维斯中控与 ListenLoop）。
 - **2026-09-30 · 真实用法下的"OR 一直失败"真因＝请求体 5.5MB（埋点当日抓到）**：`seat_fail_ms` 上线后头两条真实流量（12:50:27 / 12:52:12，`req_bytes≈5.57MB`）显示两个代理席各卡 **41s** `write operation timed out`（41＝20s×2，印证 urllib timeout 是单次 socket 操作上限），直连 `opencode/space-bunny-free` 兜住但要 26–142s。体量来自 Claude Code 每轮重发整段历史：活动会话 `~/.claude/projects/C--Users----/b6f0bd1b-….jsonl` **16.04MB/894 行**，`req_bytes` 随时间单调上涨。⇒ 判"渠道坏了"之前**先看 `req_bytes`**；每轮白烧 82s 才回落是结构问题，修法＝会话 `/compact` 或把直连席升首席／加体量闸（改 `测试模型` 三席顺序须郭老师点头，那是他 09-30 定的）。。**09-30 12:5x 郭老师裁：选前者（自己 /compact），网关不动，三席顺序保持原样。**
 - **2026-09-30 · JEV 计费对清＋白嫖面定盘（12:2x 实测）**：
