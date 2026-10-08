@@ -100,7 +100,7 @@ metadata:
 |---|---|
 | 关系图产物 | `D:\Work\元智能\runtime\project-link-graph.tsv`／`.md`（2026-09-29 批） |
 | 生成器与别名表 | `D:\Work\元智能\runners\project-link-graph.mjs` |
-| Codemote 产品重定义 | `D:\Work\贾维斯中控\01-Product\04-产品重定义-语音遥控电脑.md`（2026-10-01 审计修正：原写 `D:\Work\Remote-Coding-Control`，实测该目录不存在，真身＝`D:\Work\贾维斯中控\`，该文件实测在） |
+| Codemote 产品重定义 | `D:\Work\贾维斯中控\01-Product\04-产品重定义-语音遥控电脑.md`（2026-10-01 审计修正：原写 `D:\Work\贾维斯中控`，实测该目录不存在，真身＝`D:\Work\贾维斯中控\`，该文件实测在） |
 | Codemote 最新交接单 | `D:\Work\贾维斯中控\06-Progress\04-交接单-执行卡片与策略闸.md`（2026-10-01 审计修正：同上，原前缀已改名，该文件实测在） |
 | 规划上下文 | `D:\Work\元智能\10_AI自成长引擎\docs\07-系统级框架规划_记忆仓库与元智能职责边界_20260929.md` §一（三层职责） |
 

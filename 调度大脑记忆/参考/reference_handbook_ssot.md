@@ -1,6 +1,6 @@
 ---
 name: reference-handbook-ssot
-description: D:\Work\通用规范 是跨项目通用规范总库（handbook v1.0，SSOT）；规则优先级＝项目明确override＞项目自身规格＞handbook默认；引用必须钉版本号；三层职责＝workspace-index只索引/项目仓只写特有/handbook不存项目状态
+description: D:\记忆\通用规范 是跨项目通用规范总库（handbook v1.0，SSOT）；规则优先级＝项目明确override＞项目自身规格＞handbook默认；引用必须钉版本号；三层职责＝workspace-index只索引/项目仓只写特有/handbook不存项目状态
 metadata:
   node_type: memory
   type: 参考
@@ -11,7 +11,7 @@ metadata:
 
 # 通用规范去哪查：handbook = 跨项目 SSOT
 
-**位置**：`D:\Work\通用规范`（有 git；10 份 .md；当前版本 **v1.0**）
+**位置**：`D:\记忆\通用规范`（有 git；10 份 .md；当前版本 **v1.0**）
 
 ⚠️ **不是 `D:\通用规范`**——那个路径不存在。`D:\记忆\README.md:8` 曾按 `D:\通用规范\50-知识管理三工具规范.md` 引用，是**悬空指针**（`memory-link-check.mjs` 2026-09-29 批已报出）。
 

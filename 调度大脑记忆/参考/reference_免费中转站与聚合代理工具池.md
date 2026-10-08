@@ -83,7 +83,7 @@ metadata:
 
 - 博客原话：「**公益中转站的安全性无法保证，请注意数据或隐私安全**」，并引用先知社区《API 中转站投毒的攻击链深入分析》。
 - **核心风险**：中转站运营方**能看到全部 prompt 与 API Key**；多数靠「签到送余额＋邀请返利」运营，**有拉新动机**。接入=把代码、上下文、文件内容流向第三方。
-- 与 `D:\Work\通用规范\40-安全红线.md` 第 2 条（密钥/凭据不入文档）精神相悖——**需郭老师逐站拍板后方可接入**。
+- 与 `D:\记忆\通用规范\40-安全红线.md` 第 2 条（密钥/凭据不入文档）精神相悖——**需郭老师逐站拍板后方可接入**。
 - ⚠️ **本清单未做任何实测**（未注册、未调用）。数字与限制均为博客转述，**引用前须自行验证**。
 
 ---
@@ -127,4 +127,4 @@ metadata:
 
 **关联**：[[project_three_tier_free_models]]（⚠️ 断链，目标不存在，2026-10-01 审计）、[[reference_zenmux_free_models]]（⚠️ 断链，目标不存在，2026-10-01 审计）、[[reference_本机本地模型清单]]、[[feedback_model_policy]]、[[project_cost_strategy]]、[[feedback_task_completion]]、[[lesson_gateway_restart_privilege_trap]]、[[project_贾维斯中控]]
 
-**锚点**：网关运行体 `D:\项目\ai-hub\search_gateway\`；实测交接单 `D:\Work\项目索引\rounds\交接_工具项目与DSH截断修复_给执行Agent_20261001.md`
+**锚点**：网关运行体 `D:\项目\ai-hub\search_gateway\`；实测交接单 `D:\记忆\轮次记录\交接_工具项目与DSH截断修复_给执行Agent_20261001.md`

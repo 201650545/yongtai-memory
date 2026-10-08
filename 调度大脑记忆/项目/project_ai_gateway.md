@@ -23,7 +23,7 @@ metadata:
 
 ## 关键不变量 / 易错点（必读）
 
-- **路径**：运行体 = `D:\项目\ai-hub\search_gateway`（实测存在，2026-09 核实；此前多处误写 `D:\项目\services\search_gateway`，该路径不存在）；`apps/api-gateway` 是仓库自包含副本。两处 `api_page.html` 必须保持**同一内容**，改一边记得同步另一边。
+- **路径**：运行体 = `D:\项目\ai-hub\search_gateway`（实测存在，2026-09 核实；此前多处误写 `D:\项目\ai-hub\search_gateway`，该路径不存在）；`apps/api-gateway` 是仓库自包含副本。两处 `api_page.html` 必须保持**同一内容**，改一边记得同步另一边。
 - **GATEWAY_ID 陷阱**：`channels.GATEWAY_ID` 在 `import channels` 时**即冻结**；要某网关账本独立，必须在 import 前 `os.environ.setdefault("GATEWAY_ID","<id>")`，否则账全混进默认 `ds_v4_cli`。:3100 已设为 `api_gateway`，账本独立。
 - **重启口径（2026-10-08 郭老师裁定改写，原「重启免 UAC」条款作废）**：`:3100` 由 nssm 服务 `ai-gateway-3100` 以 **LocalSystem** 持有 —— 这是郭老师**有意选的**（原话「就是我让它这样搞的，我不希望它一直弹那个弹窗，好烦，而且还开机自启动」），目的＝**不弹控制台窗 + 开机自启**。⇒ 改 **代码** 后重启统一走 **`nssm restart ai-gateway-3100`（需提权，UAC 弹一次）**；**改 `data/*.json` 配置不需要重启**（mtime 热加载，见 `/healthz` 的 `loaded_routes_sha256` 变化）。旧的「普通进程 Stop + 普通进程 Start」写法已作废。详见 [[调度大脑记忆/教训/lesson_gateway_restart_privilege_trap]] 第四节。
 - **重启要杀全部同脚本进程**：`api_gateway.py` 若旧进程没死干净，新端点会 404 且旧端点照常，易误判「新代码没生效」。判断一律以 `netstat -ano | findstr :<端口>` LISTENING 为准。
@@ -33,7 +33,7 @@ metadata:
 ## 时间线（近→远）
 
 - **2026-10-08 · 实测核对 + 文档仓对齐（WorkBuddy 接手轮）**：`:3100` 活着（`/healthz` ok），**持有者 PID 6260，父 `nssm.exe`，服务 `ai-gateway-3100`（Auto）** —— 文档仓原记 PID 35192 已过时。实测：路由名 **16**（`/v1/models`）、渠道 **21**（`/api/channels`）、累计 calls 7941 / input 8.14 亿 tok / errors 0。编排席位数 free-flash **14** / free-high **8** / fast **8** / video-gen **1**（`data/model_routes.json`）。
-  - **文档仓 `D:\Work\API转发网关` 改 4 处活文档**：`README.md`＋`SYSTEM_OVERVIEW.md` 目录树头 `D:\Work\api-gateway\`→`API转发网关`；`AGENTS.md` **`/api/channels/status` 是错的（实测 not found）→ 正确为 `/api/channels`**；`PROGRESS_TRACKER.md` PID→6260、M3 路径改名。带日期的历史件有意不改。
+  - **文档仓 `D:\Work\API转发网关` 改 4 处活文档**：`README.md`＋`SYSTEM_OVERVIEW.md` 目录树头 `D:\Work\API转发网关\`→`API转发网关`；`AGENTS.md` **`/api/channels/status` 是错的（实测 not found）→ 正确为 `/api/channels`**；`PROGRESS_TRACKER.md` PID→6260、M3 路径改名。带日期的历史件有意不改。
   - **口径修正（旧结论作废）**：09-30 记的「文档仓 `渠道编排规则.md` 停在 09-22 stale／双真源分叉」**已不成立** —— 该文件现仅存于运行体 `D:\项目\ai-hub\search_gateway\渠道编排规则.md`（40 KB，mtime 09-29 20:16），文档仓已无此文件。
   - **郭老师当场裁决并已执行（同日 11:5x，热加载零重启）**：① **删失效模型** —— `model_routes.json` 摘 4 枚：free-flash 的 `openrouter/qwen/qwen3.8-27b:free`、`openrouter/poolside/laguna-s-2.1:free`、`openrouter/stealth/space-bunny-alpha`；free-high 的 `openrouter/google/gemma-4-31b-it:free`；**另 `测试模型` 线的备份席也是同一枚已下架的 `stealth/space-bunny-alpha`，一并摘除** ⇒ 席位数 free-flash **14→11**、free-high **8→7**、测试模型 **3→2**。② **删方舟渠道** —— `channels.json` 摘 `keys.ark` ＋ `channel_enabled.ark=false`；`quota_guard.json` 加 `ark: deny_all`；`channel_notes.json`/`channel_expiry.json` 摘 ark 条目；**停用计划任务 `ArkQuotaScan`**。见证：`/api/channels` 已无 `ark`，`/healthz` 的 `loaded_routes_sha256` `048d9090…`→`c60969e8…`。
   - **退役口径（重要，勿再照旧改）**：本仓退役渠道的既有惯例是 **封存 + 隐藏 + 停用 + 摘 key**，`services/channels.py` 的代码桩**保留不删**（deepseek/zhipu/bai/gmi 同款）——删代码桩会撞 `channel_profiles.py` 的 `REDLINE_CHANNELS`↔`probe_free_channels.FORBIDDEN` 一致性断言。备份在 `data/_bak_20261008/`。
@@ -78,4 +78,4 @@ metadata:
 - 完整操作级/踩坑级详情、各轮实现细节 → `项目/归档/project_ai_gateway_完整详细记录.md`
 - 主题设计文档/预览图 → `D:\Work\AI平台\apps\api-gateway\docs\`（主题体系.md、主题设置-*.md、预览图-*.png）
 - 三拆配置 / 运行数据 → `D:\项目\ai-hub\search_gateway\data\model_catalog.json`、`model_routes.json`、`channel_registry.json`、`quota.json`、`api_state.json`
-- 网关服务文档（Obsidian）→ `D:\Work\AI平台\docs\design\AI基础设施\服务\api_gateway.md`、`search_gateway.md`
+- 网关服务文档（Obsidian）→ `D:\Work\AI平台\apps\api-gateway\docs\api_gateway.md`、`search_gateway.md`

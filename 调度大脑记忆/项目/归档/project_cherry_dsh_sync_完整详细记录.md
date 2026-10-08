@@ -40,7 +40,7 @@ metadata:
 
 pi-ai 内置目录里没有 `muse-spark`/`ox-alpha-free`，且该 provider 目录混用多协议 → 必须显式写 `api: openai-completions` + `baseURL`，否则整段 llm-pi-ai 被拒收（选择器全空）。这两个免费模型上游不稳（地区封锁/间歇坏）；目录内模型直连正常。
 
-## 网关 :3100 渠道现状（D:\项目\services\search_gateway\channels.py）
+## 网关 :3100 渠道现状（D:\项目\ai-hub\search_gateway\channels.py）
 
 - **gemini 渠道已删**（2026-08-23 用户拍板）：Google 用自有 IP 情报判定代理出口为不支持地区，稳定 400 FAILED_PRECONDITION；公共 geo 库全说美国也没用，无法修复。
 - **xiaohongshu 渠道已加**（agnes 之后、zscc 之前），key 从 ~/.dsh/.credentials.yaml 复制到 data/search_gateway/channels.json。
@@ -54,7 +54,7 @@ pi-ai 内置目录里没有 `muse-spark`/`ox-alpha-free`，且该 provider 目�
 
 ## DSH 插件副本陷阱（nitian-dsh-theme）
 
-DSH web 端口 = **3080**（`http://127.0.0.1:3080`；nssm 服务 → node 子进程监听；8787 是 Codex 代理勿混）。DSH 服务跑 monorepo 源码（nssm: `node --import tsx/esm apps/cli/src/bin.ts web` @ `D:\DeepSeek\deepseek-harness`），但用户插件解析自**安装副本** `~/.dsh/profiles/web/node_modules/<pkg>`（真实拷贝非软链）：改源码 `~/.dsh/nitian-stage/` 无效，必须同步副本 + 重启 DeepSeekHarness 服务（bundle 内存缓存；浏览器还要带 cache-buster 强刷）。patch 层（cordis.patch.yml）改动则由 watchUserPatches 热应用、免重启。2026-08-25 修复过 lib/client.js 死代码 `if (i >= 15) { }`（subTier 内引用未定义 i → 整个客户端加载失败白屏）。
+DSH web 端口 = **3080**（`http://127.0.0.1:3080`；nssm 服务 → node 子进程监听；8787 是 Codex 代理勿混）。DSH 服务跑 monorepo 源码（nssm: `node --import tsx/esm apps/cli/src/bin.ts web` @ `D:\DeepSeek\deepseek-harness（已失效：该路径不存在，DSH 现由 DSH 宿主管理）`），但用户插件解析自**安装副本** `~/.dsh/profiles/web/node_modules/<pkg>`（真实拷贝非软链）：改源码 `~/.dsh/nitian-stage/` 无效，必须同步副本 + 重启 DeepSeekHarness 服务（bundle 内存缓存；浏览器还要带 cache-buster 强刷）。patch 层（cordis.patch.yml）改动则由 watchUserPatches 热应用、免重启。2026-08-25 修复过 lib/client.js 死代码 `if (i >= 15) { }`（subTier 内引用未定义 i → 整个客户端加载失败白屏）。
 
 **挂载状态**：插件挂在 `cordis.patch.yml` 的 insert 块（id: nitian-dsh-theme-r2）。2026-08-29 曾因「疑似导致 composer 不渲染」剥离（无实证），2026-08-31 恢复挂载后 composer 正常、引擎 v2.3 全功能验证通过——再遇类似问题先实证排查勿盲摘。资产路由 200 但返回 index.html = SPA fallback 兜底，说明插件**没挂上**（/api/nitian/ping 是探针）。
 
@@ -62,12 +62,12 @@ DSH web 端口 = **3080**（`http://127.0.0.1:3080`；nssm 服务 → node 子�
 
 **2026-08-31 v2.5 资产缺口补齐**：① 印章 16~27 共 12 枚（Seedream 4.5，2048²；1024² 会 400 自动回退 2048²）；② 踏天桥 9 境立绘分化（era_19_qiao1~27_qiao9，Seedream 5.0，CH 映射新增 qiao1..qiao9）；③ 心魔敌人真立绘 4 张 `assets/enemies/fiend_{early,yuanying,kongjie,tatian}.png`（enemyOf 按纪元分档，镜像 fallback 保留；ALLOWED 新增 `/enemies/` 路由）。**坑**：collected 路由映射的是 `workers/collected`（不是 assets/collected），元婴背景 bg-01.jpg 一直存在未缺。生成脚本 `workers/gen_gap_assets.py` 可断点续跑。**2026-08-31 夜已重启+全链路验证通过**：enemies 路由 200、运行中 client.js 含 qiao1/enemyOf/fiend_。**坑 2（提权）**：UAC 提权重启会卡孤儿 consent.exe（父进程死、非提权杀不掉、还挡新提权）——先消掉卡住的 UAC 弹窗再触发；nssm 不在 PATH，重启必须用全路径 `C:\Users\郭永涛\.tools\nssm\nssm.exe`。**composer 修复（三个叠加 bug）**：① PAGE_CSS 里 `div[class*="_composerHero"]{display:none}` 误伤了空会话态的整个 composer 容器（新会话没输入框根因）→ 改为只藏内部 `>svg` 装饰；② 主题 shadow-DOM 的 `.empty` 王林立绘卡（z=2147400000）在 hero composer 出现时叠在输入框上 → empty-state 轮询加 hero-up+矩形相交检测，重叠即隐；③ opacity 带 CSS transition 时反复写入会卡死 CSSTransition（inline=0 但 computed=1）→ 轮询只在值变化时写 + 写前 `transition:none` + 隐藏时叠 `visibility:hidden`。教训：**对 `[class*="_xxx"]` 做全局隐藏前必须先实测该类挂在哪个容器上**（hero 类名同时是「装饰」和「整个输入框容器」的类名，只看名字猜会误伤）；**opacity 动画场景必须在值变化时才写，否则 CSSTransition 可能停在中间态**。
 
-**2026-08-31 网关 SSE 帧修复**：DSH 发消息报 `Unexpected non-whitespace character after JSON at position 210 (line 2 column 1)`（PI_AI_ERROR）。根因：小红书/dots3 上游流式响应里部分事件只隔单 `\n`，pi-ai 按 `\n\n` 切分把两条 data: 行拼成一条消息 → JSON.parse 失败（210 = 第一条合法 JSON 的长度）。修在 `api_gateway.py` 的 `_SseReasoningStripper.feed()` —— 对每条完整 `data:` 行强制以 `\n\n` 收尾，事件重定界；网关原为手动孤儿进程（PID 50000，`python -u api_gateway.py`，工作目录即服务目录），计划任务 `SearchGateway` 已 Disabled，杀掉后重起；SSE 修复后实测 `fast` 34 事件全部双换行分隔、DSH 真实发消息成功无报错。教训：**JSON.parse 报 position=210 这类位置数字就是第一条合法 JSON 的长度 → 上游/网关把两条事件拼成一条了，查流分隔符**。详见 `D:\游戏\逆天主题\workers\汇报-资产缺口补齐.md` + [[error_lessons]]。
+**2026-08-31 网关 SSE 帧修复**：DSH 发消息报 `Unexpected non-whitespace character after JSON at position 210 (line 2 column 1)`（PI_AI_ERROR）。根因：小红书/dots3 上游流式响应里部分事件只隔单 `\n`，pi-ai 按 `\n\n` 切分把两条 data: 行拼成一条消息 → JSON.parse 失败（210 = 第一条合法 JSON 的长度）。修在 `api_gateway.py` 的 `_SseReasoningStripper.feed()` —— 对每条完整 `data:` 行强制以 `\n\n` 收尾，事件重定界；网关原为手动孤儿进程（PID 50000，`python -u api_gateway.py`，工作目录即服务目录），计划任务 `SearchGateway` 已 Disabled，杀掉后重起；SSE 修复后实测 `fast` 34 事件全部双换行分隔、DSH 真实发消息成功无报错。教训：**JSON.parse 报 position=210 这类位置数字就是第一条合法 JSON 的长度 → 上游/网关把两条事件拼成一条了，查流分隔符**。详见 `D:\Work\逆天主题\workers\汇报-资产缺口补齐.md` + [[error_lessons]]。
 
 **YAML 缩进陷阱**：regex 替换 provider 块要用 `(\n\s*)` 捕获组引用前导空格，否则缩进翻倍。详见 [[error_lessons]]。
 
-**2026-09-01 道藏设置面板错乱修复（v2.5.1）**：点「道藏」设置面板被压成 280px 窄条全竖排。根因是主题 PAGE_CSS 给 sidebarCol/detailsCol 的 `backdrop-filter:blur(18px)` **劫持了 fixed 后代的包含块**（设置面板 overlay position:fixed 不走 portal、直接挂在侧栏 footer 里，被锁进 280px 侧栏）。终稿：blur 移到 `::before(z:-1)` 伪元素（无后代不劫持），侧栏**只留 position:relative、不加任何 z-index/stacking context**——试错教训：isolation:isolate 会把面板封顶在侧栏原子组里被 centerCol 盖住，z-index:1 盖不过 composerSeat(z:7)/状态条(z:2)，**只有无 stacking context 才能让面板 z:1000 升出子树全局竞争（=DSH 原生行为）**。附带：模态开着时主题 HUD 自动隐（复用防卡死轮询写法）。验证：面板 800×727 居中、7 采样点全中面板内部、HUD 开隐关现、关闭后页面完好。教训：**fixed 弹层的祖先容器绝不能带 backdrop-filter/transform/isolate/任何 z-index，否则包含块劫持或层级封顶；毛玻璃要靠伪元素**。详见 `D:\游戏\逆天主题\workers\汇报-资产缺口补齐.md` + [[error_lessons]]。
+**2026-09-01 道藏设置面板错乱修复（v2.5.1）**：点「道藏」设置面板被压成 280px 窄条全竖排。根因是主题 PAGE_CSS 给 sidebarCol/detailsCol 的 `backdrop-filter:blur(18px)` **劫持了 fixed 后代的包含块**（设置面板 overlay position:fixed 不走 portal、直接挂在侧栏 footer 里，被锁进 280px 侧栏）。终稿：blur 移到 `::before(z:-1)` 伪元素（无后代不劫持），侧栏**只留 position:relative、不加任何 z-index/stacking context**——试错教训：isolation:isolate 会把面板封顶在侧栏原子组里被 centerCol 盖住，z-index:1 盖不过 composerSeat(z:7)/状态条(z:2)，**只有无 stacking context 才能让面板 z:1000 升出子树全局竞争（=DSH 原生行为）**。附带：模态开着时主题 HUD 自动隐（复用防卡死轮询写法）。验证：面板 800×727 居中、7 采样点全中面板内部、HUD 开隐关现、关闭后页面完好。教训：**fixed 弹层的祖先容器绝不能带 backdrop-filter/transform/isolate/任何 z-index，否则包含块劫持或层级封顶；毛玻璃要靠伪元素**。详见 `D:\Work\逆天主题\workers\汇报-资产缺口补齐.md` + [[error_lessons]]。
 
 ## 同步脚本
 
-`D:\项目\_tmp\cs_align_dsh.py`（CS→DSH 数据库方向）、`gw_add_or_pool.py`/`gw_check_all_or.py`（网关 key 校验与入池）、`gw_test_or.py`（网关轮换实测）。临时脚本统一放 `D:\项目\_tmp\`。
+`D:\项目\_tmp（已失效：目录已清空，内容为一次性脚本残留）\cs_align_dsh.py`（CS→DSH 数据库方向）、`gw_add_or_pool.py`/`gw_check_all_or.py`（网关 key 校验与入池）、`gw_test_or.py`（网关轮换实测）。临时脚本统一放 `D:\项目\_tmp（已失效：目录已清空，内容为一次性脚本残留）\`。

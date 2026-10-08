@@ -8,7 +8,7 @@ metadata:
   modified: 2026-08-11T12:52:12.162Z
 ---
 
-GitHub 仓库 `github.com/201650545/english-teaching-production`（本地 staging 在 `C:\Users\郭永涛\AppData\Local\Temp\eng-teaching-up`）定位：**生产方法库镜像**——00_格式规范/00_工具/00_总规划（命令+05_汇报）/样例课件/README。学生课件体积大不入库；飞书看板是状态镜像。两者是互补出口，本地 `D:\英语教学` 才是唯一真源。
+GitHub 仓库 `github.com/201650545/english-teaching-production`（本地 staging 在 `C:\Users\郭永涛\AppData\Local\Temp\eng-teaching-up（已失效：临时目录，一次性产出，已随临时清理消失）`）定位：**生产方法库镜像**——00_格式规范/00_工具/00_总规划（命令+05_汇报）/样例课件/README。学生课件体积大不入库；飞书看板是状态镜像。两者是互补出口，本地 `D:\英语教学` 才是唯一真源。
 
 **一键双发**：`D:\英语教学\00_工具\publish_all.py`（同步三目录 → git commit+push → feishu_sync.py 刷飞书）。2026-08-10 首次启用，推送 71 项积压变更（提交 d918636）。此后交付收尾跑一次即可。过滤规则：00_工具 只入正式工具+词库 JSON，一次性验收脚本（verify_guard_v1.py / verify_LMX_L06_L10.py 等）列入 ONEOFF_TOOLS 排除，`_`/`fix_`/`check_` 前缀不入。
 

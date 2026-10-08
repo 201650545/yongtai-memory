@@ -18,7 +18,7 @@ metadata:
 
 **⚠️ 一处前提要纠正**（郭老师 09-30 口述时把这事说成"将来要依靠"）：**不是将来，是已经在跑**。
 阿里那台机器上现在就有 frps 中转＋`:3100` 网关＋Uptime Kuma。"远端执行体候选"这个说法来自
-`D:\Work\项目索引\projects.yaml` 的 infra 行（09-30 按口述写的，与 09-29 决策档冲突），已按决策档改正。
+`D:\记忆\项目清单\projects.yaml` 的 infra 行（09-30 按口述写的，与 09-29 决策档冲突），已按决策档改正。
 
 ## 一、一句话架构（09-29 已定型）
 
@@ -53,8 +53,8 @@ IP 地址不入本库（这仓是 GitHub 发布镜像 `yongtai-memory`），要 
 |---|---|---|---|---|
 | **贾维斯中控**（原 Codemote / Remote-Coding-Control） | 阿里 99 ECS ＋ 本地 PC | frps 公网入口、frpc 本机、Windows Companion；语音→`网关 :3100/v1/jev`→能力执行器矩阵 | `D:\Work\贾维斯中控\00-INDEX.md`、`07-Decisions\2026-09-29-…决策记录.md`、代码 `D:\Remote-Coding-Control`（未改名） | `frps` `frpc` `companion` `jev` `L0/L1/L2 安全档` `语音遥控电脑` |
 | **API 转发网关** | 阿里 99 ECS（远端实例）＋ 本地 PC（运行体） | 云上那份 `:3100` 做公网门面；本机 `:3100` 是**运行体真源** | 运行体 `D:\项目\ai-hub\search_gateway`；文档仓 `D:\Work\API转发网关`（其 `渠道编排规则.md` 停在 09-22，**双真源分叉待裁 #28**） | `3100` `search_gateway` `channels.json` `quota_guard` `free-flash/free-high/fast` |
-| **ListenLoop（AI 精听训练器）** | 网关 `:3100`（模型面）＋ 本地（whisper/sherpa-onnx 跑推理） | 文档里明写过"网关部署到墙外云服务器＝最省心，手机随时可用"这条路线（选项 E），部署位就是阿里 99 | 文档真源 `D:\Work\AI精听训练器\`、代码真源 `D:\listenloop\`、发布仓 `D:\Work\gh-sync\listenloop-project` | `ListenLoop` `精听` `sherpa-onnx` `whisper` `学习运行时` |
-| 微信通知自动化 / 小红书点赞分析 / 逆天主题 / AI平台 / 元智能 / gh-sync / dsh-personal-host | 网关 `:3100` | 都是 api-gateway 的依赖方（**它自己原先不知情**，见 [[调度大脑记忆/项目/project_relation_graph]]） | 见 `D:\Work\项目索引\projects.yaml` | `api-gateway 9 个依赖方` |
+| **ListenLoop（AI 精听训练器）** | 网关 `:3100`（模型面）＋ 本地（whisper/sherpa-onnx 跑推理） | 文档里明写过"网关部署到墙外云服务器＝最省心，手机随时可用"这条路线（选项 E），部署位就是阿里 99 | 文档真源 `D:\Work\AI精听训练器\`、代码真源 `D:\listenloop\`、发布仓 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-project` | `ListenLoop` `精听` `sherpa-onnx` `whisper` `学习运行时` |
+| 微信通知自动化 / 小红书点赞分析 / 逆天主题 / AI平台 / 元智能 / gh-sync / dsh-personal-host | 网关 `:3100` | 都是 api-gateway 的依赖方（**它自己原先不知情**，见 [[调度大脑记忆/项目/project_relation_graph]]） | 见 `D:\记忆\项目清单\projects.yaml` | `api-gateway 9 个依赖方` |
 
 ## 四、Agent 用法（这就是郭老师要的"不用再铺垫上下文"）
 

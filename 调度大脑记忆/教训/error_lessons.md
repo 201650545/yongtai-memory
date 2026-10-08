@@ -18,7 +18,7 @@ metadata:
 
 **场景**：`python -c "..."` 里同时用单引号、双引号、正则（如 `re.search(r'X:\s*["\']?...')`）时，bash 的双引号包裹与 Python 字符串转义互相打架 → SyntaxError。
 
-**修正**：凡是含引号/正则/多行的 Python，一律先 Write 成 `D:\项目\_tmp\xxx.py` 再 `python 该文件`，不要内联。临时文件路径给 Windows 原生 Python 用时也要避免 `/tmp`（git-bash 虚拟路径 Windows python 看不见），统一用 `D:/项目/_tmp/`。
+**修正**：凡是含引号/正则/多行的 Python，一律先 Write 成 `D:\项目\_tmp（已失效：目录已清空，内容为一次性脚本残留）\xxx.py` 再 `python 该文件`，不要内联。临时文件路径给 Windows 原生 Python 用时也要避免 `/tmp`（git-bash 虚拟路径 Windows python 看不见），统一用 `D:/项目/_tmp/`。
 
 ## runtime cli 重启不认手动/提权起的旧进程（2026-08-23）
 

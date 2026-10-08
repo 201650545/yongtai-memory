@@ -349,7 +349,7 @@ opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/runbooks/scripts/eva
 
 ### 可复用脚本清单
 
-位置：`D:\Work\课程思政教学竞赛\6-上课要用的素材\课件和教具\opencli_scripts\`
+位置：`D:\Work\课程思政教学竞赛\6-上课要用的素材（已失效：该子目录不存在，素材实际在 05_上课设计 下）\课件和教具\opencli_scripts\`
 
 | 脚本 | 作用 |
 |---|---|
@@ -524,4 +524,4 @@ p.dispatchEvent(new PointerEvent("pointerup",Object.assign({},o,{buttons:0}));
 - [[feedback_fork_forbidden]] — 本流程全员（含子 Agent）一律 fresh 上下文，禁止 fork
 - 手册：`D:\Work\AI平台\docs\runbooks\GPT镜像站送审流程.md`（§三·五 固化一键脚本法）（2026-10-01 审计修正：原写 `docs\运行手册\`，实测真身为 `docs\runbooks\`，该 md 实测在）
 - GitHub 同步：Obsidian 为主（`D:\记忆` 真源）→ `yongtai-memory` 镜像（脱敏后）
-- 技能同步（WorkBuddy 侧强制执行清单）：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。
+- 技能同步（WorkBuddy 侧强制执行清单）：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md（已失效：技能随迁移消失，junction 目标下已无此件）`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。

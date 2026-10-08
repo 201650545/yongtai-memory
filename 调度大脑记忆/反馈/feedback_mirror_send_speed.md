@@ -61,5 +61,5 @@ metadata:
 ### 双写要求（郭老师明确）
 
 **这些记忆不仅要在 WorkBuddy 中记载，更要写入 Obsidian 记忆仓库。**
-- WorkBuddy 侧强制执行清单：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。
+- WorkBuddy 侧强制执行清单：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md（已失效：技能随迁移消失，junction 目标下已无此件）`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。
 - Obsidian 侧：`D:\记忆\调度大脑记忆\流程\workflow_ai_wendabao_open.md` + 本文件

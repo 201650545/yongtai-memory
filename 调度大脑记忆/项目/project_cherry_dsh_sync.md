@@ -41,10 +41,10 @@ DSH(Cherry) 模型来源由「直连 7 provider」改为「统一走后端网关
 
 ## 同步脚本
 
-`D:\项目\_tmp\cs_align_dsh.py`（CS→DSH）、`gw_add_or_pool.py`/`gw_check_all_or.py`（网关 key 校验与入池）、`gw_test_or.py`（轮换实测）。临时脚本统一放 `D:\项目\_tmp\`。
+`D:\项目\_tmp（已失效：目录已清空，内容为一次性脚本残留）\cs_align_dsh.py`（CS→DSH）、`gw_add_or_pool.py`/`gw_check_all_or.py`（网关 key 校验与入池）、`gw_test_or.py`（轮换实测）。临时脚本统一放 `D:\项目\_tmp（已失效：目录已清空，内容为一次性脚本残留）\`。
 
 ## 源文件
 
 - 完整操作级/排障级详情、7 Provider/23 模型清单、SSE 修复过程 → `项目/归档/project_cherry_dsh_sync_完整详细记录.md`
-- 报告：`D:\游戏\逆天主题\workers\汇报-资产缺口补齐.md`
+- 报告：`D:\Work\逆天主题\workers\汇报-资产缺口补齐.md`
 - 教训汇总：`[[error_lessons]]`

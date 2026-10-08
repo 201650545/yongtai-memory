@@ -39,7 +39,7 @@ metadata:
 | 对象 | 唯一可写源 |
 |---|---|
 | 项目文档 | 本地 Obsidian |
-| Handbook | 本地 handbook 仓（`D:\Work\通用规范`） |
+| Handbook | 本地 handbook 仓（`D:\记忆\通用规范`） |
 | 项目台账 projects.yaml | 本地项目仓 |
 | **个人记忆** | **`D:\记忆`** |
 | GitHub 镜像 / Pages JSON | 派生（只读） |
@@ -58,13 +58,13 @@ metadata:
 **2. `ai-hub-memory` 有两份可写本地克隆**：`D:\ai-hub-memory` 与 `D:\项目\ai-hub-memory`，同一个 remote。元智能写前者（`runners\gpt-mirror-review.mjs:33` 的 `OUT_DIR`），本库 `project_shared_memory.md:11` 登记的是后者。
 **为什么要紧**：两个工作副本对同一远端各自可写 = 违反 handbook §0 的单写法则。
 
-**3. `D:\记忆\README.md:8` 悬空指针**：引用的 `D:\通用规范\50-知识管理三工具规范.md` 中，`D:\通用规范` **不存在**，真身在 `D:\Work\通用规范\`。见 [[reference_handbook_ssot]]。
+**3. `D:\记忆\README.md:8` 悬空指针**：引用的 `D:\通用规范\50-知识管理三工具规范.md` 中，`D:\通用规范` **不存在**，真身在 `D:\记忆\通用规范\`。见 [[reference_handbook_ssot]]。
 
 ## 关联（Work 原文锚点，勿复制正文）
 
 | 内容 | 原文 | sha16 | 章节 |
 |---|---|---|---|
-| 单写真源法则 | `D:\Work\通用规范\50-知识管理三工具规范.md` | `7b0e69db6d30683d` | §0 |
+| 单写真源法则 | `D:\记忆\通用规范\50-知识管理三工具规范.md` | `7b0e69db6d30683d` | §0 |
 | 三工具定位 + 禁止项 | 同上 | `7b0e69db6d30683d` | §1 |
 | 单向发布闭环 + 坑A | 同上 | `7b0e69db6d30683d` | §2 |
 | Owner Source 表 | 同上 | `7b0e69db6d30683d` | §3 |

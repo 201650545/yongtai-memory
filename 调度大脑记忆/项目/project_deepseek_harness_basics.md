@@ -80,11 +80,11 @@ settings（属于某能力自己的用户配置）
 
 **第3个关键遗漏 = Web Client 正式扩展面**：`dsh.client` + `exports["./client"]` + client `apply(ctx)` + `slots`——这是官方 client 插件正式契约（先前只当我们「前端注入 client.js」一笔带过，实为官方一等扩展点）。
 
-**禁区**：直接改官方源码（`D:\DeepSeek\deepseek-harness`）。**现状已违规**：28 处未提交改动（模型置顶/隐藏 ~700 行、pi-ai 暂停、盘符选择器、超时 180s 等）正支撑运行中的服务，已定 `00-inventory/customization-migration.md` 迁出清单，逐步搬回正道。
+**禁区**：直接改官方源码（`D:\DeepSeek\deepseek-harness（已失效：该路径不存在，DSH 现由 DSH 宿主管理）`）。**现状已违规**：28 处未提交改动（模型置顶/隐藏 ~700 行、pi-ai 暂停、盘符选择器、超时 180s 等）正支撑运行中的服务，已定 `00-inventory/customization-migration.md` 迁出清单，逐步搬回正道。
 
 ## 关联
 
-- 定制项目文档：`D:\Work\_归档\dsh-personal-host`（README/盘点文档，2026-09-29 归档）。⚠️ **2026-09-29 实测更正**：它原自称"唯一事实源"，但 `20-implementation\`、`scripts\`、`tests\` 经 find 确认为**空骨架**，文档停在 2026-09-05；插件真码实际在 `~/.dsh/nitian-stage/src` 与 `D:\Work\逆天主题\dsh-plugin\pkg`，官方源备份在 `D:\DeepSeek\dsh-source-backup`（README 所写 `D:\DeepSeek\deepseek-harness` 已不存在）。所以这里只是**设计文档**，不是事实源。
+- 定制项目文档：`D:\Work\_归档\dsh-personal-host`（README/盘点文档，2026-09-29 归档）。⚠️ **2026-09-29 实测更正**：它原自称"唯一事实源"，但 `20-implementation\`、`scripts\`、`tests\` 经 find 确认为**空骨架**，文档停在 2026-09-05；插件真码实际在 `~/.dsh/nitian-stage/src` 与 `D:\Work\逆天主题\dsh-plugin\pkg`，官方源备份在 `D:\DeepSeek\dsh-source-backup`（README 所写 `D:\DeepSeek\deepseek-harness（已失效：该路径不存在，DSH 现由 DSH 宿主管理）` 已不存在）。所以这里只是**设计文档**，不是事实源。
 - 网关侧模型组真源：[[project_cherry_dsh_sync]]。
 - 后备执行通道：[[project_deepseek_harness_opencli]]。
 - 需求定位：接管 Claude 短板（界面/交互/视觉），第一步验收=能派多模态子 agent。

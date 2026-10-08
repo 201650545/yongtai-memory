@@ -44,17 +44,17 @@
 - **政策演变**：09-27 初版为「私有仓+精选文档+送审前 push」；09-28 郭老师升级拍板——**小项目先公开，产品成熟后再转私有**。理由：GPT（镜像账号池）无法登录读取私有仓，公开后 GPT 网页浏览可直接强读，回复质量显著更高。
 - **仓库**：`https://github.com/201650545/listenloop-curated`（现已公开，匿名可访问）。
 - **范围（精选）**：ListenLoop Obsidian 正库（`D:\Work\AI精听训练器`）中的架构与设计类文档——README、00_项目驾驶舱_可视化中心、01_商业与战略规划、02_工程架构与系统设计全部；**不含**开发日志流水、03_归档目录、GPT 评审原文、任何密钥/凭证/个人隐私内容。
-- **时机**：每次送审前 push 一次（`git -C "D:/Work/gh-sync/listenloop-curated" add -A && commit && push`，走 `http.proxy=http://127.0.0.1:7890`），提示词精确列出文件路径清单要求 GPT 强读。
+- **时机**：每次送审前 push 一次（`git -C "D:/Work/AI精听训练器/05_发布与问诊/listenloop-curated" add -A && commit && push`，走 `http.proxy=http://127.0.0.1:7890`），提示词精确列出文件路径清单要求 GPT 强读。
 - **已验证（2026-09-28）**：GPT 可正常读取公开仓文档并准确复述内容（红线表格逐字匹配）——强读链路闭环。
 - **红线**：密钥/凭证/个人隐私永不入仓；开发日志与评审原文暂不外发；产品成熟后整体转私有（届时需重新解决 GPT 读取授权）。
-- **建仓与推送流程**：从 `D:\Work\AI精听训练器\` 同步精选文档到 `D:\Work\gh-sync\listenloop-curated` → `git -C <仓> add -A && commit && push`（走既有代理）→ 提示词写「请先读 <repo>/<path> 后再…」。
+- **建仓与推送流程**：从 `D:\Work\AI精听训练器\` 同步精选文档到 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated` → `git -C <仓> add -A && commit && push`（走既有代理）→ 提示词写「请先读 <repo>/<path> 后再…」。
 - **红线**：密钥/凭证/个人隐私永不入仓；开发日志与评审原文（含 GPT 输出）暂不外发；建仓前把精选清单给郭老师过目一次。
 
 ### ✅ 已落地（2026-09-27 深夜，郭老师授权）
 
 - **私有仓已建成**：`https://github.com/201650545/listenloop-curated`（private，经既有 git 凭据调 GitHub API 代建，无需 gh CLI）。
-- **首次推送完成**：本地仓 `D:\Work\gh-sync\listenloop-curated`（commit `ac2d269`），20 篇精选文档已推送至 main。
-- **后续送审前 push 流程**：正库文档更新后 → 拷贝到本地仓 → `git -C "D:/Work/gh-sync/listenloop-curated" add -A && git commit && git push`（走 7890 代理）。
+- **首次推送完成**：本地仓 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated`（commit `ac2d269`），20 篇精选文档已推送至 main。
+- **后续送审前 push 流程**：正库文档更新后 → 拷贝到本地仓 → `git -C "D:/Work/AI精听训练器/05_发布与问诊/listenloop-curated" add -A && git commit && git push`（走 7890 代理）。
 - **安全红线（新增）**：git credential fill 的输出不得打印（PAT 会随工具输出暴露进会话记录）——凭据只允许在 Python 进程内存中读取使用；本次暴露的 token 建议在 GitHub 设置中轮换。
 
 ## 七、流程提速清单（实测有效）

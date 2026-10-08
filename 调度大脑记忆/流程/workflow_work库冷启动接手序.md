@@ -19,25 +19,25 @@ metadata:
 |---|---|---|---|
 | 1 | 运行时微内核路由（P0/P0.5/**P0.6 想法捕获**/P1/P2/P3 触发条件与落盘目标） | `C:\Users\郭永涛\AGENTS.md` | **我该怎么做事**（何时加载规范、何时沉淀经验、他抛"以后想做"时记到哪） |
 | 2 | 记忆库索引 + 本条 | `D:\记忆\调度大脑记忆\索引.md` | 郭老师的偏好/红线/既往决策 |
-| 3 | 工作空间路由真源（含 `local_only` 无 GitHub 仓的本机项目） | `D:\Work\项目索引\projects.yaml` | **WHERE**：去哪个一级工作单元 |
-| 4 | 概念解释器（六字段：是什么/不负责什么/事实去哪查） | `D:\Work\项目索引\concepts\README.md` | **WHAT**：这东西到底是什么、边界在哪 |
-| 5 | 目标项目自身入口 + 最近流水 | 该仓 `README` → `docs/00` → `D:\Work\项目索引\rounds\` 当日文件 | **FACT**：当前事实与上一任做到哪 |
+| 3 | 工作空间路由真源（含 `local_only` 无 GitHub 仓的本机项目） | `D:\记忆\项目清单\projects.yaml` | **WHERE**：去哪个一级工作单元 |
+| 4 | 概念解释器（六字段：是什么/不负责什么/事实去哪查） | `D:\记忆\概念解释器\README.md` | **WHAT**：这东西到底是什么、边界在哪 |
+| 5 | 目标项目自身入口 + 最近流水 | 该仓 `README` → `docs/00` → `D:\记忆\轮次记录\` 当日文件 | **FACT**：当前事实与上一任做到哪 |
 | 6 | **跨项目联合点总表**（哪些项目共用哪台机器、改一处砸到谁） | `D:\记忆\调度大脑记忆\参考\reference_云服务器底座与跨项目联合点.md` | **WHO ELSE**：我动的东西还有谁在依赖 |
 
-口诀：**先 WHERE，后 WHAT，再 FACT，动手前查 WHO ELSE（联合点）**（出处 `D:\Work\项目索引\README.md` 读取顺序节，2026-09-30 实测在文）。
+口诀：**先 WHERE，后 WHAT，再 FACT，动手前查 WHO ELSE（联合点）**（出处 `D:\记忆\项目清单\README（原项目索引说明）.md` 读取顺序节，2026-09-30 实测在文）。
 
 ## 二、机制正文单写位置（改机制只改这一处）
 
 | 机制 | 唯一正文位置 | 别处只准放 |
 |---|---|---|
 | Agent 运行时微内核（按需加载/沉淀闸门） | `C:\Users\郭永涛\AGENTS.md` | 指针一行 |
-| Work 库路由与项目清单 | `D:\Work\项目索引\projects.yaml` | 指针 |
+| Work 库路由与项目清单 | `D:\记忆\项目清单\projects.yaml` | 指针 |
 | Work 首页子库表 | 生成物：源 `D:\Work\元智能\machine\vault_registry.yaml` → 生成 `D:\Work\Home.md` | **勿手改 Home.md** |
-| 每轮收尾流水 | `D:\Work\项目索引\rounds\YYYY-MM-DD.md` | — |
+| 每轮收尾流水 | `D:\记忆\轮次记录\YYYY-MM-DD.md` | — |
 | 跨 Agent 记忆条目 | `D:\记忆\调度大脑记忆\`（六类文件夹）＋ `索引.md` 挂链 | — |
 
 ## 三、已知坑（2026-09-30 实测）
 
 - `D:\Work\API转发网关` 只是**文档仓**；运行体在 `D:\项目\ai-hub\search_gateway`。projects.yaml 已加 `runtime:` 字段注明，Work 副本的 `渠道编排规则.md` 停在 09-22、与运行体 339 行分叉（未决项 #28，见 [[调度大脑记忆/项目/project_ai_gateway]]）。
-- `D:\Work\gh-sync` 目录名与内容不符：实为 ListenLoop 发布台＋GPT 问诊工作台（改名等郭老师点头，有 9 处入向引用）。
+- `D:\Work\AI精听训练器\05_发布与问诊` 目录名与内容不符：实为 ListenLoop 发布台＋GPT 问诊工作台（改名等郭老师点头，有 9 处入向引用）。
 - 本库 git 最后提交停在 **ffb26ae / 2026-09-22 09:42**，其后累计 **42 项待提交（6 改＋36 新，含 09-30 这批）**，本地 main 比 `origin/main` **ahead 22 个提交**未推 ⇒ **只读本地 `D:\记忆` 的 Agent 能拿到最新，走 GitHub 镜像 `yongtai-memory` 的 Agent 看到的是 09-22 版**。要不要 commit/push 由郭老师定（已问两次未答）。接手前先跑 `git log -1` 与 `git status --porcelain | wc -l` 复测，别引用本行数字。
