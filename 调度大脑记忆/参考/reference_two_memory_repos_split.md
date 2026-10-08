@@ -13,7 +13,7 @@ metadata:
 
 **与 [[project_shared_memory]] 的分工**：那条讲 `ai-hub-memory` **怎么用**（分层协议、读写什么）；这条讲**两个仓怎么区分、哪个是权威**，以及查出的入口错账。
 
-## 权威条款（handbook v1.0，2026-09-03 定稿）
+## 权威条款（handbook v1.1，2026-09-03 定稿 / 2026-10-08 升版；§5 已复核落地）
 
 | 仓 | 是什么 | 真源 | GitHub 角色 |
 |---|---|---|---|
@@ -21,6 +21,8 @@ metadata:
 | **`ai-hub-memory`** | Agent 系统运行／协作记忆（STATE / DECISIONS / CHANGELOG / coordination） | 本地工作树 | 协作面 |
 
 **明确禁止**：「**不要为了"仓库少"强行合并**（数据类型不同）」。
+
+**2026-10-08 已了结的旧待办（郭老师裁定：整合，不是二选一）**：本机原有两份可写克隆 `D:\ai-hub-memory` 与 `D:\项目\ai-hub-memory`（同一 remote）。处置＝`D:\项目\ai-hub-memory` 为唯一可写本体，未推送的 commit 已 rebase 并上、push 完成；`D:\ai-hub-memory` 改为 **junction 指向它**（旧目录内容已删，仅 3 个 `.pyc` 有差异）。`projects.yaml` 的 `caution` 已改为 `status_note` 记此结论。⚠️ 教训：**"选一份留一份"是错解**，同 remote 的双克隆正确解法是收口 + junction 防忘。
 
 ## 单写真源法则（handbook §0，全系统唯一同步法则）
 
