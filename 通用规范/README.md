@@ -39,3 +39,4 @@
 
 - 一项目一仓；main 单分支，文档改动即 commit，按里程碑推送
 - 仓库内只有代码与文档；成品资产一律不进 git（见 40-安全红线）
+- **提交信息一律用英文**（2026-10-09 郭老师定）：`type(scope): description` 里的 description 用英文，如 `fix(buddy2api): route launcher through gateway_daemon.py`。GitHub 是对外发布面与 AI 阅读面，英文最通用。**历史提交不改写**（改 hash 得不偿失，且镜像仓会全乱）。
