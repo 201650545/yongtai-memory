@@ -17,3 +17,7 @@ _private_bak/
 
 # 外部技能目录（符号链接，指向本库之外，不入库）
 _Skills/
+
+# Agent 工作副本（git worktree，如 .qoder/worktrees/agent-XXX/；整库拷贝，不入库）
+# 注：这些是 AI 工具开在库内的临时工作副本，只 checkout 跟踪文件，删它须用 git worktree remove
+.qoder/
