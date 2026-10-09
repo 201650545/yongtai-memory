@@ -97,14 +97,14 @@ local_only:
     path: D:\Work\API转发网关
     runtime: D:\项目\ai-hub\search_gateway   # 运行体真源：代码/渠道编排规则.md/model_routes.json/channels.json 都在这里。D:\Work\API转发网关 是文档仓，其 渠道编排规则.md 停在 09-22 已 stale（2026-09-30 验收实测，双真源分叉见元智能待裁定 #28）
     desc: 本机 AI 转发网关，端点 :3100。**全系统最大单点**：9 个项目依赖它（入度 202），而它的文档没有登记任何依赖方
-    related: 客户端凭据网关（D:\Work\客户端凭据网关，:8787）——并列的另一条算力来路，读本机私有登录态；两者共同作为 DSH 的 provider
+    related: 客户端凭据网关（D:\Work\API转发网关\01_客户端凭据网关，:8787）——并列的另一条算力来路，读本机私有登录态；2026-10-09 起代码同属 ai-hub 仓库、文档并入本目录下；两者共同作为 DSH 的 provider
   - name: 客户端凭据网关（原代号「工具」）
-    path: D:\Work\客户端凭据网关
-    runtime: D:\tools\Buddy2API
-    desc: 把本机已登录的国产 AI 客户端（WorkBuddy / TraeWork / 商汤小浣熊 / 讯飞 Loomy / 阿里 Qoder）的积分额度，转成 OpenAI 兼容 API，端点 :8787。底座是开源 `wicm84266964/Buddy2api`，自研补了 loomy/qoder/raccoon 三个 provider + WorkBuddy at-rest 解密 + 黑白极简 Web 控制台。**与「API转发网关」是并列的两条算力来路**——一个读本机私有登录态，一个打公网免费渠道——两者共同作为 DSH 的 provider（`buddy2api` / `local-gateway`）；「:3100 是否纳入本项目编排」是未定项，未拍板前两个项目文档各自独立、只互挂链。2026-10-07 立项登记
+    path: D:\Work\API转发网关\01_客户端凭据网关
+    runtime: D:\项目\ai-hub\buddy2api
+    desc: 把本机已登录的国产 AI 客户端（WorkBuddy / TraeWork / 商汤小浣熊 / 讯飞 Loomy / 阿里 Qoder）的积分额度，转成 OpenAI 兼容 API，端点 :8787。底座是开源 `wicm84266964/Buddy2api`，自研补了 loomy/qoder/raccoon 三个 provider + WorkBuddy at-rest 解密 + 黑白极简 Web 控制台。**与「API转发网关」是并列的两条算力来路**——一个读本机私有登录态，一个打公网免费渠道——两者共同作为 DSH 的 provider（`buddy2api` / `local-gateway`）；「:3100 是否纳入本项目编排」是未定项。2026-10-07 立项登记；**2026-10-09 代码并入 ai-hub 仓库、文档并入父项目 API转发网关 目录（01_客户端凭据网关/），顶层不再单独成库**
   - name: 小红书点赞分析
     path: D:\Work\小红书点赞分析
-    desc: 小红书每日点赞提取 + AI 总结。宿主 Trae，计划任务 XHS_LikeManager_Daily 每日 10:17
+    desc: 小红书每日点赞提取 + AI 总结。宿主 Trae，计划任务 XHS_LikeManager_Daily 每日 01:00（北京时间，2026-10-09 由 10:17 调整）
   - name: AI精听训练器
     path: D:\Work\AI精听训练器
     desc: ListenLoop 文档真源（实测 45 份 .md、6 个子目录：00_项目驾驶舱_可视化中心／01_商业与战略规划／02_工程架构与系统设计／03_研发日志与历史归档／04_Agent机器索引_快速通道／dist），代码真源 D:\listenloop；GitHub 发布台见 listenloop-project  # 2026-10-01 审计修正：原未在 projects/local_only 登记（只在 listenloop-project 的 desc 散文里提过），实测计数后补登
