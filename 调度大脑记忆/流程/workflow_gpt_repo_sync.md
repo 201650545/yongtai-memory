@@ -17,6 +17,7 @@ metadata:
 **How to apply:** 每次写 GPT 问题包时先核对仓库是否最新（本地 commit 与 origin/main 一致）；有未 push 变更先 push 再写包。仓库当前状态：2026-08-06 commit `7b2add5`（129 文件，含全部最新命令/交付记录/问题包）。规范文件：`D:\英语教学\00_总规划\GPT对话流程规范_20260806.md`。关联 [[workflow_human_ai_research]] [[project_english_teaching_specs]]。
 
 **GitHub 直读技巧（2026-08-26 教师补充）**：ai-hub 项目（网关）问 GPT 时同样走此流程——核心代码已在 `201650545/ai-hub`（分支 refactor/monorepo-20260812）。提示词必须**精确列出要读的文件路径清单**（如 `services/search_gateway/rate_limit.py` + 一句「这个文件是什么」），不要只给仓库根或单个文档链接——指定路径它读得快、上下文全。push 需代理：`git -c http.proxy=http://127.0.0.1:7890 push`。
+- **⚠️ 2026-10-10 实测更正**：`201650545/ai-hub` **已 404 无法访问**（非改名，跟随重定向后仍为原址）。网关代码现在的 GitHub 落点是 **`201650545/ai-platform`**（其 `apps/search-gateway/`）**，**问 GPT 请指向这里**，不要再写 ai-hub。
 
 **镜像站直连（2026-08-08 教师告知）**：以后问 GPT **无需教师中转复制**——直接用 Open CLI（命令行打开浏览器）访问镜像网站，在输入框中输入问题、等待回复即可。镜像站 URL：`https://vip-49.67673.live/c/6a74a480-4a94-83ea-80ef-79f314872354`。用法：用浏览器/命令行打开该 URL → 在对话框输入问题包内容 → 等待 GPT 回复 → 读取回复。三步流程（先读仓库/push/补上下文）仍有效，只是**输入和取回复由我直接完成**，不再靠教师粘贴。关联 [[workflow_human_ai_research]]。
 

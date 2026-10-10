@@ -8,6 +8,12 @@ metadata:
   modified: 2026-08-19T14:37:44.883Z
 ---
 
+# AI Hub 聚合平台 · 完整详细记录（**归档件 · 2026-09-08 前的历史快照**）
+
+> ⚠️ **本件是归档快照，不作现行依据。** 其中的 GitHub 地址、分支、路径均为 2026-09 当时的状态。
+> **2026-10-10 实测**：`github.com/201650545/ai-hub` **已 404 无法访问**；继任仓为 `github.com/201650545/ai-platform`。
+> 现行状态一律以主条目 `项目/project_ai_hub.md` 为准。
+
 **GitHub 仓库**：`github.com/201650545/ai-hub`（公开，2026-08-07 创建，Python 主语言；**2026-09-06 已归档只读**）
 
 > **现状（2026-09-06）**：ai-hub 全部工作已并入 `github.com/201650545/ai-platform`（monorepo，tag `monorepo-v1-20260906`）。ai-hub 设为归档只读，仅保留 `main` 分支（含退役说明提交 `5e63c49`）。本仓在线运行体仍位于 `D:\项目\ai-hub\search_gateway` 未迁移。
