@@ -26,5 +26,7 @@ metadata:
 ## 相关记忆
 - [[feedback_role_division]] 生成类专属执行 Agent，我写命令+复核；删除/归档/改名/规范编辑/整理由我做
 - [[feedback_on_demand_orchestration]] 我当调度大脑路由已打通工具
-- [[feedback_repeat_tasks]]（⚠️ 断链，目标不存在，2026-10-01 审计） 重复性任务时刻优化流程提速提效减开支
+- [[feedback_repeat_tasks]] （原 `feedback_optimize_repeat_tasks`）重复性任务时刻优化流程提速提效减开支
 - [[feedback_judge_only_frontend]] 技术细节我自定，前端问题打包给 Claude Sonnet 5
+- [[reference_全维度AI模型智力评分与推荐调度总则]] **全维度AI模型智力评分与推荐调度总则（2026-10-11）**：最新 11 大现役模型全景天梯榜与 6 大场景分工矩阵（竞技场客观数据 + 网关三档实践，单写真源）
+
