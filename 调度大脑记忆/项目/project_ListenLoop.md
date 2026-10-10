@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: 项目
   created: 2026-09-30
-  modified: 2026-10-06
+  modified: 2026-10-10
 ---
 
 # ListenLoop（AI 精听训练器）
@@ -55,6 +55,20 @@ metadata:
   - 连续长拼音防撞留白算法（6px 动态拉大至 11px）。
 - **真机联调验证**：ADB 物理机 `bf6ef967` 全流程安装拉起通过。
 - **角色交接**：当前阶段工程落地完成，转交规划型 Agent 进行全景 WBS、资源科学调配与多轨执行规划。
+
+## 2026-10-10 最新定调（多模型团队分工方案）
+
+- **业务场景对齐**：全面针对 Flutter 原生 App ListenLoop、音频断句、SQLite 课文同步、四大主题重构、Obsidian 与 GitHub 协同。
+- **核心五模型分工**：
+  - **Kimi K3**：Flutter 前端视觉负责人（四主题设计、页面布局、组件美化、截图还原）
+  - **Gemini 3.8 Flash**：主工程集成负责人（代码维护、GitHub集成、Agent与UI连接）
+  - **DeepSeek V4.1 Flash**：内容与数据工程师（音频断句检查、SQLite、Python、批量处理）
+  - **MiMo 2.6 Pro**：复杂架构与故障分析（困难Bug、跨模块设计、重要PR技术审查）
+  - **GLM 5.3 Flash**：视觉与交付质检（截图对比、排版问题、Flutter界面视觉回归）
+- **新模型定调**：MiMo 2.6 Pro（复杂长程旗舰审查）、MiMo 2.6 Flash（高频批处理/数据校验）、HY4 Preview（百万上下文大仓库宏观审查）、GLM 5.3（深度代码审查竞争者）。
+- **调度动线**：视觉线（Kimi ➔ Gemini ➔ GLM Flash）与数据线（DeepSeek Flash ➔ MiMo Flash ➔ 自动化测试）双轨并行，汇聚于重大架构审查（MiMo Pro / GLM 5.3），终验必须过小米 14 真机。
+- **四条铁律**：① 单文件唯一执行 Agent；② 审查意见≠测试通过（必须真机+analyze+test）；③ 高级模型只啃硬骨头；④ 每次汇报只给郭老师一个核心成果。
+- **文档真源**：`D:\Work\AI精听训练器\02_工程架构与系统设计\22_ListenLoop多模型团队分工方案.md`。
 
 ## 关键词（拿去定位）
 
