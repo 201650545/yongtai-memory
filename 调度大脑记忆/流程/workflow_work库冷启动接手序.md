@@ -24,7 +24,7 @@ metadata:
 | 5 | 目标项目自身入口 + 最近流水 | 该仓 `README` → `docs/00` → `D:\记忆\轮次记录\` 当日文件 | **FACT**：当前事实与上一任做到哪 |
 | 6 | **跨项目联合点总表**（哪些项目共用哪台机器、改一处砸到谁） | `D:\记忆\调度大脑记忆\参考\reference_云服务器底座与跨项目联合点.md` | **WHO ELSE**：我动的东西还有谁在依赖 |
 
-口诀：**先 WHERE，后 WHAT，再 FACT，动手前查 WHO ELSE（联合点）**（出处 `D:\记忆\项目清单\README（原项目索引说明）.md` 读取顺序节，2026-09-30 实测在文）。
+口诀：**先 WHERE，后 WHAT，再 FACT，动手前查 WHO ELSE（联合点）**（出处 `D:\记忆\项目清单\README.md` 读取顺序节，2026-09-30 实测在文；该文件 2026-10-10 由 `README.md（原项目索引说明）.md` 改名为 `README.md`，与 `projects.yaml` 里 workspace-index 的 `entry: README.md` 对齐）。
 
 ## 二、机制正文单写位置（改机制只改这一处）
 
