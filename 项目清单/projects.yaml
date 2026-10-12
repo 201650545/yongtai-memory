@@ -24,12 +24,12 @@ projects:
   - id: ai-platform
     repo: https://github.com/201650545/ai-platform
     name: AI 平台（ai-platform）
-    status: active
+    status: deleted                          # 2026-10-11 郭老师裁定彻底删除：旧的没用直接删除，终结双真源分叉
     visibility: public
-    entry: README.md
-    desc: AI 基建主仓：多网关聚合、AI 搜索、GitHub 管理、飞书集成、Agent 记忆协议、资源运营
-    migration: 2026-09-03 由 ai-hub + ai-resource-hub + feishu-data-hub + ai-hub-memory(协议) 整合而成，映射见 docs/migration/path-map.md
-    local: D:\Work\AI平台
+    entry: —
+    desc: 【已彻底清退删除 2026-10-11 郭老师定】原 AI 基建大一统主仓；实际网关运行体在 ai-hub（:3100/:8787），文档并入 API转发网关，记忆在 D:\记忆，工作流在元智能。有效文档已移交 AI精听训练器 与 API转发网关，本地目录已物理删除
+    migration: 2026-09-03 由 ai-hub + ai-resource-hub + feishu-data-hub + ai-hub-memory(协议) 整合而成；2026-10-11 彻底物理删除
+    local: —
 
   - id: ai-hub-memory
     repo: https://github.com/201650545/ai-hub-memory
@@ -125,4 +125,12 @@ archived_2026_09_29:
     from: D:\Work\微信通知自动化
     to: D:\Work\贾维斯中控\09-Experiments\微信通知自动化
     why: 郭老师 2026-09-29 裁定——已更新为 Codemote 的附属实验；远程控制走模型 computer use 操作整台电脑，独立的微信通知项目不再需要。非归档、是并入
+
+archived_2026_10_11:
+  - name: AI平台
+    id: ai-platform
+    repo: https://github.com/201650545/ai-platform
+    from: D:\Work\AI平台
+    to: 已彻底删除（释放 620MB）
+    why: 2026-09-03 聚合主仓已被实际业务结构演进超越；算力网关运行体在 ai-hub（:3100/:8787），文档并入 API转发网关，记忆在 D:\记忆，自动化与 runbook 在元智能。郭老师 2026-10-11 裁定「旧的没用的直接删除」。有效文档已抢救移交至对应项目（ListenLoop架构方案 → AI精听训练器，网关巡检报告 → API转发网关），本地目录物理彻底删除。
 
