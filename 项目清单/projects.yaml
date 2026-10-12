@@ -72,6 +72,34 @@ projects:
     local: D:\记忆\项目清单
     migration: 2026-09-29 从 D:\Work\dsh-personal-host\项目索引\ 救出提到 Work 顶层——它原先埋在一个停更项目里，而 projects.yaml 全机只有一份
 
+  # —— 2026-10-12 补登记：全盘核实活跃与归档 GitHub 仓 ——
+  - id: listenloop-curated
+    repo: https://github.com/201650545/listenloop-curated
+    name: ListenLoop 精选架构问诊仓
+    status: active
+    visibility: public
+    entry: README.md
+    local: D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated
+    desc: ListenLoop 专供高智力模型（ChatGPT 6 等）深度阅读与评审的精选架构、设计与交接包仓
+
+  - id: meta-intelligence-facts
+    repo: https://github.com/201650545/meta-intelligence-facts
+    name: 元智能共享事实层（送审通道）
+    status: active
+    visibility: public
+    entry: README.md
+    local: D:\Work\元智能\machine
+    desc: 本地执行模型与高智力模型之间的同步中介与送审 raw URL 承载（全仓类型化掩码）
+
+  - id: chenzhou-ideology-competition
+    repo: https://github.com/201650545/chenzhou-ideology-competition
+    name: 郴州思政教学竞赛（已结题）
+    status: archived
+    visibility: public
+    entry: README.md
+    local: D:\Work\课程思政教学竞赛
+    desc: 第二届郴州市大中小学课程思政教学竞赛 · 小学组C类心理健康教育《最喜欢的课》全套教案与说课课件，2026-09-14 已结题只读归档
+
 # 已整合（勿再引用旧仓，事实源在 ai-platform）：
 #   - ai-hub            → ai-platform（根目录）
 #   - ai-resource-hub   → ai-platform/resource-ops/
