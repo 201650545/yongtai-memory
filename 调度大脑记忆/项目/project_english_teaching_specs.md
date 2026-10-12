@@ -16,4 +16,4 @@ metadata:
 - 交互答题：学生答错（或误触选错）后，**双击该题可撤销本次作答**，回到未作答状态重新选择，避免误触导致错误。
 - 学生答错后，题目旁显示一行小字提醒"答错后双击可撤销回答"，低透明度浅色显示。
 
-相关：[[project_zscc_proxy_codex]]、[[home-wifi-proxy-issue]]（⚠️ 断链，目标不存在，2026-10-01 审计）
+相关：[[project_zscc_proxy_codex]]（⚠️ 旧命名，实际为 `project_nitian_theme`） [[project_network_issue]] （原 `home-wifi-proxy-issue`）

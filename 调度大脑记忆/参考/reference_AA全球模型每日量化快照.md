@@ -1,6 +1,6 @@
 # AA 全球模型每日量化快照 (Artificial Analysis Daily Snapshot)
 
-> **同步时间**：2026-10-11 21:59:22 (由系统每日凌晨定时任务自动刷新落盘)
+> **同步时间**：2026-10-12 01:00:03 (由系统每日凌晨定时任务自动刷新落盘)
 > **数据来源**：https://artificialanalysis.ai/leaderboards/models (RSC Flight 载荷)
 > **关联真源**：[[reference_全维度AI模型智力评分与推荐调度总则]]
 > **保留纪律**：底层全量生冷数据保留 7 天，历史趋势保留 30 天，本快照每日单写覆盖。

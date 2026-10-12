@@ -83,4 +83,4 @@ POST /v1/audio/speech
 `渠道编排规则.md` 旧注"mistral 必须走代理 7890"经核验**不成立**——mistral 渠道 `proxy` 为空，2026-09-25 实测 `api.mistral.ai` 直连 `/v1/models` 与 `/v1/audio/transcriptions`（voxtral-mini-latest）均稳定（ASR 3/3 成功，1.1–1.8s）。旧注已作废。
 
 ---
-关联：[[project_ai_gateway]] [[project_nssm_wmi_cmdline]]（⚠️ 断链，目标不存在，2026-10-01 审计） [[feedback_no_popup_windows]] [[project_image_gen_routes]]
+关联：[[project_ai_gateway]] [[project_nssm]]（原 `project_nssm_wmi_cmdline`） [[feedback_no_popup_windows]] [[project_image_gen_routes]]

@@ -19,4 +19,4 @@ metadata:
 5. WMI `Win32_Process.Create` 起的进程会挂 WmiPrvSE 新控制台=可见弹窗，改用 pythonw+CREATE_NO_WINDOW 等价方案
 6. 新建定时任务/巡检脚本上线前，自检一遍「这条链路上有没有任何一个子进程可能带控制台出现」
 
-关联：[[project_nssm_wmi_cmdline]]（⚠️ 断链，目标不存在，2026-10-01 审计）（本案完整根因链）
+关联：[[project_nssm]]（本案完整根因链）

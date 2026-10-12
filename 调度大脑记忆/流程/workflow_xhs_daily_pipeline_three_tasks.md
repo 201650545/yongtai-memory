@@ -25,7 +25,7 @@ metadata:
 
 **落位即契约**：管线 JSON 统一在 `_系统数据/`（11 个），读写位置常量已全部指向该目录（5 个 py ＋ 2 个 ps1）——**不要改名移出**，移出等于把定时任务的数据库搬走。日报 `reports/`、运行日志 `logs/mgr_YYYY-MM-DD.log`。
 
-**定时任务本体**：`XHS_LikeManager_Daily` 每天 10:17（pythonw 无窗口，仅交互登录时运行、错过开机补跑）。改 `scripts/` 与 `_系统数据/` 必须保证它不断：先 `py_compile`，再用 `--only` ＋ `--quota` 小样本验证。灾备另有 `XHS_WorkBackup_Daily`（每日 11:37 递归镜像 `D:\Work` 到夸克网盘）。
+**定时任务本体**：`XHS_LikeManager_Daily` 每天 **01:00（北京时间）**（pythonw 无窗口；2026-10-09 由 10:17 调整到凌晨 1 点，WakeToRun 已开＝睡眠也会唤醒执行，StartWhenAvailable 兜底补跑）。改 `scripts/` 与 `_系统数据/` 必须保证它不断：先 `py_compile`，再用 `--only` ＋ `--quota` 小样本验证。灾备另有 `XHS_WorkBackup_Daily`（每日 11:37 递归镜像 `D:\Work` 到夸克网盘）。
 
 **排障顺序**（固定，别跳）：当天日志末尾 traceback → `kimi-webbridge status`（502/`extension_connected:false` 见 [[调度大脑记忆/教训/lesson_browser_automation_anti_scrape]]）→ 登录态 → 限流冷却 → 点点 DOM/截断问题查 `docs/02 §5` 与 `docs/03`。
 
@@ -34,5 +34,5 @@ metadata:
 | 原文 | sha16 | 位置 |
 |---|---|---|
 | `D:\Work\小红书点赞分析\.trae\skills\xhs-like-daily\SKILL.md` | `d293488c2a53bc2d` | 任务表 L12-16；怎么跑 L18-24；红线 9 条 L26-36；落位 L38-44；排查顺序 L46-53 |
-| `D:\Work\小红书点赞分析\AGENTS.md` | `458097baed69ebc4` | 例外与常量 L17-23（uv Python、10:17 定时任务、lark-cli 路径、JSON 目录已归一） |
+| `D:\Work\小红书点赞分析\AGENTS.md` | `458097baed69ebc4` | 例外与常量 L17-23（uv Python、01:00 定时任务、lark-cli 路径、JSON 目录已归一） |
 | `D:\Work\小红书点赞分析\README.md` | `ed168284dc928dfa` | 脚本工具链与数据资产 L33-34；灾备 L37；目录结构 L51-66 |

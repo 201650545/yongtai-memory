@@ -10,6 +10,11 @@ metadata:
 
 # AI 问答宝（GPT 镜像站）最快打开流程
 
+> ## ⭐ 2026-10-10 站点大改版（本文件多处已过期，勿照抄）
+> 镜像站换 **新版 ChatGPT UI**：旧档位文案 `Auto / Thinking• Extended / GPT-5.6 Luna` **整体消失**；模型档改为 **顶部 `Chat`/`Work` 标签 + 模型 pill 里的 `Power` 滑杆**，默认 `Instant`。**郭老师裁定：改版后一律走 `Work` 标签，目标档 `GPT-6 Astra Max`**（须先在高级视图显式选 `GPT-6 Astra` 再推滑杆到 `Max`，否则预设阶梯顶端只到 `Medium`）。
+> 另：**opencli 会话码已轮换** —— 文中 `n8hh7hyn` 已失效，**一律 `opencli profile list` 现取**（2026-10-10 实测 = `d5vtd5bg`；旧码不报错、只静默打空）。
+> **现行真源**：`D:\记忆\调度大脑记忆\工具记忆_GPT镜像站规范使用_v2.md`（§二已按 Work/`GPT-6 Astra Max` 重写）＋ 手册 `D:\Work\AI平台\docs\runbooks\GPT镜像站送审流程.md` ＋ skill `D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`。本文件保留为历史流程记录。
+
 > 目标：从零到「能进聊天框」最短；**必须开新标签页，禁止覆盖 / 取消已经打开的标签页**。流程只读不破坏，成功即记。
 
 ---
