@@ -35,7 +35,42 @@
 
 ---
 
-## 三、❌ 已实测：读不了公开 GitHub 仓库
+## 三、✅ 已实测：模型与思考档位**可以程序化切换**（2026-10-15 当夜打通）
+
+**入口控件**：输入框（搜索框）**右下角、带向下箭头的模型按钮**
+
+```js
+button[aria-label^="Open mode picker"]     // 关闭态形如 "Open mode picker, currently Argon High"
+```
+
+点开后菜单分两组（均为 `[role=menuitem]`）：
+
+| 组 | 选项 |
+| :--- | :--- |
+| **模型（4）** | `3.5 Flash-Lite`(Fastest) ／ `3.8 Flash`(All-around) ／ `3.1 Pro`(Advanced reasoning) ／ **`4 Argon`**(Complex tasks) |
+| **Thinking level（3）** | `Low`(Quick and efficient) ／ `Medium`(Balanced depth) ／ `High`(Extra thorough) |
+
+> 🔴 **郭老师 2026-10-15 定：Flash 系不跑，要用 Gemini 就用 `4 Argon`。**
+> 简单问题靠**降 Thinking level** 提速，不靠降模型。
+
+**实跑验证**（脚本 `技能库\gemini-web-review\scripts\set_thinking.js`）：
+
+```
+只设档位:  "currently Flash"      → "currently Flash High"     ok:true
+模型+档位: "currently Flash High" → "currently Argon High"     ok:true
+```
+
+**⚠️ 坑**：菜单写 `4 Argon`，但按钮 aria-label 只显示 `Argon`（去掉前导序号）→ 校验必须归一化 `^\d+(\.\d+)?\s*`。
+
+**★ 方法论教训（比结论更值钱）**：
+我按关键词筛了整页 DOM（顶部栏、`input-area-v2`、48 个自定义元素全表）**全部漏掉**这个控件，
+因为它的可见文本只是一个模型名（`Flash`），既不含 model/mode 字样，也不在预期容器里。
+**⇒ 找不到控件时，先问"它视觉上长什么样、在页面哪个位置"，再按位置枚举元素，别按名字筛。**
+郭老师一句话指出"输入框右下角那个向下箭头"，一次点通。
+
+---
+
+## 四、❌ 已实测：读不了公开 GitHub 仓库
 
 **测试方法**（2026-10-15）：在输入框里贴上公开仓链接，要求它回答仓库里的一个具体事实，
 并约定「读不到就直说无法访问，不要猜」：
@@ -51,7 +86,7 @@
 
 ---
 
-## 四、⭕ 尚未验证的替代路径（谁要试谁补记）
+## 五、⭕ 尚未验证的替代路径（谁要试谁补记）
 
 | 路径 | 状态 | 备注 |
 | :--- | :--- | :--- |
@@ -63,7 +98,7 @@
 
 ---
 
-## 五、与 ChatGPT 镜像站的对比（选型用）
+## 六、与 ChatGPT 镜像站的对比（选型用）
 
 | 能力 | ChatGPT 镜像站（wendabao → vip-XX） | Gemini 网页版（AI Ultra） |
 | :--- | :---: | :---: |
@@ -78,7 +113,7 @@ Gemini 适合当作**纯文本能力补充**（把材料直接贴进去问），
 
 ---
 
-## 六、相关文件
+## 七、相关文件
 
 - 发送脚本：`D:\小浣熊\_gemini_send.js`
 - 对照 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\`
