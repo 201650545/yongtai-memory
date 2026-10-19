@@ -38,7 +38,7 @@ projects:
     visibility: public
     entry: README.md
     desc: 记忆运行系统唯一真源（STATE/DECISIONS/工具链）；协议文档快照见 ai-platform 的 agent/memory/
-    status_note: 2026-10-06 已整合 —— 唯一可写本体 D:\\项目\\ai-hub-memory，D:\\ai-hub-memory 改为 junction 指向它
+    status_note: 2026-10-06 已整合 —— 唯一可写本体 D:\\项目\\ai-hub-memory，D:\\ai-hub-memory 改为 junction 指向它；2026-10-15 实测 junction 有效（创建 2026-10-07 00:13），引用点重写完
 
   # —— 2026-09-29 补登记：以下两仓真实存在且活跃，此前漏登记 ——
   - id: yongtai-memory
@@ -53,7 +53,7 @@ projects:
 
   - id: listenloop-project
     repo: https://github.com/201650545/listenloop-project
-    name: ListenLoop（AI 精听训练器）发布仓
+    name: 句读（原 ListenLoop · AI 精听训练器）发布仓
     status: active
     visibility: public
     entry: README.md
@@ -75,7 +75,7 @@ projects:
   # —— 2026-10-12 补登记：全盘核实活跃与归档 GitHub 仓 ——
   - id: listenloop-curated
     repo: https://github.com/201650545/listenloop-curated
-    name: ListenLoop 精选架构问诊仓
+    name: 句读（原 ListenLoop）精选架构问诊仓
     status: active
     visibility: public
     entry: README.md
@@ -97,14 +97,14 @@ projects:
     status: archived
     visibility: public
     entry: README.md
-    local: D:\Work\课程思政教学竞赛
-    desc: 第二届郴州市大中小学课程思政教学竞赛 · 小学组C类心理健康教育《最喜欢的课》全套教案与说课课件，2026-09-14 已结题只读归档
+    local: D:\Work\教案与课件设计
+    desc: 第二届郴州市大中小学课程思政教学竞赛 · 小学组C类心理健康教育《最喜欢的课》全套教案与说课课件，2026-09-14 已结题只读归档；2026-10-19 郭老师定：本地目录改名 `教案与课件设计`，`课件与练习生产` 同日并入 `07_课件与练习生产`（GitHub 仓名未改，仍 chenzhou-ideology-competition）
 
 # 已整合（勿再引用旧仓，事实源在 ai-platform）：
 #   - ai-hub            → ai-platform（根目录）
 #   - ai-resource-hub   → ai-platform/resource-ops/
 #   - feishu-data-hub   → ai-platform/integrations/feishu/（**GitHub 仓已于 2026-10-08 删除**，零差异核对后删；随仓丢失的只有 secrets FDH_NAME_BLACKLIST）
-# 生活域独立仓：~~english-teaching-production~~（**GitHub 仓已于 2026-10-08 删除**：PUBLIC 仓顶层用 7 名学生真名＋含学生档案，违反自身红线 R1 与 handbook 40-安全红线；郭老师裁定"只留有用两点"⇒精华已抽到 `D:\Work\课件与练习生产\`，原 1370 文件无本地克隆、不可追）
+# 生活域独立仓：~~english-teaching-production~~（**GitHub 仓已于 2026-10-08 删除**：PUBLIC 仓顶层用 7 名学生真名＋含学生档案，违反自身红线 R1 与 handbook 40-安全红线；郭老师裁定"只留有用两点"⇒精华已抽到 `D:\Work\课件与练习生产\`（2026-10-19 起随并入移至 `D:\Work\教案与课件设计\07_课件与练习生产\`），原 1370 文件无本地克隆、不可追）
 # 私有仓：financial-security-plan（永不公开，已归档）
 
 # —— 本地项目（无独立 GitHub 仓，按既有规矩不进 projects 列表，但外部 AI 需要知道它们在哪）——
@@ -114,9 +114,9 @@ local_only:
     path: D:\Work\元智能
     desc: 系统级治理本体（技能设计与治理、工作流与自动化、AI 自适应）。入口 generated/human/00_首页.md
   - name: 课件与练习生产
-    path: D:\Work\课件与练习生产
-    desc: HTML 交互课件 ＋ DOCX 配套练习卷的生产规范与引擎（2026-10-08 从已删除的 `english-teaching-production` 仓按"只留两点"抽出）。含 2 份精简规范 md、12 个 Python 引擎/验证器（语法自检通过）、3 份生成模板、2 份 exam_spec JSON、3 档样例课件，合计 35 文件 / 1.83MB
-    caution: **不是独立 git 仓**（随 Work 根仓跟踪），且原仓已删 ⇒ 这份是唯一留存，原 1370 文件与 51 次提交不可追
+    path: D:\Work\教案与课件设计\07_课件与练习生产
+    desc: HTML 交互课件 ＋ DOCX 配套练习卷的生产规范与引擎（2026-10-08 从已删除的 `english-teaching-production` 仓按"只留两点"抽出；2026-10-19 郭老师定并入课程思政教学竞赛——同日改名「教案与课件设计」——成为其 `07_课件与练习生产` 子目录）。含 2 份精简规范 md、12 个 Python 引擎/验证器（语法自检通过）、3 份生成模板、2 份 exam_spec JSON、3 档样例课件，合计 35 文件 / 1.83MB
+    caution: 随所在项目仓（教案与课件设计，git）管理，样例课件不入仓；原 english-teaching-production 仓已删 ⇒ 这份是唯一留存，原 1370 文件与 51 次提交不可追
   - name: 贾维斯中控（原 Remote-Coding-Control / Codemote）
     path: D:\Work\贾维斯中控
     desc: 手机遥控电脑（贾维斯愿景）。2026-09-29 改中文名。语音远程控制电脑。手机=语音遥控器，电脑=执行体（Jev 路由 → 能力执行器矩阵）。依赖网关 :3100/v1/jev
@@ -136,9 +136,13 @@ local_only:
   - name: AI精听训练器
     path: D:\Work\AI精听训练器
     desc: ListenLoop 文档真源（实测 45 份 .md、6 个子目录：00_项目驾驶舱_可视化中心／01_商业与战略规划／02_工程架构与系统设计／03_研发日志与历史归档／04_Agent机器索引_快速通道／dist），代码真源 D:\listenloop；GitHub 发布台见 listenloop-project  # 2026-10-01 审计修正：原未在 projects/local_only 登记（只在 listenloop-project 的 desc 散文里提过），实测计数后补登
-  - name: 启迪 / 跃己 / 课程思政教学竞赛 / 项目学习
+  - name: 启迪 / 跃己 / 教案与课件设计（原课程思政教学竞赛；项目学习已于 2026-10-19 删除）
     path: D:\Work\
     desc: 见 vault_registry.yaml 与 Home.md 子库一览
+  - name: 经纬（Jingwei）
+    path: D:\Work\经纬
+    desc: DeepSeek Harness 的无限画布 + 多模型 DAG 编排插件。对话建图 → 无依赖节点并行 → 产物落盘 → 画布观测与局部重跑；Claude Code 只作代码类节点。首条业务线：小红书选题到待发布包。**2026-10-19 立项登记，规划期**：只有调研与命名，未设计未写代码；三份调研原件在 docs/调研原件/，取舍结论在 docs/04。登记在 local_only 而非 projects，因为尚无独立 repo
+    related: DSH（宿主）、API转发网关（:3100 作 provider）、客户端凭据网关（:8787 作 provider）
 
 archived_2026_09_29:
   - name: 飞书
