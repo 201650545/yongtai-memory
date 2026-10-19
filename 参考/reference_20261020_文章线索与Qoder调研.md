@@ -99,6 +99,19 @@ updated: 2026-10-20
 - 国内版仍是签名问题（`Signature invalid`），未接。
 - 因此 BUDDY 里**没有**加国际版/国内版的 1017 模型；现有 qoder 渠道仍是 `qwen3.8-flash`（+ 映射 `dmodel`→V4-Pro）。
 
+### 关键补充：国际版那个模型在客户端里叫 `dfmodel`（2026-10-20 01:2x）
+
+- 郭老师确认：国际版模型选择器里显示 **「DeepSeek V4 flash」**，备注 **「DeepSeek V4.1 flash 1017」**。
+- 从 Qoder 本地 `main.sqlite` 的 `chat_sessions.model` 列查到的真实 key 是 **`dfmodel`**（历史会话用过；另有 `qfmodel`、`qmodel_38max`）。动态文案 `dynamic-text/qoder.v1.json` 里 `model.dfmodel.label` = "DeepSeek-V4-Flash"，描述仍写 0731（缓存旧）。
+- 但用我们账号 token 直连 `api2-v2.qoder.sh/model/v1/chat/completions`：`dfmodel` → **400 Unsupported model**；`deepseek-v4-flash` → 404 `Model not exist`；只有 `dmodel`（→ V4-Pro）和 `qwen-flash` 能通。
+- 结论：客户端能看到的「DeepSeek V4.1 flash 1017」走的是客户端特有的一条路径（可能带客户端指纹/目录 token），我们用裸 token 复现不了，所以仍加不进 BUDDY。
+
+### 千问办公（QwenWork）能不能加
+
+- **BUDDY 里代码已经有了**：`providers/qwenwork/` 完整实现了 QwenWork / 千问办公协议（`gateway.qwenwork.cn`、`/algo/api/v2/service/pro/sse/agent_chat_generation`、RSA 签名、`qwork-auto/advanced/ultimate` 等模型）。
+- 但本机**没装/没登录千问办公**：`%APPDATA%\QwenWorkCN` 不存在，也没有相关可执行文件；DB 里 providers 只有 lobster/loomy/qoder/raccoon/traework/workbuddy，**没有 qwenwork 账号**。
+- 所以现在加不了；一旦装上并登录，用 provider 自带的 `store.discover()/import` 导入账号即可出现在渠道里，工作量约几分钟。
+
 ## 关联
 
 - [[项目/project_想法池]]（IDEA-020/021/022）
