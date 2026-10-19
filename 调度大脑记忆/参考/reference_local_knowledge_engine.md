@@ -36,9 +36,10 @@ python query_evidence.py "关键词" --no-semantic                        # 缺 
 # 2) 查某篇文档某章节的真实行号（禁止硬编码行号）
 python locate_anchor.py "文件路径" "章节名"
 
-# 3) 改完笔记后更新索引（**不会自动更新，必须手动跑**）
-python indexer.py --vault "D:\记忆"
-python indexer.py --vault "D:\Work"
+# 3) 索引与向量每天 02:00 自动更新（计划任务 EmbedBackfill），一般不用手动跑
+#    改完笔记想立刻生效时才手动跑；**--embed 才会补向量，不加只建索引**
+python indexer.py --vault "D:\记忆" --embed
+python indexer.py --vault "D:\Work" --embed
 ```
 
 ## 别人可能怎么问它（别名与口语）
@@ -61,7 +62,7 @@ python indexer.py --vault "D:\Work"
 
 - **已经知道确切路径** → 直接读，别绕
 - **要通读全文**（写总结、做审查）→ 那就读全文
-- **刚改完的笔记还没重建索引** → 先跑 `indexer.py`，否则它看不见新内容
+- **刚改完的笔记还没到 02:00** → 先跑 `indexer.py --embed`，否则它看不见新内容（向量同理）
 
 ## 什么形态存在（四个零件）
 
@@ -69,7 +70,7 @@ python indexer.py --vault "D:\Work"
 |---|---|---|
 | 代码 | `技能库\local-knowledge-engine\scripts\` | `indexer.py` / `query_evidence.py` / `locate_anchor.py` / `embedder.py` |
 | 说明 | 同目录 `SKILL.md` | **正文在 SKILL.md，本文件只做指针** |
-| 索引数据 | `<vault>\.cache\knowledge.db` + `.vectors.npy` | 已 gitignore，**永不进知识树、不进 Obsidian** |
+| 索引数据 | `<vault>\.cache\knowledge.db` + `knowledge.vectors.npy` | 已 gitignore，**永不进知识树、不进 Obsidian** |
 | 入口指针 | `AGENTS.md` 三处 | 本文件是第 4 处，专管"它是什么" |
 
 ## 关键事实（引用前必读）
@@ -81,8 +82,16 @@ python indexer.py --vault "D:\Work"
 - **索引规模**：记忆库 196 篇 / 1,263 块；Work 库 1,008 篇 / 37,003 块。
 - **被排除的目录**：`runtime` `models` `node_modules` `.cache` `_staging` `b_answers` 等机器产物；
   **`logs` `99_Archive` `会话记录导出` 仍然索引**（那些是有价值的叙述性内容）。
-- **索引不会自动更新**：改了笔记必须重跑 `indexer.py`（增量扫描记忆库约 1.3 秒）。
-  2026-10-19 实测：README 里写好的说明因未重建索引，在检索里**完全隐身**了一整天。
+- **索引与向量每天 02:00 自动更新**（计划任务 `EmbedBackfill`，2026-10-19 上线）：
+  跑 `10_AI自成长引擎\scripts\embed_backfill.py`，对两个 vault 做「增量重建索引 + 只补缺向量的块」，
+  覆盖率 <95% 写 `D:\项目\ai-hub\search_gateway\data\渠道警报.log`。
+  为什么必须有这一步：`indexer.py` 原先的 `__main__` **不传 embedder**，光跑它向量永远补不上，
+  新笔记在语义通道里是瞎的（曾出现索引 18:27 重建、向量停在 01:32）。现在 `indexer.py` 已加 `--embed` 开关。
+  手动立刻生效：`python indexer.py --vault "D:\记忆" --embed`（**不加 `--embed` 不编码向量**）。
+
+- **调用埋点**：每次检索追加一行 `10_AI自成长引擎\logs\knowledge-query.jsonl`
+  （时间 / 查询词 / 库 / mode / 命中数 / 检索耗时 / 模型启动耗时 / 前 5 路径 / cwd / argv），写日志失败静默。
+  要看真实使用率就数这个文件按 `cwd` 分组，**别再解压几百个会话文件倒推**（2026-10-19 教训）。
 
 ## 它不是什么
 
