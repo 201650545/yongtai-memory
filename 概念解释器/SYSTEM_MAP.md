@@ -63,8 +63,10 @@ Workspace
 
 ## 七、AI 访问协议（唯一入口）
 
+0. 听到「读 Obsidian 的仓库」= 就是这里；先读 `D:\记忆\README.md`（机器契约），本页次之。
 1. **找东西先检索**，不要全本读笔记：
-   `python D:\Work\元智能\10_AI自成长引擎\技能库\local-knowledge-engine\scripts\query_evidence.py "关键词"`（加 `--work D:\Work` 联查内容层）。
+   `D:\记忆\q.cmd "关键词"`（一行封装；跨 Work 加 `--work "D:\Work"`）
+   等价于 `python D:\Work\元智能\10_AI自成长引擎\技能库\local-knowledge-engine\scripts\query_evidence.py "关键词"`。
 2. 冷启动的确定性入口是**自动生成的索引**：`调度大脑记忆/索引.md`（**禁止手改**，由 `元智能\runners\build_memory_index.py --build` 生成）。
 3. 每条记忆带 `type` + `updated`；type 词汇：`project/workflow/lesson/feedback/user/reference/rule/entry/memory/broadcast/explainer/routing`。
 4. 写记忆前先读 `通用规范/00-存档与内化.md`：**7 天只管本地，git 只收结论**。
