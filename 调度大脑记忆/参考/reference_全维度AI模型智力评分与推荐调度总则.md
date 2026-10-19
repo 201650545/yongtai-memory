@@ -198,7 +198,7 @@ flowchart TD
 - **外脑特遣队契约与 Skill 关联**：
   - `D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`（ChatGPT 镜像送审与自动化执行 Skill）
   - `D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`（契约与闸门体系）
-  - `D:\Work\AI平台\docs\runbooks\GPT镜像站Work模式模型与额度指南.md`（镜像站账号与额度指南）
+  - `D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站Work模式模型与额度指南.md`（镜像站账号与额度指南）
 - **项目落地真源映射**：
   - `English-Content-Factory/00_System/01_ListenLoop多模型团队分工方案_最新版.md`
   - `English-Content-Factory/02_Projects/HN-ENGLISH-666/03_Products/index.html`（交互式任务选择器）

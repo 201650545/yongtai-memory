@@ -22,7 +22,7 @@ metadata:
 
 **明确禁止**：「**不要为了"仓库少"强行合并**（数据类型不同）」。
 
-**2026-10-08 已了结的旧待办（郭老师裁定：整合，不是二选一）**：本机原有两份可写克隆 `D:\ai-hub-memory` 与 `D:\项目\ai-hub-memory`（同一 remote）。处置＝`D:\项目\ai-hub-memory` 为唯一可写本体，未推送的 commit 已 rebase 并上、push 完成；`D:\ai-hub-memory` 改为 **junction 指向它**（旧目录内容已删，仅 3 个 `.pyc` 有差异）。`projects.yaml` 的 `caution` 已改为 `status_note` 记此结论。⚠️ 教训：**"选一份留一份"是错解**，同 remote 的双克隆正确解法是收口 + junction 防忘。
+**2026-10-06 已裁定（2026-10-07 00:13 执行到位）**：`D:\项目\ai-hub-memory` 为唯一可写本体，`D:\ai-hub-memory` 改为 junction 别名指向它（实测 LinkType=Junction, Target=D:\项目\ai-hub-memory）。2026-10-15 已完成引用点重写（T1/T2/T3），别名路径不再作为可用本地路径出现。
 
 ## 单写真源法则（handbook §0，全系统唯一同步法则）
 
@@ -55,8 +55,7 @@ metadata:
 → 把 `ai-hub-memory` 挂在了 `D:\记忆` 名下。实测 `D:\记忆` 的 origin 是 **`yongtai-memory`**（`git remote -v`）。按 handbook §6，两者是**不同数据类型、明令不得合并**的两个仓。
 **为什么要紧**：外部 AI 读的正是这份模板（它的读取顺序口诀"先 WHERE 后 WHAT 再 FACT"）。照它去 clone `ai-hub-memory` 当记忆真源，会拿到协议完全不同的另一个仓。
 
-**2. `ai-hub-memory` 有两份可写本地克隆**：`D:\ai-hub-memory` 与 `D:\项目\ai-hub-memory`，同一个 remote。元智能写前者（`runners\gpt-mirror-review.mjs:33` 的 `OUT_DIR`），本库 `project_shared_memory.md:11` 登记的是后者。
-**为什么要紧**：两个工作副本对同一远端各自可写 = 违反 handbook §0 的单写法则。
+**2. `ai-hub-memory` 已收口为单写**：唯一可写本体 = `D:\项目\ai-hub-memory`，`D:\ai-hub-memory` 为 junction 别名（2026-10-07 00:13 创建）。元智能 runners 的 OUT_DIR 已改为本体路径，引用点重写已于 2026-10-15 完成。**为什么要紧**：junction 透明但引用不改 = 排障误导 + 图分析重复计数 + 单写法则违规。
 
 **3. `D:\记忆\README.md:8` 悬空指针**：引用的 `D:\通用规范\50-知识管理三工具规范.md` 中，`D:\通用规范` **不存在**，真身在 `D:\记忆\通用规范\`。见 [[reference_handbook_ssot]]。
 

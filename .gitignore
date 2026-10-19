@@ -21,3 +21,6 @@ _Skills/
 # Agent 工作副本（git worktree，如 .qoder/worktrees/agent-XXX/；整库拷贝，不入库）
 # 注：这些是 AI 工具开在库内的临时工作副本，只 checkout 跟踪文件，删它须用 git worktree remove
 .qoder/
+
+# 本地知识投影与派生缓存（AI 本地断流索引库，绝不污染 Obsidian 正式库与 Git）
+.cache/

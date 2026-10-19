@@ -15,7 +15,10 @@ metadata:
 
 ## 这是什么
 
-统一 AI 搜索聚合网关，运行于 `D:\项目\ai-hub\search_gateway\`（:3000 搜索 + :3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。仓库副本：`D:\Work\AI平台\apps\search-gateway`（:3000）+ `D:\Work\AI平台\apps\api-gateway`（:3100）。
+统一 AI 搜索聚合网关，运行于 `D:\项目\ai-hub\search_gateway\`（:3000 搜索 + :3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。**文档仓：`D:\Work\API转发网关\`**（`docs\05_design_specs\` 放主题体系与 api_gateway 设计）。
+
+> ⚠️ **2026-10-19 路径核实**：旧写法「仓库副本 `D:\Work\AI平台\apps\search-gateway` + `apps\api-gateway`」**已全部失效**——`D:\Work\AI平台` 整棵树不存在，`apps/` 副本未随行。郭老师答复：**AI平台 久已不用，唯一保留下来的是 `API转发网关`，其余作废**。
+> 代码/运行体一律以 `D:\项目\ai-hub\search_gateway\` 为准；文档仓以 `D:\Work\API转发网关\` 为准。`search_gateway.md` 已不存在，勿再引用。
 
 - **:3000 搜索聚合**：`unified_gateway.py`，多引擎 opencli 浏览器检索 + `/v1/chat/completions` + `/api/search_json`，定位为 AI 的无头搜索工具。
 - **:3100 API 转发**：`api_gateway.py`，OpenAI 兼容 LLM 渠道聚合转发，独立于 :3000，含路由编排/总开关/用量/限流/熔断/记账。
@@ -59,7 +62,7 @@ metadata:
 - **2026-09-22 · 语音三链 + 方舟额度治理 + 防扣费体系**：voice-asr（groq whisper×2→mistral voxtral→硅基 3 免费款）/ voice-tts（mistral→CosyVoice2）/ voice-chat（zscc Qwen3-Omni 双席，郭老师批准）+ /v1/embeddings（硅基）。方舟 45 模型免费额度盘点入档；**额度警戒闸门 quota_guard 上线**（白名单制 + 方舟最低门槛 ≥250 万 token + 20% 警戒线；zscc/zenmux/openrouter 白名单、8 渠道 deny_all、ark-coding 删除不再续费）——实测点名付费模型三种路径全拦、无扣费失败。每日 ArkQuotaScan 10:17（opencli 抓方舟控制台→回写闸门→破线写渠道警报）。策略文章落 Obsidian：[[调度大脑记忆/流程/workflow_网关安全防扣费策略]]、[[调度大脑记忆/流程/workflow_网关渠道挑选与刷新策略]]、[[调度大脑记忆/流程/workflow_调度大脑交接手册]]、[[调度大脑记忆/项目/project_gateway_现状与展望]]。monorepo 1ffef93。
 
 - **2026-09-21 · 三档免费模型线重建 + 渠道单模型规则**：free-fast/balanced/heavy 三档（members[] 保序回落链，别名直调）；郭老师逐渠道定规则并落成**唯一真源文档 `search_gateway\渠道编排规则.md`**（monorepo 已同步）：zscc 只用 deepseek-v4.1-flash-cc（-cc 后缀才可用，失效须提醒郭老师拍板）、modelscope 只用 DeepSeek-V4.1-Flash、groq 只用 compound(T1首跳 166tok/s 复合智能体+联网)+gpt-oss-120b(T2)（qwen3.8-27b 限流大户已剔）、zenmux 免费白嫖渠道激活（新 key + 每日 00:23 巡检 `ZenMuxFreeScan`，脚本 `scripts/zenmux_free_scan.py`）。能力硬底线=通用模型且 ≥qwen3.8-27b（本尊可过）；规则层级=「只用N个」硬约束优先。探针 revision=6。三档最终 4/12/2 员，热加载免重启。openrouter/cloudflare/xiaohongshu/agnes/longcat/nvidia 同日定稿；zhipu 踢出（账号无套餐，免费仅 glm-4.7-flash 限流凶）；bai 免费期结束（限免也扣credits）打入冷宫，周任务 BaiWelfareCheck 周一 09:17 探监、福利回归报警。每日 ChannelDailyRefresh 00:23 实测编排全量成员。
-- **2026-09-08 · 主题体系完整落地（六套 data-style）**：4 主题总览见 `D:\Work\AI平台\apps\api-gateway\docs\主题体系.md`，各主题定义+预览图在 `docs\主题设置-*.md`（黑白建筑极简/云海天舟/星河枢机/月夜穹顶，「归一」已弃）。第六套 `data-style="mono"`（玄白·建筑极简）已在 `api_page.html` 落成并 byte 同步至运行体，浏览器 `http://localhost:3100/` → 🎨 选即见。
+- **2026-09-08 · 主题体系完整落地（六套 data-style）**：4 主题总览见 `D:\Work\API转发网关\docs\05_design_specs\主题体系.md`，各主题定义+预览图在 `docs\主题设置-*.md`（黑白建筑极简/云海天舟/星河枢机/月夜穹顶，「归一」已弃）。第六套 `data-style="mono"`（玄白·建筑极简）已在 `api_page.html` 落成并 byte 同步至运行体，浏览器 `http://localhost:3100/` → 🎨 选即见。
 - **2026-08-31 · 派发中心二级页 + 删除 dashscope 渠道**。
 - **2026-08-30 · 火山方舟 Coding Plan 接入**（49.9/月，单渠道 `ark-coding` 勿拆多；免 UAC 重启；剥离 reasoning_content；`deepseek-paid` 付费链）。
 - **2026-08-30 · 待排查**：:3100 路由日志未见调用记录（已记录，任务做通后再查）。
@@ -76,6 +79,6 @@ metadata:
 ## 源文件
 
 - 完整操作级/踩坑级详情、各轮实现细节 → `项目/归档/project_ai_gateway_完整详细记录.md`
-- 主题设计文档/预览图 → `D:\Work\AI平台\apps\api-gateway\docs\`（主题体系.md、主题设置-*.md、预览图-*.png）
+- 主题设计文档/预览图 → `D:\Work\API转发网关\docs\05_design_specs\`（主题体系.md、主题设置-*.md、预览图-*.png）
 - 三拆配置 / 运行数据 → `D:\项目\ai-hub\search_gateway\data\model_catalog.json`、`model_routes.json`、`channel_registry.json`、`quota.json`、`api_state.json`
-- 网关服务文档（Obsidian）→ `D:\Work\AI平台\apps\api-gateway\docs\api_gateway.md`、`search_gateway.md`
+- 网关服务文档（Obsidian）→ `D:\Work\API转发网关\docs\05_design_specs\api_gateway.md`、`search_gateway.md`

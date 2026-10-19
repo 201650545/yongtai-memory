@@ -32,6 +32,22 @@
 
 不做这三步，就不算完成记忆库访问。
 
+### 检索用哪个工具（2026-10-19 起）
+
+**只用一个入口**，不要再走 `D:\obsidian-ai` 那套 CLI（已合并下线）：
+
+```powershell
+python D:\Work\元智能\10_AI自成长引擎\技能库\local-knowledge-engine\scripts\query_evidence.py "关键词"
+```
+
+- 想同时查 Work 库的详细内容：加 `--work "D:\Work"`
+- 要机器可读结果：加 `--format json`
+- 环境缺 numpy 时：加 `--no-semantic` 走纯关键词
+- 找某篇文档的章节行号：同目录 `locate_anchor.py`，**禁止硬编码行号**
+
+索引在 `.cache/knowledge.db`（已 gitignore，不进知识树）。用户刚改过笔记时重跑 `indexer.py` 增量更新即可。
+完整说明见 `D:\Work\元智能\10_AI自成长引擎\技能库\local-knowledge-engine\SKILL.md` 与 [[全局变更广播]]。
+
 ## 归档约定（2026-09-08 起，强制）
 
 盘点/精简某条目时，遵循「过程流水归档、知识方法保留」：

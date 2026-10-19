@@ -1,18 +1,27 @@
 ---
 name: project-ListenLoop
-description: ListenLoop（AI 精听训练器，产品名 句读/Phrasing）＝面向严肃外语学习者的逐句精听＋抗遗忘学习系统。三处真源分开：文档 D:\Work\AI精听训练器、代码 D:\listenloop（Flutter）、发布仓 D:\Work\AI精听训练器\05_发布与问诊\listenloop-project。**2026-10-15 建「版本存档库」`06_版本存档\`：当前冻结版 v0.9.0＝commit `dc4c554`，改功能从该版起；机器契约 `versions.json`＋校验脚本 `校验一致性.ps1`。建库前版本信息散在 6 处且互相矛盾（pubspec 1.0.0+4027／tag v0.2.1／开发日志／curated 里的 17 号定稿／project 的代码副本／dist 无版本 APK）**。本条目此后不再承担"版本状态"，版本一律以 `06_版本存档\versions.json` 为准。
+description: 句读（原 ListenLoop，AI 精听训练器）＝小学语文/英语「听读＋视听＋跟读验收」App（Flutter）。三处真源分开：文档 D:\Work\AI精听训练器、代码 D:\listenloop、发布仓 listenloop-project。产品名 2026-10-10 定「句读/Phrasing」，引擎名 ListenLoop 保留不改；2026-10-16 完成 APP＋Obsidian 侧改名，长期铁律「括号保留旧名」。**接手先读 `D:\Work\AI精听训练器\00_START_HERE_交接总览.md`**。当前冻结版以 `06_版本存档\versions.json` 为准（本条目不报版本）。
 metadata:
   node_type: memory
   type: 项目
   created: 2026-09-30
-  modified: 2026-10-16
+  modified: 2026-10-17
 ---
 
 # 句读（ListenLoop · AI 精听训练器）
 
+> ## 🔴 接手先读这个（2026-10-17 建）
+> **`D:\Work\AI精听训练器\00_START_HERE_交接总览.md`**
+> 那份是**目录型总览**（三个名字 / 四条主线 / 三处真源 / 云端与手机 / 铁律 / 环境坑 / 已知存量测试红 / 待拍清单）。
+> 任何 Agent 接手本项目，**先读它，5 分钟能上手**；本条目只补记忆侧的更新与裁定，不复制正文。
+
 > **命名口径（2026-10-16 郭老师裁定）**：**产品名一律叫「句读」(英文名 Phrasing)**，
 > 旧名 `ListenLoop` **在括号里保留**，避免旧环节（脚本名、仓名、storage key、历史 commit）
 > 出现对不上的错误。**引擎名 ListenLoop 保持不动**（见下「三个名字的关系」）。
+>
+> **改名的边界**（`D:\记忆\长期记忆.md` 已立为长期铁律）：人看的显示名写 `句读（原 ListenLoop）`；
+> **机器标识一个都不动**——storage key 改了会丢用户数据、Android 通道 `listenloop/creation_native`
+> 改了会断原生桥。判据：**改了会不会让别人对不上？会 → 不动，只括注旧名。**
 
 ## 三个名字的关系（别再混）
 

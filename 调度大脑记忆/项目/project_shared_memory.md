@@ -8,7 +8,7 @@ metadata:
   modified: 2026-08-13T11:11:53.473Z
 ---
 
-多 Agent 共享记忆系统（2026-08-13 上线）：GitHub 公开仓库 **https://github.com/201650545/ai-hub-memory**，本地 `D:\项目\ai-hub-memory`。
+多 Agent 共享记忆系统（2026-08-13 上线）：GitHub 公开仓库 **https://github.com/201650545/ai-hub-memory**，本地 `D:\项目\ai-hub-memory`（`D:\ai-hub-memory` 为 junction 别名）。
 
 4 文件分层：AGENTS.md（协作协议+工具地图+并发规则）、STATE.md（当前状态，整体覆盖不追加）、DECISIONS.md（决策，追加）、CHANGELOG.md（操作记录，追加）。
 

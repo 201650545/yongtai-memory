@@ -26,7 +26,7 @@ metadata:
 | 额度警戒闸门 | `services\quota_guard.py` + `data\quota_guard.json`（无 BOM！） |
 | 每日自动化脚本 | `scripts\daily_channel_refresh.py` / `zenmux_free_scan.py` / `ark_quota_scan.py` / `bai_welfare_check.py` |
 | 警报出口 | `data\渠道警报.log`（zscc 失效/方舟破线/巡检失败都写这里） |
-| monorepo（代码唯一家） | `D:\Work\AI平台\apps\search-gateway\services`（改完代码同步+commit+push） |
+| monorepo（代码唯一家） | `D:\项目\ai-hub\search_gateway\services`（改完代码同步+commit+push） |
 | 共享记忆仓库 | `D:\项目\ai-hub-memory\projects\ai-resources\`（STATE/DECISIONS/CHANGELOG） |
 | 本 Obsidian 库 | `D:\记忆\调度大脑记忆\`（git 管理，改完挂 [[调度大脑记忆/索引]]） |
 | 网关 key | `data\api_state.json` 的 api_key 字段（不进对话不入 git） |

@@ -13,7 +13,7 @@ metadata:
 > ## ⭐ 2026-10-10 站点大改版（本文件多处已过期，勿照抄）
 > 镜像站换 **新版 ChatGPT UI**：旧档位文案 `Auto / Thinking• Extended / GPT-5.6 Luna` **整体消失**；模型档改为 **顶部 `Chat`/`Work` 标签 + 模型 pill 里的 `Power` 滑杆**，默认 `Instant`。**郭老师裁定：改版后一律走 `Work` 标签，目标档 `GPT-6 Astra Max`**（须先在高级视图显式选 `GPT-6 Astra` 再推滑杆到 `Max`，否则预设阶梯顶端只到 `Medium`）。
 > 另：**opencli 会话码已轮换** —— 文中 `n8hh7hyn` 已失效，**一律 `opencli profile list` 现取**（2026-10-10 实测 = `d5vtd5bg`；旧码不报错、只静默打空）。
-> **现行真源**：`D:\记忆\调度大脑记忆\工具记忆_GPT镜像站规范使用_v2.md`（§二已按 Work/`GPT-6 Astra Max` 重写）＋ 手册 `D:\Work\AI平台\docs\runbooks\GPT镜像站送审流程.md` ＋ skill `D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`。本文件保留为历史流程记录。
+> **现行真源**：`D:\记忆\调度大脑记忆\工具记忆_GPT镜像站规范使用_v2.md`（§二已按 Work/`GPT-6 Astra Max` 重写）＋ 手册 `D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站送审流程.md` ＋ skill `D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`。本文件保留为历史流程记录。
 
 > 目标：从零到「能进聊天框」最短；**必须开新标签页，禁止覆盖 / 取消已经打开的标签页**。流程只读不破坏，成功即记。
 
@@ -308,7 +308,7 @@ Latest • 5.6 | Auto | Thinking（右侧显示 "• Extended"）| GPT-5.6 Luna 
 
 ## 固化一键脚本法（2026-09-04 实测，零→Extended ≤15s，最优选）
 
-> 比逐段手点快 5–6 倍（74s→9.6s）。脚本在 `D:\Work\AI平台\docs\runbooks\scripts\`（2026-10-01 审计修正：原写 `docs\运行手册\`，实测该目录不存在，真身已改名 `docs\runbooks\`，本文件 :312/:313/:525 同改）。两个脚本直接照抄，复探只会在跨实例时踩 hydration 坑。
+> 比逐段手点快 5–6 倍（74s→9.6s）。脚本在 `D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\scripts\`（2026-10-01 审计修正：原写 `docs\运行手册\`，实测该目录不存在，真身已改名 `docs\runbooks\`，本文件 :312/:313/:525 同改）。两个脚本直接照抄，复探只会在跨实例时踩 hydration 坑。
 
 ```bash
 opencli browser n8hh7hyn tab new "https://ai.wendabao-f.net/?utm_source=hidden-ncn"
@@ -527,6 +527,6 @@ p.dispatchEvent(new PointerEvent("pointerup",Object.assign({},o,{buttons:0}));
 - [[feedback_gpt_mirror_subagent_flow]] — 子 Agent 送审三条纪律 + Extended 切换法
 - [[feedback_gpt_mirror_account_switch]] — 账号受限切活跃
 - [[feedback_fork_forbidden]] — 本流程全员（含子 Agent）一律 fresh 上下文，禁止 fork
-- 手册：`D:\Work\AI平台\docs\runbooks\GPT镜像站送审流程.md`（§三·五 固化一键脚本法）（2026-10-01 审计修正：原写 `docs\运行手册\`，实测真身为 `docs\runbooks\`，该 md 实测在）
+- 手册：`D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站送审流程.md`（§三·五 固化一键脚本法）（2026-10-01 审计修正：原写 `docs\运行手册\`，实测真身为 `docs\runbooks\`，该 md 实测在）
 - GitHub 同步：Obsidian 为主（`D:\记忆` 真源）→ `yongtai-memory` 镜像（脱敏后）
 - 技能同步（WorkBuddy 侧强制执行清单）：⚠️ 2026-10-01 审计：该 SKILL.md（原写 `C:\Users\郭永涛\.workbuddy\skills\gpt-mirror-image\SKILL.md（已失效：技能随迁移消失，junction 目标下已无此件）`）已随 WorkBuddy 技能迁移消失，`_bm_skillid_migration.json` 里查不到对应项 ⇒ 执行前必须先确认清单在哪，别照抄死路径。
