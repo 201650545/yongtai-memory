@@ -17,7 +17,7 @@ updated: 2026-10-06
 
 | 渠道 | 内容 | 状态 |
 |---|---|---|
-| **Google AI Studio / Gemini API** | gemini-3.8-flash 等**免费层：输入输出全免**（限速制、不绑卡、数据用于训练） | ✅ **已接入**（2026-09-22 当日：key+渠道+free-balanced 编排，见 [[project-gemini-edge-tts]]（⚠️ 断链，目标不存在，2026-10-01 审计）） |
+| **Google AI Studio / Gemini API** | gemini-3.8-flash 等**免费层：输入输出全免**（限速制、不绑卡、数据用于训练） | ✅ **已接入**（2026-09-22 当日：key+渠道+free-balanced 编排，见 project-gemini-edge-tts（⚠️ 断链，目标不存在，2026-10-01 审计）） |
 | **GitHub Models** | GitHub 账号免费调 GPT/DeepSeek/Llama/Phi 等目录模型（限速制） | ⏳ 页面 JS 渲染抓不到，需注册实测 |
 | **阿里百炼** | 新用户各模型免费 token 包（qwen 系，90/180 天有效） | ⏳ 待核实明细 |
 | **百度千帆** | ERNIE Lite/Speed 等永久免费档模型 | ⏳ 待核实 |

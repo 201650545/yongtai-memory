@@ -58,7 +58,7 @@ updated: 2026-10-19
 - 树状词缀树（结构清楚但不像词云，学生不爱看）
 - 竖版 3:4（用户要多横版：4:3 是横屏、3:4 是竖屏，已经纠正过一次）
 
-关联 [[word-fission-content-spec]]、[[feedback_mirror_chat_history]]。
+关联 word-fission-content-spec、[[feedback_mirror_chat_history]]。
 
 ## 封面禁忌（2026-10-18 郭老师指出）
 
