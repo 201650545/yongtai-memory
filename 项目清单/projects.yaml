@@ -141,7 +141,7 @@ local_only:
     desc: 见 vault_registry.yaml 与 Home.md 子库一览
   - name: 经纬（Jingwei）
     path: D:\Work\经纬
-    desc: DeepSeek Harness 的无限画布 + 多模型 DAG 编排插件。对话建图 → 无依赖节点并行 → 产物落盘 → 画布观测与局部重跑；Claude Code 只作代码类节点。首条业务线：小红书选题到待发布包。**2026-10-19 立项登记，规划期**：只有调研与命名，未设计未写代码；三份调研原件在 docs/调研原件/，取舍结论在 docs/04。登记在 local_only 而非 projects，因为尚无独立 repo
+    desc: DeepSeek Harness 的无限画布 + 多模型 DAG 编排插件。对话建图 → 无依赖节点并行 → 产物落盘 → 画布观测与局部重跑；Claude Code 只作代码类节点、绝不当总控。首条业务线：小红书选题到待发布包。**2026-10-19 立项登记，状态 planning**：已有文档 00–08（含 MVP 设计、接口核实、实验方案）＋三份调研原件（取舍见 docs/04）＋ scripts/measure_subagent_run.mjs；**实验一《观潮》待跑**，阻塞点＝白名单是会话快照、必须开新会话且白名单为 high/flash（非 free-*）。记忆条目见 `D:\记忆\调度大脑记忆\项目\project_经纬.md`。登记在 local_only 而非 projects，因为尚无独立 repo
     related: DSH（宿主）、API转发网关（:3100 作 provider）、客户端凭据网关（:8787 作 provider）
 
 archived_2026_09_29:
