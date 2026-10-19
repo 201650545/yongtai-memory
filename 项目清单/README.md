@@ -12,7 +12,7 @@ updated: 2026-10-10
 ```
 workspace-index/
 ├─ projects.yaml       ← 路由真源（WHERE）
-├─ concepts/           ← 概念语义真源（WHAT / NOT WHAT）：概念解释器
+├─ concepts/           ← 概念语义真源（WHAT / NOT WHAT）：系统地图
 │  ├─ README.md        ← 解释器总入口
 │  ├─ TEMPLATE.md      ← 六字段 + 文件/目录用途 + 冲突裁决 + 粒度宪法
 │  ├─ 00-体系总览.md   Vault/仓/项目/模块/数据层 关系
