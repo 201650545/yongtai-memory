@@ -77,6 +77,28 @@ updated: 2026-10-20
   4. 重启 8787 网关，`/v1/models` 出现后再看账号轮换器是否自动读到（它读网关模型目录）。
 - 时效提醒：免费到 **10 月 24 日**；之后要么恢复 0.1x 系数，要么等下一轮活动。
 
+### 补充：国内版（CN）能不能也接进 BUDDY（2026-10-20 01:0x 实测）
+
+- 本机同时装了国际版（`D:\Qoder`，0.4.1／缓存里已有 0.4.3 更新）和国内版（`C:\Users\郭永涛\AppData\Local\Programs\Qoder CN`，0.4.1）。
+- 两个客户端的 auth 都能用同一套 DPAPI+AESGCM 解出来：国际版 `token=dt-…`（user 郭永涛）、CN 版 `token=dt-…`（user `aliyun-…`），token 有效期都到 **2026-10-28**。
+- 从 CN 客户端 `qoder-worker-runtime.obf.mjs` 里挖出真实端点映射（`Ji?CN:intl`）：
+  - 模型服务：CN = `gateway.qoder.com.cn`（对应国际版 `api2.qoder.sh`）
+  - 模型对话路径：国际版 `/model/v1/chat/completions`；CN 实际走 **`/algo/api/v2/service/pro/sse/agent_chat_generation`**（SSE）
+  - 另有 `openapi.qoder.com.cn` / `qoder.com.cn` 等。
+- 用 CN token 实测：
+  - `https://gateway.qoder.com.cn/algo/api/v2/service/pro/sse/agent_chat_generation` → HTTP 200，但 body 是 `{"code":"101","message":"Signature invalid"}`（403）⇒ **CN 网关要求请求签名**，不是简单 Bearer。
+  - `https://gateway.qoder.com.cn/model/v1/chat/completions` → 503/404，说明 CN 不走这条路径。
+- 结论：**CN 版暂时接不进 BUDDY**——缺的不是 token，而是请求签名算法（CN 客户端内部生成），要单独逆向；国际版仍按上文“ID 不被接受”卡住。
+- 版本：CN 最新 0.4.8（本机 0.4.1），国际版最新 0.4.8（本机 0.4.1/0.4.3）；两版安装包可从 `https://download.qoder.com.cn/qoder-app/releases/0.4.8/` 取。
+
+### 更新与更新后复测（2026-10-20 01:1x）
+
+- 已把两个客户端都升到 **0.4.8**：国际版 `D:\Qoder`（原 0.4.1→0.4.8）、国内版 `D:\Qoder CN`（原 `%LocalAppData%\Programs\Qoder CN` 0.4.1→新装 0.4.8）。安装包 sha256 校验通过，静默安装 exit 0。
+- 更新后重新解出国际版 token 再测：`deepseek-v4.1-flash-1017` / `deepseek-v4.1-flash` 仍 **400 invalid_model_error**；`dmodel` 仍回 `oem-deepseek-v4-pro`；`qwen-flash` 正常。
+  ⇒ **不是客户端版本问题，是服务端对现有 token 没开放这个模型 ID**。
+- 国内版仍是签名问题（`Signature invalid`），未接。
+- 因此 BUDDY 里**没有**加国际版/国内版的 1017 模型；现有 qoder 渠道仍是 `qwen3.8-flash`（+ 映射 `dmodel`→V4-Pro）。
+
 ## 关联
 
 - [[项目/project_想法池]]（IDEA-020/021/022）
