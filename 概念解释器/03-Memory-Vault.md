@@ -1,3 +1,8 @@
+---
+name: 03-Memory-Vault
+type: explainer
+updated: 2026-10-08
+---
 # 03 · Memory Vault
 
 > Memory 库的定义。负责整个体系跨 Agent、跨会话的"持续记忆"。

@@ -6,6 +6,8 @@ metadata:
   type: reference
   created: 2026-10-15
   modified: 2026-10-15
+type: reference
+updated: 2026-10-19
 ---
 
 # 外脑双通道任务路由表 · GPT-6 Sol vs Gemini 4 Argon

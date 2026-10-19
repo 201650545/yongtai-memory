@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-09-03T17:19:21.757Z
+type: workflow
+updated: 2026-10-19
 ---
 
 > ⚠️ **2026-10-10 站点改版**：下文 §「镜像站实操细节」里的模型档位（`Auto / Thinking• Extended / GPT-5.6 Luna`）与 opencli 会话码 `n8hh7hyn` **均已过期** —— 新版 UI 无 `Extended`，改为 **`Work` 标签 + `GPT-6 Astra Max`**；会话码一律 `opencli profile list` 现取（实测 `d5vtd5bg`）。现行真源见 `D:\记忆\调度大脑记忆\工具记忆_GPT镜像站规范使用_v2.md`。本文件的「三步流程」（先读仓库 / push / 补上下文）本身**仍然有效**。

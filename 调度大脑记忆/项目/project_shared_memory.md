@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-13T11:11:53.473Z
+type: project
+updated: 2026-10-19
 ---
 
 多 Agent 共享记忆系统（2026-08-13 上线）：GitHub 公开仓库 **https://github.com/201650545/ai-hub-memory**，本地 `D:\项目\ai-hub-memory`（`D:\ai-hub-memory` 为 junction 别名）。

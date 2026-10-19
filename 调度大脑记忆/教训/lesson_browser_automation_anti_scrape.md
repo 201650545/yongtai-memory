@@ -7,6 +7,8 @@ metadata:
   originSessionId: f969104b-ab73-4eac-a3ef-2a2649f10525
   modified: 2026-09-29
   关联批次: 2026-09-29 memory-work-inventory（来源项目 小红书点赞分析，无 git）
+type: lesson
+updated: 2026-10-06
 ---
 
 # 浏览器自动化：六条用真金白银换来的判据

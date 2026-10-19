@@ -1,3 +1,8 @@
+---
+name: reference_AA全球模型每日量化快照
+type: reference
+updated: 2026-10-19
+---
 # AA 全球模型每日量化快照 (Artificial Analysis Daily Snapshot)
 
 > **同步时间**：2026-10-19 01:00:01 (由系统每日凌晨定时任务自动刷新落盘)

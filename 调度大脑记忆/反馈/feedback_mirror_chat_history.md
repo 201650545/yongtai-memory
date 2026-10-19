@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: f059f218-e941-4b54-98ea-83c91434329e
   modified: 2026-09-04T14:32:11.860Z
+type: feedback
+updated: 2026-10-06
 ---
 
 用 ChatGPT 镜像版（AI问答宝/vip 实例）时，**聊天记录保留最近 10 条**；超了就从最旧的删起（列表顶部=最近、底部=最旧，**从末尾往上删**），删到剩 10 条最近为止。

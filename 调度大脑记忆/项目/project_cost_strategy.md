@@ -6,6 +6,8 @@ metadata:
   type: project
   modified: 2026-08-30T11:53:48.213Z
   originSessionId: 8ee5c1ea-99c5-4cbe-bf2c-52824ee32254
+type: project
+updated: 2026-10-12
 ---
 
 **用户不买付费 AI 订阅**（2026-08-30 拍板）：评估过 Codex Plus（代充 ~145元/月，Price 网站估月额度 450刀）vs 中转站 88元/300刀 后，**决定都不买**。

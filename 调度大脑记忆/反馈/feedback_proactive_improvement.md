@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-10T17:05:54.216Z
+type: feedback
+updated: 2026-10-06
 ---
 
 执行 AI 完成工作后，应主动质疑自己的产出（"这个方案够好吗？"），认为不够好或有优化空间时，**主动发起"高级 AI 问诊"**：把项目推到 GitHub + 写好提示词 → 发给 ChatGPT 5.6 Extend Think / Anthropic Claude Sonnet → 等长回复 → 按建议优化落地。不是等郭老师推着走，而是主动想要变得更好。

@@ -1,3 +1,8 @@
+---
+name: nitian-theme
+type: explainer
+updated: 2026-10-08
+---
 # nitian-theme · 逆天主题（仙逆）
 
 ## 基本定义（六字段）

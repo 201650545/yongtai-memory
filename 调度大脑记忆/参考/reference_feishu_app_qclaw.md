@@ -6,6 +6,8 @@ metadata:
   type: reference
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-11T14:24:56.822Z
+type: reference
+updated: 2026-10-06
 ---
 
 **ai-resource-hub 公开数据桥的飞书应用（已确认，2026-08-11）：**

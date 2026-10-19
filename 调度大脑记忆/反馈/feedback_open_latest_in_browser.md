@@ -4,6 +4,8 @@ description: 做完网页类产物（判决台/看板/页面）后直接帮他�
 metadata:
   node_type: memory
   type: 反馈
+type: feedback
+updated: 2026-10-12
 ---
 
 # 做完就直接在浏览器打开最新的

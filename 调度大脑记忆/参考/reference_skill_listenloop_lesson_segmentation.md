@@ -1,3 +1,8 @@
+---
+name: reference_skill_listenloop_lesson_segmentation
+type: reference
+updated: 2026-10-19
+---
 # reference: 句读课文双模态意群与精听时间轴统合切分 Skill
 
 > 创建日期: 2026-10-16

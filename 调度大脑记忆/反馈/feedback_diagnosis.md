@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: d2f46b38-1e99-48c4-bd86-24f96dd97893
   modified: 2026-08-31T09:10:05.490Z
+type: feedback
+updated: 2026-09-03
 ---
 
 网络问题排查时，要先区分问题在**设备端**还是**网络端**，不要仅凭部分信息就下结论。

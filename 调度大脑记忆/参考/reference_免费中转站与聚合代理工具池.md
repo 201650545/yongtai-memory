@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: 参考
   modified: 2026-10-01
+type: reference
+updated: 2026-10-08
 ---
 
 # 免费额度三路线 · 工具池与候选站

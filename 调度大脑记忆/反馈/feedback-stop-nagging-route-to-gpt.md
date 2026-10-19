@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-03T23:47:54.735Z
+type: feedback
+updated: 2026-09-04
 ---
 
 不要反复向郭老师发问。做完就完结，不要一件事喘不了气地确认来确认去。

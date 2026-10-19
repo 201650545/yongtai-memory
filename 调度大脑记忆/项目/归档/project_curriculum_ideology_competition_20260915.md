@@ -1,3 +1,8 @@
+---
+name: project_curriculum_ideology_competition_20260915
+type: project
+updated: 2026-10-12
+---
 # 课程思政教学竞赛（郴州市第二届）
 
 > # ⛔ 本文件已作废（2026-09-18）

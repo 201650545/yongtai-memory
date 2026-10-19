@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: 教训
   created: 2026-09-30
+type: lesson
+updated: 2026-10-08
 ---
 
 # 网关重启的权限死结（2026-09-30 实测）

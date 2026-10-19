@@ -1,3 +1,8 @@
+---
+name: Home
+type: entry
+updated: 2026-09-08
+---
 # 记忆库 Home
 
 > 本库 = Claude 调度大脑的**人读记忆**，镜像自 Claude 内部记忆（`~/.claude/.../memory/`）。Claude 内部记忆是运行层（我调度引用），这里的镜像专供你开 Obsidian 看/查，并随仓库同步走。

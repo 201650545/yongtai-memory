@@ -1,3 +1,8 @@
+---
+name: handbook
+type: explainer
+updated: 2026-10-08
+---
 # handbook · 通用规范
 
 ## 基本定义（六字段）

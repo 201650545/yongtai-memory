@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-15T13:31:12.537Z
+type: feedback
+updated: 2026-10-06
 ---
 
 管理员权限的操作（nssm 改服务、注册表、服务重启等）由我自己执行：用 PowerShell 工具直接跑脚本，脚本内部用 Start-Process -Verb RunAs 自提权，UAC 弹窗用户只需点「是」。

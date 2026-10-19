@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: e5ca6684-1e8b-4ac6-95bb-d10c88057836
   modified: 2026-09-03T10:05:00.000Z
+type: project
+updated: 2026-10-08
 ---
 
 ## ⚠️ 状态：执行位已到期

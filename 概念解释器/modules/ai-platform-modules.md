@@ -1,3 +1,8 @@
+---
+name: ai-platform-modules
+type: explainer
+updated: 2026-10-08
+---
 # modules · ai-platform 模块地图
 
 > ai-platform 的内部模块展开（正式模块 + 平台主干内部目录）。只写"是什么/边界/真源"，不复制实现正文。

@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-20T00:00:00.000Z
+type: feedback
+updated: 2026-10-19
 ---
 
 用户（2026-09-03）明确的 GPT 镜像站对话轮次纪律（**轮次上限于 2026-09-18 修订**）：

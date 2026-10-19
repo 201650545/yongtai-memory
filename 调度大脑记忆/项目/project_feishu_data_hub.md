@@ -6,6 +6,8 @@ metadata:
   node_type: memory
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-08-19T14:37:44.941Z
+type: project
+updated: 2026-10-06
 ---
 
 **GitHub 仓库**：`github.com/201650545/feishu-data-hub`（公开，2026-07-25 创建，JavaScript 主语言）

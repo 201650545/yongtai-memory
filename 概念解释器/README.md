@@ -1,3 +1,8 @@
+---
+name: README
+type: explainer
+updated: 2026-10-08
+---
 # 概念解释器 · Workspace Concepts
 
 > **本目录是整个工作空间的概念语义唯一真源（Semantic SSOT）。**

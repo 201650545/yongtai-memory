@@ -1,3 +1,8 @@
+---
+name: project_curriculum_ideology_competition
+type: project
+updated: 2026-10-19
+---
 # 教案与课件设计（原课程思政教学竞赛 · 郴州市第二届）
 
 > type: project | 创建：2026-09-08 | **重写：2026-09-18 14:30（母稿确立 · 旧理念全部清出）**

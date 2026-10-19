@@ -6,6 +6,8 @@ metadata:
   type: 项目
   created: 2026-09-30
   modified: 2026-09-30
+type: project
+updated: 2026-10-06
 ---
 
 # 贾维斯中控（手机语音遥控电脑）

@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: workflow
   created: 2026-09-22
+type: workflow
+updated: 2026-10-06
 ---
 
 # 转发与汇报策略（郭老师历次口令汇总）

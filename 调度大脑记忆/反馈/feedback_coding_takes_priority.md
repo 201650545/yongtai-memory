@@ -7,6 +7,8 @@ metadata:
   originSessionId: f969104b-ab73-4eac-a3ef-2a2649f10525
   modified: 2026-09-29
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661）
+type: feedback
+updated: 2026-10-06
 ---
 
 # Coding 永远优先，修仙表现可退让

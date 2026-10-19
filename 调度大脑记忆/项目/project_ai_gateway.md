@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: cc570cb5-bfc6-41c1-a63b-84533fa58583
   modified: 2026-10-08T00:00:00.000Z
+type: project
+updated: 2026-10-19
 ---
 
 # 统一 AI 网关（search_gateway）

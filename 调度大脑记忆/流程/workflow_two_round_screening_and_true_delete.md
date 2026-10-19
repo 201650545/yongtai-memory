@@ -7,6 +7,8 @@ metadata:
   originSessionId: f969104b-ab73-4eac-a3ef-2a2649f10525
   modified: 2026-09-30
   关联批次: 2026-09-29 memory-work-inventory；2026-09-30 自动化到位补记
+type: workflow
+updated: 2026-10-06
 ---
 
 # 两审制与真删：一套可以搬去任何"清库"现场的做法

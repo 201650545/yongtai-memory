@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-03T15:59:34.839Z
+type: feedback
+updated: 2026-10-12
 ---
 
 用户（2026-09-03）指示：**记忆不能只落实在 Claude 自己的记忆里（`~/.claude/projects/<cwd>/memory/`），还必须在用户的 Obsidian 里有一个「跟 GitHub 一样」的记忆项目**——即像 ai-hub-memory 那样独立存在、人能开 Obsidian 看/查、能同步到 GitHub，而不是埋在小练习不可见的内部文件里。

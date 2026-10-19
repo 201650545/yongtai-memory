@@ -1,3 +1,8 @@
+---
+name: reference_local_paddle_ocr
+type: reference
+updated: 2026-09-08
+---
 # 本地 PaddleOCR 通路（扫描件 PDF 文本提取）
 
 > type: reference | 创建：2026-09-08 | 来源：课程思政竞赛通知 17 页扫描件实测

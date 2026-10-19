@@ -6,6 +6,8 @@ metadata:
   type: feedback
   modified: 2026-09-03T16:54:18.820Z
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
+type: feedback
+updated: 2026-10-06
 ---
 
 郭老师（2026-09-03）明确规定浏览器自动化操作流程：

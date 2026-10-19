@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-03T15:39:32.605Z
+type: feedback
+updated: 2026-09-03
 ---
 
 用户（非英语母语者）明确要求：**所有项目一律用中文命名，包括子项目（文件、文件夹）；所有仓库项目命名都改为中文**。起因是中英混名（如 `resource-ops` + `00_中央平台` 并存、`docs/设计`、仓库 slug 纯英文）让他混乱难懂。

@@ -6,6 +6,8 @@ metadata:
   type: 流程
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-15
+type: workflow
+updated: 2026-10-19
 ---
 
 # AI 问答宝（GPT 镜像站）最快打开流程

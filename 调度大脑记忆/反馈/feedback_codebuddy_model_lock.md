@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-02T05:36:47.264Z
+type: feedback
+updated: 2026-09-03
 ---
 
 codebuddy 派发时**不显式传 `--model`**，让 codebuddy 服务端按额度自动决定：

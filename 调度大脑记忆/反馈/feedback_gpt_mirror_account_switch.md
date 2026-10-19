@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-11T14:44:07.481Z
+type: feedback
+updated: 2026-10-06
 ---
 
 GPT 镜像站（AI问答宝，Plus账号多卡制）提问时：**当前账号达到使用限制，就点右上角的「切换账号」，换一个「活跃」账号来测试/继续，不要卡死在受限账号。**

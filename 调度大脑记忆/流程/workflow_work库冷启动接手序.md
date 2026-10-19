@@ -6,6 +6,8 @@ metadata:
   type: 流程
   created: 2026-09-30
   真源核验: 2026-09-30 逐个 Test-Path 通过
+type: workflow
+updated: 2026-10-10
 ---
 
 # 接手整个 Work 库：按这个顺序读，别凭印象

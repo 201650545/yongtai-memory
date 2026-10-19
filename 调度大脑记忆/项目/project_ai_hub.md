@@ -6,6 +6,8 @@ metadata:
   node_type: memory
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-09-08T00:00:00.000Z
+type: project
+updated: 2026-10-19
 ---
 
 # AI Hub 聚合平台（ai-hub · 已并入 ai-platform）

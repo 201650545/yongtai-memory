@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: f278da07-fa93-4c68-a18a-ce5d52941e3a
   modified: 2026-08-26T11:22:30.319Z
+type: feedback
+updated: 2026-10-06
 ---
 
 2026-08-26 郭老师明确（起因：cc 子代理默认模型路由到已失效的 modelscope 裸 ID `deepseek-ai/DeepSeek-V4-Flash-0731` 全部 400）：

@@ -6,6 +6,8 @@ metadata:
   type: feedback
   modified: 2026-09-03T16:39:07.900Z
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
+type: feedback
+updated: 2026-10-06
 ---
 
 郭老师（2026-09-03）指正：派子 Agent 跑任务，目的是**真实消耗网关里那些渠道的 API 额度**（魔塔每日过期/DeepSeek官方/B.AI 等），并从**网关用度日志**看到记录。他检查日志发现 fork 子 Agent 没有记录，追问是否子 Agent 用了我自己的模型。

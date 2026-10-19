@@ -1,3 +1,8 @@
+---
+name: common-concepts
+type: explainer
+updated: 2026-10-08
+---
 # common-concepts · 跨域共用概念
 
 > 会被多个项目反复引用的通用概念。避免每个项目条目里重复解释。

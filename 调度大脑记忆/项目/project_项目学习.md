@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: 项目
   modified: 2026-10-19
+type: project
+updated: 2026-10-19
 ---
 
 # 项目学习 · 外部产品拆解库

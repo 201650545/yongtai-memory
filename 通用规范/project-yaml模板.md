@@ -1,3 +1,8 @@
+---
+name: project-yaml模板
+type: rule
+updated: 2026-10-08
+---
 # project.yaml 模板
 
 > 机器可读项目元数据：AI / 脚本 / 未来的 workspace-index 自动汇总读这个；人类读 README。

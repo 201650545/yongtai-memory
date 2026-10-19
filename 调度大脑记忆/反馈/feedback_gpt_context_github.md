@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: f059f218-e941-4b54-98ea-83c91434329e
   modified: 2026-08-30T06:59:54.962Z
+type: feedback
+updated: 2026-10-12
 ---
 
 向 GPT 镜像站提问的方法与注意点（2026-08-30 用户明确）：

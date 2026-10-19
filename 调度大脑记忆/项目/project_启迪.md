@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: 项目
   modified: 2026-10-01
+type: project
+updated: 2026-10-19
 ---
 
 # 启迪 · 家长通知 Agent

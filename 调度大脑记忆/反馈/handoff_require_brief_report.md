@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-08-04T14:15:44.661Z
+type: feedback
+updated: 2026-10-06
 ---
 
 每次把任务交接给另一个 AI（可读本地文档的执行 Agent）时，交接/开工说明文档末尾的「验收输出」节必须固定要求：**完成后回报一份简短汇报**——模块×验收项 PASS/FAIL 表、变更文件清单、验证结果、已知偏差。例：《B类收口交接_给执行Agent_20260804.md》的执行方即产出《最终交付清单》。

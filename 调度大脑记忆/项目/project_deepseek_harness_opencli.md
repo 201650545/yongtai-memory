@@ -6,6 +6,8 @@ metadata:
   type: project
   modified: 2026-09-03T16:40:18.400Z
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
+type: project
+updated: 2026-10-06
 ---
 
 郭老师（2026-09-03，深夜放权）给的后备执行方法：**当调度大脑的 fork 子 Agent 实现不了"让别的平台的模型真跑"时，改用 Open CLI 调用 DeepSeek Harness 来控制它。**

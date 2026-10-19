@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: project
   created: 2026-09-22
+type: project
+updated: 2026-10-06
 ---
 
 # 网关项目现状与展望（2026-09-22 快照）

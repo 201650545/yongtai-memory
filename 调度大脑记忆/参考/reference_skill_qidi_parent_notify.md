@@ -3,6 +3,7 @@ name: 启迪家长通知 skill（qidi-parent-notify）
 description: 给启迪培训机构家长催费 / 发课表通知 / 出出勤明细图时，用这个 skill：固定流程 + 出图脚本 + 示例图，不用每次重新想。数据只在本机飞书表，不进 git、不进记忆。
 type: reference
 created: 2026-10-19
+updated: 2026-10-19
 ---
 
 # 启迪 · 家长通知 skill（qidi-parent-notify）

@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-11T14:24:28.021Z
+type: feedback
+updated: 2026-10-12
 ---
 
 用户要求：用浏览器（OpenClaw/CDP）操作时，打开的应是他**已打开在用的 Chrome**（十几个标签页，登录账号 永涛 / yongtaog767@gmail.com），不是新开的干净实例。

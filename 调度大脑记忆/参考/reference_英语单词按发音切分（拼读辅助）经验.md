@@ -6,6 +6,8 @@ metadata:
   type: reference
   created: 2026-10-16
   modified: 2026-10-16
+type: reference
+updated: 2026-10-19
 ---
 
 # 英语单词「按发音切分」给中国学生的经验

@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: e5ca6684-1e8b-4ac6-95bb-d10c88057836
   modified: 2026-09-01T15:29:39.273Z
+type: project
+updated: 2026-10-12
 ---
 
 2026-09-01 生图时发现：ark 上游对 `doubao-seedream-5-0-260128` 返回 429 `SetLimitExceeded`——账号已达该模型推理上限（安心体验模式：免费额度耗尽自动暂停）。控制台确认 Seedream-5.0-pro 与 5.0-lite 均显示「服务暂停」。**2026-09-01 用户拍板：搁置不管，不去做控制台恢复。** 替代路由见 [[project_image_gen_routes]] （原 `image-gen-routes`）（agnes 主 + CF flux 补 + seedream-4.5 备用）。

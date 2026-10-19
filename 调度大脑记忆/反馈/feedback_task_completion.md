@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 8ee5c1ea-99c5-4cbe-bf2c-52824ee32254
   modified: 2026-08-30T07:31:51.629Z
+type: feedback
+updated: 2026-10-12
 ---
 
 在执行任务过程中：**按顺序做；已经开始做的任务一定要「完结」（有明确结果/验收）再进入下一个**，不要留下半成品成为历史问题。

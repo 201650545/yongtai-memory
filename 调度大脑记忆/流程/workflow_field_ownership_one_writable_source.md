@@ -7,6 +7,8 @@ metadata:
   originSessionId: f969104b-ab73-4eac-a3ef-2a2649f10525
   modified: 2026-09-29
   关联批次: 2026-09-29 memory-work-inventory
+type: workflow
+updated: 2026-10-06
 ---
 
 # 字段产权：一份数据只允许一个人格可写

@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 2fd78737-0098-457f-9f20-e5e620ecec45
   modified: 2026-08-24T05:51:09.917Z
+type: lesson
+updated: 2026-10-08
 ---
 
 # 错误教训日志

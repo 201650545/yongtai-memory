@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-08-05T15:05:57.669Z
+type: feedback
+updated: 2026-10-06
 ---
 
 郭老师要求：**已完成的事不要反复汇报**；他问话时，只汇报**需要他决策的事项**，并**直接给选项让他拍板**，不要长篇陈述或开放式反问。

@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: 0138a5b8-9f25-4369-a9dc-1d07f8519516
   modified: 2026-08-21T14:37:35.689Z
+type: project
+updated: 2026-10-12
 ---
 
 英语教学资源生产项目在 `D:\英语教学\`，为 3 名学生（许颖嘉-基础/邓兴华-中等/李民宪-培优）产出 HTML 课件 + DOCX 配套练习 + 契约文件。生产前须先读 `D:\英语教学\00_格式规范\` 下的规范（唯一真源，多 Agent 共用）与 `Agent分工与文件路径指令.md`。

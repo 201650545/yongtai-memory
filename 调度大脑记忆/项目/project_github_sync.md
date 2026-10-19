@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: 72205e30-501c-4c38-91a5-20cf27cb4d60
   modified: 2026-08-11T12:52:12.162Z
+type: project
+updated: 2026-10-08
 ---
 
 GitHub 仓库 `github.com/201650545/english-teaching-production`（本地 staging 在 `C:\Users\郭永涛\AppData\Local\Temp\eng-teaching-up（已失效：临时目录，一次性产出，已随临时清理消失）`）定位：**生产方法库镜像**——00_格式规范/00_工具/00_总规划（命令+05_汇报）/样例课件/README。学生课件体积大不入库；飞书看板是状态镜像。两者是互补出口，本地 `D:\英语教学` 才是唯一真源。

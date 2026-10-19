@@ -6,6 +6,8 @@ metadata:
   type: 教训
   created: 2026-10-02
   modified: 2026-10-02
+type: lesson
+updated: 2026-10-06
 ---
 
 # 判"会不会弹窗"看 PE 子系统字节，不看名字也不看注释

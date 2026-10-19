@@ -7,6 +7,8 @@ metadata:
   originSessionId: f969104b-ab73-4eac-a3ef-2a2649f10525
   modified: 2026-09-29
   关联批次: 2026-09-29 memory-work-inventory（口径A 713 份／口径B 653）
+type: workflow
+updated: 2026-10-09
 ---
 
 # 协作纪律与台账格式（跨项目通用）

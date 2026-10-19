@@ -1,3 +1,8 @@
+---
+name: 02-Work-Vault
+type: explainer
+updated: 2026-10-08
+---
 # 02 · Work Vault
 
 > Work 库的定义。负责管理整个"干活"侧的内容。

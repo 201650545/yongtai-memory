@@ -1,3 +1,8 @@
+---
+name: reference_skill_listenloop_course_pipeline
+type: reference
+updated: 2026-10-19
+---
 # reference: 句读课程全流程工业化生产套件 Skill (listenloop-course-pipeline)
 
 > 创建日期: 2026-10-16

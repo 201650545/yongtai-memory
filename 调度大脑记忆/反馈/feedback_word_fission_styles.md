@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: feedback
   modified: 2026-10-18T08:30:00.000Z
+type: feedback
+updated: 2026-10-19
 ---
 
 # 词云裂变 · 用户选定的 4 种风格（2026-10-18）

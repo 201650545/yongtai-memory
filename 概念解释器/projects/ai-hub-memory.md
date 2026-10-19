@@ -1,3 +1,8 @@
+---
+name: ai-hub-memory
+type: explainer
+updated: 2026-10-08
+---
 # ai-hub-memory · 运行记忆仓
 
 ## 基本定义（六字段）

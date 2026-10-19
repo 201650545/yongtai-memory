@@ -1,3 +1,8 @@
+---
+name: project_curriculum_ideology_competition_2026-09-18_旧版全文
+type: project
+updated: 2026-09-18
+---
 # 课程思政教学竞赛（郴州市第二届）
 
 > type: project | 创建：2026-09-08 | **重写：2026-09-18（推倒重来 · 构思 v2）**

@@ -1,3 +1,8 @@
+---
+name: README
+type: routing
+updated: 2026-10-10
+---
 # workspace-index · 工作空间索引
 
 > AI 统一入口。本仓**只保存工作空间级元数据**：`projects.yaml` 回答 **WHERE**（有哪些项目、去哪找），`concepts/` 回答 **WHAT / NOT WHAT**（这些东西到底是什么）。项目正文和运行状态仍留在各自 Owner，本仓不保存任何项目的正文副本。

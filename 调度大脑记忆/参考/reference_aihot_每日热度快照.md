@@ -1,3 +1,8 @@
+---
+name: reference_aihot_每日热度快照
+type: reference
+updated: 2026-10-19
+---
 # AIHOT 中文 AI 资讯热度快照（每日）
 
 > **同步时间**：2026-10-19 16:36:55 (每日定时任务自动刷新落盘)

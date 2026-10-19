@@ -171,8 +171,8 @@ local_only:
     desc: 见 vault_registry.yaml 与 Home.md 子库一览
   - name: 经纬（Jingwei）
     path: D:\Work\经纬
-    desc: DeepSeek Harness 的无限画布 + 多模型 DAG 编排插件。对话建图 → 无依赖节点并行 → 产物落盘 → 画布观测与局部重跑；Claude Code 只作代码类节点、绝不当总控。首条业务线：小红书选题到待发布包。**2026-10-19 立项登记，状态 planning**：已有文档 00–08（含 MVP 设计、接口核实、实验方案）＋三份调研原件（取舍见 docs/04）＋ scripts/measure_subagent_run.mjs；**实验一《观潮》待跑**，阻塞点＝白名单是会话快照、必须开新会话且白名单为 high/flash（非 free-*）。记忆条目见 `D:\记忆\调度大脑记忆\项目\project_经纬.md`。登记在 local_only 而非 projects，因为尚无独立 repo
-    related: DSH（宿主）、API转发网关（:3100 作 provider）、客户端凭据网关（:8787 作 provider）
+    desc: DeepSeek Harness 的黑白无限画布插件（@local/jingwei）：把一次真跑的 DAG 画在右栏，节点只有标题/模型/耗时，可拖节点、平移、缩放；真跑由主 AI 发两路 subagent，产物落 artifacts，build_manifest.mjs 压成 app/data manifest，画布只读。**2026-10-19 深夜，状态 active（MVP 可用）**：插件已装进 desktop profile（symlink），最新真跑 20261019-212601-a41f（验收 10/10，墙钟 222.65s）；文档收敛为 docs/00–06，v1 dashboard 与旧实验归档到 archive/。登记在 local_only 而非 projects，因为尚无独立 repo
+    related: DSH（宿主）、API转发网关（:3100）、客户端凭据网关（:8787）、@local/jingwei（插件包）
 
 archived_2026_09_29:
   # 2026-10-19 郭老师定：`D:\Work\_归档\` 整目录已删除（含下列 飞书 与 dsh-personal-host 两项归档；

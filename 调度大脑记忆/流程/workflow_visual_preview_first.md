@@ -6,6 +6,8 @@ metadata:
   type: workflow
   originSessionId: 6a9eb06a2520a537297895e1
   modified: 2026-09-07T00:00:00.000Z
+type: workflow
+updated: 2026-10-06
 ---
 
 ## 方法：先出预览图 · 再定向生成

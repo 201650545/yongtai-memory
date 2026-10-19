@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: 0138a5b8-9f25-4369-a9dc-1d07f8519516
   modified: 2026-08-02T12:38:52.967Z
+type: project
+updated: 2026-10-06
 ---
 
 Codex(ChatGPT 桌面端) 的 `deepseek` 辅助 agent 通过本地代理访问 DeepSeek V4 Flash：

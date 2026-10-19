@@ -3,6 +3,8 @@ name: feedback_no_popup_windows
 description: 🔴 红线：任何脚本/计划任务/服务禁止弹出可见 cmd/控制台窗口（郭老师震怒级）
 metadata:
   type: feedback
+type: feedback
+updated: 2026-10-12
 ---
 
 # 🔴 红线：禁止一切可见控制台弹窗

@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: project
   modified: 2026-10-09T23:35:00.000Z
+type: project
+updated: 2026-10-09
 ---
 
 # 前端 App 页面美化与视觉重设计多模型协同 SOP（2026-10-09 郭老师定）

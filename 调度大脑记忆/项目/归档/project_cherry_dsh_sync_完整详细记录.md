@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: f278da07-fa93-4c68-a18a-ce5d52941e3a
   modified: 2026-09-01T10:28:44.191Z
+type: project
+updated: 2026-10-08
 ---
 
 # Cherry Studio ↔ DSH ↔ API 网关 模型同步（2026-08-25 架构变更）

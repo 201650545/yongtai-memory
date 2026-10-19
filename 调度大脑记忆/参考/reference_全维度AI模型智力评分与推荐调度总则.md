@@ -6,6 +6,8 @@ metadata:
   type: reference
   created: 2026-10-11
   modified: 2026-10-11
+type: reference
+updated: 2026-10-19
 ---
 
 # 全维度 AI 模型智力评分榜与推荐调度总则

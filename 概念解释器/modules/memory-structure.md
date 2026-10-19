@@ -1,3 +1,8 @@
+---
+name: memory-structure
+type: explainer
+updated: 2026-10-08
+---
 # modules · Memory 分类
 
 > ai-hub-memory 运行仓的内部结构分解。只写"是什么/边界/真源"，不复制记忆正文。

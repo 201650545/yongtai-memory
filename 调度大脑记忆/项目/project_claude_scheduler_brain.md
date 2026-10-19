@@ -6,6 +6,8 @@ metadata:
   type: project
   modified: 2026-08-31T07:15:27.452Z
   originSessionId: 8ee5c1ea-99c5-4cbe-bf2c-52824ee32254
+type: project
+updated: 2026-10-12
 ---
 
 **Claude Code = ai-resource-hub「AI 自助资源运营体系」的调度大脑（统一入口）**（用户 2026-08-30 托付：「我只在这个窗口跟你对话了，资源你来分配」）。

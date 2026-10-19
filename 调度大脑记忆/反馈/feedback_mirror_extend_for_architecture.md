@@ -6,6 +6,8 @@ metadata:
   type: feedback
   modified: 2026-09-03T16:39:21.857Z
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
+type: feedback
+updated: 2026-10-06
 ---
 
 郭老师（2026-09-03）指正：我在镜像版（AI问答宝 vip-XX.67673.live）问架构咨询时**没切到 extend 扩展模式，用了默认模型（AU）就发了**，他把视点说成浪费了一轮。架构/高智力问题本该用最先进模型把关（呼应 [[feedback_architecture_over_content]]）。

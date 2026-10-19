@@ -7,6 +7,8 @@ metadata:
   created: 2026-09-30
   modified: 2026-10-07
   实测方式: sherpa-onnx 1.13.8 隔离 venv 实跑＋8条标准测试波形＋字级毫秒时间戳探针
+type: reference
+updated: 2026-10-07
 ---
 
 # 本机本地模型清单（2026-10-07 郭老师最新裁定口径）

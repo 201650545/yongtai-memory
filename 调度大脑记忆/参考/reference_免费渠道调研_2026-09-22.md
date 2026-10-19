@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: reference
   created: 2026-09-22
+type: reference
+updated: 2026-10-06
 ---
 
 # 免费 AI 渠道调研（2026-09-22 快照）

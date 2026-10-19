@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 95cff9f0-c115-4770-a66a-5ed8ec23a5c2
   modified: 2026-08-12T01:00:16.127Z
+type: feedback
+updated: 2026-10-06
 ---
 
 郭老师对这个项目的**唯一判断标准**：只看前端（Dashboard 页面）能不能用、只关心「同意转发的 API 能不能调通」「AI 搜索能不能看到结果」。AI 搜索的返回内容他自己不看（那是给 AI 用的）。除此之外的后端/架构技术细节（缓存策略、build 一致性、freshness 规则、失败策略等）都由我自行决策，不用反复拿去问他。

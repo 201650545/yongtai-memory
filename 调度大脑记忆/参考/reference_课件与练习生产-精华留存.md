@@ -6,6 +6,8 @@ metadata:
   type: 参考
   created: 2026-10-08
   Howtoapply: 他问"哪些 GitHub 仓可以整合优化"时的处置范式＝先查隐私、再问保留价值、抽精华后删仓
+type: reference
+updated: 2026-10-19
 ---
 
 # 课件与练习生产（精华留存）

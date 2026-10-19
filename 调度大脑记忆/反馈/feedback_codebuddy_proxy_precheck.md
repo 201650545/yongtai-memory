@@ -6,6 +6,8 @@ metadata:
   type: feedback
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
   modified: 2026-09-01T16:21:22.467Z
+type: feedback
+updated: 2026-09-03
 ---
 
 codebuddy 任务派发前**必须前置测一次 7890 代理可达性**，不可达先不派或换执行位。

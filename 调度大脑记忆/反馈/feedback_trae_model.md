@@ -6,6 +6,8 @@ metadata:
   type: feedback
   modified: 2026-08-30T08:15:23.696Z
   originSessionId: 8ee5c1ea-99c5-4cbe-bf2c-52824ee32254
+type: feedback
+updated: 2026-10-12
 ---
 
 **用 TRAE SOLO（opencli trae-solo send）时，模型固定用 DeepSeek V4 Flash 正式版**，即当前打开对话的默认模型。

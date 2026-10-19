@@ -1,3 +1,8 @@
+---
+name: reference_Gemini网页版能力与限制
+type: reference
+updated: 2026-10-15
+---
 # Gemini 网页版：可驱动性、能力边界与实测结论
 
 > 建立：2026-10-15（DeepSeek 窗口实测）｜ 分类：参考 · 外部资源指针

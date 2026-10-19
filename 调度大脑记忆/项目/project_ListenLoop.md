@@ -6,6 +6,8 @@ metadata:
   type: 项目
   created: 2026-09-30
   modified: 2026-10-17
+type: project
+updated: 2026-10-19
 ---
 
 # 句读（ListenLoop · AI 精听训练器）

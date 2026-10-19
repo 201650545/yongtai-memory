@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: 反馈
   created: 2026-09-30
+type: feedback
+updated: 2026-10-08
 ---
 
 # 收尾不是回答完就完：三写＋实测

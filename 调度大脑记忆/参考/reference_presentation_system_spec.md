@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: reference
   modified: 2026-09-15T00:05:00.000Z
+type: reference
+updated: 2026-09-15
 ---
 
 # Presentation System｜演示文稿生产系统设计规范 v1.0

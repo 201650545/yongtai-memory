@@ -6,6 +6,8 @@ metadata:
   type: project
   modified: 2026-09-04T10:00:00.000Z
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
+type: project
+updated: 2026-10-19
 ---
 
 # DeepSeek Harness（DSH）基本情况

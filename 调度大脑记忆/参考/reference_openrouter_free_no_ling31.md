@@ -2,6 +2,7 @@
 name: openrouter-free-list-no-ling31
 description: OpenRouter 免费档只有带 :free 后缀的变体；ling-3.1-flash 是收费模型，已被 quota_guard 正确拦截
 type: reference
+updated: 2026-10-19
 ---
 
 # OpenRouter 免费模型判定口径（2026-10-16 实测确认）

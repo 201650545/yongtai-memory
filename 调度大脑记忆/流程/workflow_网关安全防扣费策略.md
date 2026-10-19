@@ -5,6 +5,8 @@ metadata:
   node_type: memory
   type: workflow
   created: 2026-09-22
+type: workflow
+updated: 2026-10-06
 ---
 
 # 网关安全防扣费策略

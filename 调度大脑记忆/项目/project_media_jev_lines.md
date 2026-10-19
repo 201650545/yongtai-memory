@@ -1,3 +1,8 @@
+---
+name: project_media_jev_lines
+type: project
+updated: 2026-10-12
+---
 # 路由分类 + 媒体/Jev/语音线（project_media_jev_lines）
 
 > 建立 2026-09-25。真源：`D:\项目\ai-hub\search_gateway\data\model_routes.json`（schema_version 2，mtime 热加载，改完即生效**无需重启**）

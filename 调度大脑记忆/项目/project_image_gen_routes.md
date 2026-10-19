@@ -6,6 +6,8 @@ metadata:
   type: project
   originSessionId: e5ca6684-1e8b-4ac6-95bb-d10c88057836
   modified: 2026-09-01T15:27:03.640Z
+type: project
+updated: 2026-10-12
 ---
 
 2026-09-01 实测五条生图通路（seedream-5.0 账号级暂停后，用户拍板：搁置 5.0，agnes 主 + CF 补）：

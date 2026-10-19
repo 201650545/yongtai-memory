@@ -1,3 +1,8 @@
+---
+name: ai-platform
+type: explainer
+updated: 2026-10-08
+---
 # ai-platform · AI平台
 
 ## 基本定义（六字段）
