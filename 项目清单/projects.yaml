@@ -140,6 +140,9 @@ projects:
 # —— 本地项目（无独立 GitHub 仓，按既有规矩不进 projects 列表，但外部 AI 需要知道它们在哪）——
 # 登记前提见 D:\Work\元智能\10_AI自成长引擎\双引擎立项收口交接_给执行Agent_20260919.md:181「以有独立 repo 为登记前提」
 local_only:
+  - name: WorkBuddy 账号切换器
+    path: D:\tools\WorkBuddy-Account-Switcher
+    desc: pywebview + 单文件 ui/index.html 的桌面小工具，做本机多个 WorkBuddy 账号的登录态切换与额度/容量看板。数据源为客户端凭据网关 :8787（必须用 scripts\gateway_daemon.py 启动，直接 pythonw server.py 会静默丢 lobster 渠道）。2026-10-20 完成图标换肤：商汤日日新 sensenova-u1.5-fast 出图 → 矢量化为 28 个 fill 路径图标，双主题跟随 currentColor。详见 D:\记忆\项目\project_workbuddy_account_switcher.md
   - name: 元智能
     path: D:\Work\元智能
     desc: 系统级治理本体（技能设计与治理、工作流与自动化、AI 自适应）。入口 generated/human/00_首页.md
