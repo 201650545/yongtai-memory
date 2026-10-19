@@ -1,6 +1,6 @@
 ---
 name: AGENTS
-type: other
+type: entry
 updated: 2026-10-19
 ---
 # 本仓只给 AI 读
