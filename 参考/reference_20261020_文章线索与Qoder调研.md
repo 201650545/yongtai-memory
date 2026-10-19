@@ -56,19 +56,25 @@ updated: 2026-10-20
 - **国际版和 CN 版都同步支持**；个人版免费用户、付费用户都能用。
 - 上下文窗口支持 **1M**，思考强度可拉到最大；1024 还有更大的活动（未剧透）。
 
-## 三、Qoder 白嫖可行性（本地实测，2026-10-20 00:3x）
+## 三、Qoder 白嫖可行性（本地实测，2026-10-20 00:3x 与 00:5x 两轮）
 
-**结论：现在还不能从 BUDDY/qoder 渠道白嫖。**
+**结论：还没做成，也没往 BUDDY 渠道里加。**
 
 - 我们 buddy2api 的 `qoder` 渠道只接了**国际版**：`https://api2-v2.qoder.sh/model/v1`；CN 版（`lingma.aliyun.com`）**未实现**。
-- 用本机 qoder 账号 token 直接打上游，6 个候选模型 ID 全部 `400 invalid_model_error`：
-  `deepseek-v4.1-flash-1017` / `deepseek-v4.1-flash` / `dfmodel` / `deepseek-v4-flash-1017` / `dmodel-flash` / `deepseek-v4.1-flash-1024`。
+- 第一轮 6 个候选 ID 全部 `400 invalid_model_error`：`deepseek-v4.1-flash-1017` / `deepseek-v4.1-flash` / `dfmodel` / `deepseek-v4-flash-1017` / `dmodel-flash` / `deepseek-v4.1-flash-1024`。
+- 第二轮又试 14 个变体（`deepseek-v4-flash`、`dfmodel-1017`、`dflash`、`d-flash`、`DeepSeek-V4.1-Flash`、`ds4.1f`、`v4.1-flash`、`dmodel`…）：
+  - `dmodel` → 200，但 `usage.raw_usage.model` 回传 **`oem-deepseek-v4-pro`**（即 DeepSeek-V4-Pro，官方 0.5× 档，**不是**免费的 1017 Flash）。
+  - `deepseek-v4-flash` → 404 `provider_error: All models failed`，details 里是 **`Model not exist.`**。
+  - 其余变体仍全部 `400 invalid_model_error`。
+- 换 `User-Agent`（QoderApp/0.4.5、0.5.0、0.5.2、1.0.0、2.0.0）重试 `deepseek-v4.1-flash-1017`，**全部 400**——不是客户端版本头在拦。
 - 模型目录端点（`/model/v1/models`、`/api/v2/model/list` 等）均 404；`api.qoder.com` 的目录端点返回 token 不认。
-- 判断：官方活动刚上线（帖子 42 分钟前），**本地 Qoder 客户端版本可能未下发新模型 ID**，或新 ID 走加密目录、需要在更新的客户端里取。
-- 下一步（等条件具备再做，不在本文件里猜）：
-  1. 升级 Qoder 客户端 → 重新导入账号 → 再探模型 ID；
-  2. 拿到可用 ID 后，改 `buddy2api/src/providers/qoder/constants.py` 的 `STATIC_MODELS / ALIASES / MODEL_CAPACITY`（上下文按 1M 声明，网关侧按 600K 上限策略收）；
-  3. 重启 8787 网关，`/v1/models` 出现后再看账号轮换器是否自动读到（它读网关模型目录）。
+- 判断：国际版 API 目前**没对现有 token 开放这个模型 ID**；要么等 Qoder 客户端升级后从新客户端里取真实 ID，要么该模型只在 Qoder 产品内（IDE/App）可用、不走这个反代端点。
+- 没动配置的原因：拿不到可用 ID 就往 `constants.py` 里加，只会让 `/v1/models` 多一个必然 400 的名字——比不加更坏。
+- 下一步（等条件具备再做）：
+  1. 升级 Qoder 客户端 → 在应用里**确认模型选择器出现 DeepSeek-V4.1-Flash-1017** → 重新导入账号；
+  2. 从新版客户端缓存/日志里取真实请求 ID，或再探一轮；
+  3. 拿到 ID 后改 `buddy2api/src/providers/qoder/constants.py` 的 `STATIC_MODELS / ALIASES / MODEL_CAPACITY`（上下文按 1M 声明，网关侧按 600K 上限策略收）；
+  4. 重启 8787 网关，`/v1/models` 出现后再看账号轮换器是否自动读到（它读网关模型目录）。
 - 时效提醒：免费到 **10 月 24 日**；之后要么恢复 0.1x 系数，要么等下一轮活动。
 
 ## 关联
