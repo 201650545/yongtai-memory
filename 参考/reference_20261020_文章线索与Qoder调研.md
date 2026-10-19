@@ -117,3 +117,23 @@ updated: 2026-10-20
 - [[项目/project_想法池]]（IDEA-020/021/022）
 - buddy2api：`D:\项目\ai-hub\buddy2api\src\providers\qoder\`
 - 账号轮换器：`D:\tools\WorkBuddy-Account-Switcher\`（`FREE_PROVIDERS` 含 qoder）
+
+
+### 抓包实证（2026-10-20 01:5x，mitmproxy，已恢复代理并删证书）
+
+- 抓到 Qoder 模型目录响应（openapi.qoder.sh/api/v1/remote/environments 的 vailable_models）：
+  - **dfmodel → displayName「DeepSeek-Flash」，description「Reasoning · Vision · New · 0x Credit」，priceFactor=0**（这就是郭老师看到的「DeepSeek V4 flash / V4.1 flash 1017」）
+  - qfmodel → Qwen3.8-Flash，**0x Credit**；dmodel → V4-Pro，0.5x；qmodel_38max 0.2x
+  - 说明：免费是**客户端权益**，模型 ID 就是 dfmodel。
+- 抓到 job token 流程：POST https://openapi.qoder.sh/api/v1/me/jobToken → 返回 jt-…，有效期 24h。
+- 但拿 job token + 仿客户端头（X-Qoder-Model / X-RequestSet-ID / X-Client-Timestamp / X-Machine-*）去打 pi2-v2.qoder.sh/model/v1/chat/completions：
+  - dfmodel → 400 Unsupported model；qfmodel → 400；deepseek-v4-flash → 404 Model not exist；dmodel → 200（V4-Pro）
+- 模型调用由 worker 进程**绕过系统代理直连**（HTTPDNS），抓不到实际请求；判断免费档只在客户端 agent 管线内可用，公共 API 不开放。
+- 结论不变：**BUDDY 加不了 Qoder 这条**；想要 V4.1 Flash 白嫖，用已有免费渠道（loomy / raccoon / traework）。
+
+### 千问办公（QwenWork）接入进度（2026-10-20 02:0x）
+
+- 已装千问办公 1.3.2（D:\QwenWorkCN），郭老师登录成功。
+- BUDDY 开 qwenwork 通道 + CB_GATEWAY_AUTO_IMPORT=1 后账号自动导入，/v1/models 出现 qwenwork/pro、qwenwork/flash、qwenwork/qwen3.8-max-preview。
+- 但调用 500：providers.qwenwork.encode.EncodeError: attempted to take ownership of Rust value while it was borrowed。
+- 原因：provider 按千问办公 **1.0.4** 协议写（官方 WASM prepareInferRequest），客户端已 1.3.2，WASM 接口变了。要升级 provider 的 encode 层才能用。
