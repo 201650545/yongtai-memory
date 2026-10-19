@@ -137,3 +137,9 @@ updated: 2026-10-20
 - BUDDY 开 qwenwork 通道 + CB_GATEWAY_AUTO_IMPORT=1 后账号自动导入，/v1/models 出现 qwenwork/pro、qwenwork/flash、qwenwork/qwen3.8-max-preview。
 - 但调用 500：providers.qwenwork.encode.EncodeError: attempted to take ownership of Rust value while it was borrowed。
 - 原因：provider 按千问办公 **1.0.4** 协议写（官方 WASM prepareInferRequest），客户端已 1.3.2，WASM 接口变了。要升级 provider 的 encode 层才能用。
+
+## 六、处置决定（2026-10-20 早）
+
+- 郭老师决定：Qoder 的 1017 既然公共 API 用不了，**把 Qoder 从 BUDDY 选定模型中移除**。
+- 已执行：`/admin/selected-models` 删除 `qoder` 渠道（原唯一暴露 `qoder/qwen3.8-flash`），接口返回 `dropped: ["qoder"]`；`/v1/models` 已无 `qoder/*`。
+- provider 代码与账号保留（不删），日后官方开放 API 或模型 ID 可用时可直接重新加入 selected_models。
