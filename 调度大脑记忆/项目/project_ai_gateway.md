@@ -19,6 +19,14 @@ metadata:
 
 > ⚠️ **2026-10-19 路径核实**：旧写法「仓库副本 `D:\Work\AI平台\apps\search-gateway` + `apps\api-gateway`」**已全部失效**——`D:\Work\AI平台` 整棵树不存在，`apps/` 副本未随行。郭老师答复：**AI平台 久已不用，唯一保留下来的是 `API转发网关`，其余作废**。
 > 代码/运行体一律以 `D:\项目\ai-hub\search_gateway\` 为准；文档仓以 `D:\Work\API转发网关\` 为准。`search_gateway.md` 已不存在，勿再引用。
+>
+> 🔴 **2026-10-19 重大澄清（此前记忆自相矛盾，害我差点误删运行体）**：
+> `D:\项目\ai-hub` 这个目录，`projects.yaml` 里曾登记为「已随 ai-platform 于 10-11 物理删除」，
+> **但事实是它一直活着，而且是本机命脉**——`:3100`（nssm 服务 `ai-gateway-3100`）与 `:8787` 都在监听，
+> 另有 **15 个计划任务**挂在它身上（渠道刷新 / 席位编排 / 网速测试 / 两个榜单快照等）。
+> 它的两个 GitHub 地址（`ai-hub.git`、`ai-platform.git`）**均已失效**（Repository not found），
+> 所以 116 个提交从 9-05 起就再也没推出去——**本地单机演进是当前唯一现实，别再尝试 push**。
+> **禁止删除、禁止移动该目录。** 详见 `projects.yaml` 的 `ai-hub` 条目。
 
 - **:3000 搜索聚合**：`unified_gateway.py`，多引擎 opencli 浏览器检索 + `/v1/chat/completions` + `/api/search_json`，定位为 AI 的无头搜索工具。
 - **:3100 API 转发**：`api_gateway.py`，OpenAI 兼容 LLM 渠道聚合转发，独立于 :3000，含路由编排/总开关/用量/限流/熔断/记账。

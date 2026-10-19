@@ -30,6 +30,36 @@ projects:
     desc: 【已彻底清退删除 2026-10-11 郭老师定】原 AI 基建大一统主仓；实际网关运行体在 ai-hub（:3100/:8787），文档并入 API转发网关，记忆在 D:\记忆，工作流在元智能。有效文档已移交 AI精听训练器 与 API转发网关，本地目录已物理删除
     migration: 2026-09-03 由 ai-hub + ai-resource-hub + feishu-data-hub + ai-hub-memory(协议) 整合而成；2026-10-11 彻底物理删除
     local: —
+    status_note: |
+      🔴 2026-10-19 实测更正（此前登记与事实严重不符，害差点误删）：
+      1. 本 repo 与 ai-hub 两个 GitHub 地址**均已失效**（`git ls-remote` 双双 Repository not found）。
+         本地 ai-hub 的 origin/main 最后一个提交是 2026-09-05「标记已迁往 ai-platform，仓库退役只读」——
+         即从 9-05 起本地与 GitHub 彻底分家，此后 116 个提交再也推不出去。
+      2. ⚠️ 本条目说「本地目录已物理删除」**只对 ai-platform 自己成立**；
+         但**承接运行体的 `D:\项目\ai-hub` 从未被删，且是活的核心服务**（详见下方 ai-hub 条目）。
+      3. 结论：不是「忘了推代码」，是「仓库已退役但服务没搬走，所有 Agent 仍在本地单机演进」。
+         迁移或真删需专门评估，禁止在未确认 :3100/:8787 依赖前动该目录。
+
+  - id: ai-hub
+    repo: —                                  # GitHub 地址已失效：ai-hub.git / ai-platform.git 均 Repository not found
+    name: AI 网关运行体（ai-hub · 实际活着，勿删）
+    status: active
+    visibility: private
+    entry: D:\项目\ai-hub\README.md
+    local: D:\项目\ai-hub
+    desc: |
+      🔴 **这是本机命脉运行体，禁止删除、禁止移动**（2026-10-19 郭老师定：先止住记忆与事实的矛盾，迁移另议）。
+      承载：**:3100 API 转发网关**（nssm 服务 `ai-gateway-3100`，所有模型调用走这）、
+      **:8787 客户端凭据网关**（实测 6 个活跃连接）、buddy2api 网关 daemon、
+      以及 **15 个计划任务**（ChannelDailyRefresh / OpenRouterFreeRefresh / AutoSeatOrchestrate /
+      Gateway3100_ScheduledReload / GatewayShadowPick / GatewaySpeedTestDaily / AALeaderboardRefresh /
+      AIHOTHotSnapshot / BenchmarkSnapshotSync 等）。
+      注意：`D:\Work\API转发网关` 只是它的**文档仓**，不是运行体；改代码/脚本一律动这里。
+    status_note: |
+      2026-10-19 核对：116 个提交，最新 10-17；245 个未提交变更（search_gateway 164 / buddy2api 65）。
+      两个 remote 均不可达 ⇒ **不要再尝试 push**，本地单机演进是当前唯一现实。
+      已按 7 天 TTL 清理 config/_backup 下 5 个 9 月旧备份（含 2 个 git 跟踪的配置起点）。
+      .bak-rename-20261019_011323 那 8 个按「文件名日期」保留（保护 10-19 改名操作的回滚点）。
 
   - id: ai-hub-memory
     repo: https://github.com/201650545/ai-hub-memory
@@ -60,7 +90,7 @@ projects:
     local: D:\Work\AI精听训练器\05_发布与问诊\listenloop-project
     handoff: D:\Work\AI精听训练器\05_GPT问诊台\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"
     curated: D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated      # github.com/201650545/listenloop-curated，评审/调研文档仓
-    desc: **2026-10-08 已收编**——原 `D:\Work\AI精听训练器\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
+    desc: 2026-10-08 已收编——原 `D:\Work\AI精听训练器\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
     todo: ~~目录改名~~ 已由郭老师 10-08 裁定「收编并入 ListenLoop」并执行完毕
 
   - id: workspace-index
