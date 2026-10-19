@@ -57,6 +57,6 @@ sha16 由 `D:\Work\元智能\runners\memory-scan-work.mjs` 于 2026-09-29 批算
 
 一项目一仓；main 单分支，文档改动即 commit，按里程碑推送；仓库内只有代码与文档，**成品资产一律不进 git**（见 [[feedback_handbook_security_redlines]]）。
 
-⚠️ **实测现状与此约定不符**：15 个 Work 项目里只有 5 个有 git（AI平台／课程思政教学竞赛／跃己／逆天主题／通用规范），10 个无 git。无 git 的项目只能靠 sha256 当锚点，漂移只能复算发现。
+⚠️ **实测现状与此约定不符**：15 个 Work 项目里只有 5 个有 git（AI平台／教案与课件设计（原课程思政教学竞赛，2026-10-19 改名）／跃己／逆天主题／通用规范），10 个无 git。无 git 的项目只能靠 sha256 当锚点，漂移只能复算发现。
 
 关联条目：[[user_guo_three_identities]]、[[reference_two_memory_repos_split]]、[[workflow_collab_discipline_and_ledger]]。

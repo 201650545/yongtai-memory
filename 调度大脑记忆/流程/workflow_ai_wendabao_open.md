@@ -354,7 +354,7 @@ opencli browser n8hh7hyn eval "$(cat 'D:/Work/AI平台/docs/runbooks/scripts/eva
 
 ### 可复用脚本清单
 
-位置：`D:\Work\课程思政教学竞赛\6-上课要用的素材（已失效：该子目录不存在，素材实际在 05_上课设计 下）\课件和教具\opencli_scripts\`
+位置：`D:\Work\教案与课件设计\6-上课要用的素材（已失效：该子目录不存在，素材实际在 05_上课设计 下）\课件和教具\opencli_scripts\`（2026-10-19 前项目名「课程思政教学竞赛」，已随项目改名更新）
 
 | 脚本 | 作用 |
 |---|---|

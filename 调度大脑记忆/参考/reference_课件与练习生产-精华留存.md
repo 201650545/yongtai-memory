@@ -1,6 +1,6 @@
 ---
 name: reference-课件与练习生产-精华留存
-description: 2026-10-08 从已删除的 PUBLIC 仓 english-teaching-production 里按"只留两点"抽出的最小可用集（HTML 课件 ＋ DOCX 练习卷）：落点 D:\Work\课件与练习生产\，35 文件/1.83MB，含 2 份精简规范、12 个引擎与验证器（语法自检通过）、3 模板、2 份 exam_spec、3 档样例；原 1370 文件与学生个人信息随仓删除
+description: 2026-10-08 从已删除的 PUBLIC 仓 english-teaching-production 里按"只留两点"抽出的最小可用集（HTML 课件 ＋ DOCX 练习卷）：落点原为 D:\Work\课件与练习生产\，**2026-10-19 郭老师定并入课程思政教学竞赛（同日改名「教案与课件设计」），现落点 D:\Work\教案与课件设计\07_课件与练习生产\**，35 文件/1.83MB，含 2 份精简规范、12 个引擎与验证器（语法自检通过）、3 模板、2 份 exam_spec、3 档样例；原 1370 文件与学生个人信息随仓删除
 metadata:
   node_type: memory
   type: 参考
@@ -9,6 +9,8 @@ metadata:
 ---
 
 # 课件与练习生产（精华留存）
+
+> **📍 2026-10-19 落点变更（郭老师定）**：原独立目录 `D:\Work\课件与练习生产\` 已并入课程思政教学竞赛（同日改名「**教案与课件设计**」），现为 `D:\Work\教案与课件设计\07_课件与练习生产\`。下文路径为并入前旧路径，已按新位置理解。
 
 ## 缘起
 
@@ -20,7 +22,7 @@ GitHub 13 仓盘点，`english-teaching-production`（10.2MB / 1370 文件 / 50 
 
 ## 处置
 
-1. 抽精华 → `D:\Work\课件与练习生产\`（35 文件 / 1.83MB）：
+1. 抽精华 → `D:\Work\课件与练习生产\`（35 文件 / 1.83MB；**2026-10-19 起已并入 `D:\Work\教案与课件设计\07_课件与练习生产\`**）：
    - `01_HTML课件规范.md`：单文件 HTML 全套硬约束（体积 ≥150KB、页数 40–45、page-id 契约、八环节预算、IndexedDB 采集、题目判定、风格包三轴正交、阅读 3+2 题型配额、**20 条硬门禁**、红线 R1–R7b）
    - `02_配套练习文档规范.md`：四部分 100 分/56 题结构、格式参数表、英文段落首行缩进 **1 字符**、制表位 1.5/6.5/11.5cm、简答 40 下划线/作文 60 下划线、选项随机化 `seed=课时号` 且相邻题答案字母不得相同、三档差异化表、八步生产流程
    - `引擎\`：`courseware_engine.py`(130KB)、`courseware_core.py`、`components.py`、`theme_colors.py`、`outline_renderer.py`、`docx_engine.py`、`build_practice_paper.py`（含 `randomize_all()`）、统一入口 `build_practice.py`、`verify_v2.py`、`verify_interaction_v1.py`、`verify_visual_v1.py`、`gen_l1_l13_v2.py` —— **`py_compile` 全部通过**
