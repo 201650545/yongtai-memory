@@ -145,6 +145,8 @@ local_only:
     related: DSH（宿主）、API转发网关（:3100 作 provider）、客户端凭据网关（:8787 作 provider）
 
 archived_2026_09_29:
+  # 2026-10-19 郭老师定：`D:\Work\_归档\` 整目录已删除（含下列 飞书 与 dsh-personal-host 两项归档；
+  #   文件仍被 Work 根仓跟踪，可从 git 历史 `git show` 找回）。下列 to 路径已失效，仅作沿革保留。
   - name: 飞书
     from: D:\Work\飞书
     to: D:\Work\_归档\飞书
