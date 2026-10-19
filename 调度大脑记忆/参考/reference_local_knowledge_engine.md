@@ -96,8 +96,10 @@ python indexer.py --vault "D:\Work" --embed
   手动立刻生效：`python indexer.py --vault "D:\记忆" --embed`（**不加 `--embed` 不编码向量**）。
 
 - **调用埋点**：每次检索追加一行 `10_AI自成长引擎\logs\knowledge-query.jsonl`
-  （时间 / 查询词 / 库 / mode / 命中数 / 检索耗时 / 模型启动耗时 / 前 5 路径 / cwd / argv），写日志失败静默。
+  （时间 / 查询词 / 库 / mode / 命中数 / 最高分 / 是否弱命中 / 检索耗时 / 模型启动耗时 / 前 5 路径 / cwd / argv），写日志失败静默。
   要看真实使用率就数这个文件按 `cwd` 分组，**别再解压几百个会话文件倒推**（2026-10-19 教训）。
+- **看没命中的查询**：`python query_evidence.py --misses`（默认 7 天；零命中或 top score < 0.08 的弱命中）。
+  这是别名表的增长回路：哪句搜不到，就把它的口语加进 `aliases.json`。
 
 ## 它不是什么
 
