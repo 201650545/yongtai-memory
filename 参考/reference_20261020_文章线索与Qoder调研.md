@@ -159,3 +159,11 @@ updated: 2026-10-20
 - `/v1/models` 里没有它，原因不是故障：`gateway_run.bat` 的 `CB_GATEWAY_PROVIDERS` 没列 `lobster`，启动时就没加载，于是选定模型里的 `lobster/*` 成了幽灵条目。
 - 「额度消耗快」的实际口径：lobster 扣的是积分，deepseek-flash 默认 thinking=high 单次消耗偏高；活动积分 10-25 到期，所以体感快。
 - 郭老师判断不好用，已从 `selected_models` 删除 `lobster`；DSH profile 重新同步后自检通过（0 漂移），备份 `cordis.patch.yml.bak-20261020_074701`。账号与 provider 保留，想恢复时把 `lobster` 加回启动列表与 selected_models 即可。
+
+### Lobster 重新启用与调优（2026-10-20 07:5x）
+
+- 郭老师定：Lobster 只用 `deepseek-flash` 一个模型，思考档默认调到 low。
+- 实测：上游没有真正的 low 档——`low` 的 reasoning 长度与 `high` 相当，只有 `off` 真正为 0；因此把 DSH 的 `low/minimal` 映射到上游 `off`，默认档也设为 `off`（客户端不传档位时显式带上，避免上游默认 high）。
+- 已改 `providers/lobster/constants.py` + `chat.py`；`gateway_run.bat` 重新启用 lobster；`selected_models` 只选 `lobster/deepseek-flash`；DSH profile 已同步、自检 0 漂移。commit `27f35d1`。
+- 每日领取：之前没做。已把 LobsterAI 加入 `daily_autoclaim.py`（新 App 条目，启动客户端后用积分差值判断是否到账），计划任务 `Buddy2API_DailyAutoClaim` 每天 01:25 跑。commit `bcbf303` + `fix` 提交。
+- 未验证项：LobsterAI 启动后是否确实触发每日登录奖励（明早任务跑完看日志 `daily_autoclaim.log` 里「积分 1343→1443」这类变化）。
