@@ -15,7 +15,7 @@ metadata:
 > **数据来源（三位一体权威体系）**：  
 > 1. 在线第一主榜：https://arena.ai/leaderboard（LMSYS 竞技场 · 盲测人类胜率与硬核编程 Elo）  
 > 2. 在线第二主榜：https://aihot.news/leaderboard（AIHot 热榜 · 中文全景与国内生态热度）  
-> 3. 本地每日快照：[[reference_AA全球模型每日量化快照]]（AA 量化大榜 · 每日 01:00 自动更新 TPS 与价格，生冷留7天/趋势留30天）  
+> 3. 本地每日快照：[[reference_AA全球模型每日量化快照]]（AA 量化大榜 · 每日 01:00 自动更新 TPS 与价格；**生冷快照与趋势摘要一律只留 7 天，超期每日自动删除**——郭老师 2026-10-19 定）  
 > 4. 学术工程基准：SWE-bench Verified / GPQA Diamond / MMLU-Pro ＋ API 转发网关（`:3100`）实测动态探针。
 
 ---
