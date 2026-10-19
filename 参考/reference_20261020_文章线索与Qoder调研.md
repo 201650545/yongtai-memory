@@ -152,3 +152,10 @@ updated: 2026-10-20
 - DSH profile 已用 `sync_dsh_profile.py` 重写（18 个模型），**需重启 DeepSeek Harness 才生效**；备份 `cordis.patch.yml.bak-20261020_074445`。
 - 自检仍报 4 处漂移：`lobster/deepseek-flash`、`lobster/qwen3.8-omni-flash` 已选定但网关无此渠道（历史遗留，非本次操作引入）；要不要一并清理由郭老师定。
 - qoder provider 代码与账号保留，日后可用时重新加回 selected_models 即可。
+
+### Lobster（有道龙虾）处置（2026-10-20 07:4x）
+
+- 渠道本身没坏：provider 代码齐全、账号 active（id=11）、上游额度查询 OK，剩余 **1343.37 积分**（标准订阅 0；新订阅活动 843.37，10-25 到期；新用户赠送 300，11-01 到期；每日登录 100+100）。
+- `/v1/models` 里没有它，原因不是故障：`gateway_run.bat` 的 `CB_GATEWAY_PROVIDERS` 没列 `lobster`，启动时就没加载，于是选定模型里的 `lobster/*` 成了幽灵条目。
+- 「额度消耗快」的实际口径：lobster 扣的是积分，deepseek-flash 默认 thinking=high 单次消耗偏高；活动积分 10-25 到期，所以体感快。
+- 郭老师判断不好用，已从 `selected_models` 删除 `lobster`；DSH profile 重新同步后自检通过（0 漂移），备份 `cordis.patch.yml.bak-20261020_074701`。账号与 provider 保留，想恢复时把 `lobster` 加回启动列表与 selected_models 即可。
