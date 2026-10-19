@@ -5,4 +5,4 @@ type: reference
 updated: 2026-09-03
 ---
 
-The tech-cofounder skill is located at D:\游戏\skills\tech-cofounder.
+The tech-cofounder skill is located at D:\游戏\skills\tech-cofounder（已删除）.

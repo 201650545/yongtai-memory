@@ -48,5 +48,5 @@ DSH(Cherry) 模型来源由「直连 7 provider」改为「统一走后端网关
 ## 源文件
 
 - 完整操作级/排障级详情、7 Provider/23 模型清单、SSE 修复过程 → `项目/归档/project_cherry_dsh_sync_完整详细记录.md`
-- 报告：`D:\Work\逆天主题\workers\汇报-资产缺口补齐.md`
+- 报告：`D:\Work\逆天主题\workers\汇报-资产缺口补齐.md`（已删除）
 - 教训汇总：`[[error_lessons]]`

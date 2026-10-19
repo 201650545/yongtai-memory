@@ -119,11 +119,11 @@ updated: 2026-10-07
 - 实测：同一张 932×1644 票据图 **4.1s／页、34 行**（商户名、注册号、GST 税号等可读）；自造中英混排图 **亚秒级、2 行全对**。
 - 必带环境变量 `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python`（paddle 2.6.2 与新版 protobuf 冲突，见 [[调度大脑记忆/参考/reference_local_paddle_ocr]]）。
 
-**⚠️ 本轮查清的一处旧账**：`C:\Users\郭永涛\.paddlex\official_models\` 里那 198MB（PP-OCRv6_medium det/rec、PP-OCRv5_mobile det/rec、doc_ori、textline_ori、UVDoc）**没有证据表明被 paddleocr 2.10 加载**：实跑不传任何 `model_dir`，权重整批落在 `~\.paddleocr\whl\` 的 PP-OCRv4（18MB，文件存在性已核），而 `.paddlex\official_models` 是 paddlex 3.x 的目录约定，本机装的是 2.10。本清单此前把它们写成"当前最新一代 PP-OCR 已装"，是把"下载过"当成"在用"，**已随本轮清理删除**（要再用得先装 paddlex 3.x 并显式指路径）。
+**⚠️ 本轮查清的一处旧账**：`C:\Users\郭永涛\.paddlex\official_models（已删除）\` 里那 198MB（PP-OCRv6_medium det/rec、PP-OCRv5_mobile det/rec、doc_ori、textline_ori、UVDoc）**没有证据表明被 paddleocr 2.10 加载**：实跑不传任何 `model_dir`，权重整批落在 `~\.paddleocr\whl\` 的 PP-OCRv4（18MB，文件存在性已核），而 `.paddlex\official_models` 是 paddlex 3.x 的目录约定，本机装的是 2.10。本清单此前把它们写成"当前最新一代 PP-OCR 已装"，是把"下载过"当成"在用"，**已随本轮清理删除**（要再用得先装 paddlex 3.x 并显式指路径）。
 
 ## 三、本轮清理账（2026-09-30 19:2x–19:3x，删前逐条 md5 复验）
 
-**C 盘回收 3.86 GB**：`~\.cache\whisper\{base,small,medium}.pt` 2057 MB（torch 格式，只被 `D:\listenloop\scratch\asr-export\export-onnx*.py` 按名字加载）＋ HF 缓存 `faster-whisper-base` 141 MB、`faster-whisper-medium` 1460 MB ＋ `.paddlex\official_models` 198 MB。
+**C 盘回收 3.86 GB**：`~\.cache\whisper\{base,small,medium}.pt` 2057 MB（torch 格式，只被 `D:\listenloop\scratch\asr-export\export-onnx*.py`（已删除） 按名字加载）＋ HF 缓存 `faster-whisper-base` 141 MB、`faster-whisper-medium` 1460 MB ＋ `.paddlex\official_models` 198 MB。
 **D 盘回收 8 GB**（可用 120G→**128G**）：本轮下载的 5 个 `.tar.bz2` 归档 1075 MB（**逐成员 md5 全等于已解压目录**：4/4、5/5、18/18、19/19、14/14，不同 0）＋ 川话方言包 218 MB ＋ `Xiaomi-OCR-0` 1685 MB ＋ `.venv-xiaomi-ocr` 905 MB ＋ `ocr_xiaomi.py` 等探针件。
 更早一轮（18:3x）：`listenloop\scratch\whisper-models\medium.pt` 1457 MB、`listenloop\dist\models\faster-whisper-small` 464 MB（均为逐字节孪生，孪生源删后复验仍在）、`AI精听训练器\dist\_models\` 两个 whisper 归档 310 MB。
 

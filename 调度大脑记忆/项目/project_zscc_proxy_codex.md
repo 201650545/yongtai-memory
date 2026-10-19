@@ -12,7 +12,7 @@ updated: 2026-10-06
 
 Codex(ChatGPT 桌面端) 的 `deepseek` 辅助 agent 通过本地代理访问 DeepSeek V4 Flash：
 
-- 代理脚本：`C:\Users\郭永涛\Documents\New project\tools\zscc_responses_proxy.py`（Python，监听 127.0.0.1:8787，把 Codex 的 Responses API 翻译成 Chat Completions）。
+- 代理脚本：`C:\Users\郭永涛\Documents\New（已删除） project\tools\zscc_responses_proxy.py`（Python，监听 127.0.0.1:8787，把 Codex 的 Responses API 翻译成 Chat Completions）。
 - 上游地址由环境变量 `ZSCC_UPSTREAM_BASE` 控制。**2026-08-02 已切换到 DeepSeek 官方 API**：`ZSCC_UPSTREAM_BASE=https://api.deepseek.com/v1`（原来默认 `https://api.zscc.in/v1`，因中转额度用完弃用）。
 - `DEEPSEEK_API_KEY` 用户环境变量 = DeepSeek 官方 key（`sk-564d...`，platform.deepseek.com 申请）。官方模型名是 `deepseek-v4-flash` / `deepseek-v4-pro`。
 - 启动器：同目录 `start-zscc-proxy.cmd`（幂等，已在运行则跳过）、`start-zscc-proxy.vbs`（隐藏启动）；开机自启走 Startup 文件夹里的 `ZSCC-Proxy.lnk`。日志在 `New project\logs\zscc_proxy.log`。改环境变量后必须重启代理（杀进程 + 跑 .cmd）才生效。
@@ -24,7 +24,7 @@ Codex(ChatGPT 桌面端) 的 `deepseek` 辅助 agent 通过本地代理访问 De
 **Codex 配置坑（2026-07-31 排障总结，极易踩）：**
 - `[windows] sandbox` 只接受 `"elevated"` 或 `"unelevated"`，写成 `"off"` 会导致 `Invalid configuration; using defaults`，整个配置被丢弃、应用卡加载。
 - `model_catalog_json` 指向的 models.json 每条必须有 `shell_type` 等必需字段，缺了同样报错丢配置。**干脆别用 model_catalog_json**，让 Codex 用兜底元数据即可。
-- 应用是 MSIX 商店版（`C:\Program Files\WindowsApps\OpenAI.Codex_...\ChatGPT.exe`，AUMID `OpenAI.Codex_2p2nqsd0c76g0!App`），运行时会改写 `~/.codex/config.toml`（会加回 `sandbox="elevated"`）。
+- 应用是 MSIX 商店版（`C:\Program（已删除） Files\WindowsApps\OpenAI.Codex_...\ChatGPT.exe`，AUMID `OpenAI.Codex_2p2nqsd0c76g0!App`），运行时会改写 `~/.codex/config.toml`（会加回 `sandbox="elevated"`）。
 - 重启应用：`Stop-Process` 全部 ChatGPT/codex 进程后，`Start-Process explorer.exe shell:AppsFolder\OpenAI.Codex_2p2nqsd0c76g0!App`。
 - 当前可用配置：`model="deepseek-v4-flash"` + `model_provider="deepseek-zscc"` + `sandbox="unelevated"`（不含 model_catalog_json / MCP 段）。
 

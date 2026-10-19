@@ -12,7 +12,7 @@ updated: 2026-10-12
 
 **Claude Code = ai-resource-hub「AI 自助资源运营体系」的调度大脑（统一入口）**（用户 2026-08-30 托付：「我只在这个窗口跟你对话了，资源你来分配」）。
 
-- **调度接入规范**：`D:\ai-resource-hub\docs\Claude 调度大脑_接入规范_2026-08-30.md`（资源库地图/查库命令/分配规则/三端同步/验收）。
+- **调度接入规范**：`D:\ai-resource-hub\docs\Claude（已删除） 调度大脑_接入规范_2026-08-30.md`（资源库地图/查库命令/分配规则/三端同步/验收）。
 - **资源库（配置真源）**：飞书多维表格 Base `StmDbTXQWaujshs9NpIc3UFpnAc`（9 表）。读用 lark-cli：`LARK="node $HOME/AppData/Roaming/npm/node_modules/@larksuite/cli/scripts/run.js"`；模型资源总表 `tbl5ONs0gzE7I5xI`（唯一真表）/能力规格 `tbllAPtPd68uDTTj`/实例 `tbl8bKuwqP0Wl4d1`/账号 `tblsrXWXX8GQ9hx4`。
 - **分配规则**：免费/低价优先（路由优先级升序）、同 routing_group 轮换不换模型、额度到点停、优先走 :3100 已编排组、测试用免费模型、quarantined (cap-aliyun-01) 不选。
 - **三项同步**：`cd /d/ai-resource-hub/sync && python sync_all.py`（GitHub↔本地 双向 + 飞书导出 CI 托管）。2026-08-30 修复 ai-hub-memory pre-commit 阻塞（5 项目 STATE 归档到 archive/projects/<p>/2026/ + ROUTER 登记 + CHANGELOG DROP），**三端同步全绿**。

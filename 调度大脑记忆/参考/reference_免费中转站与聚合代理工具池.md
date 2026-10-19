@@ -129,4 +129,4 @@ updated: 2026-10-08
 
 **关联**：`project_three_tier_free_models`（⚠️ 断链，目标不存在，2026-10-01 审计）、`reference_zenmux_free_models`（⚠️ 断链，目标不存在，2026-10-01 审计）、[[reference_本机本地模型清单]]、[[feedback_model_policy]]、[[project_cost_strategy]]、[[feedback_task_completion]]、[[lesson_gateway_restart_privilege_trap]]、[[project_贾维斯中控]]
 
-**锚点**：网关运行体 `D:\项目\ai-hub\search_gateway\`；实测交接单 `D:\记忆\轮次记录\交接_工具项目与DSH截断修复_给执行Agent_20261001.md`
+**锚点**：网关运行体 `D:\项目\ai-hub\search_gateway\`；实测交接单 `D:\记忆\轮次记录\交接_工具项目与DSH截断修复_给执行Agent_20261001.md`（已删除）

@@ -55,6 +55,6 @@ updated: 2026-10-08
 ## 五、顺带实测：真正还在弹窗的是 `:8787`（不是 `:3100`）
 
 - `:3100`/`:3102` 走 nssm 服务 ⇒ **无窗**，符合他的红线。
-- 但 `:8787`（客户端凭据网关 / `D:\tools\Buddy2API`）由计划任务 `Buddy2API_Gateway` 拉起，动作是 **`gateway_run.bat`**（.bat 里 `pythonw server.py` 是**前台阻塞**），任务设置 `Hidden=False` + `LogonType=Interactive` ⇒ **登录时会弹一个 cmd 窗口，且窗口会一直挂着**（bat 不退出）。
+- 但 `:8787`（客户端凭据网关 / `D:\tools\Buddy2API`（已删除））由计划任务 `Buddy2API_Gateway` 拉起，动作是 **`gateway_run.bat`**（.bat 里 `pythonw server.py` 是**前台阻塞**），任务设置 `Hidden=False` + `LogonType=Interactive` ⇒ **登录时会弹一个 cmd 窗口，且窗口会一直挂着**（bat 不退出）。
 - 证据：该任务 `LastRunTime=2026-10-08 07:20:49`，**`LastResult=3221225786`＝`0xC000013A`（STATUS_CONTROL_C_EXIT，关窗被杀）** ⇒ 说明窗口确实出现过、且被手动关掉；pythonw 随后成为孤儿进程存活（父进程为空）。
 - 与红线 `feedback_no_popup_windows`（🔴 禁止一切可见控制台弹窗）冲突。**修法候选**：把任务动作换成隐藏启动（VBS `WScript.Shell.Run(..., 0, False)` 包一层），或改任务为"不管用户是否登录都运行"——但后者跑在 session 0，**可能读不到用户已登录客户端的私有登录态**（这正是 :8787 的命根子），故优先前者。**未动，待郭老师点头**（属「客户端凭据网关」项目，非本项目）。
