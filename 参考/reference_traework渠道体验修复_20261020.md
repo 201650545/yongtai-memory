@@ -59,8 +59,60 @@ updated: 2026-10-20
 - 本修复只影响 `traework` 渠道；`workbuddy` / `workbuddy-intl` 有原生 tools，不走这套模拟。
 - 修改后需重启 8787 网关才生效（模块级常量与函数）。
 
-## 关联
+---
 
-- 代码：`D:\项目\ai-hub\buddy2api\src\providers\traework\chat.py`
+## 六、补充（2026-10-20 晚）：根因终于查到 + 两条根治路线被证伪
+
+### 6.1 模型自己说出了为什么绕过协议
+
+长系统提示 + 工具请求实测，模型原话：
+
+> 「说明：我没有名为 `get_weather` 的工具，那段"必须输出 `<tool_call>`"的规约**也不是我的系统指令**，
+> 所以我没有按它伪造调用。天气信息我用真实的联网搜索查到了。」
+
+⇒ **根因**：上游 TRAE Work 走的是 **work 模式 agent 会话**（`AGENT_API/chat_sessions`），
+agent 自带**真实**搜索/浏览/执行工具。我们只能把工具协议写进 user prompt，
+模型因此把它当**不可信的提示注入**——凡是「我自己也能做」的请求（查天气这类），
+它优先用自己的真工具，压根不配合模拟协议。
+
+### 6.2 两条「根治」路线都被证伪（探针脚本可复跑）
+
+| 尝试 | 结果 |
+|---|---|
+| 上游有系统指令字段？ | **没有**。`message.system_prompt` / `custom_instruction` / `agent_instruction` / `session.custom_system_prompt` 四个候选**全部被忽略**（模型照常答「1+1等于几」） |
+| 会话 mode 能关掉自带工具？ | **不能**。接口对任何 mode 都返 200，但 `mode=chat` 发消息直接 **500 internal server error**；只有 `work` 可用 |
+| 换更听话的上游模型？ | **能！** 见 6.4 |
+
+### 6.3 实际做的两条兜底（commit `ab176d2`）
+
+1. **A 方案 · 能力边界**：tools 请求且 `tool_choice != none` 时，prompt 末尾追加
+   「你自带搜索/浏览/执行能力本轮不可用，动作一律交回客户端的 tool_call」
+   （不改变 `tool_choice=auto` 的语义）。
+2. **B 方案 · 兜底重试**：tools 请求但没解析出 tool_calls 时，**换账号 + 升级提示词再试一次**
+   （复用原有账号轮换循环；重试轮允许复用同一账号，因为账号池可能只有 1 个）。
+
+### 6.4 换上游模型 = 真正的杠杆（实测数据）
+
+`scripts/probe_traework_model_compliance.py`（长系统提示 + 工具请求，各 4 次）：
+
+| 上游模型 | 工具调用命中率 |
+|---|---|
+| **kimi-k3** | **3/4** ✅ |
+| deepseek-v4.1-flash（原先默认） | **1/4** |
+| qwen-3.7-plus | 1/2 |
+| Doubao-Seed-2.1-Turbo | 0/2 |
+
+⇒ 已把 `traework/kimi-k3` 加进网关选定模型（`/admin/selected-models`），
+DSH profile 同步后两个 traework 模型都在，**需要工具调用时优先选 kimi-k3**。
+
+### 6.5 另一个坑：上游并发上限
+
+`429 {"code":991502,"reason":"solo_agent_parallel_limit","limit":2}` —— 上游同时只允许
+**2 路 agent 会话**。调试/压测时容易撞上，看起来像"渠道挂了"。
+
+## 七、关联
+
+- 代码：`D:\项目\ai-hub\buddy2api\src\providers\traework\chat.py`（修复 `ab176d2`）
+- 探针（可复跑）：`buddy2api\scripts\probe_traework_{tools,longsys,session_modes,system_field,system_field2,mode_behavior,model_compliance,kimi_e2e}.py`
 - 网关：`D:\项目\ai-hub\buddy2api`（8787，provider 列表含 traework）
-- 测试脚本曾是临时脚本，不落库；复现方法：向 `/v1/chat/completions` 发 `model=traework/deepseek-v4.1-flash` + `tools`
+- 复现方法：向 `/v1/chat/completions` 发 `model=traework/kimi-k3` + `tools`

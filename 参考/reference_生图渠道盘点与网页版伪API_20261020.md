@@ -1,0 +1,102 @@
+---
+name: reference-生图渠道盘点与网页版伪API
+description: 网关生图渠道全盘点（商汤/AGNES/即梦/豆包/元宝…，含免费与付费的边界）、buddy 渠道不能生图的结论，以及 opencli 驱动的「网页版生图伪 API」的实现与三个坑。
+type: reference
+updated: 2026-10-20
+---
+
+# 生图渠道盘点 + 网页版伪 API（2026-10-20）
+
+起因：郭老师问「我的 API 转发网关里哪些渠道能生图？免费的有哪些？buddy 渠道支不支持生图？」
+并定调：**ark/seedream 是付费的，删掉不用，只用即梦 CLI**；豆包/元宝网页版能生图，
+若不能反带就用 **opencli 模拟人类操作**做成「伪 API」——跟 ChatGPT 镜像版一个套路。
+
+## 一、结论速查（全部实测）
+
+| 渠道 | 能不能生图 | 免费？ | 实测 |
+|---|---|---|---|
+| 商汤日日新 `sensenova-u1.5-fast` | ✅ | ✅ 免费 | 11~12s，4.5~6MB PNG |
+| 商汤日日新 `sensenova-u1.5-lite` | ✅ | ✅ 免费 | 22.7s（慢一倍，别用） |
+| AGNES `agnes-image-2.5/2.1/2.0-flash` | ✅ | ✅ 免费 | UA 必须 `curl/8.5.0`；**直连 TCP 超时，走 7890 代理才通** |
+| ark `doubao-seedream-*` | ✅ 能 | ❌ **付费** | 已按指令**下线**（`api_gateway.py` 里删了分支，直接 400） |
+| 即梦（网页版 / jimeng-free-api） | ✅ 能 | ✅ 免费积分 | 见第四节 |
+| 豆包网页版 | ✅ 能 | ✅ 免费 | 伪 API 实测出图成功（171KB PNG） |
+| 元宝网页版 | ✅ 能 | ✅ 免费 | 同豆包流程，未单独验证 |
+| 千问 / Gemini / Grok / ChatGPT web | ✅ 能 | 免费但要登录态 | opencli 有原生 image 命令，未逐个验证 |
+| **buddy（workbuddy）** | ❌ **不能** | — | 见第二节 |
+
+## 二、buddy 渠道不能生图（三重证据）
+
+1. `:3100` 里的 `buddy` 是**回环自定义渠道**，指向 `http://127.0.0.1:8787/v1`（= Buddy2API），
+   只挂 `model=auto`，生图相关条目 **0**。
+2. Buddy2API 自己**没有生图端点**：`POST /v1/images/generations` → **404**；
+   `openapi.json` 35 条路由里 **0 条**含 image。
+3. 8787 目录 33 个模型，**0 个**生图模型名。唯一带生图名的是 loomy 的
+   `qwen-image-3.0-pro` / `Hy-Image-3.5-preview` / `doubao-seedream-5-lite`，
+   但上游**全部 404**「该模型暂未开放」——是上游没开，不是调用姿势问题。
+
+⇒ 要生图走 `:3100` 的 `image-gen`（商汤/AGNES/即梦/伪 API），**别走 buddy**。
+
+## 三、网页版生图「伪 API」怎么搭
+
+新服务：`D:\项目\ai-hub\image-pseudo-api\server.py`（**OpenAI 兼容**，端口 **8010**，
+计划任务 `ImagePseudoAPI` 常驻，开机自启）。
+在 `:3100` 里注册成自定义渠道 `imgpseudo`（`http://127.0.0.1:8010/v1`），
+是 `image-gen` 路由链的**末尾兜底**成员。登记脚本：
+`search_gateway/scripts/wire_imgpseudo_channel.py`（顺带把 ark/seedream 从链里摘掉）。
+
+### 豆包/元宝的流程（无原生 image 命令）
+
+`opencli <site> ask "<画图提示词>"` → **只回一段意图预演文本**，图是**异步**生成的 →
+每隔十几秒 `opencli <site> read -f json` → 适配器把图渲染成 `Image: <url>` 文本行 →
+解析该行 → 下载 URL → base64。实测从提交到出图约 **40~150 秒**。
+
+### 三个坑（都踩过）
+
+1. **Windows 上 subprocess 跑不了 `.CMD`**：`opencli` 是 npm 生成的 `opencli.CMD`，
+   Python 3.12 的 subprocess 先把程序名解析成 `.CMD` 再交给 `CreateProcess`，
+   而 CreateProcess 不能直接执行 `.CMD` ⇒ `FileNotFoundError(WinError 2)`；
+   `shutil.which` 却查得到，看着一切正常。
+   修法：直接调 node 入口 `node <pkg>/dist/src/main.js`（npm shim 本质就是它），
+   argv 由 Python 逐个传、不经 shell 解析；退路 `cmd.exe /c`（但长参数会被 cmd 再解析，长 JS 场景必须走 node）。
+2. **即梦的适配器会「假超时」**：`opencli jimeng generate` 靠
+   `img[src*="dreamina-sign"], img[src*="tb4s082cfz"]` 的**数量变化**判断出图，
+   页面是懒加载画廊时数量不变 ⇒ 一直 `timeout`，**但图其实生成了**
+   （页面历史里确实多出 3 张同提示词的图）。它的超时旋钮 `--timeout` 不存在，
+   只有环境变量 `OPENCLI_BROWSER_COMMAND_TIMEOUT`；且 `opencli browser eval` 的
+   CDP `Runtime.evaluate` 上限约 **115s**，所以要拆成「页内只提交 + 外部轮询」。
+3. **即梦的生成按钮别点错**：真按钮是 32×32 圆形图标按钮
+   （`button[data-generator-submit-available="true"]` / `.lv-btn-shape-circle`）；
+   只按 `lv-btn-primary` 匹配会命中抽屉里的「复制链接」「立即抢购」⇒ 点错、页面当然不生成。
+
+## 四、即梦 CLI（jimeng-free-api）—— 可靠解法，缺一个凭据
+
+`D:\项目\ai-hub\jimeng-free-api` v1.2.8：**OpenAI 兼容**、端口 8000、
+自建账号池 + 每日赠送积分自动领取（`credit_receive`）、积分不足自动降分辨率重试。
+
+| 模型 | 单张积分 |
+|---|---|
+| `jimeng-image-3.1` / `3.0` | 1 |
+| `jimeng-image-5.0-lite` | 3 |
+| `jimeng-image-4.7` / `4.6` / `4.5` / `4.1` / `4.0` | 4 |
+| `jimeng-image-5.0-pro` | 8 |
+
+**卡点**：要即梦的 `sessionid`（httpOnly  cookie，`document.cookie` 读不到，
+Chrome 侧是 app-bound 加密，脚本解不了）。需要郭老师手动取一次：
+F12 → Application → Cookies → `sessionid` → 复制值。
+拿到后：`Authorization: Bearer <sessionid>`（多账号用英文逗号分隔，服务自动轮询）。
+
+## 五、AGNES 那个 502 的修法（已落代码）
+
+`api_gateway.py` 的 `_handle_images` 原来用**裸 `urllib.request.urlopen`**，
+既不吃渠道配置的 proxy，也不走「直连不通自动回退代理」的自适应链路
+⇒ AGNES（`apihub.agnes-ai.com` 直连 TCP 超时，走 7890 代理 200）恒定 502。
+已改成 `channels._urlopen(req, timeout=300, channel_id=cid)`。
+
+## 关联
+
+- 伪 API：`D:\项目\ai-hub\image-pseudo-api\{server.py,README.md}`
+- 登记脚本：`D:\项目\ai-hub\search_gateway\scripts\wire_imgpseudo_channel.py`
+- 探针：`image-pseudo-api\{diag_jimeng.py,diag_jimeng_buttons.py,diag_jimeng_submit.py,probe_download.py}`
+- 即梦服务：`D:\项目\ai-hub\jimeng-free-api`（API.md 有完整接口与积分说明）
+- 计划任务：`ImagePseudoAPI`（开机自启，:8010）
