@@ -97,6 +97,14 @@ updated: 2026-10-19
   - **样板改造已落地**：`xhs-ops` 母仓 + `xhs-note-publish` 组件，规定性命中 **7→0 / 3→0**；九步流程与具体命令一字未删。
   - **验收**：YAML 有效｜能力键与 provider 清单零缺口｜规定性残留 0｜改前快照在位。commit `e1ad976`。
   - **解法要点（值得复用）**：抽象 ≠ 把工具名全删（全删会让 skill 变抽象文档、Agent 拿不到怎么做）。正解是**能力键进正文 + 命令留正文并标注"当前 provider 实现下的写法" + 选路判据去工具名 + 实现层坑下沉 provider**。
+  - **2026-10-20 23:01 补验收（我这条窗口）**：机制建好了但**验收器一直是红的** ⇒ 补三处后 **EXIT=0 转绿**：
+    ① `xhs-note-publish` 声明的 **`http.server` 能力键没登记**（判"未知能力键"）⇒ 补 `provider.http.serve_for_upload` 实现
+    （本机带 CORS 头的静态服务；坑：Python 自带 `http.server` **不发** CORS 头 ⇒ 网页侧必 `Failed to fetch`）；
+    ② 补**逐能力锁定**（`provider.override.<slug>.<域>.<能力>`）——`gateway-channel-catalog-inventory` 的 http 域能力**分散在两套实现**（curl 拉目录 / render_page 渲染）、
+    `xhs-note-publish` 的 `http.server` 在第三套 ⇒ 支持**一个 skill 的同一域按能力粒度分给不同实现**；
+    ③ **修验收器判定逻辑**（原来"有 override 就拿该域全部能力去对每个实现"⇒ 多实现场景永远判红；改为按"该实现负责哪几个能力"判定）；
+    另**重建正文基线**（34 个 skill；含今天新增 3 个与母仓改名导致的 4 处正文更新——**均已提交，不是未提交的在飞改动**）。
+    现状：腿一 ✅ 正文逐字节一致｜腿二 ✅ 每个 skill 在每个实现下能力都齐｜未知能力键 ✅ 无。commit（技能库仓 `8da53d6`）。
   - **已全量铺开**：18 条规定性条款**全部改到位**（`gpt-mirror-extended-review` 3、`gemini-web-review` 3、`ai-search-pool` 1、`xhs-note-publish` 7、`xhs-like-daily` 3、母仓 `xhs-ops` 3、母仓 `external-model-review` 1）—— 涉及 **4 个 skill + 2 个母仓总控**。
   - **⚠️ 铺开中发现并补上的设计缺口**：能力抽象后 skill 只声明 `browser.session`，**同域两个组件用了两套实现**（webbridge / opencli）——若不显式覆盖，实现会被 `provider.browser.default` **静默换掉**。故 provider 段新增 **`provider.override.<slug>.<能力>`** 路由层（已覆盖 `xhs-like-daily` → webbridge），provider 键 28→34。
   - **最终验收**：全库浏览器实现类规定性条款 **= 0**；能力声明与 provider 清单**零缺口**；各文件 `CHANGELOG.md` 补六段式；改前快照齐备。
