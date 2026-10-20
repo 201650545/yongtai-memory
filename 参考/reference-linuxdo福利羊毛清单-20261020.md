@@ -15,8 +15,8 @@ updated: 2026-10-20
 
 | 资源 | 内容 | 原帖 | 接入可行性 |
 |---|---|---|---|
-| **chatshare.tv** | 把 ChatGPT **plus/pro 免费席位**的 web 端反代成 API，**免注册、免费**，带聊天记录隔离 | /t/topic/3049759 | 站点活着（HTTP 200「公益试运营」），但 `/v1/models` 404 ⇒ API 路径要在网页里拿；★ 价值最高 |
-| **river.ai** | 注册送 **$25 额度**；`api.river.ai/v1`；模型 `deepseek-ai/DeepSeek-V4.1-Flash`、`zai-org/GLM-5.3-Flash`、`DeepSeek-V4.1-Flash-1017` | /t/topic/3048324 | ★ OpenAI 兼容，注册即用；**注册会弹手机号验证**（需免费接码平台）；额度要花 |
+| **chatshare.tv** | 把 ChatGPT **plus/pro 免费席位**的 web 端反代成 API，**免注册、免费**，带聊天记录隔离 | /t/topic/3049759 | 站点活着（HTTP 200「公益试运营」），但 `/v1/models` 404 ⇒ API 路径要在网页里拿；★ 价值最高。**2026-10-20 16:40 实测**：主页显示 **Plus 席 24/120 空余、Pro 满员**，点「进入 Plus」→ `POST /identity` 领匿名身份 → 跳 **chat.chatshare.tv**（ChatGPT web 镜像，共享 Plus 账号池），**15 分钟无活动自动释放席位**。已做出 opencli「域名可切」覆盖版（`OPENCLI_CHATGPT_DOMAIN=chat.chatshare.tv`），但随后站点对我们 **connection reset** ⇒ **未接成渠道**（不稳的不进链）。默认仍是 chatgpt.com，**不破坏原 ChatGPT** |
+| **river.ai** | 注册送 **$25 额度**；`api.river.ai/v1`；模型 `deepseek-ai/DeepSeek-V4.1-Flash`、`zai-org/GLM-5.3-Flash`、`DeepSeek-V4.1-Flash-1017` | /t/topic/3048324 | ★ OpenAI 兼容，**直连可达**（走 7890 代理反而不通，10061 拒绝）；`/v1/models` 返回标准 401「Missing or invalid Authorization header」⇒ **只差注册**。注册可能弹手机号验证（需免费接码平台），**要用户做** |
 | **maimai 中转** | 基于 oc 反代，**免费给 ds-1017** 用 | /t/topic/3047482 | 有注册码；帖里说"额度准备更新" |
 | **clinePass 闲置订阅** | 别人发的闲置额度（还剩 40%），模型前缀 `clinepass` | /t/topic/3049622 | 共享 key，稳定性看对方 |
 | **StepFun / 阶跃星辰 pro 套餐** | 两条 base64 订阅链接，剩 95~98%，**当天到期** | /t/topic/3049317、/t/topic/3047553、/t/topic/3049180 | 过期即废，要用得马上 |

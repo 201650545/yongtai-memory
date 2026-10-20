@@ -1,6 +1,6 @@
 ---
 name: project-经纬
-description: 经纬（Jingwei）＝DeepSeek Harness 的无限画布插件（@local/jingwei）。把一次真跑的 DAG 画在右栏，配左侧模型面板；执行器 v4 支持语义角色链（intake/produce/verify/merge/audit/output）。2026-10-20 状态 active：视觉语言升 v3（黑白为底 + 完成态绿单色相 + 模型面板入规），planner 断链真因已查明并换路由，重试链已加。真源 D:\Work\经纬\docs\00-项目总览.md。
+description: 经纬（Jingwei）＝DeepSeek Harness 的无限画布插件（@local/jingwei）。把一次真跑的 DAG 画在右栏，配左侧模型面板；执行器 v4 支持语义角色链（intake/produce/verify/merge/audit/output）。2026-10-20 状态 active：画布视觉语言升 v3.2（**纵向主轴 + DAG 拓扑分层**布局 + 三层节点结构 + 绿色唯一入口只给「执行完成」+ 反相签表达核查/交付结论），已按 GPT-6 Sol 第 3 轮裁决修正；planner 断链真因已查明并换路由，重试链已加。真源 D:\Work\经纬\docs\00-项目总览.md。
 metadata:
   node_type: memory
   type: 项目
@@ -204,3 +204,20 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
 - 模型来路：客户端凭据网关（`:8787`，buddy2api 零倍率，主力）、API转发网关（`:3100`，外网聚合，**易整层挂，只作兜底**）
 - 项目登记：`D:\记忆\项目清单\projects.yaml` → `local_only` 段「经纬（Jingwei）」
 - vault 登记：`D:\Work\元智能\machine\vault_registry.yaml` → 经纬
+
+## 2026-10-20 状态更新 · 画布 v3.2 第 1~2 段（+ GPT 第 3 轮复核）
+
+- **版式**：节点＝角色标签 / 标题 / 状态行 / 分隔线 / 结论签 / 来源行；绿色只出现在「12×2px 短线 + 执行完成文字」，
+  核查未过 / 人工退回 / 交付受阻用白底黑字反相签；intake＝委托卡，output＝作品封签。
+- **布局（关键变更）**：从「按语义角色分列、x = column × 240」改为 **纵向主轴 + DAG 拓扑分层**
+  （主轴 x=240；双列中心距 252、净间距 36；上下净间距 72；尺寸取 DOM 实测）。
+  ⚠️ 前者是**旧代码的实现**，不是 GPT-6 Sol 的原意 —— 抄规范时抄错了，已纠偏。
+- **坐标唯一真源**：`client.js` 的 `layoutMissing()`；编排器 `toGraph()` 不再输出 x/y。
+- **两条 GPT 点名的硬约束**：`dagRank`（逻辑层级）≠ `visualRow`（视觉行）；
+  **单元是布局策略不是 DAG 数据结构** —— 共享核查 / 多父核查不得硬挂到某个生产者上。
+- **旧坐标迁移**：`view.json` 记 `layoutVersion`；加载后检测节点真实矩形重叠；
+  冲突时给不阻断提示条 `[保留当前布局] [按新版式重排]`（可撤销），不擅自平移缩放旧坐标。
+- **回归**：`node scripts/test_all.mjs` → 65 断言全绿（新增 布局 15 + 渲染语义 23）。
+- **留档**：`D:\Work\经纬\docs\09-gpt6-第3轮裁决.md`（提问 + 裁决原文）。
+- **待办**：v3.2 第 3 段（连线：跨波次长边绕行、单一坐标系、边状态判据）、第 4 段（预览页适配）；
+  郭老师目视验收；`jingwei-public` 推送仍缺 GitHub 凭证。
