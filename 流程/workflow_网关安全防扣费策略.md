@@ -33,27 +33,25 @@ flowchart LR
 ```
 
 - **第一层 白名单制**：渠道未登记的模型一律拒（fail-safe）；被拦候选直接消失在候选链里
-- **第二层 最低额度门槛**：ark 白名单模型总免费额度必须 **≥250 万 token**（郭老师 9-22 定，同日追认 250 万档 V4-Pro 也可以）；低于门槛即使登记也拒
+- **第二层 最低额度门槛**：白名单模型总免费额度必须 **≥250 万 token**（郭老师 9-22 定，同日追认 250 万档 V4-Pro 也可以）；低于门槛即使登记也拒
 - **第三层 20% 警戒线**：白名单内剩余额度 ≤20% 自动停（deepseek-v4-flash 7.8%/16.9% 已被拦）
 
-## 二、渠道准入矩阵（2026-09-22 现状）
+## 二、渠道准入矩阵（2026-10-20 现状）
 
 | 渠道 | 策略 | 说明 |
 |---|---|---|
-| ark（方舟） | 白名单+≥250万+20%线 | 仅 doubao-seed-evolving(550万)、deepseek-v4-pro-ga-260813(250万档) |
-| ark-image | 白名单（张计价） | 只放 Seedream-4.5（157/200张）；5.0-pro 无免费额度默认拦 |
 | zscc | 白名单 | 只放 deepseek-v4.1-cc（钦定）+ Omni 双席（批准）；其余 96 模型拒 |
 | zenmux / openrouter | 每日免费快照白名单 | openrouter 另加 ling 三兄弟无后缀款 |
-| ark-coding | **已删除**（9-22 郭老师：不再买） | key+渠道+目录三清，备份 channels_b4_arkcoding_del_20260922.json |
 | tokenrhythm / deepseek / zhipu / gmi / bai / volcengine / siliconflow / mistral(chat) | deny_all | 付费/过期/保护余额；siliconflow+mistral 的语音/embedding 端点不受影响 |
+| **ark（方舟）/ ark-image / ark-coding** | **已全部删除**（2026-10-20 郭老师：方舟相关内容全删） | 渠道+额度闸门条目+arkcli CLI+计划任务+全部残留文件均已清；**不再有"等通知开放"状态** |
 
 ## 三、红线与坑册（新 Agent 必读）
 
-1. **付费禁测清单**（探针脚本硬编码）：deepseek、opencode、tokenrhythm、ark-coding（已删）。zscc 也禁主动压测（按量计费）。
+1. **付费禁测清单**（探针脚本硬编码）：deepseek、opencode、tokenrhythm。zscc 也禁主动压测（按量计费）。
 2. **密钥永不外泄**：渠道 key 不进 git/记忆文件/Obsidian；`data/` 整体 gitignore。Jev key 在 `data/typesafe_key.txt`。
 3. **改 quota_guard.json 必须无 BOM UTF-8**：PowerShell `Set-Content -Encoding UTF8` 带 BOM 会让 json.load 失败静默回退 last-good（用 `[IO.File]::WriteAllText($f,$t,(New-Object Text.UTF8Encoding($false)))` 或 python）。
-4. **白名单键=网关真实上游模型名**（ark 是 `deepseek-v4-pro-ga-260813` 这类带日期后缀的），不一致=fail-safe 拒绝（安全方向）。
-5. **额度数据保鲜**：ArkQuotaScan 每天 10:17 自动回写；手动刷 = 方舟控制台「开通管理」页对照改 remaining。
+4. **白名单键=网关真实上游模型名**（如 `deepseek-v4-pro-ga-260813` 这类带日期后缀的），不一致=fail-safe 拒绝（安全方向）。
+5. **额度数据保鲜**：白名单渠道的 remaining 靠每日自动盘点回写；手动刷 = 对应渠道控制台「开通管理」页对照改 remaining。
 6. **网关重启**：普通权限，禁 UAC；以 `netstat -ano | findstr :3100` LISTENING 为准。
 7. **观测端点**：`GET :3100/api/quota-guard`（免鉴权）看闸门全貌；`/api/route-log` 查每笔路由落渠。
 

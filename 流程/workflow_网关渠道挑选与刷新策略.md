@@ -30,7 +30,6 @@ updated: 2026-10-19
 |---|---|---|---|
 | `ChannelDailyRefresh` | 每天 00:23 | 自动读 model_routes.json 全量成员真调实测 + zenmux/openrouter 免费名单巡检（快照+diff） | 写 `data/渠道警报.log` |
 | `ZenMuxFreeScan` | 每天 00:23 | zenmux 免费模型快照（quota_guard 的 zenmux 白名单数据源） | 同上 |
-| `ArkQuotaScan` | 每天 10:17 | opencli 抓方舟控制台额度→快照→回写 quota_guard.json→破线告警 | 浏览器未就绪/未登录也写警报 |
 | `BaiWelfareCheck` | 周一 09:17 | bai 冷宫探监（限免 5 模型），福利回归报警接回 | 写渠道警报 |
 
 **警报义务（铁律）**：zscc deepseek-v4.1-flash-cc 失效必须**当日提醒郭老师拍板，绝不自行替换**；任何巡检失败（浏览器没开/未登录/页面改版）都要落渠道警报日志，不许静默。
@@ -49,7 +48,7 @@ curl http://127.0.0.1:3100/v1/models -H "Authorization: Bearer <网关key>"   # 
 
 - free-fast 4 席 / free-balanced 12 席 / free-heavy 2 席，全部当日实测绿
 - voice-asr 6 席（groq×2→mistral→硅基 3 免费款）/ voice-tts 2 席 / voice-chat 2 席（zscc Omni）
-- 生图：ark-image 闸门只放 Seedream-4.5（剩 157/200 张）；agnes 主力
+- 生图：agnes 主力（ark-image 闸门已于 2026-10-20 随方舟全删一并移除）
 
 关联 [[workflow_网关安全防扣费策略]] [[workflow_调度大脑交接手册]]
 

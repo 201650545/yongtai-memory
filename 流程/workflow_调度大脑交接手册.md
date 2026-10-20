@@ -26,8 +26,8 @@ updated: 2026-10-19
 | 网关 :3100（API 转发） | `D:\项目\ai-hub\search_gateway`（重启：`services\start_api_gateway_3100.ps1`，**普通权限禁 UAC**） |
 | 渠道编排（三档+语音链） | `data\model_routes.json`（mtime 热加载，改完即生效） |
 | 额度警戒闸门 | `services\quota_guard.py` + `data\quota_guard.json`（无 BOM！） |
-| 每日自动化脚本 | `scripts\daily_channel_refresh.py` / `zenmux_free_scan.py` / `ark_quota_scan.py` / `bai_welfare_check.py` |
-| 警报出口 | `data\渠道警报.log`（zscc 失效/方舟破线/巡检失败都写这里） |
+| 每日自动化脚本 | `scripts\daily_channel_refresh.py` / `zenmux_free_scan.py` / `bai_welfare_check.py` |
+| 警报出口 | `data\渠道警报.log`（zscc 失效/额度破线/巡检失败都写这里） |
 | monorepo（代码唯一家） | `D:\项目\ai-hub\search_gateway\services`（改完代码同步+commit+push） |
 | 共享记忆仓库 | `D:\项目\ai-hub-memory\projects\ai-resources\`（STATE/DECISIONS/CHANGELOG） |
 | 本 Obsidian 库 | `D:\记忆\`（git 管理，改完挂 [[索引]]） |
@@ -37,7 +37,6 @@ updated: 2026-10-19
 ## 三、每日例行（自动化已接管，人只看警报）
 
 - 00:23 ChannelDailyRefresh：编排全量成员实测 + zenmux/openrouter 免费名单巡检
-- 10:17 ArkQuotaScan：方舟额度盘点→回写警戒闸门（需 Chrome 开着且方舟控制台登录态）
 - 周一 09:17 BaiWelfareCheck：bai 探监
 - **Agent 开工时**先瞄一眼 `data\渠道警报.log`，有新警报按 [[workflow_网关渠道挑选与刷新策略]] 处置
 
