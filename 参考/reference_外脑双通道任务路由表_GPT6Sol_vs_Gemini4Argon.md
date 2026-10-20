@@ -251,6 +251,6 @@ updated: 2026-10-19
 - 上位总则：[[reference_全维度AI模型智力评分与推荐调度总则]]
 - AA 快照：[[reference_AA全球模型每日量化快照]]
 - Gemini 通道能力边界：[[reference_Gemini网页版能力与限制]]
-- 通道 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\` ｜ `...\gemini-web-review\`
+- 通道 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gpt-mirror-extended-review\` ｜ `...\gemini-web-review\`
 - 方法纪律同源 skill：`...\_收存_宿主自产\model-rank-recalibration\SKILL.md`（刻度/覆盖变更须重校准，不得沿用旧阈值、不得混表比较）
 - 项目侧（只留指针，不复制本表）：`English-Content-Factory\02_Projects\HN-ENGLISH-666\00_项目主控与看板\接手单_培优版主线.md` 遗留待办 #5

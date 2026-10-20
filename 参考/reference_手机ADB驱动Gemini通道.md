@@ -91,7 +91,7 @@ $xml = & $adb exec-out cat /sdcard/ui_ab.xml | Out-String
 
 ## 六、关联
 
-- 通道①（网页版）：`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gemini-web-review\`
+- 通道①（网页版）：`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gemini-web-review\`
 - 通道能力边界：[[reference_Gemini网页版能力与限制]]
 - 同机既有手机工作流：`D:\小浣熊\_phone_cdp\`（`heal.ps1` 建隧道 + `cdp.mjs` 走 CDP 控手机 Chrome；
   走的是 `adb forward tcp:9222 localabstract:chrome_devtools_remote`，**控的是手机 Chrome，不是原生 APP** —— 与本条通道互补）

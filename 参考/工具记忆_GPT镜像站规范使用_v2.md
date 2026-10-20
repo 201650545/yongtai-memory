@@ -8,7 +8,7 @@ updated: 2026-10-12
 > 2026-09-27 整合稿。来源：GPT镜像站送审流程手册（D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站送审流程.md）+ 2026-09-27 AI记忆卡三轮送审实测。
 > 旧散篇 feedback 保留不动，本文为整合正稿；与手册冲突时以手册 + 本文较新者为准。
 >
-> **⭐ 2026-10-11 关键更正（目标改回 Chat）**：实测 **`Work` 标签不可用**（据郭老师＝接 Codex、本账号无权限）—— Work + `GPT-6 Astra` + `Max` 下，连「1+1」「你好」都被 OpenAI 式安全拒绝挡回（`This content can't be shown for safety reasons`），切回 `Chat` 同题正常。**郭老师 2026-10-11 裁定：改回 `Chat` 标签 + 顶档 `High`，且默认模型必须用 `ChatGPT 6 Sol`**；2026-10-10 的「一律走 Work」裁定**作废**。**§二 已按此整节重写**；契约同步到 **v5**（`D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`）；skill 同步（`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\SKILL.md`）。
+> **⭐ 2026-10-11 关键更正（目标改回 Chat）**：实测 **`Work` 标签不可用**（据郭老师＝接 Codex、本账号无权限）—— Work + `GPT-6 Astra` + `Max` 下，连「1+1」「你好」都被 OpenAI 式安全拒绝挡回（`This content can't be shown for safety reasons`），切回 `Chat` 同题正常。**郭老师 2026-10-11 裁定：改回 `Chat` 标签 + 顶档 `High`，且默认模型必须用 `ChatGPT 6 Sol`**；2026-10-10 的「一律走 Work」裁定**作废**。**§二 已按此整节重写**；契约同步到 **v5**（`D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`）；skill 同步（`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gpt-mirror-extended-review\SKILL.md`）。
 > **⭐ 2026-10-10 站点改版（背景）**：镜像站换 **新版 ChatGPT UI**，旧档位文案 `Auto / Thinking• Extended / GPT-5.6 Luna` **一个字都不剩**。模型档位改为 **顶部 `Chat | Work` 标签 + pill 内 "Power" 滑杆**，默认 `Instant`。
 > **★★ 2026-10-11 模型纪律（郭老师明令）**：**默认必须用 `ChatGPT 6 Sol` + 顶档 `High`** —— 镜像站 Chat 里 `ChatGPT 6 Sol` 显示为 **`6`** 且**默认即选中**，**保持不动、不许改成 `GPT-5.6 Sol` / `GPT-5.5`**。`mode_gate` 已升**三闸**（Chat / 模型 `6` / pill `High`）。见 §二。
 > **⚡ 2026-10-11 跳转加速（新增 §一·五）**：旧流程（`open` 池页 → 点卡片 → `sleep 6` → 切档）**≈40s+** ⇒ 优化后 **复用 tab ≤8s / 热启动 ≤20s / 冷启动 ≤28s**；新增脚本 `fast_jump.js`（池页读 localStorage 跳转）与 `jump_and_ready.js`（一条 eval 完成等就绪+切档+断言）。
@@ -43,7 +43,7 @@ updated: 2026-10-12
 **标准调用序列（照抄）**
 ```bash
 S=$(opencli profile list | grep -oE '[a-z0-9]{8} default' | awk '{print $1}')
-SK="D:/Work/元智能/10_AI自成长引擎/技能库/phrasing-external-model-review/components/gpt-mirror-extended-review/scripts"
+SK="D:/Work/元智能/10_AI自成长引擎/技能库/external-model-review/components/gpt-mirror-extended-review/scripts"
 # ① 热路径：直连缓存的镜像 URL
 opencli browser $S eval "location.href='<缓存的 https://vip-XX.67673.live/>';'go'"
 R=$(opencli browser $S eval "eval(decodeURIComponent(escape(atob('$(base64 -w0 < $SK/jump_and_ready.js)'))))")
@@ -57,7 +57,7 @@ echo "$R"   # 必须 ok:true 才可发问
 ```
 - **缓存**：每次成功进入镜像后把当前 URL 写 `D:\Work\元智能\20_自适应工作流引擎\runtime\gpt_mirror_active_url.txt`（已删除）；下次先直连它。
 - ⚠️ `fast_jump.js` 会读 `authToken`（**敏感值**）—— 只在该 eval 内使用，**不落盘、不入仓、不回显**。
-- 两个脚本落点：`…\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\scripts\`（`fast_jump.js` / `jump_and_ready.js`）。
+- 两个脚本落点：`…\技能库\external-model-review\components\gpt-mirror-extended-review\scripts\`（`fast_jump.js` / `jump_and_ready.js`）。
 
 ## 二、模型选择：三闸门 —— ①留在 `Chat` 标签 ②**模型 = `ChatGPT 6 Sol`** ③顶档 `High`（2026-10-11）
 
@@ -80,7 +80,7 @@ echo "$R"   # 必须 ok:true 才可发问
    2. 聚焦 `[role=menuitem][aria-label="Power"]` 内的 **`[role=slider]`**，连发 `ArrowRight` 直到 `aria-valuenow == aria-valuemax`（**Chat 为 `0..2`，顶 = `2` = `High`**）。
    3. **关菜单**：⚠️ 合成 pointerdown / `keys Escape` / 原生 `click` **都关不掉** → 必须 **document 级 pointerdown**（见 §三.3 第 4 条）。
 5. 刷新 / 换对话 / 回历史都会重置回 **`Chat` + `Instant`**（模型仍是默认 `6`），无例外——**每次发送前重走三闸**。
-6. 一键脚本：`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\scripts\jump_and_ready.js`（确认 Chat + 校验模型 `6` + 推滑杆到顶 + 关菜单 + 断言 `High`，返回 `ok`）。
+6. 一键脚本：`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gpt-mirror-extended-review\scripts\jump_and_ready.js`（确认 Chat + 校验模型 `6` + 推滑杆到顶 + 关菜单 + 断言 `High`，返回 `ok`）。
 
 ## 三、注入与发送
 

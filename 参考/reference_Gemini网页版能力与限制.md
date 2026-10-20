@@ -58,7 +58,7 @@ button[aria-label^="Open mode picker"]     // 关闭态形如 "Open mode picker,
 > 🔴 **郭老师 2026-10-15 定：Flash 系不跑，要用 Gemini 就用 `4 Argon`。**
 > 简单问题靠**降 Thinking level** 提速，不靠降模型。
 
-**实跑验证**（脚本 `技能库\phrasing-external-model-review\components\gemini-web-review\scripts\set_thinking.js`）：
+**实跑验证**（脚本 `技能库\external-model-review\components\gemini-web-review\scripts\set_thinking.js`）：
 
 ```
 只设档位:  "currently Flash"      → "currently Flash High"     ok:true
@@ -121,5 +121,5 @@ Gemini 适合当作**纯文本能力补充**（把材料直接贴进去问），
 ## 七、相关文件
 
 - 发送脚本：`D:\小浣熊\_gemini_send.js`
-- 对照 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\`
+- 对照 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gpt-mirror-extended-review\`
 - 被用作测试对象的公开仓：`https://github.com/201650545/english-content-factory`
