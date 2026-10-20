@@ -47,9 +47,18 @@ updated: 2026-10-19
 |---|---|---|---|---|
 | IDEA-005 | 2026-09-30 | **P3 浏览器自动化工具的筛选与使用策略**（含 Kimi/opencli 等在用工具与后续 Computer Use） | assigned，未开工 | 元智能浏览器能力域 `docs\04` §七；`docs\07` §八 已给改法（把工具名从 skill 正文赶进安装配置） |
 | IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | assigned，未开工 | 前置＝`docs\07` §七 第三片"浏览器能力抽象"没落地之前，computer use 没有挂载点 |
-| IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | P1 done／P2 部分 | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
-| IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
+| IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | P1 done／P2 部分<br>**2026-10-20 复述：远程通道暂关，链子先断着，回头再说**（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
+| IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
+
+### §2 补充：IDEA-005 盘点稿已完成（2026-10-20）
+
+**盘点稿**：`D:\Work\元智能\10_AI自成长引擎\docs\08-浏览器能力域_Provider抽象_改造对象清单_20261020.md`（**纯只读盘点，未改任何 skill**）。
+
+- **规模**：技能库自产 skill 里浏览器工具名命中 **124 处**（规定性 36 / 描述性 69 / 历史流水 19）；**逐条判读后真正要改的约 18 条**，分布在 **5 个 skill + 2 个母仓总控**。其余是**坑与事实**——下沉到 provider 的 `known_pitfalls` 或原样保留，**不是删掉**。
+- **活标本**：同一母仓 `phrasing-xhs-ops` 下，`xhs-like-daily` 用 **webbridge**（`POST 127.0.0.1:10086/command` + 命名临时文件 + `curl.exe --data-binary @file`）、`xhs-note-publish` 用 **opencli** —— **两套浏览器实现同域并存**，正是 `docs\07` §八 病灶在自产资产里的**活体复现**；拿这两个组件做 provider 抽象样板最合适（同域、同母仓、两套实现、能力需求相近）。
+- **待他拍板 4 点**（清单末节有详述）：①映射表放技能库 `naming.yaml` 加 `provider:` 段，还是另起 `provider.yaml` ②能力声明的统一句式 ③改动顺序（母仓总控先还是组件先）④**验收依赖 `_中枢` 体检器，而其断链通道当前是坏的**（`dir /AL` 对 6 个宿主全检 0）⇒ 要先修体检器，否则改完只能手验。
+- **本条状态推进**：IDEA-005 由「assigned，未开工」→ **第一步（改造对象盘点）已完成**，第二步（provider 抽象落地）等他拍板上述 4 点。
 
 ## §3 未来想法（**只捕获，不排期、不执行**）
 
@@ -85,6 +94,7 @@ updated: 2026-10-19
 - **IDEA-009 · 浏览器类 skill 的统一治理**（2026-09-29）：原话「因为浏览器的 skill 有很多很多，我主要用的是 OpenCL。」**已升级为指派 P3**（IDEA-005）。第一动作候选＝按能力类别给已盘的 6668 份 SKILL.md 打标签，出"浏览器类有多少、谁在管"的数（`docs\06` 盘过覆盖面但没按能力类别切过）。
 - **IDEA-010 · 把自己的 skill 上架卖钱**（2026-09-30）：原话「搜一下腾讯的 skill pay，还有阿里的 skillpay 是什么情况，那是不是日后我也可以卖自己的 skill」。已查事实：腾讯 SkillPay（2026-07-16 上线，绑 SkillHub，**入驻要企业认证＋微信支付**，个人版未开）；阿里那个是**支付宝**的 `skillpay.alipay.com`（个人开发者可用，付款实时进开发者账户，一次性付费＝**向买方交付明文**）。两边都未公布抽成。**卡点不在平台在他自己**：他名下确定归属、不含第三方素材与密钥的自产件目前只有元智能那套 runners／判决管线。
 - **IDEA-011 · 多端联动**（2026-09-30，中期）：网关模型设置 ↔ CC Switch ↔ Claude Code ↔ DeepSeek Harness ↔ 阿里云远程控制（Codemote/贾维斯中控）串成一条链。他给的就是这个清单，**没给顺序与验收标准**。
+  - **2026-10-20 复述**：链子里的「阿里云远程控制」环节**暂时断了** —— 远程通道已按他的指令关闭（`CodemoteFrpc` + `RemoteCodingControl` 停止且不再自启）。**"链子先断着，回头再说"**；本条其余环节（网关↔CC Switch↔Claude Code↔DeepSeek Harness）不受影响，仍按原计划。
 - **IDEA-012 · 服务器取舍**（2026-09-30，中期）：已买阿里云 2 核 2G；在考虑加购腾讯优惠 4 核 4G。**决策点在他（钱）**，Agent 只给对比证据。
 - **IDEA-013 · "近期还有大的整合要做"**（2026-09-30）：**没说整合什么**。已知候选素材：网关上 VPS 后的双实例收口、渠道编排规则真源分叉、skill 货架/市场目录处置、全局 skill 治理。别猜，等他开专题。
 - **IDEA-014 · 常驻远期**：「无论用哪个 Agent 都懂全部项目、懂规则、每轮同步 Obsidian」——机制已于 2026-09-30 落地第一版（项目索引/rounds/ ＋ 四入口文档接手四读）；**本文件是它的第二块拼图**（想法也要跨 Agent 共享）。
@@ -129,6 +139,13 @@ updated: 2026-10-19
 - **前置依赖**：无强依赖；现有 `pipeline/align_ctc.py` 的 Zipformer CTC 已具备字级时间戳输出能力。
 - **未展开的细节**：字级时间戳是否直接并入 `fluent.json`/`sentences.json` 还是独立拆分；变色效果是纯文字跳色（TextSpan）还是平滑流动填充（ShaderMask）；高亮颜色配置入口放在播放页顶栏还是全局设置——都没说，别替他猜，等他开专题。
 - **状态**：in_progress (2026-10-12 用户下达「开始」，以《称赞》为首发原型正式开工)
+- **研究进展（2026-10-20，勘察结论；他已说明此项另有人在做，本 Agent 未开工）**：
+  - **① 播放端链路已通，且是零改动就绪**：`Sentence.charStarts`（`List<int>?`，毫秒，可选）→ `activeCharIndexAt(positionMs)`（有值走**精确时间戳**、无值走**均摊插值**）→ `sentence_display.dart:108` 与 `sentence_page_list.dart:544` 已把 `activeCharIndex` 传下去 → `chinese_textbook_ruby_layout.dart:174` 按 `i < activeCharIndex` 上色（已读=高亮色／未读=灰）。**数据一到位就自动生效。**
+  - **② 真正的缺口只有一个：`.lllesson` 包里没有字级时间戳。** 实测《称赞》包 `sentences.json` 61 句，键为 `id,text,startTime,endTime`，**无 `charStarts`** ⇒ 现在界面上那个"逐字高亮"其实是**按字数均摊的假象**（今日 `docs/audit_20261020_二三四年级双模审核报告.md:164` 已诊断过同一件事）。
+  - **③ 写入脚本已存在**：`D:\listenloop\scratch\align_chengzan_with_chartimes.py:73` 已有 `aligned_s["charStarts"] = char_starts`，且第 13 行按 `d["text"]` 的字符 + CTC `▁` 边界取时间戳（**不依赖 token 文本层**）。
+  - **④ CTC token 文本层有编码问题但不影响对齐**：`scratch/chengzan_tokens.json` 的 `tokens[].token` 是乱码（`▁ƎōŖ`/`ś`/`Ń`），但 `text` 字段正常、timestamp 正常；凡是用 `text[idx]+boundary` 对齐的都不受影响，**用 token 文本做修字表**（`rebuild_chengzan_ctc.py` 的 `獾→欢/儿→/做→坐` 那张表）才会失效。
+  - **⑤ 待定的三个取舍点（他还没说，别替他猜）**：字级时间戳落哪个键名（`charStarts` vs `charStarts`/`char_starts`，需与 App 侧读取契约对齐）｜变色是**整字跳色**（现状 `i < activeCharIndex`）还是**平滑流动填充**（需 ShaderMask）｜高亮色配置入口放**播放页顶栏**（`listening_top_bar.dart`）还是**全局设置**。
+  - 会过时，用前重查。
 - **研究进展**（2026-10-12 评估）：行业术语为“指读模式 / 卡拉OK逐字高亮（Karaoke / Character-level Highlight）”；包体积增量极小（500字增加约 2~4 KB JSON，占比 <0.1%），运行时每秒仅比较若干整数，内存与性能开销极低。建议作为可开关模式提供给一二年级低幼用户。
 
 ### IDEA-019 · 多平台发行（小红书之外的微信公众号）＋ 夸克网盘链接分发
