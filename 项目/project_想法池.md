@@ -58,12 +58,14 @@ updated: 2026-10-19
 - **规模**：技能库自产 skill 里浏览器工具名命中 **124 处**（规定性 36 / 描述性 69 / 历史流水 19）；**逐条判读后真正要改的约 18 条**，分布在 **5 个 skill + 2 个母仓总控**。其余是**坑与事实**——下沉到 provider 的 `known_pitfalls` 或原样保留，**不是删掉**。
 - **活标本**：同一母仓 `phrasing-xhs-ops` 下，`xhs-like-daily` 用 **webbridge**（`POST 127.0.0.1:10086/command` + 命名临时文件 + `curl.exe --data-binary @file`）、`xhs-note-publish` 用 **opencli** —— **两套浏览器实现同域并存**，正是 `docs\07` §八 病灶在自产资产里的**活体复现**；拿这两个组件做 provider 抽象样板最合适（同域、同母仓、两套实现、能力需求相近）。
 - **待他拍板 4 点**（清单末节有详述）：①映射表放技能库 `naming.yaml` 加 `provider:` 段，还是另起 `provider.yaml` ②能力声明的统一句式 ③改动顺序（母仓总控先还是组件先）④**验收依赖 `_中枢` 体检器，而其断链通道当前是坏的**（`dir /AL` 对 6 个宿主全检 0）⇒ 要先修体检器，否则改完只能手验。
-- **本条状态推进**：IDEA-005 由「assigned，未开工」→ **第一步（改造对象盘点）已完成，第二步（provider 抽象第一刀）已落地**：
+- **本条状态推进**：IDEA-005 **已完成（2026-10-20）**——盘点 → provider 段落地 → 全量铺开，三步走完：
   - `技能库\naming.yaml` 新增 **`provider.browser.*` 段**（28 键：8 个能力键、opencli 与 webbridge 两个实现、tab_policy、4 条坑下沉为 `pitfall_*`）。真值经 `opencli profile list` 实测核对（profile `d5vtd5bg`、v1.8.8、daemon_port 19825），非照抄文档。
   - **样板改造已落地**：`phrasing-xhs-ops` 母仓 + `xhs-note-publish` 组件，规定性命中 **7→0 / 3→0**；九步流程与具体命令一字未删。
   - **验收**：YAML 有效｜能力键与 provider 清单零缺口｜规定性残留 0｜改前快照在位。commit `e1ad976`。
   - **解法要点（值得复用）**：抽象 ≠ 把工具名全删（全删会让 skill 变抽象文档、Agent 拿不到怎么做）。正解是**能力键进正文 + 命令留正文并标注"当前 provider 实现下的写法" + 选路判据去工具名 + 实现层坑下沉 provider**。
-  - **待铺开**：剩余约 9 条（`gpt-mirror-extended-review`、`gemini-web-review`、`ai-search-pool`、`xhs-like-daily` 等）—— 另见盘点稿。
+  - **已全量铺开**：18 条规定性条款**全部改到位**（`gpt-mirror-extended-review` 3、`gemini-web-review` 3、`ai-search-pool` 1、`xhs-note-publish` 7、`xhs-like-daily` 3、母仓 `phrasing-xhs-ops` 3、母仓 `phrasing-external-model-review` 1）—— 涉及 **4 个 skill + 2 个母仓总控**。
+  - **⚠️ 铺开中发现并补上的设计缺口**：能力抽象后 skill 只声明 `browser.session`，**同域两个组件用了两套实现**（webbridge / opencli）——若不显式覆盖，实现会被 `provider.browser.default` **静默换掉**。故 provider 段新增 **`provider.override.<slug>.<能力>`** 路由层（已覆盖 `xhs-like-daily` → webbridge），provider 键 28→34。
+  - **最终验收**：全库浏览器实现类规定性条款 **= 0**；能力声明与 provider 清单**零缺口**；各文件 `CHANGELOG.md` 补六段式；改前快照齐备。
 
 ## §3 未来想法（**只捕获，不排期、不执行**）
 
