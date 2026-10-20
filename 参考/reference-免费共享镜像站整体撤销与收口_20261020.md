@@ -1,6 +1,6 @@
 ---
 name: reference-免费共享镜像站整体撤销与收口
-description: 2026-10-20 郭老师定调「免费镜像站被薅光了，不要搞了」⇒ 把别人共享的免费渠道整体撤销（7 渠道 / 3 路由 / image-gen 回落链成员 / 14 条自定义别名），只留自己账号额度；含策略结论、可逆方式、脚本与备份坐标、热重载 401 的坑。
+description: 2026-10-20 郭老师定调「免费镜像站被薅光了，不要搞了」⇒ 把别人共享的免费渠道整体撤销（7 渠道 / 3 路由 / image-gen 回落链成员 / 14 条自定义别名），只留自己账号额度；含策略结论、可逆方式、脚本与备份坐标、热重载 401 的坑。后记补 River AI 接入（自己付费额度进 high 链）与「网关把模型名整体转小写致上游 404」的通用 bug。
 type: reference
 updated: 2026-10-20
 ---
@@ -142,3 +142,56 @@ sensetime u1.5-fast → cloudflare flux-1-schnell → sensetime u1.5-lite
 - 成本与额度取向：[[项目/project_cost_strategy]]
 - 撤销脚本：`D:\项目\ai-hub\search_gateway\scripts\drop_free_mirror_channels.py`
 - 本轮流水：`轮次记录/2026-10-20.md`（免费共享站撤销段）
+- River AI 接入（本轮随后完成，见下节）：自己的付费额度，已进 `high` 链
+
+---
+
+## 十、后记：River AI 接入与本轮暴露的通用 bug（2026-10-20 20:45）
+
+撤销共享站之后，同一轮里补了一条**自己账号**的付费渠道 —— 这条正好是上面
+「只留自己账号额度」策略的正面样本，两条一起读才完整。
+
+### 10.1 River AI 是什么、怎么落的
+
+- 站点 `console.river.ai`（控制台）／`api.river.ai/v1`（OpenAI 兼容），注册送 $25 试用额度。
+- 由郭老师**本人注册**（邮箱 + 可能的手机验证，AI 做不完），key 由我用 opencli 在
+  `console.river.ai/keys` 页自助建成（不甩给用户）。
+- 落地形状：渠道 id `river`，**归 3100 管**（不是 8787 的 provider），已进 `high` 回落链第 3 位。
+- 实测：`POST :3100/v1/chat/completions {"model":"high"}` → 5.3s 回 `pong`；
+  点名 `{"model":"river/zai-org/GLM-5.3-Flash"}` → 5.7s 回 `pong`。
+- 可用模型：`zai-org/GLM-5.3-Flash` 200；`deepseek-ai/DeepSeek-V4.1-Flash` **上游 503**（River 侧未就绪，非本地问题）。
+
+### 10.2 踩到的通用 bug：网关会把模型名整体转小写
+
+**现象**：同一个请求，直打 `api.river.ai` 200，经 3100 必 404 `model_not_found`。
+
+**根因**：`search_gateway/services/channels.py` 的 `model_providers()` 第一步
+`q = model_name.strip().lower()`，把整个模型名转小写后才交给 `_resolve_prefixed_model()`
+剥渠道前缀 —— 剥出来的尾部已经是 `zai-org/glm-5.3-flash`，而 **River 的模型名大小写敏感**。
+
+**影响面**：凡上游模型名带大写的渠道都会踩（River、NVIDIA NIM 等）。这类渠道以前
+接得少，所以一直没暴露。
+
+**修法**（commit `4818cb1`）：前缀比较用小写、**尾部原样保留**；
+`model_providers()` 保留原始大小写的 `raw` 走前缀解析，`q` 只用于包含搜索。
+
+**记住判据**：以后接任何「上游模型名带大写」的渠道，先点名打一发验证，
+别等它被塞进回落链才发现。`a/b` 这种两层斜杠的模型 id 尤其要盯。
+
+### 10.3 两个操作层的坑
+
+1. **`chrome-error://chromewebdata/` 是中间态，不代表页面坏了**。
+   `console.river.ai` 加载时会先跳 `auth.console.river.ai`，opencli 读 `location.href`
+   拿到的是这个错误页 URL，**但页面其实正常渲染了**（截图一看就是 Sign up 表单）。
+   别被 URL 骗，截图确认。
+2. **`sync_dsh_profile.py` 会改默认模型**。它会把 `agent-default-model` 从
+   `deepseek-official/deepseek-flash` 改成 `workbuddy-intl/deepseek-v4.1-flash`
+   （因为前者不在 buddy2api 的 `selected_models` 里）。**每次跑完同步都要还原**，
+   否则用户的默认模型被静默换掉。
+
+### 10.4 归属原则（这条值得单独立住）
+
+**river 这类渠道不进 8787 的 `selected_models`**。`selected_models` 管的是 8787 自己的
+provider 池（workbuddy / qwenwork / loomy …），river 是 3100 侧的外部 API 渠道，
+通过 `high` / `flash` 编排路由被调用。放错地方会造出**幽灵条目**：
+8787 的 `/v1/models` 里查不到、DSH 里却有，选到就 404。

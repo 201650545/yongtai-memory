@@ -278,8 +278,15 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
 - **理由**：商汤「日日新」出图带 logo 水印；**AGNES 实测无水印**（下载原图目视确认，四角干净），且是免费配额渠道。
 - **已改路由**：`search_gateway/data/model_routes.json` → `routes.image-gen.members`
   新顺序 = `agnes-image-2.5-flash` → `agnes-image-2.1-flash` → cloudflare flux-1-schnell →
-  loveyy gpt-image-2.5 → imgpseudo doubao-image → **商汤 u1.5-fast / u1.5-lite（降为末席兜底）**。
+  ~~loveyy gpt-image-2.5~~ → imgpseudo doubao-image → **商汤 u1.5-fast / u1.5-lite（降为末席兜底）**。
   mtime 热重载生效，**不用重启网关**；实测 `X-Resolved-Channel: agnes`。
+
+  > ⚠️ **2026-10-20 21:00 更正**：`loveyy` 已按郭老师「免费镜像站被薅光了，不要搞了」**整体撤销**，
+  > 上面的链里**已没有它**。当前实际链（2026-10-20 22:00 复核）：
+  > `agnes-image-2.5-flash` → `agnes-image-2.1-flash` → `cloudflare flux-1-schnell` →
+  > `imgpseudo doubao-image` → `sensetime u1.5-fast` → `sensetime u1.5-lite`。
+  > 口径以 [[参考/reference-免费共享镜像站整体撤销与收口_20261020]] 与
+  > `search_gateway/data/model_routes.json` 实际内容为准。
 - **踩坑（已修）**：**AGNES 返回 `url` 形态不是 b64**（商汤/Cloudflare 才给 b64）
   ⇒ 只认 b64 的消费方会挂。已在 `orchestrator-v4.js` 补 url 分支（`fetch(url)` 下载再转 base64），提交 `5350f98`。
   端到端实测：网关 → AGNES(200, 9.0s) → 下载(200) → PNG 落盘 244 KB，magic 校验过、目视无水印。
