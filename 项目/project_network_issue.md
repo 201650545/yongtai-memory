@@ -65,10 +65,30 @@ updated: 2026-09-03
 - 改内核配置前务必先 YAML 语法校验——配置写坏会把整个代理内核带崩。
 - 应用层细节与验收判据见教训 [[lesson_workbuddy国际版不读系统代理]]。
 
+## 2026-10-20 晚：TUN 模式关闭定案 ＋ 工具层代理补齐（取代 10-12 的"保持 TUN 开启"）
+
+**决定（郭老师明确）**：**TUN 模式保持关闭**——开了特模式基本没网，节点质量太差。10-12 轮次里"保持 TUN 模式正常运行（服务 git/npm 透明代理）"那条**已作废**，不要再拿它当现状依据。
+
+**现状（实测）**：
+- `D:\02-AI工具\Sparkle\data\mihomo.yaml`：`mode: rule`（规则模式）、`tun.enable: false`；Wintun 虚拟网卡 `Disconnected`；
+- 进内核的入口是**系统代理**（`data\config.yaml` → `sysProxy: enable: true, mode: manual` → 127.0.0.1:7890），**只有认系统代理的应用**会被内核接管并按规则分流；
+- 不认系统代理的命令行工具**完全在本地直出**，不受规则管辖 ⇒ 必须逐个配代理。
+
+**TUN 关闭后的等效方案（三层，已全部落地）**：
+1. **系统代理**（已有）→ 图形/系统应用走内核，内核内按规则分流：国内 `GeoSite(cn)`→DIRECT、国外→对应策略组、兜底 `MATCH,节点选择`；
+2. **工具级代理配置**：`git http.proxy=127.0.0.1:7890`（原有）、`npm proxy/https-proxy=127.0.0.1:7890`（本轮补）、`pip global.proxy/global.https-proxy=127.0.0.1:7890`（本轮补）；
+3. **用户级环境变量兜底**：`HTTP_PROXY`/`HTTPS_PROXY`=`http://127.0.0.1:7890`、`NO_PROXY=localhost,127.0.0.1,::1,.local`（本轮补）→ 覆盖 uv、huggingface-cli、node/python 系、curl 等只认 env 的工具。
+
+**关键认知**：设了 env 代理后，**国内流量并不会吃代理流量**——请求先进内核，内核按 `GeoSite(cn)` 判 DIRECT 后本地直出，节点只多一跳本地转发。
+
+**实测验证（2026-10-20 晚）**：git ls-remote GitHub 1.6s ✅；npm ping 367ms PONG ✅（不带 --proxy）；pip download six 4.3s ✅；uv 解析 PyPI 241ms ✅；hf 报"Not logged in"＝已连通 ✅。
+
+**顺带修正**：国内版 WorkBuddy（workbuddy.cn）走 `GeoSite(cn)` 直连、国际版（workbuddy.ai）走代理——**同名应用的国内外版本现在分流正确**，见本卡 2026-10-20 前一节。
+
 ## 系统信息（2026-04 首次）
 
 - 系统：Windows 11 Home China 10.0.26200
 - Wi-Fi 网卡：Realtek RTL8852BE WiFi 6 802.11ax
 - 接口名：WLAN
-- 代理软件：Sparkle（使用 Meta Tunnel 驱动）
+- 代理软件：Sparkle（Meta Tunnel 驱动；**TUN 自 2026-10-20 起关闭，改走系统代理＋工具级代理**，见上节）
 - 旧驱动：Wintun（已卸载）

@@ -66,7 +66,7 @@ updated: 2026-10-19
   凭据类文本、不可逆确认按钮与 `delete` 键；每次拦截带 `force=True` 可显式强制。
 - **截图默认只落本地路径**，要模型直接看图才显式要 `with_base64=True`；支持 `region` 指定区域。
 
-**落地物**：`D:\项目\ai-hub\search_gateway\mcp\computer_use_mcp_server.py`（7 工具）＋ `_ocr_worker.py`（OCR 子进程，跑系统 Python）
+**落地物**：`D:\项目\ai-hub\search_gateway\mcp\computer_use_mcp_server.py`（**1 个工具 `screen`**，action 分流：read/click/type/key/scroll/drag/activate）＋ `_ocr_worker.py`（OCR 子进程，跑系统 Python）
 ＋ `_probe_computer_use.py`（自检，EXIT=0：只读全通、OCR 识别 56 行、两条危险拦截生效）＋ `mcp_config.json` 注册 ＋ README 章节。
 
 **踩过的坑（已修）**：
