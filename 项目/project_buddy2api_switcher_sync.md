@@ -19,7 +19,6 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
 
 切换器 `D:\Tools\WorkBuddy-Account-Switcher`（pywebview + 单文件 `ui/index.html`）
 与网关 `:8787`（`D:\项目\ai-hub\buddy2api`）之间靠三条**没写下来**的通道连着：
-
 | # | 通道 | 具体依赖 |
 | :-- | :-- | :-- |
 | 1 | 直读网关 SQLite | `logs`（account_id / model / created_at / error_msg / status_code / total_tokens / credit / provider / duration_ms / prompt_tokens / completion_tokens）、`accounts`（id/name/uid/provider/domain/status/total_tokens/total_requests）、`account_resource_cache`（account_id/payload）、`account_checkin_cache`（account_id/checkin_date/payload）、`settings`（key/value，`key='selected_models'`） |
@@ -31,6 +30,7 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
 ⇒ 网关一改字段，切换器**不报错、不弹窗**，只是**静默显示 0 / 空列表** ⇒ 「数据没打通」，而人看不出来。
 
 **另有一个隐性风险**：切换器**不在任何 git 仓库里** ⇒ 改了它没有历史、没法回滚、也没法让下一个 AI 知道改过什么。
+（**已于 2026-10-21 00:32 解决**，见 §七）
 
 ## 三、落地的解法
 
@@ -83,5 +83,21 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
 
 ## 六、遗留（未做，等郭老师点）
 
-- 切换器**纳入 git**（现在改了没历史、没法回滚）——要么建本地仓，要么并进 `ai-hub` 仓
 - 切换器里 `except Exception: pass` 的静默吞异常本身还没改（自检只是**外部探针**，不是根治）
+- 旧目录备份 `D:\Tools\WorkBuddy-Account-Switcher.bak-20261021_0032` 还在（可回滚用），确认无误后可删
+
+## 七、切换器并入 ai-hub 仓（2026-10-21 00:32）
+
+- **真源**：现在在 `D:\项目\ai-hub\buddy2api\switcher\`（54 个文件，已提交 `6787b0b`）。
+  `D:\Tools\WorkBuddy-Account-Switcher` 变成指向它的 **junction** —— **同一份文件，改哪边都一样**。
+- **为什么用 junction 而不是直接搬走**：切换器内部有一堆硬编码自身路径
+  （`tps_probe.py` 的 OUT、`_reload_switcher.bat`、`_restart_self.bat`、`启动账号切换器.bat`、
+  `auto_ask_poll.py`、`free_model_probe.py`）⇒ 保留原路径当 junction，**这些路径一行没改仍然有效**。
+- **凭据边界**：`profiles/*/workbuddy-desktop-ai.info` 是**加密登录态**（access/refresh token），
+  `.gitignore` 已排除 `buddy2api/switcher/profiles/`；提交后核对过**提交内无 profiles 文件**。
+  另排除 `tps_result.json`、`*.log`、`__pycache__/`、`ui/*.bak*`。
+- **自检脚本跟着改**：`check_switcher_sync.py` 的 `SWITCHER_DIR` 指向**仓内真源**，junction 路径作 fallback。
+- **迁移后复跑**：契约自检 **PASS 全通**，切换器从 junction 路径重启正常（PID 4700）。
+- ⚠️ **旧目录是改名保留、不是删除**：`D:\Tools\WorkBuddy-Account-Switcher.bak-20261021_0032`
+  （含原始 profiles 副本）—— 确认稳定后可自行删除。
+
