@@ -256,3 +256,48 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
   另：GitHub SSH 认证实测 `Permission denied (publickey)`，本机 `~/.ssh/id_ed25519` 在但 GitHub 侧没认这把钥匙。
 - **收尾状态**：DSH 崩溃日志最新仍停在 19:09:14（此后 16 分钟零崩溃），8 个 `DeepSeek Harness` 进程正常，
   `:3100` / `:8787` 均 LISTEN，经纬工作区干净，103 断言全绿。
+
+## 2026-10-20 19:45 三件事收口（郭老师派工，全部已完成）
+
+### ① GitHub 凭证 —— **不用找用户，自己拿**（§12 的 GitHub 专项）
+
+- **凭证一直在**：`gh auth status` → 已登录 `201650545`（keyring，scope 含 `repo`），
+  只是**仓库 remote 配的是 SSH，而 GitHub 侧没认本机那把 `id_ed25519`** ⇒ 报 `Permission denied (publickey)`。
+- **推法**（不改 remote 配置）：
+  `git -C <repo> -c "credential.helper=!gh auth git-credential" push https://github.com/<owner>/<repo>.git main:main`
+- **v3.2 已推送成功**：`8301009..7a0a686  main -> main` ⇒ `201650545/jingwei-public`。
+  推之前已把 v3.2 从源同步进 public 副本（`client.js` 2151→2930、`index.js` 826→836、`prompts.json`），
+  并把 public 的 `docs/canvas-spec.md` 换成 v3.2 真源、`README.md` 从 v3.1「左→右分列」改成 v3.2「纵向主轴 + DAG 分层」。
+- **公开前脱敏**：`docs/architecture.md` 里的 `D:\Work\经纬` → `<JINGWEI_HOME>`；
+  `canvas-spec.md` 里的「郭老师」→ `project owner decision`。提交前扫过：零密钥、零内部绝对路径。
+- 通路沉淀：`D:\记忆\反馈\feedback-GitHub推送走gh凭证别用SSH.md`。
+- ⚠️ `opencli browser` 打开 GitHub 会跳登录页（浏览器 profile 没登录）——**但这不代表没凭证**，先查 `gh auth status`。
+
+### ② 生图水印 —— **定 AGNES**（郭老师：「肯定选 Agnes」）
+
+- **理由**：商汤「日日新」出图带 logo 水印；**AGNES 实测无水印**（下载原图目视确认，四角干净），且是免费配额渠道。
+- **已改路由**：`search_gateway/data/model_routes.json` → `routes.image-gen.members`
+  新顺序 = `agnes-image-2.5-flash` → `agnes-image-2.1-flash` → cloudflare flux-1-schnell →
+  loveyy gpt-image-2.5 → imgpseudo doubao-image → **商汤 u1.5-fast / u1.5-lite（降为末席兜底）**。
+  mtime 热重载生效，**不用重启网关**；实测 `X-Resolved-Channel: agnes`。
+- **踩坑（已修）**：**AGNES 返回 `url` 形态不是 b64**（商汤/Cloudflare 才给 b64）
+  ⇒ 只认 b64 的消费方会挂。已在 `orchestrator-v4.js` 补 url 分支（`fetch(url)` 下载再转 base64），提交 `5350f98`。
+  端到端实测：网关 → AGNES(200, 9.0s) → 下载(200) → PNG 落盘 244 KB，magic 校验过、目视无水印。
+- 细节全文见 `D:\记忆\项目\project_image_gen_routes.md` 顶部「🔴 2026-10-20 19:45 裁定」。
+
+### ③ 修 `scripts/atomic_patch.py` 的两个 bug（顺带挖出来的）
+
+- **bug 1**：用 `sys.executable`（=python）跑 `node --check` ⇒ python 没这选项，
+  **所有 .js 补丁 100% 被拒**（工具形同虚设）。改用 `shutil.which('node')`。
+- **bug 2**：临时文件后缀 `.tmp` ⇒ node 认不出模块类型，报 `ERR_UNKNOWN_FILE_EXTENSION`。
+  改成 `.js` 后缀。
+- 两次都是**「文件未改动」安全兜底生效**（这正是该工具的设计意图），修完才真正能写。
+
+### 画布「看不到节点」的真相（供接手参考）
+
+- **不是数据丢了**：`app/data/graph.json` 有 4 个节点（intake→art→output→merge），
+  Host 路由 `http://127.0.0.1:55007/jingwei/data/graph.json` 返回 200/3466 B，页面内 `fetch` 也拿到 4 节点。
+- **是右栏 tab 没开**：截图证实 DSH 主窗口右栏根本没展开，页面里 **零个 jingwei 元素、零个 slot**。
+  ⇒ 现象 = 「右栏没打开 / 开的是别的窗口」，不是渲染 bug。
+- ⚠️ 排查时踩的坑：节点 DOM 属性是 **`data-id`**，不是 `data-node-id`——
+  用错选择器会误判成「0 节点」。**正确的查法**：`sr.querySelectorAll('.node')` 或 `[data-id]`。

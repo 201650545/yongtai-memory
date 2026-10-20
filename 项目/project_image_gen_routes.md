@@ -12,6 +12,47 @@ updated: 2026-10-20
 
 # 生图通路由实测
 
+## 🔴 2026-10-20 19:45 裁定：**主力改为 AGNES**（郭老师：「肯定选 Agnes」）
+
+**理由**：商汤「日日新」出图**带 logo 水印**；AGNES **实测无水印**（已下载原图目视确认，四角干净）。
+AGNES 是**免费配额**渠道（`billing_type=free_quota`），不产生费用。
+
+### 已落地（`search_gateway/data/model_routes.json` → `routes.image-gen.members`）
+
+新顺序：
+
+| 序 | 渠道 | 模型 | 说明 |
+|---|---|---|---|
+| 1 | **agnes** | `agnes-image-2.5-flash` | **新主力**，无水印，实测 9.0~9.8s |
+| 2 | agnes | `agnes-image-2.1-flash` | 同渠道备席 |
+| 3 | cloudflare | `@cf/black-forest-labs/flux-1-schnell` | |
+| 4 | loveyy | `gpt-image-2.5` | 生图公益站 |
+| 5 | imgpseudo | `doubao-image` | 豆包/即梦网页版伪 API |
+| 6 | sensetime | `sensenova-u1.5-fast` | **降为末席兜底（带水印）** |
+| 7 | sensetime | `sensenova-u1.5-lite` | 同上，更慢 |
+
+配置走 mtime 感知热重载（`catalog_routes` 复用 `channels._cached_json`），**改完不用重启网关**。
+实测 `X-Resolved-Channel: agnes` 确认生效。
+
+### ⚠️ 踩坑：AGNES 返回 **url 形态**，不是 b64
+
+商汤 / Cloudflare / 公益站返回 `data[0].b64_json`；**AGNES 返回 `data[0].url`**
+（`https://platform-outputs.agnes-ai.space/images/t2i/task_xxx/output_xxx.png`），`b64_json` 是空串。
+
+⇒ 只认 b64 的消费方会直接挂（经纬的 `generateImage` 就抛「生图接口没有返回图片数据」）。
+**已在经纬 `orchestrator-v4.js` 补 url 分支**：b64 缺失时用 `fetch(url)` 下载再转 base64（2026-10-20 提交 `5350f98`）。
+端到端实测：网关 `image-gen` → AGNES(200, 9.0s) → 下载(200) → PNG 落盘 244 KB，PNG magic 校验通过，目视无水印。
+
+### 认证口径（别再踩）
+
+- **直连 AGNES 上游**：`https://apihub.agnes-ai.com/v1`，UA 必须 `curl/8.5.0`，**必须走 7890 代理**（直连 TCP 超时）。
+  key 在 `search_gateway/data/channels.json` → `keys.agnes`（`sk-…`，51 字符），实测有效（chat 200 + 生图 200）。
+- **调本地网关 `:3100`**：必须带 `Authorization: Bearer <master key>`，master key 在
+  `search_gateway/data/api_state.json` → `api_key`（本机是 `gyt200…`）。
+  **不带 key ⇒ 401「未授权：无效或缺失 API Key」**——这个 401 是网关自己的鉴权，不是上游失败，别误判成 AGNES 挂了。
+- PowerShell 传 JSON body 给 curl 必须用 `--data-binary "@文件"`：直接 `-d '{...}'` 会被引号规则拆坏，
+  上游会回 400「invalid character 'm' looking for beginning of object key string」。
+
 ## 2026-10-20 复测（当前结论，优先于下文 9-01 版本）
 
 四条渠道全量实跑，prompt 统一 `一只橘猫坐在窗台上，午后阳光，写实风格`：
