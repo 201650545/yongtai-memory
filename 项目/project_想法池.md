@@ -150,6 +150,17 @@ updated: 2026-10-19
   - 现状：**冒烟 PASS（exit 0）＋全量 PASS（5628 份 SKILL.md / A 3974 / B 1435 / C 219 / 重名簇 1079 / 分叉簇 582 / 断链 446）**
     ⇒ **这条的第一动作现在可以开工了**（按能力类别打标签出数）。
   - 遗留：446 条 ORPHAN 死链（目标 `.agents\skills\<名>` 已被删）仍在，清不清理是他的决定。
+- **2026-10-20 21:00 第一动作已做完（按能力类别打标出数）**：
+  - 产物：人读 `技能库\_中枢\skill-census-08-浏览器类结论.md`｜明细 `runtime\skill-census-08-capability-tags.csv`
+    ｜脚本 `10_AI自成长引擎\scripts\census_capability_tags.py`（只读，词表可改可重跑）。
+  - **数**：全量 5628 份 SKILL.md 切成 13 个能力类别；**浏览器自动化 280 份 / 108 唯一名 / 散在 110 个宿主**。
+  - **"谁在管"**：A（市场/插件/内置基线）201 份 —— **改不动**；含 B/C（他自己树里）**57 个唯一名**，其中单份 23 个。
+  - **分叉**：DIVERGENT 170 / IDENTICAL 70 / 单份 40；最重的是 `TRAE-computer-use-ptc` **29 份**（全是 TRAE 各产品线内置基线）、
+    `html-deck` 14、`agent-browser` 11 —— **都不是他的资产 ⇒ 建议不治，只登记**。
+  - **opencli 系 9 个唯一名全部在他自己树里**（`opencli-search` 3 份分叉、`loomy-learned-opencli-browser-stable-roundtrip` 2 份 A+B 都有，
+    其余 7 个单份）；**他自己的浏览器能力真源只有 5 个名字**（computer-use / gemini-web-review / xhs-note-publish + 2 个 loomy-learned 收存件）。
+  - ⇒ **这条的答案已经落地**：治理面收窄到 57 个、优先 opencli 系 9 个；TRAE 基线那批只登记不动。
+    下一步若他点头：① opencli 系收敛成"一真源 + 指针"；② 51 个 A 类唯一名打"只读登记"标签。
 - **IDEA-009 · 浏览器类 skill 的统一治理**（2026-09-29）：原话「因为浏览器的 skill 有很多很多，我主要用的是 OpenCL。」**已升级为指派 P3**（IDEA-005）。第一动作候选＝按能力类别给已盘的 6668 份 SKILL.md 打标签，出"浏览器类有多少、谁在管"的数（`docs\06` 盘过覆盖面但没按能力类别切过）。
 - **IDEA-010 · 把自己的 skill 上架卖钱**（2026-09-30）：原话「搜一下腾讯的 skill pay，还有阿里的 skillpay 是什么情况，那是不是日后我也可以卖自己的 skill」。已查事实：腾讯 SkillPay（2026-07-16 上线，绑 SkillHub，**入驻要企业认证＋微信支付**，个人版未开）；阿里那个是**支付宝**的 `skillpay.alipay.com`（个人开发者可用，付款实时进开发者账户，一次性付费＝**向买方交付明文**）。两边都未公布抽成。**卡点不在平台在他自己**：他名下确定归属、不含第三方素材与密钥的自产件目前只有元智能那套 runners／判决管线。
 - **IDEA-011 · 多端联动**（2026-09-30，中期）：网关模型设置 ↔ CC Switch ↔ Claude Code ↔ DeepSeek Harness ↔ 阿里云远程控制（Codemote/贾维斯中控）串成一条链。他给的就是这个清单，**没给顺序与验收标准**。
