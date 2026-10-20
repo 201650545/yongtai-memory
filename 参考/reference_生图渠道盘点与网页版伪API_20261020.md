@@ -37,7 +37,29 @@ updated: 2026-10-20
 
 ⇒ 要生图走 `:3100` 的 `image-gen`（商汤/AGNES/即梦/伪 API），**别走 buddy**。
 
-## 三、网页版生图 —— 落成**正式 API 模型**「猪吧image」
+## 二之二、还能「嫖」到哪些：用免费模型全表扫出来的 7 家（2026-10-20 实测结论）
+
+扫描法：`search_gateway/data/channel_free_models.json`（每日 01:46 自动刷新的「免费模型全表」）
+× `channels.json` 里**已配 key** 的渠道 → 脚本 `search_gateway/scripts/scan_free_image_channels.py`。
+
+| 渠道 | 免费生图模型 | 实测结论 |
+|---|---|---|
+| **cloudflare** | `@cf/black-forest-labs/flux-1-schnell` | ✅ **可用**。Workers AI 免费层（每天 10,000 neurons），**实测 6.3s 出图**。接口形状特殊：`POST {base}/run/{model}` body `{prompt}` → `{result:{image: base64}}`（**没有 data 数组**，原样透传会让客户端拿不到图）；且 base_url 以 `/ai/v1` 结尾而 run 端点是 `/ai/run/`（没有 v1），拼错直接 400 |
+| agnes | `agnes-image-2.5/2.1/2.0-flash` | ✅ 已接（需走 7890 代理） |
+| nvidia | `flux_1-schnell` / `flux_1-dev` / `flux_1-kontext-dev` / `flux-3-image-klein` | ❌ 带点 `flux.1-schnell` 与带下划线两种写法都 **404** —— 这个 key 没该模型权限 |
+| modelscope | `Qwen/Qwen-Image-Edit` | ⚠️ 提交返回 `task_id`（异步），但轮询 `/v1/tasks/{id}` 报 *task not found*，取结果端点未搞清，暂不接 |
+| gemini | `gemini-2.5/3-pro/3.1-flash-image`、`nano-banana-2.1` | ⚠️ 走 **chat/completions**（modality=image），不是 images/generations，端点形状不同 |
+| openrouter | `google/gemini-*-image`、`openai/gpt-5-image(-mini)`、`gpt-5.4-image-2` | ⚠️ 同上，走 chat；且这些在 OpenRouter 上**未必 0 价**（gpt-5-image 系列计费），别当免费用 |
+| siliconflow | `Qwen/Qwen-Image`、`Z-Image(-Turbo)` | ⛔ 免费表把它当赠金，但**官方价目页标 ¥0.30/百万 Tokens（非 0 价）** ⇒ 有扣费风险，**不碰** |
+
+**结论**：真正"白嫖"且**API 直连、不开浏览器、不会触发风控**的生图通道目前是
+**商汤 ×2 + Cloudflare flux-1-schnell + AGNES**（都在 image-gen 链里），
+网页版（豆包/元宝/即梦/千问/Gemini）作为慢兜底。
+
+> 顺带修了个坑：`_handle_images` 外层原本 `except Exception` 把**任何**异常都报成
+> 「请求体不是合法 JSON」，上游真实失败原因全被吞掉 ⇒ 改成带真因的报错。
+
+## 三、网页版生图 —— 落成**正式 API 模型**「image」
 
 > **最终形态（2026-10-20 晚，按郭老师要求两次调整）**：
 > 生图不是网页按钮，而是 **模型列表里能选、像普通模型那样调**的东西。
