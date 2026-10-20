@@ -54,6 +54,7 @@ updated: 2026-10-19
 | IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | P1 done／P2 部分<br>**2026-10-20 复述：远程通道暂关，链子先断着，回头再说**（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
 | IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
+| IDEA-023 | 2026-10-20 | **改名同步器**：把「批量改名 ＋ 指针同步 ＋ 验收」固化成工具（默认 dry-run） | **done（2026-10-20 21:40 落地）**：技能库 `rename-sync-tool\`，`--selftest` 8/8 PASS；拿当天那次母仓改名回放做真实盘 dry-run ⇒ 将改写 0 文件、20 条残留正确分类（15 declaration ＋ 5 artifact）、**mechanical 真死链 0**，与人工逐条复核结论一致。已登记 README §6 ＋ 能力总账（独立 9→10、自制 29→30） | `D:\Work\元智能\10_AI自成长引擎\技能库\rename-sync-tool\`；配套 [[教训/lesson_命名纪律_前缀即归属且批量替换须排除存档]] |
 
 ### §2 补充：IDEA-006 第一片落地（2026-10-20）
 
@@ -302,6 +303,7 @@ updated: 2026-10-19
 | IDEA-020 | 逆向工程 | captured | 逆什么、用来做什么、合规边界 | 他开专题 | 只读研究可做 |
 | IDEA-021 | 本机轻量化视频剪辑工具 | captured | 常用功能清单未定（剪/拼/字幕/转码/导出规格） | 他开专题 | 只读盘点可做 |
 | IDEA-022 | 外部 Skill 统一收存 → 转译成自己的 Skill | captured（红线/策略） | 转译标准（什么值得改、改完放哪、怎么验收）未定 | 他定标准 | 标准可由我起草待他点头 |
+| IDEA-023 | 改名同步器（批量改名＋指针同步＋验收） | assigned→**done** | 已落地技能库 `rename-sync-tool\`，自检 8/8 PASS，真实盘 dry-run 与人工复核一致 | — | **已完成**（他 2026-10-20 点头） |
 
 > **已结案的**（不在表里）：IDEA-004 done（想法池机制本身）｜IDEA-008 已升级为指派 P4（并入 IDEA-006）
 > ｜IDEA-012 decided（不购新机，10-29 自然到期）｜IDEA-018 另有人在做（2026-10-20 说明）。
