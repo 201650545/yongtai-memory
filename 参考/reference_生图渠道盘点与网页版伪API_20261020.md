@@ -37,21 +37,40 @@ updated: 2026-10-20
 
 ⇒ 要生图走 `:3100` 的 `image-gen`（商汤/AGNES/即梦/伪 API），**别走 buddy**。
 
-## 三、网页版生图 —— 落成**正式 API 模型** `webimage/image-gen`
+## 三、网页版生图 —— 落成**正式 API 模型**「猪吧image」
 
-> **最终形态（2026-10-20 晚，按郭老师要求调整）**：
+> **最终形态（2026-10-20 晚，按郭老师要求两次调整）**：
 > 生图不是网页按钮，而是 **模型列表里能选、像普通模型那样调**的东西。
 >
-> * 模型 id：**`webimage/image-gen`**（自动选最优可用通道）+ 7 个单通道入口
->   （`webimage/{doubao,yuanbao,jimeng-5.0,qwen-image,gemini-image,grok-image,chatgpt-image}`）。
-> * 调用：`POST http://127.0.0.1:8787/v1/chat/completions`
->   `{"model":"webimage/image-gen","messages":[{"role":"user","content":"提示词"}]}`
-> * 返回：**标准 OpenAI chat completion**，`content` =
->   `[{type:text,…},{type:image_url,image_url:{url:"data:image/png;base64,…"}}]`
->   ⇒ 任何 OpenAI 兼容客户端（DSH / Claude Code / OpenCode）都能直接显示图。
-> * 已进 `selected_models`（`webimage/image-gen`）与 DSH profile（23 个模型，漂移自检一致），
->   **DSH 重启一次**即可在模型列表里选到「webimage · image-gen」。
-> * 实测：11.2s，走商汤 u1.5-fast，base64 PNG。
+> **设计：语义分层 + 能力表 + 点名（2026-10-20 13:20 郭老师问「怎么设计」）**
+> 郭老师的原问：每个生图都作为一个模型？还是只要一个 image 由后台路由分发？
+> 「这样好像不适合精细化控制吧」；「①做成模型？②还是通知 Agent 去调有深度的 API 选模型？」
+> ⇒ **两个都要，但模型按「语义」命名，不按「厂商」命名**：
+>
+> 1. **语义模型**（进模型列表，给人用，4 个）：
+>    - `webimage/zhuba-image`「猪吧image」——通用/自动
+>    - `webimage/zhuba-image-fast`「猪吧image · 极速免费」——商汤/AGNES（秒级、不开浏览器、不烧积分）
+>    - `webimage/zhuba-image-hq`「猪吧image · 高质量」——即梦 5.0 Lite 等（积分制）
+>    - `webimage/zhuba-image-web`「猪吧image · 网页版免费」——豆包/元宝（免费但慢）
+>    **为什么不按厂商铺模型**：豆包慢、即梦烧积分、商汤最快……这些是**渠道知识**，
+>    不该要求选模型的人（或 Agent）先知道；「要快/要好/要免费」才是真实需求。
+> 2. **能力表**（给 Agent 查）：`GET /v1/web/images/capabilities`，
+>    每个通道带 tier/cost/speed/browser/risk/note ⇒ Agent 先查表，
+>    再决定用哪个语义模型、还是点名某通道拿精细控制。
+> 3. **点名通道**（可调，但**不塞进模型下拉**，避免下拉被 10 个厂商条目淹没）：
+>    `webimage/{sensenova-u1.5-fast,sensenova-u1.5-lite,agnes-image-2.5-flash,doubao,yuanbao,jimeng-5.0,qwen-image,gemini-image,grok-image,chatgpt-image}`
+>
+> **命名**：id 用 ASCII（`zhuba-image`），**显示名 = 猪吧image**；
+> 同时接受中文别名 `猪吧image` / `猪吧` / 旧 id `image-gen`（模型 id 带中文会踩
+> YAML/客户端校验的坑，所以别名走服务端解析，不进 id）。
+>
+> **调用**：`POST http://127.0.0.1:8787/v1/chat/completions`
+> `{"model":"webimage/zhuba-image","messages":[{"role":"user","content":"提示词"}]}`
+> **返回**：标准 OpenAI chat completion，`content` =
+> `[{type:text,…},{type:image_url,image_url:{url:"data:image/png;base64,…"}}]`
+> ⇒ 任何 OpenAI 兼容客户端（DSH / Claude Code / OpenCode）都能直接显示图。
+> 实测 11.7s，走商汤 u1.5-fast，base64 PNG。
+> 已进 `selected_models` 与 DSH profile（26 个模型，漂移自检一致），**DSH 重启一次**生效。
 >
 > **链路**：`:8787`（有浏览器权限）先打 `:3100` 的**点名**快通道（商汤/AGNES，免费 11~22s），
 > 都不成再走本地网页版（豆包/即梦/元宝，40~150s）。
