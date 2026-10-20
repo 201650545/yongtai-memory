@@ -138,8 +138,7 @@ F12 → Application → Cookies → `sessionid` → 复制值。
 
 ## 关联
 
-- 伪 API：`D:\项目\ai-hub\image-pseudo-api\{server.py,README.md}`
+- 伪 API（已撤独立服务）：`D:\项目\ai-hub\buddy2api\src\providers\webimage\{image_web.py,chat.py}`
 - 登记脚本：`D:\项目\ai-hub\search_gateway\scripts\wire_imgpseudo_channel.py`
-- 探针：`image-pseudo-api\{diag_jimeng.py,diag_jimeng_buttons.py,diag_jimeng_submit.py,probe_download.py}`
 - 即梦服务：`D:\项目\ai-hub\jimeng-free-api`（API.md 有完整接口与积分说明）
 - 计划任务：`ImagePseudoAPI`（开机自启，:8010）
