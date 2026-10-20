@@ -76,8 +76,9 @@ updated: 2026-10-19
 ④ `%TEMP%` 里有个叫 `struct.py` 的临时脚本（08-16 别的会话写的）**遮蔽标准库 `struct`** ⇒ 任何从 `%TEMP%` 启动的 Python 导入 `struct` 都会执行它。
 **这条待郭老师处置**（本 Agent 未动那个文件）：临时脚本请用 `t_xxx.py` 这类前缀，别用标准库名。
 
-**未做（下一步）**：DSH 侧注册 —— `C:\Users\郭永涛\.dsh\profiles\desktop\cordis.patch.yml` **会被 `sync_dsh_profile.py` 整份重写**
-（该文件里自己写着"不要再手工加，会被覆盖"）⇒ 必须改那个生成脚本，手改 yml 无效。
+**DSH 侧注册（2026-10-20 已完成）**：`cordis.patch.yml` 会被 `sync_dsh_profile.py` 整份重写 ⇒ **注册必须由生成方负责**。
+已在 `buddy2api\scripts\sync_dsh_profile.py` 加 `ensure_mcp_servers()` 幂等注入 `mcp-computer-use`（serverName=computer_use），
+实跑已写入 `cordis.patch.yml`（自动备份）并通过脚本自检。**DSH 需重启才生效。**
 
 ### §2 补充：IDEA-005 盘点稿已完成（2026-10-20）
 
