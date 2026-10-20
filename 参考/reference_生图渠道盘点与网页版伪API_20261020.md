@@ -48,10 +48,13 @@ updated: 2026-10-20
 > ⇒ **两个都要，但模型按「语义」命名，不按「厂商」命名**：
 >
 > 1. **语义模型**（进模型列表，给人用，4 个）：
->    - `webimage/zhuba-image`「猪吧image」——通用/自动
->    - `webimage/zhuba-image-fast`「猪吧image · 极速免费」——商汤/AGNES（秒级、不开浏览器、不烧积分）
->    - `webimage/zhuba-image-hq`「猪吧image · 高质量」——即梦 5.0 Lite 等（积分制）
->    - `webimage/zhuba-image-web`「猪吧image · 网页版免费」——豆包/元宝（免费但慢）
+>    - `webimage/image`「image」——通用/自动
+>    - `webimage/image-fast`「image · 极速免费」——商汤/AGNES（秒级、不开浏览器、不烧积分）
+>    - `webimage/image-hq`「image · 高质量」——即梦 5.0 Lite 等（积分制）
+>    - `webimage/image-web`「image · 网页版免费」——豆包/元宝（免费但慢）
+>    **命名**：主模型就叫 **image**（2026-10-20 郭老师原话「你字打错了就叫 image」——
+>    之前我把它写成「猪吧image / zhuba-image」是自作聪明的玩笑，已全部改掉；
+>    「猪吧image」「image-gen」「zhuba-image」仍作为**服务端别名**兼容，但不再出现在 id 里）。
 >    **为什么不按厂商铺模型**：豆包慢、即梦烧积分、商汤最快……这些是**渠道知识**，
 >    不该要求选模型的人（或 Agent）先知道；「要快/要好/要免费」才是真实需求。
 > 2. **能力表**（给 Agent 查）：`GET /v1/web/images/capabilities`，
@@ -65,11 +68,11 @@ updated: 2026-10-20
 > YAML/客户端校验的坑，所以别名走服务端解析，不进 id）。
 >
 > **调用**：`POST http://127.0.0.1:8787/v1/chat/completions`
-> `{"model":"webimage/zhuba-image","messages":[{"role":"user","content":"提示词"}]}`
+> `{"model":"webimage/image","messages":[{"role":"user","content":"提示词"}]}`
 > **返回**：标准 OpenAI chat completion，`content` =
 > `[{type:text,…},{type:image_url,image_url:{url:"data:image/png;base64,…"}}]`
 > ⇒ 任何 OpenAI 兼容客户端（DSH / Claude Code / OpenCode）都能直接显示图。
-> 实测 11.7s，走商汤 u1.5-fast，base64 PNG。
+> 实测 10.3s，走商汤 u1.5-fast，base64 PNG。
 > 已进 `selected_models` 与 DSH profile（26 个模型，漂移自检一致），**DSH 重启一次**生效。
 >
 > **链路**：`:8787`（有浏览器权限）先打 `:3100` 的**点名**快通道（商汤/AGNES，免费 11~22s），
