@@ -1,6 +1,6 @@
 ---
 name: lesson-workbuddy国际版不读系统代理
-description: WorkBuddy AI 国际版（Electron，D:\wbuddy 国际版）是**应用内建代理模式**、完全不看 Windows 系统代理注册表：代理状态只存在 ~\.workbuddy-ai\settings.json 的两个 vscode 风格顶层键 http.proxy / http.proxySupport。缺省即 persisted mode=none ⇒ Chromium session.setProxy direct + undici/axios 直连，把系统代理整个旁路掉，表现为「魔戒明明连着，WorkBuddy 却显示无代理、www.workbuddy.ai:443 超时」。正解＝手写 http.proxy=http://127.0.0.1:7890 + http.proxySupport=override 后重启（或设置页保存一次即时生效），用 main.log 的 applied persisted manual proxy / session.setProxy: explicit proxy / PROXY 127.0.0.1:7890 三条日志验收
+description: WorkBuddy AI 国际版（Electron，D:\wbuddy 国际版）在国内网络下用不了是**两层根因叠加**。第一层（应用层）：它是**应用内建代理模式**、完全不看 Windows 系统代理注册表，代理状态只存在 ~\.workbuddy-ai\settings.json 的两个 vscode 风格顶层键 http.proxy / http.proxySupport，缺省即 persisted mode=none ⇒ Chromium session.setProxy direct + undici/axios 直连，把系统代理整个旁路掉，表现为「魔戒明明连着，WorkBuddy 却显示无代理」；正解＝手写 http.proxy=http://127.0.0.1:7890 + http.proxySupport=override 后重启（用 main.log 的 applied persisted manual proxy / session.setProxy: explicit proxy 验收）。第二层（网络层）：本机魔戒 Sparkle 的 override 里有 `PROCESS-NAME,WorkBuddyAI.exe,DIRECT` 规则，会把国际版主域 workbuddy.ai 也强制直连（43.160.158.125 i/o timeout），表现为「代理显示已连、但问它就报 502 安全连接建立失败／网络连接失败」；正解＝在该规则**之前**加 `DOMAIN-SUFFIX,workbuddy.ai,节点选择` 并热加载内核（PUT /configs 用正斜杠路径），验收看内核日志 match DomainSuffix(workbuddy.ai) using 节点选择
 metadata:
   node_type: memory
   type: 教训
@@ -50,12 +50,32 @@ updated: 2026-10-20
    `[MainProxy] resolveProxy ... rule="PROXY 127.0.0.1:7890"`、
    `getAxiosAgentsForUrl: HTTPS_AGENT`（不再是 `DIRECT_TRUSTED`）。
 
+4. **网络侧（魔戒 Sparkle）**——这一步不做，前面全白搭：
+   本机 `D:\02-AI工具\Sparkle\data\override\bypass_gv_marvis.yaml` 有
+   `PROCESS-NAME,WorkBuddyAI.exe,DIRECT`（本意是让国内版工具不吃代理流量），
+   而 override 规则被插在 `rules:` 最前面、**优先级最高**，会抢在域名规则之前把国际版也直连；
+   魔戒内核日志表现为
+   `[TCP] dial DIRECT (match ProcessName/WorkBuddyAI.exe) ... --> www.workbuddy.ai:443
+    error: connect failed: dial tcp 43.160.158.125:443: i/o timeout`。
+   正解：在该 PROCESS-NAME 规则**之前**插入
+   `- DOMAIN-SUFFIX,workbuddy.ai,节点选择`（源文件 override 与生成文件 `data\work\config.yaml` 同步改），
+   然后热加载内核：`PUT http://127.0.0.1:9090/configs` body `{"path":"D:/02-AI工具/Sparkle/data/work/config.yaml"}`
+   （**必须正斜杠**，反斜杠路径返 400）。
+   验收：内核日志 `match DomainSuffix(workbuddy.ai) using 节点选择[节点名]`，
+   应用日志出现 `First meaningful token received` / `Stream completed`。
+   这样只放行 workbuddy.ai 一个域，WorkBuddyAI.exe 的国内端点（扩展市场 COS 等）仍走直连，不额外吃代理流量。
+
 ## 四、坑位（别再踩）
 
 - 只开 Windows 系统代理 → 对本应用**零作用**；
 - 只设用户级 `HTTP_PROXY/HTTPS_PROXY` 环境变量 → 只救 Node 侧（undici/axios），
   Chromium 仍 `session.setProxy: mode=direct`，半吊子；
-- 不重启已运行进程 → 进程环境是启动时快照。
+- 不重启已运行进程 → 进程环境是启动时快照；
+- **只改了应用层就以为完事** → 应用日志会显示代理已就位（PROXY 127.0.0.1:7890），
+  但真正发包仍被魔戒 PROCESS-NAME 规则劫持成 DIRECT，表现为 502「安全连接建立失败」；
+- **用反斜杠路径调 `PUT /configs`** → 400 Bad Request，要用正斜杠；
+- **以为 curl 通就等于应用通** → curl 进程名不同、不命中进程规则，必须看
+  内核日志里 `match` 的是哪条规则、链的是哪个进程。
 
 ## 五、关键路径
 
@@ -67,4 +87,9 @@ updated: 2026-10-20
 ## 六、关联
 
 - 代理环境本体见 [[project_network_issue]]（mihomo / Sparkle / 出口与 IPv6 那些坑）。
+  本条的网络侧改动落在该项目的规则体系里：魔戒 override 文件
+  `D:\02-AI工具\Sparkle\data\override\bypass_gv_marvis.yaml`（源）
+  + `D:\02-AI工具\Sparkle\data\work\config.yaml`（生成，规则被插在 `rules:` 最前、优先级最高）。
 - 经验条目草稿：`D:\Work\元智能\10_AI自成长引擎\草稿区\L1_经验\L1_20261020_WorkBuddy国际版不读系统代理必须手写settings_json.md`
+- 同日另一条：魔戒内核日志用 `GET http://127.0.0.1:9090/logs?level=debug` 抓，
+  这是定位「规则命中了哪条、走的哪个节点」的唯一一手证据。

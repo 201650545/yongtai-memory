@@ -49,6 +49,22 @@ updated: 2026-09-03
 - 「以前能用后来失效」的 Mystery，优先怀疑**上游变了**（域名加 AAAA、证书、端口），不是本机坏了。
 - Sparkle/Clash Core Service 都以管理员运行，普通 shell 的 Stop-Process 会静默失败；须自提权脚本（UAC 用户点「是」）。
 
+## 2026-10-20：WorkBuddy AI 国际版 502 —— PROCESS-NAME 直连规则误伤「国际版」
+
+**现象**：魔戒已连、系统代理已开、WorkBuddy AI 国际版也显示代理已就位，但一提问就报 `502 安全连接建立失败（Client network socket disconnected before secure TLS connection was established）`；同一条 URL 用 curl 走同一代理口完全正常（HTTP 200）。
+
+**根因（两层叠加）**：
+- **应用层**：WorkBuddy AI 国际版不读系统代理注册表，代理模式只认 `~\.workbuddy-ai\settings.json` 的 `http.proxy` / `http.proxySupport`（两个键都缺＝none＝直连）；
+- **网络层**：魔戒 override `D:\02-AI工具\Sparkle\data\override\bypass_gv_marvis.yaml` 里的 `PROCESS-NAME,WorkBuddyAI.exe,DIRECT` 优先级高于域名规则（override 被插在生成配置 `rules:` 段最前面），把国际版主域 workbuddy.ai（43.160.158.125，腾讯云海外段）也强制直连 → i/o timeout。内核日志证据：`[TCP] dial DIRECT (match ProcessName/WorkBuddyAI.exe) ... --> www.workbuddy.ai:443 error: connect failed: dial tcp 43.160.158.125:443: i/o timeout`。
+
+**修复**：① settings.json 写 `http.proxy=http://127.0.0.1:7890` + `http.proxySupport=override` 后重启；② 在 override 与生成配置 `data\work\config.yaml` 同步加 `- DOMAIN-SUFFIX,workbuddy.ai,节点选择`，**置于 PROCESS-NAME 规则之前**，只放行这一个域、WorkBuddyAI 其余流量（扩展市场 COS 等）仍直连；③ 热加载内核 `PUT http://127.0.0.1:9090/configs`，body `{"path":"D:/02-AI工具/Sparkle/data/work/config.yaml"}`——**路径必须正斜杠**，反斜杠返 400。
+
+**教训**：
+- 「应用显示代理已就位」≠「流量真的走了代理」，中间还隔着内核规则匹配；唯一一手证据是 `GET http://127.0.0.1:9090/logs?level=debug` 里 `match` 了哪条规则、链的是哪个进程。
+- override 类规则文件会被插到生成配置最前、优先级最高；**加进程级 DIRECT 规则前，先想清楚有没有同名的"国际版"进程**。
+- 改内核配置前务必先 YAML 语法校验——配置写坏会把整个代理内核带崩。
+- 应用层细节与验收判据见教训 [[lesson_workbuddy国际版不读系统代理]]。
+
 ## 系统信息（2026-04 首次）
 
 - 系统：Windows 11 Home China 10.0.26200
