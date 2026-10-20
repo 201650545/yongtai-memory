@@ -37,27 +37,40 @@ updated: 2026-10-20
 
 ⇒ 要生图走 `:3100` 的 `image-gen`（商汤/AGNES/即梦/伪 API），**别走 buddy**。
 
-## 三、网页版生图「伪 API」怎么搭（2026-10-20 晚已调整）
+## 三、网页版生图 —— 落成**正式 API 模型** `webimage/image-gen`
 
-> **调整起因（郭老师）**：「独立出来搞这么多网关，这么难管理」——同意。
-> 原先为生图另起了一个独立的 :8010 常驻服务，**已撤销**。
+> **最终形态（2026-10-20 晚，按郭老师要求调整）**：
+> 生图不是网页按钮，而是 **模型列表里能选、像普通模型那样调**的东西。
+>
+> * 模型 id：**`webimage/image-gen`**（自动选最优可用通道）+ 7 个单通道入口
+>   （`webimage/{doubao,yuanbao,jimeng-5.0,qwen-image,gemini-image,grok-image,chatgpt-image}`）。
+> * 调用：`POST http://127.0.0.1:8787/v1/chat/completions`
+>   `{"model":"webimage/image-gen","messages":[{"role":"user","content":"提示词"}]}`
+> * 返回：**标准 OpenAI chat completion**，`content` =
+>   `[{type:text,…},{type:image_url,image_url:{url:"data:image/png;base64,…"}}]`
+>   ⇒ 任何 OpenAI 兼容客户端（DSH / Claude Code / OpenCode）都能直接显示图。
+> * 已进 `selected_models`（`webimage/image-gen`）与 DSH profile（23 个模型，漂移自检一致），
+>   **DSH 重启一次**即可在模型列表里选到「webimage · image-gen」。
+> * 实测：11.2s，走商汤 u1.5-fast，base64 PNG。
+>
+> **链路**：`:8787`（有浏览器权限）先打 `:3100` 的**点名**快通道（商汤/AGNES，免费 11~22s），
+> 都不成再走本地网页版（豆包/即梦/元宝，40~150s）。
+> **回环防护**：`:8787 → :3100` 只用**点名**模型、不用 `image-gen` 别名；
+> `:3100` 的 image-gen 链末尾 `imgpseudo` 指回 `:8787` 的 `/v1/web`（只跑网页版），两边各自单向。
+>
+> **坑**：`:3100` 的生图直点**只认不带「渠道/」前缀**的名字
+> （`sensenova-u1.5-fast` ✅ / `sensetime/sensenova-u1.5-fast` ❌ 400「未支持的生图模型」）。
+> 第一版快通道写成带前缀的 ⇒ 全被拒、直接掉进慢的网页版分支（差点又触发风控）。
 
-**现在**：它是 **Buddy2API（:8787）进程内的一个模块** `buddy2api/src/providers/webimage/`，
-暴露 `POST /v1/web/images/generations`（OpenAI 兼容）与 `GET /v1/web/images/models`。
-`:3100` 侧把 `imgpseudo` 渠道的 base_url 指到 `http://127.0.0.1:8787/v1/web`，
-当**普通 HTTP 渠道**调用，调用方无感。**端口数回到原样（只剩 :3100 与 :8787）。**
-
-**为什么不能直接塞进 :3100**：:3100 是 **LocalSystem** 身份跑的 NSSM 服务，
+**为什么不能把网页版生图塞进 :3100**：:3100 是 **LocalSystem** 身份跑的 NSSM 服务，
 够不着用户交互会话里的 Chrome，而 opencli 的浏览器桥接（扩展 + 守护进程 19825）
 **只存在于用户会话**。Buddy2API（:8787，计划任务 Buddy2API_Gateway / Interactive）
 正好以当前用户身份常驻 ⇒ 网页版生图只能住在这一侧。
 
-登记脚本：`search_gateway/scripts/wire_imgpseudo_channel.py`（顺带把 ark/seedream 从链里摘掉）。
-**改完渠道 base_url 要热重载 3100**（`POST /api/gateway/reload`），否则它还用缓存里的旧地址。
-
 ### 豆包/元宝的流程（无原生 image 命令）
 
-`opencli <site> new`（**开新对话，实测必需**：在旧对话里直接 ask 不会触发生成）→
+`opencli browser default open <站点URL>`（**先把绑定标签切到该站点**）→
+`opencli <site> new`（**开新对话**，在旧对话里直接 ask 不会触发生成）→
 `opencli <site> ask "<画图提示词>"` → **只回一段意图预演文本**，图是**异步**生成的 →
 每隔十几秒 `opencli <site> read -f json` → 适配器把图渲染成 `Image: <url>` 文本行 →
 解析该行 → 下载 URL → base64。实测从提交到出图约 **40~150 秒**。
