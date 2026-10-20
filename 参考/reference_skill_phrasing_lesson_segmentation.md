@@ -1,12 +1,12 @@
 ---
-name: reference_skill_listenloop_lesson_segmentation
+name: reference_skill_phrasing_lesson_segmentation
 type: reference
 updated: 2026-10-19
 ---
 # reference: 句读课文双模态意群与精听时间轴统合切分 Skill
 
 > 创建日期: 2026-10-16
-> 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\listenloop-lesson-segmentation\SKILL.md`
+> 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-course-pipeline\components\phrasing-lesson-segmentation\SKILL.md`
 > 适用范围: 全 Agent 跨宿主课文切分、听读课件制作、精听时间轴断句、教材排版对齐
 
 ---

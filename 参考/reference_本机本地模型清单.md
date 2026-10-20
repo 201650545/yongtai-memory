@@ -162,4 +162,4 @@ whisper 档回装 `pip install faster-whisper` 后按名加载即可自取缓存
 - 盘：**D 可用 128 GB**，C 可用 73 GB。
 - 参照物：VLM 型 OCR 在这台机器上是"一页 100 秒"量级（本轮实测 3.0 tok/s），**管线型 OCR 是亚秒级**；同类边界适用于 ASR——大档不等于好用。
 
-**How to apply:** 他问"我机器上有什么模型／能不能跑 X"→ 先答 §一 四档＋§二 一个 OCR；再按 §〇 口径判新候选（**多语言档一律出局**）；给建议必须带 §一 那种实测列，没测就写进 §五 具名缺口，不猜。相关：[[reference_云服务器底座与跨项目联合点]]、[[参考/reference_local_paddle_ocr]]、[[project_ListenLoop]]
+**How to apply:** 他问"我机器上有什么模型／能不能跑 X"→ 先答 §一 四档＋§二 一个 OCR；再按 §〇 口径判新候选（**多语言档一律出局**）；给建议必须带 §一 那种实测列，没测就写进 §五 具名缺口，不猜。相关：[[reference_云服务器底座与跨项目联合点]]、[[参考/reference_local_paddle_ocr]]、[[project_句读]]

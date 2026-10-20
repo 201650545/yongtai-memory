@@ -1,6 +1,6 @@
 ---
 name: project-ListenLoop
-description: 句读（原 ListenLoop，AI 精听训练器）＝小学语文/英语「听读＋视听＋跟读验收」App（Flutter）。三处真源分开：文档 D:\Work\AI精听训练器、代码 D:\listenloop、发布仓 listenloop-project。产品名 2026-10-10 定「句读/Phrasing」，引擎名 ListenLoop 保留不改；2026-10-16 完成 APP＋Obsidian 侧改名，长期铁律「括号保留旧名」。**接手先读 `D:\Work\AI精听训练器\00_START_HERE_交接总览.md`**。当前冻结版以 `06_版本存档\versions.json` 为准（本条目不报版本）。
+description: 句读（原 ListenLoop，AI 精听训练器）＝小学语文/英语「听读＋视听＋跟读验收」App（Flutter）。三处真源分开：文档 D:\Work\AI精听训练器、代码 D:\listenloop、发布仓 phrasing-project。产品名 2026-10-10 定「句读/Phrasing」，引擎名 ListenLoop 保留不改；2026-10-16 完成 APP＋Obsidian 侧改名，长期铁律「括号保留旧名」。**接手先读 `D:\Work\AI精听训练器\00_START_HERE_交接总览.md`**。当前冻结版以 `06_版本存档\versions.json` 为准（本条目不报版本）。
 metadata:
   node_type: memory
   type: 项目
@@ -56,7 +56,7 @@ updated: 2026-10-19
 
 **另一条可复用判据（lessonId 挂接）**：一课只能挂一个 id ⇒**一课多包必须人工选主录音**，不能"两个都挂"（会撞 `duplicate_named_argument`）；命名风格不是判据（云端 147 条里 `-b-dual` 15 条、`-dual` 41 条并存），**唯一判据是与课包 manifest 的 lessonId 全等**。挂接核对跑 `D:\listenloop\tool\核对课程表与课包挂接.ps1`（zip-aware，别写成 flutter test——zip 的 deflate 段按字节读不到，会写成永绿空断言）。
 
-**建库的原因（可复用的判断）**：任何 Agent 问"现在什么版本"，实测能得到 5 个不同答案——`pubspec` 写 `1.0.0+4027`（build 号涨了 4027 次、语义版本没动过）、全仓只有 1 个 tag 且停在 `v0.2.1`、`开发日志.md` 是流水账、GPT 评审定稿的 `17_产品路线图与版本规划_定稿.md` **只存在于对外仓 listenloop-curated、活仓 02_ 号位空缺**、`listenloop-project\code\` 是比活仓旧一代的副本、`dist\` 无版本化安装包。**版本信息分散本身就是版本失管的症状**，越晚建越贵。
+**建库的原因（可复用的判断）**：任何 Agent 问"现在什么版本"，实测能得到 5 个不同答案——`pubspec` 写 `1.0.0+4027`（build 号涨了 4027 次、语义版本没动过）、全仓只有 1 个 tag 且停在 `v0.2.1`、`开发日志.md` 是流水账、GPT 评审定稿的 `17_产品路线图与版本规划_定稿.md` **只存在于对外仓 phrasing-curated、活仓 02_ 号位空缺**、`phrasing-project\code\` 是比活仓旧一代的副本、`dist\` 无版本化安装包。**版本信息分散本身就是版本失管的症状**，越晚建越贵。
 
 **顺带发现并已处置**：`05_发布与问诊\auto_sync_15min.py`（每 15 分钟 `git add -A` 自动提交推送两个发布仓）——2026-10-15 停用。两条理由：① 计划任务表、自启项、进程表**三处实测均无它在运行**，是名存实亡的僵尸自动化（与 [[参考/reference_skill_ai_search_pool]] 记的 ai-search-pool 网关静默死掉 6 周是同一个病）；② 第 30 行 `git add -A` 违反铁律。文件加停用横幅保留作证据，未删除。
 
@@ -66,7 +66,7 @@ updated: 2026-10-19
 |---|---|
 | 文档／知识库真源 | `D:\Work\AI精听训练器\`（`00_项目驾驶舱_可视化中心`、`01_商业与战略规划`、`02_工程架构与系统设计`、`03_研发日志与历史归档`） |
 | **代码真源** | `D:\listenloop\`（Flutter：`android/`、`.dart_tool`、`analysis_options.yaml`；内有 `HANDOFF-Milestone-1B.md`、`HANDOVER-20260921-listenloop.md`） |
-| GitHub 发布仓 | `D:\Work\AI精听训练器\05_发布与问诊\listenloop-project` ＋ 评审/调研仓 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated`（`github.com/201650545/listenloop-curated`，已公开） |
+| GitHub 发布仓 | `D:\Work\AI精听训练器\05_发布与问诊\phrasing-project` ＋ 评审/调研仓 `D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated`（`github.com/201650545/phrasing-curated`，已公开） |
 
 **⚠️ 目录名坑**：`D:\Work\AI精听训练器\05_发布与问诊` 这个名字与内容不符——它实际是 ListenLoop 的发布台＋GPT 问诊工作台。改名要郭老师点头（有 9 处入向引用）。
 
@@ -189,6 +189,6 @@ updated: 2026-10-19
 
 ## 关键词（拿去定位）
 
-`ListenLoop` `AI精听训练器` `精听` `单句循环` `抗遗忘` `Learning Runtime` `sherpa-onnx` `whisper` `listenloop-curated` `gh-sync` `驾驶舱` `思维导图` `自适应混合对齐` `跟读验收` `错字练习` `实时判分` `边说边判` `最小形态v3` `短句豁免`
+`ListenLoop` `AI精听训练器` `精听` `单句循环` `抗遗忘` `Learning Runtime` `sherpa-onnx` `whisper` `phrasing-curated` `gh-sync` `驾驶舱` `思维导图` `自适应混合对齐` `跟读验收` `错字练习` `实时判分` `边说边判` `最小形态v3` `短句豁免`
 
 **How to apply:** 汇报进展给郭老师 → 用驾驶舱短链接；改代码 → 去 `D:\listenloop`。**版本与"做到哪了" → 先读 `06_版本存档\versions.json`，本条目不再报版本**。多 Agent 接手前先跑 `校验一致性.ps1`。相关：[[流程/workflow_work库冷启动接手序]]、[[项目/project_ai_gateway]]

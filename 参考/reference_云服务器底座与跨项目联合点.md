@@ -55,7 +55,7 @@ IP 地址不入本库（这仓是 GitHub 发布镜像 `yongtai-memory`），要 
 |---|---|---|---|---|
 | **贾维斯中控**（原 Codemote / Remote-Coding-Control） | 阿里 99 ECS ＋ 本地 PC | frps 公网入口、frpc 本机、Windows Companion；语音→`网关 :3100/v1/jev`→能力执行器矩阵 | `D:\Work\贾维斯中控\00-INDEX.md`、`07-Decisions\2026-09-29-…决策记录.md`、代码 `D:\Remote-Coding-Control`（未改名） | `frps` `frpc` `companion` `jev` `L0/L1/L2 安全档` `语音遥控电脑` |
 | **API 转发网关** | 阿里 99 ECS（远端实例）＋ 本地 PC（运行体） | 云上那份 `:3100` 做公网门面；本机 `:3100` 是**运行体真源** | 运行体 `D:\项目\ai-hub\search_gateway`；文档仓 `D:\Work\API转发网关`（其 `渠道编排规则.md` 停在 09-22，**双真源分叉待裁 #28**） | `3100` `search_gateway` `channels.json` `quota_guard` `free-flash/free-high/fast` |
-| **ListenLoop（AI 精听训练器）** | 网关 `:3100`（模型面）＋ 本地（whisper/sherpa-onnx 跑推理） | 文档里明写过"网关部署到墙外云服务器＝最省心，手机随时可用"这条路线（选项 E），部署位就是阿里 99 | 文档真源 `D:\Work\AI精听训练器\`、代码真源 `D:\listenloop\`、发布仓 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-project` | `ListenLoop` `精听` `sherpa-onnx` `whisper` `学习运行时` |
+| **ListenLoop（AI 精听训练器）** | 网关 `:3100`（模型面）＋ 本地（whisper/sherpa-onnx 跑推理） | 文档里明写过"网关部署到墙外云服务器＝最省心，手机随时可用"这条路线（选项 E），部署位就是阿里 99 | 文档真源 `D:\Work\AI精听训练器\`、代码真源 `D:\listenloop\`、发布仓 `D:\Work\AI精听训练器\05_发布与问诊\phrasing-project` | `ListenLoop` `精听` `sherpa-onnx` `whisper` `学习运行时` |
 | 微信通知自动化 / 小红书点赞分析 / 逆天主题 / AI平台 / 元智能 / gh-sync / dsh-personal-host | 网关 `:3100` | 都是 api-gateway 的依赖方（**它自己原先不知情**，见 [[项目/project_relation_graph]]） | 见 `D:\记忆\项目清单\projects.yaml` | `api-gateway 9 个依赖方` |
 
 ## 四、Agent 用法（这就是郭老师要的"不用再铺垫上下文"）
@@ -72,4 +72,4 @@ IP 地址不入本库（这仓是 GitHub 发布镜像 `yongtai-memory`），要 
   ⇒ 这条卡着的是"本地 PC 当算力主场"这个架构的可靠性，**比买机器优先**。
 - **腾讯 Hermes 到期决策**（2026-10-29 前）：续 / 换 109 年款 / 让它到期。
 
-**How to apply:** 谈"某个项目要部署到哪台机器"之前先读本文——底座只有「本地 PC＋阿里 99＋（到期的）腾讯 Hermes」三个位置，**没有第四台**，别脑补。相关：[[项目/project_relation_graph]]、[[项目/project_贾维斯中控]]、[[项目/project_ai_gateway]]、[[项目/project_ListenLoop]]、[[流程/workflow_work库冷启动接手序]]
+**How to apply:** 谈"某个项目要部署到哪台机器"之前先读本文——底座只有「本地 PC＋阿里 99＋（到期的）腾讯 Hermes」三个位置，**没有第四台**，别脑补。相关：[[项目/project_relation_graph]]、[[项目/project_贾维斯中控]]、[[项目/project_ai_gateway]]、[[项目/project_句读]]、[[流程/workflow_work库冷启动接手序]]

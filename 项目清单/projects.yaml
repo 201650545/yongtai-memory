@@ -81,15 +81,15 @@ projects:
     desc: 人的记忆／调度大脑长期上下文。**可写真源是本地 D:\记忆，本仓只是单向发布的只读镜像**。与 ai-hub-memory 是不同数据类型，handbook §6 明令不得为"仓库少"强行合并
     authority: D:\记忆\通用规范\50-知识管理三工具规范.md §6
 
-  - id: listenloop-project
-    repo: https://github.com/201650545/listenloop-project
+  - id: phrasing-project
+    repo: https://github.com/201650545/phrasing-project
     name: 句读（原 ListenLoop · AI 精听训练器）发布仓
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\AI精听训练器\05_发布与问诊\listenloop-project
+    local: D:\Work\AI精听训练器\05_发布与问诊\phrasing-project
     handoff: D:\Work\AI精听训练器\05_GPT问诊台\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"
-    curated: D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated      # github.com/201650545/listenloop-curated，评审/调研文档仓
+    curated: D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓
     desc: 2026-10-08 已收编——原 `D:\Work\AI精听训练器\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
     todo: ~~目录改名~~ 已由郭老师 10-08 裁定「收编并入 ListenLoop」并执行完毕
 
@@ -103,13 +103,13 @@ projects:
     migration: 2026-09-29 从 D:\Work\dsh-personal-host\项目索引\ 救出提到 Work 顶层——它原先埋在一个停更项目里，而 projects.yaml 全机只有一份
 
   # —— 2026-10-12 补登记：全盘核实活跃与归档 GitHub 仓 ——
-  - id: listenloop-curated
-    repo: https://github.com/201650545/listenloop-curated
+  - id: phrasing-curated
+    repo: https://github.com/201650545/phrasing-curated
     name: 句读（原 ListenLoop）精选架构问诊仓
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated
+    local: D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated
     desc: ListenLoop 专供高智力模型（ChatGPT 6 等）深度阅读与评审的精选架构、设计与交接包仓
 
   - id: meta-intelligence-facts
@@ -168,7 +168,7 @@ local_only:
     desc: 小红书每日点赞提取 + AI 总结。宿主 Trae，计划任务 XHS_LikeManager_Daily 每日 01:00（北京时间，2026-10-09 由 10:17 调整）
   - name: AI精听训练器
     path: D:\Work\AI精听训练器
-    desc: ListenLoop 文档真源（实测 45 份 .md、6 个子目录：00_项目驾驶舱_可视化中心／01_商业与战略规划／02_工程架构与系统设计／03_研发日志与历史归档／04_Agent机器索引_快速通道／dist），代码真源 D:\listenloop；GitHub 发布台见 listenloop-project  # 2026-10-01 审计修正：原未在 projects/local_only 登记（只在 listenloop-project 的 desc 散文里提过），实测计数后补登
+    desc: ListenLoop 文档真源（实测 45 份 .md、6 个子目录：00_项目驾驶舱_可视化中心／01_商业与战略规划／02_工程架构与系统设计／03_研发日志与历史归档／04_Agent机器索引_快速通道／dist），代码真源 D:\listenloop；GitHub 发布台见 phrasing-project  # 2026-10-01 审计修正：原未在 projects/local_only 登记（只在 phrasing-project 的 desc 散文里提过），实测计数后补登
   - name: 启迪 / 跃己 / 教案与课件设计（原课程思政教学竞赛；项目学习已于 2026-10-19 删除）
     path: D:\Work\
     desc: 见 vault_registry.yaml 与 Home.md 子库一览

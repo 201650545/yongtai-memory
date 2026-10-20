@@ -203,7 +203,7 @@ flowchart TD
   - [[项目/project_scheduler_role_matrix]]（调度大脑派发矩阵）
   - [[项目/project_前端视觉重设计与多模型协同SOP]]（Kimi K3 视觉升级标准规范）
 - **外脑特遣队契约与 Skill 关联**：
-  - `D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`（ChatGPT 镜像送审与自动化执行 Skill）
+  - `D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\SKILL.md`（ChatGPT 镜像送审与自动化执行 Skill）
   - `D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`（契约与闸门体系）
   - `D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站Work模式模型与额度指南.md`（镜像站账号与额度指南）
 - **项目落地真源映射**：

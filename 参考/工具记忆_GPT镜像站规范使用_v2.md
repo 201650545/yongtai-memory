@@ -8,7 +8,7 @@ updated: 2026-10-12
 > 2026-09-27 整合稿。来源：GPT镜像站送审流程手册（D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站送审流程.md）+ 2026-09-27 AI记忆卡三轮送审实测。
 > 旧散篇 feedback 保留不动，本文为整合正稿；与手册冲突时以手册 + 本文较新者为准。
 >
-> **⭐ 2026-10-11 关键更正（目标改回 Chat）**：实测 **`Work` 标签不可用**（据郭老师＝接 Codex、本账号无权限）—— Work + `GPT-6 Astra` + `Max` 下，连「1+1」「你好」都被 OpenAI 式安全拒绝挡回（`This content can't be shown for safety reasons`），切回 `Chat` 同题正常。**郭老师 2026-10-11 裁定：改回 `Chat` 标签 + 顶档 `High`，且默认模型必须用 `ChatGPT 6 Sol`**；2026-10-10 的「一律走 Work」裁定**作废**。**§二 已按此整节重写**；契约同步到 **v5**（`D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`）；skill 同步（`D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\SKILL.md`）。
+> **⭐ 2026-10-11 关键更正（目标改回 Chat）**：实测 **`Work` 标签不可用**（据郭老师＝接 Codex、本账号无权限）—— Work + `GPT-6 Astra` + `Max` 下，连「1+1」「你好」都被 OpenAI 式安全拒绝挡回（`This content can't be shown for safety reasons`），切回 `Chat` 同题正常。**郭老师 2026-10-11 裁定：改回 `Chat` 标签 + 顶档 `High`，且默认模型必须用 `ChatGPT 6 Sol`**；2026-10-10 的「一律走 Work」裁定**作废**。**§二 已按此整节重写**；契约同步到 **v5**（`D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`）；skill 同步（`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\SKILL.md`）。
 > **⭐ 2026-10-10 站点改版（背景）**：镜像站换 **新版 ChatGPT UI**，旧档位文案 `Auto / Thinking• Extended / GPT-5.6 Luna` **一个字都不剩**。模型档位改为 **顶部 `Chat | Work` 标签 + pill 内 "Power" 滑杆**，默认 `Instant`。
 > **★★ 2026-10-11 模型纪律（郭老师明令）**：**默认必须用 `ChatGPT 6 Sol` + 顶档 `High`** —— 镜像站 Chat 里 `ChatGPT 6 Sol` 显示为 **`6`** 且**默认即选中**，**保持不动、不许改成 `GPT-5.6 Sol` / `GPT-5.5`**。`mode_gate` 已升**三闸**（Chat / 模型 `6` / pill `High`）。见 §二。
 > **⚡ 2026-10-11 跳转加速（新增 §一·五）**：旧流程（`open` 池页 → 点卡片 → `sleep 6` → 切档）**≈40s+** ⇒ 优化后 **复用 tab ≤8s / 热启动 ≤20s / 冷启动 ≤28s**；新增脚本 `fast_jump.js`（池页读 localStorage 跳转）与 `jump_and_ready.js`（一条 eval 完成等就绪+切档+断言）。
@@ -43,7 +43,7 @@ updated: 2026-10-12
 **标准调用序列（照抄）**
 ```bash
 S=$(opencli profile list | grep -oE '[a-z0-9]{8} default' | awk '{print $1}')
-SK="D:/Work/元智能/10_AI自成长引擎/技能库/gpt-mirror-extended-review/scripts"
+SK="D:/Work/元智能/10_AI自成长引擎/技能库/phrasing-external-model-review/components/gpt-mirror-extended-review/scripts"
 # ① 热路径：直连缓存的镜像 URL
 opencli browser $S eval "location.href='<缓存的 https://vip-XX.67673.live/>';'go'"
 R=$(opencli browser $S eval "eval(decodeURIComponent(escape(atob('$(base64 -w0 < $SK/jump_and_ready.js)'))))")
@@ -57,7 +57,7 @@ echo "$R"   # 必须 ok:true 才可发问
 ```
 - **缓存**：每次成功进入镜像后把当前 URL 写 `D:\Work\元智能\20_自适应工作流引擎\runtime\gpt_mirror_active_url.txt`（已删除）；下次先直连它。
 - ⚠️ `fast_jump.js` 会读 `authToken`（**敏感值**）—— 只在该 eval 内使用，**不落盘、不入仓、不回显**。
-- 两个脚本落点：`…\技能库\gpt-mirror-extended-review\scripts\`（`fast_jump.js` / `jump_and_ready.js`）。
+- 两个脚本落点：`…\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\scripts\`（`fast_jump.js` / `jump_and_ready.js`）。
 
 ## 二、模型选择：三闸门 —— ①留在 `Chat` 标签 ②**模型 = `ChatGPT 6 Sol`** ③顶档 `High`（2026-10-11）
 
@@ -80,7 +80,7 @@ echo "$R"   # 必须 ok:true 才可发问
    2. 聚焦 `[role=menuitem][aria-label="Power"]` 内的 **`[role=slider]`**，连发 `ArrowRight` 直到 `aria-valuenow == aria-valuemax`（**Chat 为 `0..2`，顶 = `2` = `High`**）。
    3. **关菜单**：⚠️ 合成 pointerdown / `keys Escape` / 原生 `click` **都关不掉** → 必须 **document 级 pointerdown**（见 §三.3 第 4 条）。
 5. 刷新 / 换对话 / 回历史都会重置回 **`Chat` + `Instant`**（模型仍是默认 `6`），无例外——**每次发送前重走三闸**。
-6. 一键脚本：`D:\Work\元智能\10_AI自成长引擎\技能库\gpt-mirror-extended-review\scripts\jump_and_ready.js`（确认 Chat + 校验模型 `6` + 推滑杆到顶 + 关菜单 + 断言 `High`，返回 `ok`）。
+6. 一键脚本：`D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-external-model-review\components\gpt-mirror-extended-review\scripts\jump_and_ready.js`（确认 Chat + 校验模型 `6` + 推滑杆到顶 + 关菜单 + 断言 `High`，返回 `ok`）。
 
 ## 三、注入与发送
 
@@ -109,19 +109,19 @@ echo "$R"   # 必须 ok:true 才可发问
 ## 六、提问方法：GitHub 强读（2026-09-28 更新：公开仓 + 强读已验证 ✅）
 
 - **政策演变**：09-27 初版为「私有仓+精选文档+送审前 push」；09-28 郭老师升级拍板——**小项目先公开，产品成熟后再转私有**。理由：GPT（镜像账号池）无法登录读取私有仓，公开后 GPT 网页浏览可直接强读，回复质量显著更高。
-- **仓库**：`https://github.com/201650545/listenloop-curated`（现已公开，匿名可访问）。
+- **仓库**：`https://github.com/201650545/phrasing-curated`（现已公开，匿名可访问）。
 - **范围（精选）**：ListenLoop Obsidian 正库（`D:\Work\AI精听训练器`）中的架构与设计类文档——README、00_项目驾驶舱_可视化中心、01_商业与战略规划、02_工程架构与系统设计全部；**不含**开发日志流水、03_归档目录、GPT 评审原文、任何密钥/凭证/个人隐私内容。
-- **时机**：每次送审前 push 一次（`git -C "D:/Work/AI精听训练器/05_发布与问诊/listenloop-curated" add -A && commit && push`，走 `http.proxy=http://127.0.0.1:7890`），提示词精确列出文件路径清单要求 GPT 强读。
+- **时机**：每次送审前 push 一次（`git -C "D:/Work/AI精听训练器/05_发布与问诊/phrasing-curated" add -A && commit && push`，走 `http.proxy=http://127.0.0.1:7890`），提示词精确列出文件路径清单要求 GPT 强读。
 - **已验证（2026-09-28）**：GPT 可正常读取公开仓文档并准确复述内容（红线表格逐字匹配）——强读链路闭环。
 - **红线**：密钥/凭证/个人隐私永不入仓；开发日志与评审原文暂不外发；产品成熟后整体转私有（届时需重新解决 GPT 读取授权）。
-- **建仓与推送流程**：从 `D:\Work\AI精听训练器\` 同步精选文档到 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated` → `git -C <仓> add -A && commit && push`（走既有代理）→ 提示词写「请先读 <repo>/<path> 后再…」。
+- **建仓与推送流程**：从 `D:\Work\AI精听训练器\` 同步精选文档到 `D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated` → `git -C <仓> add -A && commit && push`（走既有代理）→ 提示词写「请先读 <repo>/<path> 后再…」。
 - **红线**：密钥/凭证/个人隐私永不入仓；开发日志与评审原文（含 GPT 输出）暂不外发；建仓前把精选清单给郭老师过目一次。
 
 ### ✅ 已落地（2026-09-27 深夜，郭老师授权）
 
-- **私有仓已建成**：`https://github.com/201650545/listenloop-curated`（private，经既有 git 凭据调 GitHub API 代建，无需 gh CLI）。
-- **首次推送完成**：本地仓 `D:\Work\AI精听训练器\05_发布与问诊\listenloop-curated`（commit `ac2d269`），20 篇精选文档已推送至 main。
-- **后续送审前 push 流程**：正库文档更新后 → 拷贝到本地仓 → `git -C "D:/Work/AI精听训练器/05_发布与问诊/listenloop-curated" add -A && git commit && git push`（走 7890 代理）。
+- **私有仓已建成**：`https://github.com/201650545/phrasing-curated`（private，经既有 git 凭据调 GitHub API 代建，无需 gh CLI）。
+- **首次推送完成**：本地仓 `D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated`（commit `ac2d269`），20 篇精选文档已推送至 main。
+- **后续送审前 push 流程**：正库文档更新后 → 拷贝到本地仓 → `git -C "D:/Work/AI精听训练器/05_发布与问诊/phrasing-curated" add -A && git commit && git push`（走 7890 代理）。
 - **安全红线（新增）**：git credential fill 的输出不得打印（PAT 会随工具输出暴露进会话记录）——凭据只允许在 Python 进程内存中读取使用；本次暴露的 token 建议在 GitHub 设置中轮换。
 
 ## 七、流程提速清单（实测有效）

@@ -1,12 +1,12 @@
 ---
-name: reference_skill_listenloop_course_pipeline
+name: reference_skill_phrasing_course_pipeline
 type: reference
 updated: 2026-10-19
 ---
-# reference: 句读课程全流程工业化生产套件 Skill (listenloop-course-pipeline)
+# reference: 句读课程全流程工业化生产套件 Skill (phrasing-course-pipeline)
 
 > 创建日期: 2026-10-16
-> 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\listenloop-course-pipeline\SKILL.md`
+> 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-course-pipeline\SKILL.md`
 > 适用范围: 句读（ListenLoop）全生命周期自动化制课、课程包构建、组件化演进与全量验收
 
 ---
