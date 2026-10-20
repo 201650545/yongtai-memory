@@ -37,16 +37,27 @@ updated: 2026-10-20
 
 ⇒ 要生图走 `:3100` 的 `image-gen`（商汤/AGNES/即梦/伪 API），**别走 buddy**。
 
-## 三、网页版生图「伪 API」怎么搭
+## 三、网页版生图「伪 API」怎么搭（2026-10-20 晚已调整）
 
-新服务：`D:\项目\ai-hub\image-pseudo-api\server.py`（**OpenAI 兼容**，端口 **8010**，
-计划任务 `ImagePseudoAPI` 常驻，开机自启）。
-在 `:3100` 里注册成自定义渠道 `imgpseudo`（`http://127.0.0.1:8010/v1`），
-是 `image-gen` 路由链的**末尾兜底**成员。登记脚本：
-`search_gateway/scripts/wire_imgpseudo_channel.py`（顺带把 ark/seedream 从链里摘掉）。
+> **调整起因（郭老师）**：「独立出来搞这么多网关，这么难管理」——同意。
+> 原先为生图另起了一个独立的 :8010 常驻服务，**已撤销**。
+
+**现在**：它是 **Buddy2API（:8787）进程内的一个模块** `buddy2api/src/providers/webimage/`，
+暴露 `POST /v1/web/images/generations`（OpenAI 兼容）与 `GET /v1/web/images/models`。
+`:3100` 侧把 `imgpseudo` 渠道的 base_url 指到 `http://127.0.0.1:8787/v1/web`，
+当**普通 HTTP 渠道**调用，调用方无感。**端口数回到原样（只剩 :3100 与 :8787）。**
+
+**为什么不能直接塞进 :3100**：:3100 是 **LocalSystem** 身份跑的 NSSM 服务，
+够不着用户交互会话里的 Chrome，而 opencli 的浏览器桥接（扩展 + 守护进程 19825）
+**只存在于用户会话**。Buddy2API（:8787，计划任务 Buddy2API_Gateway / Interactive）
+正好以当前用户身份常驻 ⇒ 网页版生图只能住在这一侧。
+
+登记脚本：`search_gateway/scripts/wire_imgpseudo_channel.py`（顺带把 ark/seedream 从链里摘掉）。
+**改完渠道 base_url 要热重载 3100**（`POST /api/gateway/reload`），否则它还用缓存里的旧地址。
 
 ### 豆包/元宝的流程（无原生 image 命令）
 
+`opencli <site> new`（**开新对话，实测必需**：在旧对话里直接 ask 不会触发生成）→
 `opencli <site> ask "<画图提示词>"` → **只回一段意图预演文本**，图是**异步**生成的 →
 每隔十几秒 `opencli <site> read -f json` → 适配器把图渲染成 `Image: <url>` 文本行 →
 解析该行 → 下载 URL → base64。实测从提交到出图约 **40~150 秒**。
