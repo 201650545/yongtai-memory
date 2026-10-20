@@ -26,10 +26,17 @@ AGNES 是**免费配额**渠道（`billing_type=free_quota`），不产生费用
 | 1 | **agnes** | `agnes-image-2.5-flash` | **新主力**，无水印，实测 9.0~9.8s |
 | 2 | agnes | `agnes-image-2.1-flash` | 同渠道备席 |
 | 3 | cloudflare | `@cf/black-forest-labs/flux-1-schnell` | |
-| 4 | loveyy | `gpt-image-2.5` | 生图公益站 |
-| 5 | imgpseudo | `doubao-image` | 豆包/即梦网页版伪 API |
-| 6 | sensetime | `sensenova-u1.5-fast` | **降为末席兜底（带水印）** |
-| 7 | sensetime | `sensenova-u1.5-lite` | 同上，更慢 |
+| 4 | imgpseudo | `doubao-image` | 豆包/即梦网页版伪 API |
+| 5 | sensetime | `sensenova-u1.5-fast` | **降为末席兜底（带水印）** |
+| 6 | sensetime | `sensenova-u1.5-lite` | 同上，更慢 |
+
+> ℹ️ **原链里的 loveyy / gpt-image-2.5（生图公益站）已不在表中** ——
+> 它属于 2026-10-20 16:34 郭老师下令撤掉的那批「免费共享/镜像站」渠道
+> （`scripts/drop_free_mirror_channels.py`，连同 cpa / cpa-image / l0veyou 一起撤了），
+> 当前 `channels.json` 与 `model_routes.json` 里已无残留。
+>
+> ⚠️ **改路由前先确认基线**：拿一份**新鲜**的 `model_routes.json` 快照再动手。
+> 我这次先备份后改，备份恰好是含已废渠道的旧状态，差点照着它把 loveyy 写回链里。
 
 配置走 mtime 感知热重载（`catalog_routes` 复用 `channels._cached_json`），**改完不用重启网关**。
 实测 `X-Resolved-Channel: agnes` 确认生效。
