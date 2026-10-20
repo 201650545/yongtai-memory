@@ -50,7 +50,7 @@ updated: 2026-10-19
 | 编号 | 提出日 | 事项 | 状态 | 关联 |
 |---|---|---|---|---|
 | IDEA-005 | 2026-09-30 | **P3 浏览器自动化工具的筛选与使用策略**（含 Kimi/opencli 等在用工具与后续 Computer Use） | **done（2026-10-20）**：盘点 → provider 段落地 → 全量铺开三步走完，全库浏览器实现类规定性条款 = 0，能力声明与 provider 清单零缺口 | 元智能浏览器能力域 `docs\04` §七；`docs\07` §八 已给改法（把工具名从 skill 正文赶进安装配置） |
-| IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | **done（2026-10-20 23:15 收口）**（唯一遗留＝DSH 需重启才加载 `mcp-computer-use` ＋ `mcp-ai-search-gateway`） | 详见下方"§2 补充：IDEA-006 第一片" |
+| IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | **done（2026-10-20 23:15 收口；2026-10-21 00:11 遗留清零）**：唯一遗留＝DSH 需重启才加载 `mcp-computer-use` ＋ `mcp-ai-search-gateway` —— **DSH 已于 10-21 00:11 重启（主进程 PID 23292），computer_use 实测握手通过（serverInfo `computer-use v1.29.1`，工具 `screen`）**；`mcp-ai-search-gateway` 已于 10-20 23:57 随搜索 MCP 层整体删除 ⇒ **两条遗留全部清零，本条结案** | 详见下方"§2 补充：IDEA-006 第一片" |
 | IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | **decided（2026-10-20 23:31 他定「7 不做了」）**<br>P1 已落地；**P2 剩余半边（网关 :3100 接入 Claude Code）作废，不再做**。远程通道此前已按他指令关闭（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
 | IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
@@ -297,6 +297,52 @@ updated: 2026-10-19
   **卡点（正是他还没说的）**：①常用功能清单（剪/拼/字幕/转码/导出规格）②界面形态 ③素材来源（现有课件包？）④导出规格与目标平台（小红书竖版 1080×1920？视频号？）——不问他就不开做，否则就是第二个剪映。
   详细调研单：`D:\Work\元智能\10_AI自成长引擎\docs\调研\20261020_只读调研_IDEA015_019_020_021.md`。
 - **处理单（2026-10-20 23:50）**：`D:\Work\元智能\10_AI自成长引擎\docs\方案\20261020_IDEA015_017_019_020_021_处理单.md` §五 —— 四步（**先把 ffmpeg 提到可用位置**并解掉 `pydub` 现存警告 / 作业队列原型 / 字幕与配音接 `faster_whisper`＋`edge_tts` / 本地网页 UI＋导出规格）＋验收（拿句读现有课件当素材跑完一条真实任务）＋**唯一待他定的一点**：常用功能清单＋导出目标规格。**状态仍为 captured，不派工。**
+- **复述（2026-10-21 00:08，他正式开题）· 原话逐字**：
+  > 「我想做一个定制化的视频剪辑程序，这是给 AI 用的。现在 AI 剪视频不是很火吗？还有 AI 自动生成知识类视频，有这种 skill，也有剪视频的 skill，它需要一个平台来承载剪辑视频。
+  > 比如，我可能剪口播，或者剪一些简单的视频，根本就不需要那些杂乱的特效和多余的东西。我最近看到有一个程序叫 tchatcut，感觉还行。」
+  > 「你可以再去 GitHub 上找一下关于这类项目的热门立项工程，比如：①视频剪辑程序 ②AI 制作视频 ③AI 剪视频——反正就是自动化做这些事情。」
+  ⇒ **这条从「本机轻量剪辑工具」升级为「给 AI 用的定制化视频剪辑程序 ＋ 承载层」**：关键词＝**给 AI 用**、**要一个平台承载**、**剪口播/简单视频**、**不要杂乱特效**。他点名的 `tchatcut` 实为 **ChatCut**（无同名仓库）。
+- **研究进展（2026-10-21 00:10，GitHub 热门项目普查 ＋ 本机资产盘点）**：
+  **赛道分三层（用 gh API 直接查，未用 web_search，零模型额度）**——
+  ① **对话式剪辑器（GUI＋Agent）**：`0xsline/OpenChatCut` ★2550（AGPL，Electron 桌面版，本地项目文件＋真实多轨时间线，内置 agent 与外部 MCP 共用同一套工具）、`pireel/pireel` ★1309（AGPL，CapCut/ChatCut 开源替代，talking-head／字幕，agent plugin 用 `npx skills add`）、`MartinDelophy/ai-video-editor` ★871、`cartesiancs/cartcut` ★816、`open-ribbi/velocut` ★455（浏览器内 Rust/WASM＋WebGPU）。
+  ② **MCP 剪辑服务端（给 AI 用，最贴他诉求）**：`KyaniteLabs/kinocut` ★212（Apache，guardrailed＋quality gates＋Video Receipts＋Hyperframes＋shorts repurposing）、`Cassette-Editor/oh-my-cassette` ★121、`misbahsy/video-audio-mcp` ★89、`AH64-dll/OpenEdit` ★50（本地 MCP server：ingest→转写→edit graph→melt/ffmpeg）、`lordhoell/davinci-resolve-mcp` ★21。
+  ③ **工作流/skill 层（最贴他的用法）**：`Endless1936/cut-motion` ★277（**口播素材→精剪**的自然语言工作流，靠 ChatCut Agent 集成）、`Agents365-ai/video-podcast-maker` ★1691（**主题→4K 知识视频**：Remotion＋本地 TTS(Edge 免费/Azure)＋FFmpeg 混音，**直投 B站/YouTube/小红书/抖音/视频号 × zh-CN/en-US**，带中文多音字 phoneme 字典、9:16 竖版切片、设计风格学习）、`yihui-dev/yh-chatcut-skills` ★81（ChatCut skills＋**时间戳精确 SRT**）。
+  **⇒ 关键洞察：他缺的不是「又一个剪辑器」，是「承载层」——项目文件即接口 + AI 可驱动 + ffmpeg 只做执行**。`FableCut`（★736，MIT，零 npm 依赖，`node server.js`，**project.json 就是接口**，浏览器 UI 150ms 热更，MCP＋REST 驱动，agent 直接改 JSON）这条路最贴。
+  **许可提醒（贴他处境）**：OpenChatCut / pireel 都是 **AGPL-3.0**；他 **Work 仓正在准备公开**，把这类代码或衍生放进公开仓会触发 AGPL 分发义务 ⇒ 选型优先 MIT/Apache：FableCut(MIT)、kinocut(Apache)、cut-motion(Apache-2.0)、video-podcast-maker(MIT)、OpenEdit/video-audio-mcp。
+  **本机已有资产（别重造）**：剪辑指令层 `.openclaw-autoclaw\skills\ffmpeg-video-editor-1.0.0`（自然语言→ffmpeg 命令）＋`video-frames-1.0.0`＋`video-transcript-downloader-1.0.0`（yt-dlp 抽字幕/转录）；ASR＝`skills\openai-whisper`＋Python `faster_whisper`；TTS＝`edge_tts`（免费）＋`skills\podcast-generation`（Azure GPT Realtime Mini，付费）；文案层＝`skills\khazix-writer`（公众号）＋`humanizer`＋`social-content`＋`content-extract`＋`infographics`；**句读产线已产出句级切分/句轴/能量包络**——这正是 AI 剪视频最难的那块（自动切点、字幕对齐），**他已经有了** ⇒ 他的差异化不是「再做一个剪辑器」，而是「把句读句轴接进 AI 剪辑的承载层」。
+  **两个坑**：①`remotion` skill 在 `.iflow`/`.kiro`/`.qwen` 三个宿主里是**空壳**（实体不在）；②`video-podcast-maker` 明示新建 Remotion 项目要下 **~2.2GB npm ＋ ~90MB Chrome headless** ⇒ 别新建项目，复用现有的。
+  **状态仍为 captured，不派工。**
+- **研究进展（2026-10-21 00:2x，市场验证层）**：**他指出「都没经过市场验证」——GitHub 星数是开发者热度，不是商业验证。补齐市场层（融资/ARR 数字出自我的知识，今天无法用 web_search 逐条核；要核可对具体产品 web_fetch 官网定价页）**：
+  - **口播剪辑的市场标准答案是 Descript**（美国，公开融资到 C 轮）：ASR 出文字稿 → 像改文档一样删句 → 音频画面自动跟着剪（"删掉'嗯'就剪掉那段"）⇒ **口播自动剪辑有人付钱**，但它是**英文＋词级**，靠通用 ASR，**不懂中文句子语义与朗读节奏**。
+  - **中国侧已验证**：剪映的「智能剪口播／一键成片／自动字幕」＋必剪（B站）＋火山剪辑 —— 模板化、竖版、知识与口播成片。
+  - **垂类跑出规模**：OpusClip / Vizard / Submagic / Munch（长视频→短视频批量分发）。
+  - **对这条想法参考价值最大的一个：Screen Studio**（独立开发者产品，macOS，4K 录屏口播，刻意砍到 **4 画面＋4 字幕＋9 素材＋12 步、没有时间线**）⇒ **市场验证的结论是「专用工具赢通用工具」，不是「把剪映阉割一下」**——正合他「电脑别卡＋不要杂乱特效」的诉求。
+  - **数字人/知识视频层已被彻底商品化且烧钱**（HeyGen / Synthesia / 讯飞智作 / 国内一键成片；Flova 走 Seedance 2.5、avatar-forge 动效剪辑计费）⇒ **不该去卷这条**。
+  - **他的位置**：生成层（数字人/图生视频）没护城河；通用剪辑层（Descript/剪映）巨头占位且只懂词级 ASR；**他手上有全网少有的「中文句级切分＋朗读节奏（句轴/能量包络）」**（句读产线）＋**教材与知识点内容资产** ⇒ 没人做「**中文知识点/口播 → 成片**」这条垂直线。
+  - **卡点级事实（2026-10-21 实查 `D:\Work\English-Content-Factory`）**：整仓只有 **12 个 .mp3 ＋ 一堆成册图集，0 个 .mp4**；渲染类脚本一个没有（`06_templates` 下只有 `_*_gpt_*.py` 文案脚本）⇒ **内容有了、音频有了，就差「音频＋图集→成片」的装配器**。他要的「平台」**不是通用剪辑器，就是这个装配器 ＋ 一个 AI 能反复改的中间格式（project.json）**。
+  - **他手里的市场信号**（自产数据，比外部星数硬）：小红书资产里《我把数字人口播做成了开源的 Skill》（`LycheeAILab/avatar-forge`，MIT，5 步流水线）与《全网300w播放，新手ai教程来啦》（Flova 走 Seedance 2.5 的剧情视频工作流）**双双进了精选保留库** ⇒ 他的受众对 AI 视频是真买单。
+  - **建议的三步（按投入排序）**：①**装配器**（音频＋图集→竖版成片，ffmpeg ＋句读句轴做字幕对齐）⇒ 直接补上 ECF 的最后一公里，最快见市场；②**口播自动剪点**（faster_whisper ＋ 句读能量包络 → 标出口癖/卡顿/长停顿，删句＝中文版 Descript，但用句级不是词级）；③**承载层**（project.json ＋ MCP，让 AI 能反复改/预览/导出）—— 等①②跑通再上，别一开始就造骨架。
+  **状态仍为 captured，不派工；等他点 ①②③ 哪一个先做。**
+- **研究进展（2026-10-21 00:2x，内存实测 · 这条想法的根约束）**：他补充「**要在他们的剪视频程序里跑，内存占用都很大，所以才要定制化**」⇒ 根约束＝**常驻内存**，不是功能、不是星数、不是市场。
+  **本机实测（2026-10-21 00:2x）**：15.2 GB 内存、**总占用 13,217 MB ⇒ 使用率 90.8%、空闲仅 1.3 GB**（已过 AGENTS.md 第 5 条 88% 探针线）；大户＝**chrome 31 个进程 4,435 MB** ＋ **node 18 个 2,410 MB**（多为 `@minimax-ai/code/cli.js`＝Mavis Code 本体，另有 `opencli/dist/src/daemon.js`）＋ **DeepSeek Harness 5 个 1,093 MB** ＋ Defender 452 MB；**Java/Gradle 孤儿 0**。
+  ⇒ **「卡」的真凶是 chrome ＋ AI 宿主 ＋ DSH，不是剪辑器**（他本机压根没装任何剪辑器：剪映/DaVinci/OBS/VLC/mpv/HandBrake 全不在 PATH）。
+  **ffmpeg 实测**：1080×1920/30fps/10s（libx264 veryfast＋aac）**峰值 RSS 约 7 MB**，**跑完即退 ⇒ 常驻 0**。
+  ⇒ **「定制化」的正式定义＝三不要**：①不要 Electron（桌面剪辑器 200–500MB+）②不要常驻浏览器 UI（本机每标签页几百 MB，chrome 已占 4.4GB）③不要 Remotion/Chrome headless 渲染（500MB–1GB+，新建项目还要下 2.2GB npm）——**只要 project.json（中间格式）＋ ffmpeg 一次性进程 ＋ 句读句轴**。
+  ⇒ **预览也不常驻**：要验效果就渲 3 秒 480×854 低分辨率代理（瞬时几十 MB），或按需开静态预览页、用完就关。
+  **状态仍为 captured，不派工。**
+- **复述（2026-10-21 00:08 → 01:5x，他派活了）**：他要求「**明天早上给我一个能 AI 自动剪视频的成品**」⇒ 本条**从 captured 升级为已指派任务**（本轮实做，见下）。
+- **本轮实做（2026-10-21 00:30–03:0x，MiniMax Code）**：交付**「零常驻 AI 自动剪视频成品」**，三层结构：
+  ①**编排层** `scripts/autoedit.py`——自动切点（ffmpeg 静音检测 / 句读字级时间轴长间隔 / ASR 口癖词）＋ 自动字幕（句读句级 > 字级 > 离线 faster-whisper）⇒ 产出 `project.json`；
+  ②**执行层** `scripts/assemble.py`——一个 ffmpeg 一次性进程出竖版 mp4（**常驻 0**），支持区间裁剪＋字幕烧录；
+  ③**接口层** `scripts/server.py`——**MCP server（5 个工具：plan / render / transcribe / silence / presets）**，已登记进 **Claude Code / Codex / Cursor**（真源 `D:\项目\ai-hub\search_gateway\mcp\mcp_config.json`）。
+  **真素材端到端跑通（中文）**：句读课件包 `g2x-wozuixiaode-b-dual.lllesson`（音频＋60 句 sentences.json＋封面）→ 自动切静音 → **181.7s 压到 117.4s（64.6%）** → 60 条字幕烧录 → 1080×1920/h264+aac/117.7s/3.05MB 成片，**抽帧肉眼验收通过**（「原来有一丛野蔷薇，」白字深底框）。
+  **内存账（本机实测）**：直喂 2160×2880 原图 447MB → PIL 预缩放 **118MB**；**用 concat 滤镜拼 51 段＝峰值 8209MB**（红线上）→ 改分段落盘后 **1.1GB**。
+  **五个坑（写死，别再踩）**：①concat 滤镜拼多段 ⇒ 8GB 峰值 ②`force_style` 在 `-filter_complex` 里**整段失效**（filtergraph 把带逗号的值切碎）③ASS 时间必须 `H:MM:SS.cc`（写成秒数 ⇒ 一条字幕都不显示）④ASS `PlayResX/Y` 要设成画布尺寸（否则字号按 288 基准放大 6.67 倍）⑤宽高必须偶数（否则 libx264 `error -22`）。
+  **落地位置**：`D:\Work\元智能\10_AI自成长引擎\草稿区\L3_Skill\video-assembler\`（**草稿态**；固化进技能库需他点头）。
+  详细规格：`docs\规格.md`。
+
+
+
 
 ### IDEA-022 · 外部 Skill 统一收存 → 统一转译成自己的 Skill
 - **提出**：2026-10-20（首次政策化）

@@ -99,5 +99,7 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
 - **自检脚本跟着改**：`check_switcher_sync.py` 的 `SWITCHER_DIR` 指向**仓内真源**，junction 路径作 fallback。
 - **迁移后复跑**：契约自检 **PASS 全通**，切换器从 junction 路径重启正常（PID 4700）。
 - ⚠️ **旧目录是改名保留、不是删除**：`D:\Tools\WorkBuddy-Account-Switcher.bak-20261021_0032`
-  （含原始 profiles 副本）—— 确认稳定后可自行删除。
+  —— **2026-10-21 07:42 已清空**：79 个文件全部移入回收站（其中 8 份 `ui/*.bak*` 历史版本
+  已先保全到仓内 `ui/`），只剩 12 个**空目录壳**（回收站只收文件、拒收 workspace 外的目录级目标，
+  未绕过）；空壳无害，可手动删除。
 
