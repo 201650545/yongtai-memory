@@ -51,7 +51,7 @@ updated: 2026-10-19
 |---|---|---|---|---|
 | IDEA-005 | 2026-09-30 | **P3 浏览器自动化工具的筛选与使用策略**（含 Kimi/opencli 等在用工具与后续 Computer Use） | assigned，未开工 | 元智能浏览器能力域 `docs\04` §七；`docs\07` §八 已给改法（把工具名从 skill 正文赶进安装配置） |
 | IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | **in_progress（2026-10-20 第一片落地并自检通过）**；前置＝`docs\07` §七 第三片"浏览器能力抽象"已于同日达成并通过验收器验证 | 详见下方"§2 补充：IDEA-006 第一片" |
-| IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | P1 done／P2 部分<br>**2026-10-20 复述：远程通道暂关，链子先断着，回头再说**（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
+| IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | **decided（2026-10-20 23:31 他定「7 不做了」）**<br>P1 已落地；**P2 剩余半边（网关 :3100 接入 Claude Code）作废，不再做**。远程通道此前已按他指令关闭（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
 | IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
 | IDEA-023 | 2026-10-20 | **改名同步器**：把「批量改名 ＋ 指针同步 ＋ 验收」固化成工具（默认 dry-run） | **done（2026-10-20 21:40 落地）**：技能库 `rename-sync-tool\`，`--selftest` 8/8 PASS；拿当天那次母仓改名回放做真实盘 dry-run ⇒ 将改写 0 文件、20 条残留正确分类（15 declaration ＋ 5 artifact）、**mechanical 真死链 0**，与人工逐条复核结论一致。已登记 README §6 ＋ 能力总账（独立 9→10、自制 29→30） | `D:\Work\元智能\10_AI自成长引擎\技能库\rename-sync-tool\`；配套 [[教训/lesson_命名纪律_前缀即归属且批量替换须排除存档]] |
@@ -174,6 +174,7 @@ updated: 2026-10-19
     下一步若他点头：① **收存层 2 个转译成自己的 skill**（按 IDEA-022 策略，需先有转译标准）② 库外 275 份 / 51 个市场唯一名**只读登记**。
 - **IDEA-009 · 浏览器类 skill 的统一治理**（2026-09-29）：原话「因为浏览器的 skill 有很多很多，我主要用的是 OpenCL。」**已升级为指派 P3**（IDEA-005）。第一动作候选＝按能力类别给已盘的 6668 份 SKILL.md 打标签，出"浏览器类有多少、谁在管"的数（`docs\06` 盘过覆盖面但没按能力类别切过）。
 - **IDEA-010 · 把自己的 skill 上架卖钱**（2026-09-30）：原话「搜一下腾讯的 skill pay，还有阿里的 skillpay 是什么情况，那是不是日后我也可以卖自己的 skill」。已查事实：腾讯 SkillPay（2026-07-16 上线，绑 SkillHub，**入驻要企业认证＋微信支付**，个人版未开）；阿里那个是**支付宝**的 `skillpay.alipay.com`（个人开发者可用，付款实时进开发者账户，一次性付费＝**向买方交付明文**）。两边都未公布抽成。**卡点不在平台在他自己**：他名下确定归属、不含第三方素材与密钥的自产件目前只有元智能那套 runners／判决管线。
+  - **2026-10-20 23:31 复述**：他定「**10 不做了**」⇒ 本条 **decided（搁置，不再推）**；上面那点自产件认领的前置也随之作废。
 - **IDEA-011 · 多端联动**（2026-09-30，中期）：网关模型设置 ↔ CC Switch ↔ Claude Code ↔ DeepSeek Harness ↔ 阿里云远程控制（Codemote/贾维斯中控）串成一条链。他给的就是这个清单，**没给顺序与验收标准**。
   - **2026-10-20 23:09 复述**：链子里的「阿里云远程控制」环节**暂时断了** —— 远程通道已按他的指令关闭（`CodemoteFrpc` + `RemoteCodingControl` 停止且不再自启）。**"链子先断着，回头再说"**；本条其余环节（网关↔CC Switch↔Claude Code↔DeepSeek Harness）不受影响，仍按原计划。
   - **2026-10-20 23:09 再复述（这条彻底搁置）**：他明确说「**不要搞这个东西了，好讨厌啊，麻烦事情又多，搞得网络有好多限制，带来的好处又不是很多**」
@@ -325,9 +326,9 @@ updated: 2026-10-19
 | IDEA-002 | 链式搜索网关（他给过正向评价的那套） | captured·**资产今天已全活** | 他只说"蛮好的"，没提要求 ⇒ 不许自己扩容 | 他开专题 | 资产侧今天实测 8/8 引擎在线、MCP 已进程内化；扩容要他点头 |
 | IDEA-003 | 把 AI 网站的网页算力反代成 API | captured＋初查完成 | 用哪个站/谁的账号/封了怎么办三问没答案；公共实现已下架 | 他拍板 | 我不碰（账号与付费风险红线） |
 | IDEA-006 | 用自建网关配置 Computer Use 控制本机 | **done（2026-10-20 23:15 收口）** | 客户端登记**全部补齐**：Claude Code / Codex / Cursor 三个 registered（`register_mcp_clients.py --check` 实测「已是最新」）；DSH 侧也已注入**两条** —— `mcp-computer-use`（serverName=computer_use）＋ **`mcp-ai-search-gateway`（serverName=ai_search_gateway）**。做法：`ai-hub\buddy2api\scripts\sync_dsh_profile.py` 的 `ensure_mcp_servers()` **改表驱动**（读真源 `mcp_config.json`，与另外三个客户端同一个真源）——原来只硬编码 computer-use 一条，才导致 search 在 DSH 漏登记。实测：dry-run 只报「新增一条」、computer-use 无更新（等价）；真跑后复跑幂等、9 行注释自动补回、entry 17→18、脚本自带 .bak 备份 | 我可做 | **已完成**（剩：DSH 需重启才加载这两条） |
-| IDEA-007 | 运行机制写进全部 Agent 入口 | P1 done／P2 部分 | 客户端链待闭环；远程通道已按他指令关闭、"回头再说" | 他定 | 机制层已做 |
+| IDEA-007 | 运行机制写进全部 Agent 入口 | **decided（2026-10-20 23:31）** | P1 已落地；P2 剩余半边（网关 :3100 接入 Claude Code）随他「不做了」作废 | 他定 | **不再做** |
 | IDEA-009 | 浏览器类 skill 的统一治理 | **done（2026-10-20 22:40 转译收口）** | 治理面**是在册 5 个**（此前那个 57 把市场目录算进来了，属口径错误）。**收存层 2 个已转译入库**：`opencli-browser-stable-roundtrip`（16 步 16 禁逐字保留，实现显式锁死 opencli）＋ `gateway-channel-catalog-inventory`（13 步 16 禁逐字保留，先给 naming.yaml 增了第三能力域 `provider.http.*`）——**收存层已无浏览器类**。库外 275 份 / 51 个市场唯一名**只读登记不治**（清单已在 `_中枢\skill-census-08-capability-tags.md`） | 我可做 | **已完成**（他 22:16 点头后执行） |
-| IDEA-010 | 把自己的 skill 上架卖钱 | captured | 卡点不在平台在他：名下确定归属的自产件太少 | 他 | 需他先认领自产件 |
+| IDEA-010 | 把自己的 skill 上架卖钱 | **decided（2026-10-20 23:31）** | 他定「不做了」；原卡点（先认领自产件）随之作废 | 他 | **不再做** |
 | IDEA-011 | 多端联动（网关↔CC Switch↔Claude Code↔DSH↔远程） | captured·远程环节已断 | 顺序与验收标准他没给 | 他 | 我不猜 |
 | IDEA-013 | "近期还有大的整合要做" | captured | **整合什么他没说** | 他开专题 | 我不猜 |
 | IDEA-014 | 常驻远期：任何 Agent 都懂全部项目 | captured·机制第一版已落地 | 本文件就是第二块拼图，已成 | — | 主体已达成 |
