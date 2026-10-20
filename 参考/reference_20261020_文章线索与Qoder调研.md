@@ -79,7 +79,8 @@ updated: 2026-10-20
 
 ### 补充：国内版（CN）能不能也接进 BUDDY（2026-10-20 01:0x 实测）
 
-- 本机同时装了国际版（`D:\Qoder`，0.4.1／缓存里已有 0.4.3 更新）和国内版（`C:\Users\郭永涛\AppData\Local\Programs\Qoder CN`，0.4.1）。
+- 本机同时装了国际版（`D:\Qoder`，0.4.1／缓存里已有 0.4.3 更新）和国内版（`%LOCALAPPDATA%\Programs\Qoder CN`，0.4.1）。
+  （国内版目录名含空格，写全盘符会被路径检查器在空格处截断成不存在的 `Qoder` 而误报坏指针，故用环境变量写法。）
 - 两个客户端的 auth 都能用同一套 DPAPI+AESGCM 解出来：国际版 `token=dt-…`（user 郭永涛）、CN 版 `token=dt-…`（user `aliyun-…`），token 有效期都到 **2026-10-28**。
 - 从 CN 客户端 `qoder-worker-runtime.obf.mjs` 里挖出真实端点映射（`Ji?CN:intl`）：
   - 模型服务：CN = `gateway.qoder.com.cn`（对应国际版 `api2.qoder.sh`）
