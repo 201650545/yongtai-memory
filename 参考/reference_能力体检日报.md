@@ -64,6 +64,7 @@ updated: 2026-10-20
 | `dsh-our-free-model` | alive |
 | `qidi-parent-notify` | alive |
 | `anatomy` | alive |
+| `computer-use` | alive |
 
 ### 关键计划任务
 
