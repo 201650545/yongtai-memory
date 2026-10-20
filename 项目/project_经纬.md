@@ -63,6 +63,27 @@ DSH 右栏里是一张无限画布：一次真跑的 DAG 画成可拖、可平�
 - 成果页要**自包含单文件**：图片在**生成阶段**用 base64 内嵌（`plugin/jingwei/pack-html.js`），不能引用外部文件。
 - 预览 iframe 的 sandbox 用 `allow-scripts` 而**不是空值**：空 sandbox 会把成果页里所有 JS 禁掉；不给 `allow-same-origin` 才既能用交互又读不到父页面。
 
+## 里程碑：两次"第一次"（2026-10-20）
+
+**① 「一句话 → 自动拆图」第一次真跑通**（10:30，runId `20261020-103036-f469`）。
+planner 用 `buddy2api/workbuddy/deepseek-v4.1-flash`（`stopReason=completed`）把一句《观潮》学习资料需求拆成 8 节点语义链。
+**根因（取证）**：之前不是代码坏，是 **01:45~01:53 全机模型调用整层挂**（`502 所有渠道均不可用` / `CERTIFICATE_VERIFY_FAILED` / `TRANSPORT`），
+而 planner 恰好挂在依赖外网聚合渠道的 `local-gateway` 上。**planner 与 worker 都在那条线上，只换 planner 是不够的**——修完两个才真的通。
+
+**② D4 完整语义链（12 节点）第一次全通**（12:08，runId `20261020-115406-e5bc`）：**12/12 done、零 failed**。
+`intake → 4×produce → 4×verify → merge → audit → output`；`delivery` 正确汇总为 `blocked`（4 个 verify + audit 判 FAIL）；
+**判断型节点（merge/audit/output）全部照常跑完，没被上游 FAIL 拦住**。
+
+**成果页该由 AI 产，不该人工手写**（关键认知）：
+D4 的 output 产物质量远超人工样板——一句话点明「不可交付」+ 三条具体原因 + 逐项状态表（路径/类型/尺寸/✅⚠️❌）+
+连「薄雾 báo（应 bó）」「霎＝妾（应 妻）」这种错别字都抓到了，还要求三处同步改。
+**人手工写的成果页样例被判定「不能用，质量差」，而 AI 产的那份是可用级** ⇒ 成果页的正确做法是**让 output 节点产出自包含 HTML**（内嵌 PNG），不是人去写。
+
+**并行写状态会互相覆盖**（今天踩的第 N 个坑）：
+并行节点各自 `读 graph.json → 改 → 写回`，后写的覆盖先写的 ⇒ **画布上节点显示 `idle`，而产物其实正在写**，看起来像"卡住了"。
+DSH 侧 agent 独立复现了三次，GPT-6 评审也点了这条。**修法：模块级 `withGraphLock()` 把所有读-改-写排成串行。**
+这类 bug 不报错不崩溃，只是**状态显示不可信**，比崩溃更难查。
+
 ## 能力突破：planner 首次成功 + 自动化通道（2026-10-20 上午）
 
 **① 「一句话 → 自动拆图」第一次真跑通**（runId `20261020-103736-ae6b`）。
