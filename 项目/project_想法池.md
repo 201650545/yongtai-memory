@@ -46,10 +46,38 @@ updated: 2026-10-19
 | 编号 | 提出日 | 事项 | 状态 | 关联 |
 |---|---|---|---|---|
 | IDEA-005 | 2026-09-30 | **P3 浏览器自动化工具的筛选与使用策略**（含 Kimi/opencli 等在用工具与后续 Computer Use） | assigned，未开工 | 元智能浏览器能力域 `docs\04` §七；`docs\07` §八 已给改法（把工具名从 skill 正文赶进安装配置） |
-| IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | assigned，未开工 | 前置＝`docs\07` §七 第三片"浏览器能力抽象"没落地之前，computer use 没有挂载点 |
+| IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | **in_progress（2026-10-20 第一片落地并自检通过）**；前置＝`docs\07` §七 第三片"浏览器能力抽象"已于同日达成并通过验收器验证 | 详见下方"§2 补充：IDEA-006 第一片" |
 | IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | P1 done／P2 部分<br>**2026-10-20 复述：远程通道暂关，链子先断着，回头再说**（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
 | IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
+
+### §2 补充：IDEA-006 第一片落地（2026-10-20）
+
+**前置已解锁**：`docs\07` §七 第三片"浏览器能力抽象"（验收标准＝同一个 skill 在两个 provider 下装成功、**正文一字节未改**）
+当日达成并通过验收器（`_中枢\scripts\verify_provider_switch.py`，EXIT=0）。
+
+**这一片的形状（2026-10-20 与郭老师讨论后定）**：
+- **工具与模型解绑** —— 郭老师原话纠偏：「**任何一个 Agent AI 都可以用这个工具进行操作，不是说只能用 API 转发网关中的模型**」。
+  ⇒ computer use 做成**第三个 MCP server**（与 search / media 同构），不绑模型、不绑网关；网关 :3100 只是其中一种用法。
+- **桌面级** —— 在网页之上另开一层，连非网页窗口也管。
+- **看屏幕两条腿** —— 先读 UIA 控件结构，读不到再截图 + PaddleOCR 兜底（郭老师拍板"一步到位把 OCR 做了"；
+  且**本机裁定「OCR 只留 PaddleOCR(PP-OCRv4)」**，故不引 rapidocr/tesseract/easyocr）。
+- **写操作默认开，危险动作单独拦**（郭老师拍板）—— 拦三类：密码类控件（UIA IsPassword **且类型是 Edit**，非 Edit 会误报）、
+  凭据类文本、不可逆确认按钮与 `delete` 键；每次拦截带 `force=True` 可显式强制。
+- **截图默认只落本地路径**，要模型直接看图才显式要 `with_base64=True`；支持 `region` 指定区域。
+
+**落地物**：`D:\项目\ai-hub\search_gateway\mcp\computer_use_mcp_server.py`（7 工具）＋ `_ocr_worker.py`（OCR 子进程，跑系统 Python）
+＋ `_probe_computer_use.py`（自检，EXIT=0：只读全通、OCR 识别 56 行、两条危险拦截生效）＋ `mcp_config.json` 注册 ＋ README 章节。
+
+**踩过的坑（已修）**：
+① Windows `time.strftime` **不支持 `%f`**（`%f` 只有 `datetime.strftime` 有）→ `ValueError: Invalid format string`；
+② `PaddleOCR` 默认 `check_update=True` **联网查版本**，离线静默挂死（CPU 0% 不动）→ 必须 `check_update=False`，模型已缓存在 `~/.paddleocr`；
+③ 200% 缩放下 `ImageGrab` 抓 3200×2000 而 `GetSystemMetrics` 报 1600×1000 → 必须进程早期 `SetProcessDpiAwareness(2)`，否则坐标偏一半；
+④ `%TEMP%` 里有个叫 `struct.py` 的临时脚本（08-16 别的会话写的）**遮蔽标准库 `struct`** ⇒ 任何从 `%TEMP%` 启动的 Python 导入 `struct` 都会执行它。
+**这条待郭老师处置**（本 Agent 未动那个文件）：临时脚本请用 `t_xxx.py` 这类前缀，别用标准库名。
+
+**未做（下一步）**：DSH 侧注册 —— `C:\Users\郭永涛\.dsh\profiles\desktop\cordis.patch.yml` **会被 `sync_dsh_profile.py` 整份重写**
+（该文件里自己写着"不要再手工加，会被覆盖"）⇒ 必须改那个生成脚本，手改 yml 无效。
 
 ### §2 补充：IDEA-005 盘点稿已完成（2026-10-20）
 
