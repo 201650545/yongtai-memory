@@ -1,6 +1,6 @@
 ---
 name: project-经纬
-description: 经纬（Jingwei）＝DeepSeek Harness 的无限画布插件（@local/jingwei）。把一次真跑的 DAG 画在右栏，配左侧模型面板；执行器 v4 支持语义角色链（intake/produce/verify/merge/audit/output）。2026-10-20 状态 active：画布视觉语言升 v3.2（**纵向主轴 + DAG 拓扑分层**布局 + 三层节点结构 + 绿色唯一入口只给「执行完成」+ 反相签表达核查/交付结论），已按 GPT-6 Sol 第 3 轮裁决修正；planner 断链真因已查明并换路由，重试链已加。真源 D:\Work\经纬\docs\00-项目总览.md。
+description: 经纬（Jingwei）＝DeepSeek Harness 的无限画布插件（@local/jingwei）。把一次真跑的 DAG 画在右栏，配左侧模型面板；执行器 v4 支持语义角色链（intake/produce/verify/merge/audit/output）。2026-10-20 状态 active：画布视觉语言升 v3.2（**纵向主轴 + DAG 拓扑分层**布局 + 三层节点结构 + 绿色唯一入口只给「执行完成」+ 反相签表达核查/交付结论 + 中央走线区绕行 + 预览安全加固），已按 GPT-6 Sol 第 3 轮裁决修正并实机验收通过；planner 断链真因已查明并换路由，重试链已加。真源 D:\Work\经纬\docs\00-项目总览.md。
 metadata:
   node_type: memory
   type: 项目
@@ -221,3 +221,38 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
 - **留档**：`D:\Work\经纬\docs\09-gpt6-第3轮裁决.md`（提问 + 裁决原文）。
 - **待办**：v3.2 第 3 段（连线：跨波次长边绕行、单一坐标系、边状态判据）、第 4 段（预览页适配）；
   郭老师目视验收；`jingwei-public` 推送仍缺 GitHub 凭证。
+
+## 交接档指针（换会话接手先看）
+
+- **交接单**：D:\Work\经纬\docs\11-交接单-2026-10-20.md
+  （我的角色与授权边界 / 开局三读 / 关键路径地图 / 当前状态 / 命令速查 / 铁律 / 未决事项）
+- **事故记录**：D:\Work\经纬\docs\10-事故记录-2026-10-20.md（两次 DSH 崩溃取证）
+- **GPT 第 3 轮裁决**：D:\Work\经纬\docs\09-gpt6-第3轮裁决.md（提问与裁决原文）
+
+## 2026-10-20 晚间更新 · v3.2 第 3~4 段 + 两次 DSH 崩溃根治
+
+- **第 3 段 连线**：跨波次长边走**中央走线区**（`x = AXIS ± 18`），车道错位不汇合；
+  边状态判据改为「上游完成 **且** 下游已开始或结束」；连线**不再传绿**。
+- **第 4 段 预览**：`.md` 走 markdown 渲染（以前落 text 分支）；未知类型安全回退；
+  **链接协议白名单**（`javascript:`/`data:` 不再能进 href —— 预览页与插件同源）。
+- **⚠️ 改插件源码必须原子写入**：DSH 带 HMR，磁盘一改就自动重新导入 ⇒
+  「分多次编辑」的中间态会被抢先加载。已两次因此出事（19:00 黑屏、19:09 DSH 崩在启动画面）。
+  ⇒ 一律走 `scripts/atomic_patch.py`；回归里有 `test_client_lint.mjs` 静态守卫兜底
+  （TDZ + 重复声明，用 git 里的真事故版本反向验证过）。
+  ⇒ **DSH 崩了先读** `%APPDATA%\@deepseek-ai\dsh-desktop\logs\crash-*.log`（带渲染进程 console 原文）。
+- **实机验收通过**：右栏经纬 tab 正常渲染；「重排版面」后纵向主轴生效（节点中心 x 全 240）。
+- 回归 **103 断言全绿**；留档 `docs/09-gpt6-第3轮裁决.md`、`docs/10-事故记录-2026-10-20.md`。
+
+## 2026-10-20 19:25 交接单复核（三处修正）
+
+- **交接单** `D:\Work\经纬\docs\11-交接单-2026-10-20.md` 八节结构复核完毕，路径逐条 `Test-Path` 通过。
+- **修正 1**：`client.js` 实为 **2930 行**（原写 2898），`orchestrator-v4.js` 869 行。
+- **修正 2**：提交轨迹补最新一笔 `c241988`（加交接单）；并注明 **`D:\Work` 是多项目共仓**，
+  别的项目（AI精听训练器 / English-Content-Factory）有未提交改动 ⇒ **禁止 `git add -A`，只 add `经纬/`**。
+- **修正 3（重要，新发现）**：`D:\小浣熊\jingwei-public` 的本地副本是 **v3.0 旧版**
+  （`client.js` 2151 行，无 `dagRank`/`visualRow`/`LAYOUT_VERSION`/「重排版面」；源是 2930 行），
+  且 7 个文件有未提交改动。**直接 push 会把 v3.0 发出去**——
+  正确顺序：先从 `D:\Work\经纬` 同步 v3.2 → 再提交 → 最后推。
+  另：GitHub SSH 认证实测 `Permission denied (publickey)`，本机 `~/.ssh/id_ed25519` 在但 GitHub 侧没认这把钥匙。
+- **收尾状态**：DSH 崩溃日志最新仍停在 19:09:14（此后 16 分钟零崩溃），8 个 `DeepSeek Harness` 进程正常，
+  `:3100` / `:8787` 均 LISTEN，经纬工作区干净，103 断言全绿。
