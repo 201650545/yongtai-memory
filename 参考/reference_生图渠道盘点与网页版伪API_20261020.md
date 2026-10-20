@@ -81,10 +81,29 @@ updated: 2026-10-20
 | `jimeng-image-4.7` / `4.6` / `4.5` / `4.1` / `4.0` | 4 |
 | `jimeng-image-5.0-pro` | 8 |
 
-**卡点**：要即梦的 `sessionid`（httpOnly  cookie，`document.cookie` 读不到，
+**卡点**：要即梦的 `sessionid`（httpOnly cookie，`document.cookie` 读不到，
 Chrome 侧是 app-bound 加密，脚本解不了）。需要郭老师手动取一次：
 F12 → Application → Cookies → `sessionid` → 复制值。
 拿到后：`Authorization: Bearer <sessionid>`（多账号用英文逗号分隔，服务自动轮询）。
+
+### 4.1 但网页版即梦也打通了（2026-10-20 晚，推荐先用这条）
+
+不依赖 sessionid，走 `image-pseudo-api` 的 `jimeng-5.0`（browser-eval 驱动）。**关键三坑**：
+
+1. **必须先把模型切到免费档**。账号「不羡仙 免费 永久 **积分 40**」的默认模型是
+   **Seedream 5.0 Pro**（8~11 积分/张，疑似会员档）⇒ 点生成不生效，页面只弹
+   「会员兑换/订阅管理」。历史里成功生成的 3 张恰好是 **5.0 Lite / 4.5 / 4.6**（免费档）。
+   模型选择器是 `lv-select` 下拉（当前值在 `.lv-select-view-value`），面板**动态渲染**，
+   第一次点开可能还没出选项 ⇒ 要重试并**回读校验**。
+2. **出图检测不能靠 DOM 计数**。官方 `opencli jimeng generate` 靠
+   `img[src*="dreamina-sign"], img[src*="tb4s082cfz"]` 的数量变化判断，
+   懒加载画廊时数量不变 ⇒ 一直 `timeout`，**但图其实生成了**。
+   改法：记录**主区**（排除右侧资产抽屉 x>1500）的结果图数量，提交后轮询增量。
+3. **输入框有俩**：`div.tiptap.ProseMirror` 一个 912x76（旧的）一个 912x24（活动），
+   叠在同一位置 ⇒ 写 `editors[0]`（官方适配器也写它，它确实能出图）。
+
+实测：经 `:3100` 网关（`model=imgpseudo/jimeng-5.0`）出图成功，
+主区结果图 19 → 23，命中 4 张，74.5s，输出 b64。
 
 ## 五、AGNES 那个 502 的修法（已落代码）
 
