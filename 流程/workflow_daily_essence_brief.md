@@ -108,6 +108,20 @@ Card 2.0｜header `blue`｜第 1 条做**唯一焦点**（title 字号）｜3 �
 - 常驻：计划任务 `Buddy2API_CardAccordionListener`（登录即起）＋ `lark-cli event status` 看总线
   （`Bus: running` / `Active consumers: 1` / `DROPPED 0` 才是健康）。
 
+### ★ 结局（2026-10-21 13:28）：**手风琴做通了，但他选了折叠面板**
+
+- **手风琴实测 7/7 全成功**：他那 7 次点击（点第 1/2/3 条来回点）**每次都正确互斥**，
+  0 失败、0 丢包；日志 `card_accordion_listener.log` 里逐条可查
+  （`事件#2 点第2条 → updated:open=1` ⇒ 第 1 条自动收起）。
+  ⇒ **结论：飞书上是能做出真手风琴的**（不必再怀疑技术路径）。
+- **但郭老师体验后定案：用「本地折叠面板」**（`collapsible_panel`，纯文字标题行、点开即展）。
+  ⇒ 他放弃的不是能力，是**交互形态**：按钮式标题不如纯文字标题行顺眼（他先前也说 emoji/按钮"太丑"），
+  而且本地展开**零等待**，不用等服务端往返。
+- **落地处置**：监听器已停、心跳已清、计划任务 `Buddy2API_CardAccordionListener` **已禁用**；
+  每日流程改回 `build_daily_card.build_card()`（折叠面板版）。
+  **手风琴代码保留在 `buddy2api\scripts\card_accordion*.py`（未启用、未删）**——
+  他哪天想换回去，只要启用任务 ＋ 打开流程里的分支即可（一行开关）。
+
 ## 三、关键设计（都是踩过或他定的）
 
 1. **提炼模型用他自己的 `:8787`**，不用公共免费网关（`dsh-our-free-model` 那条**从未实测**，
