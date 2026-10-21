@@ -80,6 +80,34 @@ Card 2.0｜header `blue`｜第 1 条做**唯一焦点**（title 字号）｜3 �
 - ⚠️ **标题双重加粗**：模型可能自己写 `**标题**`，我若再包一层 ⇒ 渲染出 `**1. **标题****` 残留。
   ⇒ **先剥掉模型标题里的 `**`，加粗统一由 header 那层加**。
 
+## 三·真手风琴（2026-10-21 13:20 落地）
+
+**郭老师定**：「通常我这个信息是 3 条不一样的信息，根本就很少会有对照的情况出现……那我就直接来问 AI 了」⇒ **要真手风琴**（互斥展开）。
+
+**为什么不能用 `collapsible_panel`**：它的展开/收起是**客户端本地行为、不回调服务端**
+⇒ 服务端不知道"用户展开了哪一条"，做不出互斥。**只能让展开动作走 `button`（callback）**。
+
+**实现（`buddy2api\scripts\card_accordion.py` ＋ `card_accordion_listener.py`）**
+```
+卡片：每条 = 一个标题 button（behaviors:[{type:"callback"}], value:{"idx":i}）
+      ＋ 只有「当前展开那条」下面才有 本质/用途/出处/信号（服务端渲染）
+用户点第 2 条
+   → 飞书 card.action.trigger 回调（带 token：30 分钟有效、限用 2 次；带 action_value 与 card_content）
+   → 监听器解析 idx ⇒ 重建整张卡片（只展开那一条，其余只留标题按钮）
+   → POST /open-apis/interactive/v1/card/update  ⇒ 屏幕上永远只有一条内容
+点已展开的那条 ⇒ 全部收起（toggle）
+```
+- **状态**：`20_自适应工作流引擎\runtime\card_accordion_state.json`（message_id → {date, open_idx, items}）
+  —— 卡片里不存业务数据，只存原始条目，更新时据此重建。
+- **发送端降级**：心跳文件 `card_accordion_listener.hb` 新鲜（<5 分钟）⇒ 发**手风琴卡片**；
+  否则降级**本地折叠版**（点标题本地展开，不互斥但能用）⇒ 不会出现"点了没反应"。
+- **卡片 JSON 必须用文件传参**（`--data @card_update.json`）：Windows 命令行上限 ~8191 字符。
+- ⚠️ **硬前提（必须他本人在飞书开放平台点，脚本代劳不了）**：
+  应用 `cli_aac444d793b85cc5` → **事件与回调 → 回调配置 → 订阅 `card.action.trigger`**（长连接方式）。
+  官方文档明说**没有预检** ⇒ 没订阅就**静默收不到事件**（表现为"点标题没反应"）。
+- 常驻：计划任务 `Buddy2API_CardAccordionListener`（登录即起）＋ `lark-cli event status` 看总线
+  （`Bus: running` / `Active consumers: 1` / `DROPPED 0` 才是健康）。
+
 ## 三、关键设计（都是踩过或他定的）
 
 1. **提炼模型用他自己的 `:8787`**，不用公共免费网关（`dsh-our-free-model` 那条**从未实测**，
