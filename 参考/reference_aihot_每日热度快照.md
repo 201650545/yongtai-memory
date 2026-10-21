@@ -2,13 +2,11 @@
 name: reference_aihot_每日热度快照
 description: AIHOT 中文 AI 资讯每日热度快照（热度面，非能力榜），每日凌晨定时任务覆盖刷新。
 type: reference
-updated: 2026-10-21
-kind: reference
-status: active
+updated: 2026-10-22
 ---
 # AIHOT 中文 AI 资讯热度快照（每日）
 
-> **同步时间**：2026-10-21 08:51:58 (每日定时任务自动刷新落盘)
+> **同步时间**：2026-10-22 01:10:02 (每日定时任务自动刷新落盘)
 > **数据来源**：https://aihot.news/api/v1/hot-topics（JSON，匿名只读，无需 Key）
 > **保留纪律**：冷快照只保留 7 天，超期每日自动删除；本文件每日单写覆盖。
 >
@@ -18,90 +16,85 @@ status: active
 
 | 名次 | 事件 | 首发信源 | 信源数 | 信号数 | 参与数 |
 | :---: | :--- | :--- | :---: | :---: | :---: |
-| 1 | DeepSeek 开源内部推理框架 DeepInfer | 公众号：DeepSeek（深度求索） | 11 | 39 | 50 |
-| 2 | MiniMax 发布 M3.1 Flash，10 月 23 日开放权重 | MiniMax：Blog（网页） | 12 | 36 | 48 |
-| 3 | 美土安全部令联邦文职机构移除DeepSeek及关联产品 | Hacker News：AI 热帖 | 6 | 34 | 40 |
-| 4 | DeepSeek 发布 V4.1-Flash-1017 并开放搜索 API | DeepSeek：API 更新日志 | 7 | 31 | 38 |
-| 5 | OpenAI收购药物研发平台Orchestra Bio | OpenAI：官网动态（RSS · 排除企业/客户案例） | 4 | 10 | 14 |
-| 6 | Google 将 Gemini 个人智能引入车载系统 | X：Google (@Google) | 3 | 8 | 11 |
-| 7 | Google 与 Meta 开源 TorchTPU，Hugging Face 原生支持 TPU | PyTorch：Blog（RSS） | 5 | 5 | 10 |
-| 8 | SpaceX 三季度 AI 业务收入占比过半并扭亏为盈 | TechCrunch：AI（RSS） | 1 | 8 | 9 |
-| 9 | ChatGPT上线锁定聊天，全套餐可PIN或生物识别保护 | X：ChatGPT (@ChatGPT) | 4 | 5 | 9 |
-| 10 | OpenAI 拟以超1.4万亿美元估值融资300亿美元 | X：Rohan Paul (@rohanpaul_ai) | 1 | 10 | 11 |
+| 1 | DeepSeek 开源生产推理框架 DeepInfer | 公众号：DeepSeek（深度求索） | 13 | 51 | 64 |
+| 2 | OpenAI称模型协助发现PHP核心漏洞，Wiz披露可致RCE | OpenAI：官网动态（RSS · 排除企业/客户案例） | 3 | 20 | 23 |
+| 3 | 马斯克称SpaceX与特斯拉已设委员会评估合并 | X：Rohan Paul (@rohanpaul_ai) | 1 | 23 | 24 |
+| 4 | 美土安全部令联邦文职机构移除DeepSeek及关联产品 | Hacker News：AI 热帖 | 5 | 33 | 38 |
+| 5 | OpenAI通报两起模型抑制失准监控事件 | OpenAI：失准报告与通报（网页） | 5 | 11 | 16 |
+| 6 | MiniMax 发布 M3.1 Flash，10 月 23 日开放权重 | MiniMax：Blog（网页） | 5 | 22 | 27 |
+| 7 | Amodei 回应 Anthropic 安全立场批评 | X：Dario Amodei (@DarioAmodei) | 2 | 13 | 15 |
+| 8 | OpenAI收购药物研发平台Orchestra Bio并入Rosalind | OpenAI：官网动态（RSS · 排除企业/客户案例） | 5 | 12 | 17 |
+| 9 | Anthropic三季度收入168亿美元，增速放缓 | The Decoder：AI News（RSS） | 1 | 13 | 14 |
+| 10 | DeepSeek 发布 V4.1-Flash-1017 并开放搜索 API | DeepSeek：API 更新日志 | 4 | 18 | 22 |
 
 ---
 
 ## 信源明细（每条热点的首发与讨论面）
 
-**1. DeepSeek 开源内部推理框架 DeepInfer**  · 最近更新 2026-10-20T18:56:15.000Z
+**1. DeepSeek 开源生产推理框架 DeepInfer**  · 最近更新 2026-10-21T09:26:08.000Z
 
-  - The Decoder：AI News（RSS）
+  - X：X.PIN (@thexpin)
   - X：Yuchen Jin (@Yuchenj_UW)
+  - X：邵猛 (@shao__meng)
+  - The Decoder：AI News（RSS）
   - MarkTechPost（RSS）
   - X：Tianyi Cui（@tianyi）
-  - X：Rohan Paul (@rohanpaul_ai)
-  - X：Thomas Wolf（Hugging Face 联创/CSO） (@Thom_Wolf)
 
-**2. MiniMax 发布 M3.1 Flash，10 月 23 日开放权重**  · 最近更新 2026-10-20T20:14:56.000Z
+**2. OpenAI称模型协助发现PHP核心漏洞，Wiz披露可致RCE**  · 最近更新 2026-10-21T16:35:11.000Z
+
+  - X：OpenAI (@OpenAI)
+  - X：Ethan Mollick (@emollick)
+  - Wiz：Research（安全研究）
+
+**3. 马斯克称SpaceX与特斯拉已设委员会评估合并**  · 最近更新 2026-10-21T08:56:42.000Z
+
+  - X：Rohan Paul (@rohanpaul_ai)
+
+**4. 美土安全部令联邦文职机构移除DeepSeek及关联产品**  · 最近更新 2026-10-21T13:04:19.000Z
+
+  - The Decoder：AI News（RSS）
+  - TechCrunch：AI（RSS）
+  - IT之家·人工智能
+  - X：X.PIN (@thexpin)
+  - X：Rohan Paul (@rohanpaul_ai)
+
+**5. OpenAI通报两起模型抑制失准监控事件**  · 最近更新 2026-10-21T13:57:43.000Z
+
+  - The Verge：AI（RSS）
+  - The Decoder：AI News（RSS）
+  - X：Rohan Paul (@rohanpaul_ai)
+  - IT之家·人工智能
+  - OpenAI：失准报告与通报（网页）
+
+**6. MiniMax 发布 M3.1 Flash，10 月 23 日开放权重**  · 最近更新 2026-10-20T20:14:56.000Z
 
   - X：MiniMax (@MiniMax_AI)
   - X：OpenClaw (@openclaw)
   - X：Tencent WorkBuddy (@WorkBuddy_AI)
   - X：X.PIN (@thexpin)
   - The Decoder：AI News（RSS）
-  - X：Artificial Analysis (@ArtificialAnlys)
 
-**3. 美土安全部令联邦文职机构移除DeepSeek及关联产品**  · 最近更新 2026-10-20T13:07:24.000Z
+**7. Amodei 回应 Anthropic 安全立场批评**  · 最近更新 2026-10-21T06:40:27.000Z
 
-  - TechCrunch：AI（RSS）
-  - The Decoder：AI News（RSS）
-  - IT之家·人工智能
-  - X：X.PIN (@thexpin)
   - X：Rohan Paul (@rohanpaul_ai)
-  - Hacker News：AI 热帖
+  - X：Dario Amodei (@DarioAmodei)
 
-**4. DeepSeek 发布 V4.1-Flash-1017 并开放搜索 API**  · 最近更新 2026-10-20T23:11:23.000Z
+**8. OpenAI收购药物研发平台Orchestra Bio并入Rosalind**  · 最近更新 2026-10-21T08:32:54.000Z
+
+  - The Decoder：AI News（RSS）
+  - X：Greg Brockman (@gdb)
+  - TechCrunch：AI（RSS）
+  - X：Rohan Paul (@rohanpaul_ai)
+  - X：Testing Catalog (@testingcatalog)
+
+**9. Anthropic三季度收入168亿美元，增速放缓**  · 最近更新 2026-10-21T04:32:45.000Z
+
+  - X：Rohan Paul (@rohanpaul_ai)
+
+**10. DeepSeek 发布 V4.1-Flash-1017 并开放搜索 API**  · 最近更新 2026-10-20T23:11:23.000Z
 
   - X：Arena (@arena)
   - X：Nathan Lambert (@natolambert)
   - X：Oran Ge (@oran_ge)
   - IT之家·人工智能
-  - X：opencode (@opencode)
-  - X：Artificial Analysis (@ArtificialAnlys)
-
-**5. OpenAI收购药物研发平台Orchestra Bio**  · 最近更新 2026-10-20T20:35:10.000Z
-
-  - TechCrunch：AI（RSS）
-  - X：Mark Chen（OpenAI 首席研究官，@markchen90）
-  - X：Rohan Paul (@rohanpaul_ai)
-  - X：Testing Catalog (@testingcatalog)
-
-**6. Google 将 Gemini 个人智能引入车载系统**  · 最近更新 2026-10-20T22:11:34.000Z
-
-  - The Verge：AI（RSS）
-  - X：Google (@Google)
-  - Ars Technica：AI（RSS）
-
-**7. Google 与 Meta 开源 TorchTPU，Hugging Face 原生支持 TPU**  · 最近更新 2026-10-20T19:31:43.000Z
-
-  - X：Rohan Paul (@rohanpaul_ai)
-  - TechCrunch：AI（RSS）
-  - PyTorch：Blog（RSS）
-  - MarkTechPost（RSS）
-  - Hugging Face 官方团队博客
-
-**8. SpaceX 三季度 AI 业务收入占比过半并扭亏为盈**  · 最近更新 2026-10-20T20:40:41.000Z
-
-  - TechCrunch：AI（RSS）
-
-**9. ChatGPT上线锁定聊天，全套餐可PIN或生物识别保护**  · 最近更新 2026-10-20T23:22:26.990Z
-
-  - IT之家·人工智能
-  - TechCrunch：AI（RSS）
-  - X：Testing Catalog (@testingcatalog)
-  - X：ChatGPT (@ChatGPT)
-
-**10. OpenAI 拟以超1.4万亿美元估值融资300亿美元**  · 最近更新 2026-10-20T08:06:25.000Z
-
-  - X：Rohan Paul (@rohanpaul_ai)
 
