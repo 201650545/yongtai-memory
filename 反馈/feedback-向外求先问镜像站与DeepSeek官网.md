@@ -4,6 +4,11 @@ description: 郭老师定：找信息/跑数据/做工作/要图片风格/找灵
 metadata:
   type: feedback
   updated: 2026-10-21
+
+type: feedback
+updated: 2026-10-21
+kind: fact
+status: active
 ---
 
 # 向外求，先问镜像站与 DeepSeek 官网
