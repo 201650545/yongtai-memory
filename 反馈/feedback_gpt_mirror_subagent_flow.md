@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-20T00:00:00.000Z
 type: feedback
 updated: 2026-10-19
+kind: fact
+status: active
 ---
 
 > ⚠️ **2026-10-10 站点改版（本条闸门精神不变、判据已变）**：新版 UI **无 `Extended`**；「发问前必须确认档位、禁 `Auto`」升级为**双闸门** —— ①顶部 `Work` 标签 `data-state=on`；②pill == `GPT-6 Astra Max`。切档法见 `D:\记忆\参考\工具记忆_GPT镜像站规范使用_v2.md` §二。下文 `Auto / Thinking• Extended / GPT-5.6 Luna` 为 2026-09 历史实测。

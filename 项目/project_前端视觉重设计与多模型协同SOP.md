@@ -7,6 +7,9 @@ metadata:
   modified: 2026-10-09T23:35:00.000Z
 type: project
 updated: 2026-10-09
+kind: fact
+status: active
+scope: 前端视觉重设计与多模型协同SOP
 ---
 
 # 前端 App 页面美化与视觉重设计多模型协同 SOP（2026-10-09 郭老师定）

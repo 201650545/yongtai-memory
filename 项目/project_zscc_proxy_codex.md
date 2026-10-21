@@ -8,6 +8,9 @@ metadata:
   modified: 2026-08-02T12:38:52.967Z
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: zscc_proxy_codex
 ---
 
 Codex(ChatGPT 桌面端) 的 `deepseek` 辅助 agent 通过本地代理访问 DeepSeek V4 Flash：

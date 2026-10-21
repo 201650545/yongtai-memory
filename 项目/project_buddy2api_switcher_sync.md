@@ -3,6 +3,9 @@ name: project_buddy2api_switcher_sync
 description: Buddy2API 网关(:8787) 与 WorkBuddy 账号切换器 的三重隐式耦合与契约自检机制——网关改数据层后切换器必须同步，否则数据静默没打通
 type: project
 updated: 2026-10-21
+kind: fact
+status: active
+scope: buddy2api_switcher_sync
 ---
 
 # Buddy2API ↔ WorkBuddy 账号切换器：契约与自检

@@ -2,6 +2,8 @@
 name: 工具记忆_GPT镜像站规范使用_v2
 type: reference
 updated: 2026-10-12
+kind: reference
+status: active
 ---
 # 工具记忆：ChatGPT 镜像站规范使用与快速使用 v2
 

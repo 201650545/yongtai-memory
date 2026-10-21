@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-30T06:59:54.962Z
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 向 GPT 镜像站提问的方法与注意点（2026-08-30 用户明确）：

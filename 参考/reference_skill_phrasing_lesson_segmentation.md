@@ -2,6 +2,8 @@
 name: reference_skill_phrasing_lesson_segmentation
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 # reference: 句读课文双模态意群与精听时间轴统合切分 Skill
 

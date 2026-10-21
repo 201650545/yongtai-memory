@@ -2,6 +2,9 @@
 name: project_media_jev_lines
 type: project
 updated: 2026-10-12
+kind: fact
+status: active
+scope: media_jev_lines
 ---
 # 路由分类 + 媒体/Jev/语音线（project_media_jev_lines）
 

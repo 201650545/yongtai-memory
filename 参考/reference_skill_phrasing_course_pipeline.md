@@ -2,6 +2,8 @@
 name: reference_skill_phrasing_course_pipeline
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 # reference: 句读课程全流程工业化生产套件 Skill (phrasing-course-pipeline)
 

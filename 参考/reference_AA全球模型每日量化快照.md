@@ -3,6 +3,8 @@ name: reference_AA全球模型每日量化快照
 description: Artificial Analysis 全球模型每日量化快照（Top25 旗舰，含智力/速度/价格），每日凌晨定时任务覆盖刷新。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 # AA 全球模型每日量化快照 (Artificial Analysis Daily Snapshot)
 

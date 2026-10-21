@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-01T10:28:44.191Z
 type: project
 updated: 2026-10-08
+kind: fact
+status: archived
+scope: cherry_dsh_sync_完整详细记录
 ---
 
 # Cherry Studio ↔ DSH ↔ API 网关 模型同步（2026-08-25 架构变更）

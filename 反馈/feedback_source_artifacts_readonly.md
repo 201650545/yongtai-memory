@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661）
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 # 原件只读，返工看硬线

@@ -3,6 +3,8 @@ name: reference-外部免费渠道-linuxtodo与公益站
 description: 2026-10-20 在 linux.do（福利羊毛/资源荟萃）实测到的外部免费渠道清单与生图 API 站，以及 linux.do 的 Cloudflare 风控规律与正确访问姿势。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 外部免费渠道（linux.do 实地侦察，2026-10-20 14:00~14:30）

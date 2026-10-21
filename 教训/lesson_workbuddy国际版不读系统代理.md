@@ -8,6 +8,8 @@ metadata:
   证据来源: 应用自带日志 ~\.workbuddy-ai\logs\main.log（persisted mode=none → session.setProxy: mode=direct → getAxiosAgentsForUrl: DIRECT_TRUSTED reason=no-proxy）+ app.asar 源码（applyPersistedProxyToBootstrapEnv / inferProxyModeFromVscodeFields / ProxySettingsService.toVscodeFields）
 type: lesson
 updated: 2026-10-20
+kind: rule
+status: active
 ---
 
 # WorkBuddy AI 国际版不读系统代理（2026-10-20）

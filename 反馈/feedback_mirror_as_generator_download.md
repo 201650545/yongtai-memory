@@ -8,6 +8,8 @@ metadata:
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 郭老师（2026-09-03）扩充镜像版（AI问答宝，extend）用法：不只是对话/咨询，**可以直接向它提具体需求让它把关键东西"做出来"**，直接套用它的高级成果、省我的时间：

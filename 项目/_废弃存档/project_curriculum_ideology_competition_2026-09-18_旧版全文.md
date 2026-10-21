@@ -2,6 +2,9 @@
 name: project_curriculum_ideology_competition_2026-09-18_旧版全文
 type: project
 updated: 2026-09-18
+kind: fact
+status: archived
+scope: curriculum_ideology_competition_2026-09-18_旧版全文
 ---
 # 课程思政教学竞赛（郴州市第二届）
 

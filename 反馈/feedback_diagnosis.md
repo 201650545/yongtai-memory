@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-31T09:10:05.490Z
 type: feedback
 updated: 2026-09-03
+kind: fact
+status: active
 ---
 
 网络问题排查时，要先区分问题在**设备端**还是**网络端**，不要仅凭部分信息就下结论。

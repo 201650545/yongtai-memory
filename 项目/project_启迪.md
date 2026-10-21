@@ -7,6 +7,9 @@ metadata:
   modified: 2026-10-01
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: 启迪
 ---
 
 # 启迪 · 家长通知 Agent

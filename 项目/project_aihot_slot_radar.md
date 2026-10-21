@@ -3,6 +3,9 @@ name: project_aihot_slot_radar
 description: AIHOT「席级补位雷达」——把中文 AI 资讯增量变成 3100 席位的补位候选；两轮 GPT-6 外部评审后收窄为「一期只做①层型号归一化」
 type: project
 updated: 2026-10-21
+kind: fact
+status: active
+scope: aihot_slot_radar
 ---
 
 # AIHOT 席级补位雷达

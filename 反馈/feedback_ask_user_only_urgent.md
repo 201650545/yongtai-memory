@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-03T16:28:28.870Z
 type: feedback
 updated: 2026-09-04
+kind: fact
+status: active
 ---
 
 绝大部分问题**不要问郭老师**，直接去问 **ChatGPT 镜像版**，我（Claude）和镜像版互相商量、互相配合解决就好。

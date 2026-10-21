@@ -8,6 +8,8 @@ metadata:
   Howtoapply: 动备份/清扫脚本或计划任务前先读它的 README；新跨项目工具按 12-工具归属 v1.3 放这里，别塞业务项目
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 
 # 备份与安检 · 跨项目工具之家

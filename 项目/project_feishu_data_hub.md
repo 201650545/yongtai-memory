@@ -8,6 +8,9 @@ metadata:
   modified: 2026-08-19T14:37:44.941Z
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: feishu_data_hub
 ---
 
 **GitHub 仓库**：`github.com/201650545/feishu-data-hub`（公开，2026-07-25 创建，JavaScript 主语言）

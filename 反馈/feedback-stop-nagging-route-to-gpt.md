@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-03T23:47:54.735Z
 type: feedback
 updated: 2026-09-04
+kind: fact
+status: active
 ---
 
 不要反复向郭老师发问。做完就完结，不要一件事喘不了气地确认来确认去。

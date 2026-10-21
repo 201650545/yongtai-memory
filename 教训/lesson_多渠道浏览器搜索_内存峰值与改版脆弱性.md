@@ -3,6 +3,8 @@ name: lesson_多渠道浏览器搜索_内存峰值与改版脆弱性
 description: 郭老师 2026-10-21 实评：多渠道浏览器搜索"内存峰值暴增＋渠道一更新就坏"——不救活，改走纯 HTTP 与外部强模型
 type: lesson
 updated: 2026-10-21
+kind: rule
+status: active
 ---
 
 # 教训：多渠道浏览器搜索 = 内存峰值高 ＋ 改版即坏

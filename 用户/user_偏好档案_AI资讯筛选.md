@@ -3,6 +3,8 @@ name: user_偏好档案_AI资讯筛选
 description: AI 资讯筛选用的偏好档案——从日常对话里长出来的偏好条目，每条带证据出处；供每日 ≤3 条本质级精选的筛选层使用
 type: user
 updated: 2026-10-21
+kind: fact
+status: active
 ---
 
 # 偏好档案 · AI 资讯筛选

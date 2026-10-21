@@ -2,6 +2,8 @@
 name: reference_Gemini网页版能力与限制
 type: reference
 updated: 2026-10-15
+kind: reference
+status: active
 ---
 # Gemini 网页版：可驱动性、能力边界与实测结论
 

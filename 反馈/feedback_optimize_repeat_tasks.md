@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-30T06:58:12.374Z
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 在重复性任务中（渠道反复测试、批量探测、多轮验证等），**时刻优化流程，提高速度与效率，减少开支**。

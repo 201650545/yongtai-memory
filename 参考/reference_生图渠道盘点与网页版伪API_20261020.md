@@ -3,6 +3,8 @@ name: reference-生图渠道盘点与网页版伪API
 description: 网关生图渠道全盘点（商汤/AGNES/即梦/豆包/元宝…，含免费与付费的边界）、buddy 渠道不能生图的结论，以及 opencli 驱动的「网页版生图伪 API」的实现与三个坑。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 生图渠道盘点 + 网页版伪 API（2026-10-20）

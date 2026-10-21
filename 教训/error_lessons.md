@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-24T05:51:09.917Z
 type: lesson
 updated: 2026-10-08
+kind: rule
+status: active
 ---
 
 # 错误教训日志

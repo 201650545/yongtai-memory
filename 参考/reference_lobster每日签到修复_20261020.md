@@ -3,6 +3,8 @@ name: reference-lobster-daily-checkin-fix-20261020
 description: 有道龙虾（LobsterAI）每日 100 积分签到长期失败的根因与修复：上游 actions 是字符串数组而非对象数组，旧解析恒定取不到 actionId；同时证伪「启动客户端会触发登录奖励」。改的是 buddy2api 的 lobster provider。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # LobsterAI 每日签到修复（2026-10-20）

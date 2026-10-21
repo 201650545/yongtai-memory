@@ -3,6 +3,9 @@ name: project_workbuddy_account_switcher
 description: WorkBuddy 账号切换器（D:\tools\WorkBuddy-Account-Switcher）——pywebview 单文件 SPA，管理多账号登录态切换与额度看板；2026-10-20 完成商汤生图→矢量图标换肤
 type: project
 updated: 2026-10-20
+kind: fact
+status: active
+scope: workbuddy_account_switcher
 ---
 
 # WorkBuddy 账号切换器

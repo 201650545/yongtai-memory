@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-02T05:36:47.264Z
 type: feedback
 updated: 2026-09-03
+kind: fact
+status: active
 ---
 
 codebuddy 派发时**不显式传 `--model`**，让 codebuddy 服务端按额度自动决定：

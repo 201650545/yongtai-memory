@@ -9,6 +9,9 @@ metadata:
   关联批次: 2026-09-29 下午 project-link-graph（扫 977 份 .md／21 个节点，含嵌套副本剔除修正；旧批 948 份／22 节点的数已过期）
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: relation_graph
 ---
 
 # 项目之间到底谁依赖谁（可复算，勿凭印象）

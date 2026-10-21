@@ -3,6 +3,8 @@ name: lesson-磁盘清理的三个陷阱
 description: 2026-10-20 全盘清理实战沉淀：①C 盘用户目录下 30 个目录是 junction 指向 D 盘，按路径算体积会严重高估 C 盘真实占用②Windows 回收站批量回收大目录会抛"This function is not supported on this system"，必须降级为逐文件回收③清空回收站只有 SHEmptyRecycleBin API 可靠，Clear-RecycleBin -DriveLetter 会报"cannot find the path specified"，Shell.Application 的 InvokeVerb 在非交互会话里根本不存在
 type: lesson
 updated: 2026-10-20
+kind: rule
+status: active
 ---
 
 # 磁盘清理的三个陷阱

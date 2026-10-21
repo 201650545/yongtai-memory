@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory
 type: workflow
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 字段产权：一份数据只允许一个人格可写

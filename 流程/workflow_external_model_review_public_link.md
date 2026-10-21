@@ -3,6 +3,8 @@ name: workflow_external_model_review_public_link
 description: 用公开 GitHub raw 链接让外部强模型（ChatGPT 镜像站 GPT-6 Sol）自己读材料再评审，同窗口续问做「相互讨论」——已实测跑通两轮
 type: workflow
 updated: 2026-10-21
+kind: rule
+status: active
 ---
 
 # 外部强模型协作：公开链接指路 ＋ 同窗口相互讨论

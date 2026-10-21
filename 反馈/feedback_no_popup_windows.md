@@ -5,6 +5,8 @@ metadata:
   type: feedback
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 # 🔴 红线：禁止一切可见控制台弹窗

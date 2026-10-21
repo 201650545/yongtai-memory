@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661）
 type: lesson
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 想让它别写字，就别提"能写字的东西"

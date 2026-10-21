@@ -3,6 +3,8 @@ name: reference-20261020-文章线索与Qoder调研
 description: 2026-10-20 郭老师微信收藏的 3 篇公众号 + 3 篇小红书摘要；含 Qoder「DeepSeek-V4.1-Flash-1017 免费到 10/24」的本地实测结论（BUDDY/qoder 渠道当前不可用）。会过时，引用前重查。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 2026-10-20 文章线索与 Qoder 调研

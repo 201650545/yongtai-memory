@@ -3,6 +3,8 @@ name: reference_MemT参数化记忆_机制与可迁移点
 description: MemT 1.0 记忆原生的本质（记忆＝可读写状态而非注入文本）、四个可迁移机制（超记忆/四门控/混合存储/自蒸馏）与三条硬数据；含"参数化不能替代原文"的判据
 type: reference
 updated: 2026-10-21
+kind: reference
+status: active
 ---
 
 # MemT 1.0 参数化记忆：本质与可迁移点

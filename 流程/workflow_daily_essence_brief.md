@@ -3,6 +3,8 @@ name: workflow_daily_essence_brief
 description: 每日本质精选流水线——AIHOT 候选 → 自有网关免费模型提炼（≤3 条·本质+用途）→ 飞书汇报；清单落 runtime 不进记忆仓
 type: workflow
 updated: 2026-10-21
+kind: rule
+status: active
 ---
 
 # 每日本质精选（≤3 条 · 飞书汇报）

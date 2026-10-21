@@ -8,6 +8,9 @@ metadata:
   modified: 2026-08-31T09:10:05.431Z
 type: project
 updated: 2026-09-03
+kind: fact
+status: active
+scope: network_issue
 ---
 
 ## 问题描述（已修复）

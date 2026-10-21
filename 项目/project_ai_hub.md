@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-08T00:00:00.000Z
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: ai_hub
 ---
 
 # AI Hub 聚合平台（ai-hub · 已并入 ai-platform）

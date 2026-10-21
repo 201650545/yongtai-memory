@@ -3,6 +3,8 @@ name: lesson_多行消息只发第一行_告警静默失效
 description: Windows shell=True 传多行正文会在第一个换行处截断——飞书只收到标题、看起来发送成功，实际告警内容全被吞；修法是绕过 shell 直接调 node 入口
 type: lesson
 updated: 2026-10-21
+kind: rule
+status: active
 ---
 
 # 教训：多行消息只发出第一行，而且**看起来完全成功**

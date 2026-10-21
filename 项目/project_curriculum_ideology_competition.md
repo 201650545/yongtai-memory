@@ -2,6 +2,9 @@
 name: project_curriculum_ideology_competition
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: curriculum_ideology_competition
 ---
 # 教案与课件设计（原课程思政教学竞赛 · 郴州市第二届）
 

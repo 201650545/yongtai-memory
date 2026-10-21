@@ -3,6 +3,8 @@ name: 本地知识检索引擎（local-knowledge-engine）
 description: 想知道「某个东西在哪、之前怎么定的、有没有相关文档」时，先用它检索证据，不要全本读笔记、不要全盘漫游。省上下文 token、省代理流量，毫秒级返回 3 条带行号的证据。
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 
 # 本地知识检索引擎 —— 找资料先查它，别全本读笔记

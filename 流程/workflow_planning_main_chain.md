@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661）
 type: workflow
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 挂不上主链就别开工

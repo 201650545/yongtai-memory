@@ -6,6 +6,8 @@ metadata:
   type: 反馈
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 # 做完就直接在浏览器打开最新的

@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（判据由 2026-09-28 两批次真判例归纳，规范文件仍在累积）
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 # 他留不留一条内容，用的是这套轴

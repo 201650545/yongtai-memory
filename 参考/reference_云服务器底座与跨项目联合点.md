@@ -9,6 +9,8 @@ metadata:
   真源: D:\Work\贾维斯中控\07-Decisions\2026-09-29-服务器与商业化决策记录.md
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 云服务器底座与跨项目联合点（一读定位）

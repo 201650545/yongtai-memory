@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（来源项目 小红书点赞分析，无 git）
 type: lesson
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 浏览器自动化：六条用真金白银换来的判据

@@ -8,6 +8,9 @@ metadata:
   modified: 2026-10-08T00:00:00.000Z
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: ai_gateway
 ---
 
 # 统一 AI 网关（search_gateway）

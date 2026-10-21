@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-20
 type: feedback
 updated: 2026-10-20
+kind: fact
+status: active
 ---
 
 # 一次只做一件事，按顺序推进

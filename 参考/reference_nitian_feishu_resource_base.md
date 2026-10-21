@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-04T05:22:41.861Z
 type: reference
 updated: 2026-10-06
+kind: reference
+status: active
 ---
 
 逆天主题的资源底座 = 飞书多维表格 base `StmDbTXQWaujshs9NpIc3UFpnAc`（URL my.feishu.cn/base/StmDbTXQWaujshs9NpIc3UFpnAc）。2026-09-03 用户提议与本项目结合，已实测用 `lark-cli`（node 直调，qclaw 应用已授权）可读。

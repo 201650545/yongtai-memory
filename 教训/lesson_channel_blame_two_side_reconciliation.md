@@ -7,6 +7,8 @@ metadata:
   created: 2026-09-30
 type: lesson
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 说某渠道老失败之前，先做两侧对账

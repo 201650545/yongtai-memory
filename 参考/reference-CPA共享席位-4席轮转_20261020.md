@@ -3,6 +3,8 @@ name: reference-CPA共享席位-4席轮转
 description: linux.do 楼主分享的 48Team 共享席位 relay（cpa-relay，82 模型含 9 个生图），4 个独立席位各有 5 小时滚动窗口与撞墙重置卡；接进 :3100 的做法与实测状态。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # CPA relay：4 个共享席位，82 个模型，含 9 个生图（2026-10-20）

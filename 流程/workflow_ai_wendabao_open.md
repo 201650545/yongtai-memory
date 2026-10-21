@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-15
 type: workflow
 updated: 2026-10-19
+kind: rule
+status: active
 ---
 
 # AI 问答宝（GPT 镜像站）最快打开流程

@@ -8,6 +8,9 @@ metadata:
   modified: 2026-08-19T14:37:44.883Z
 type: project
 updated: 2026-10-10
+kind: fact
+status: archived
+scope: ai_hub_完整详细记录
 ---
 
 # AI Hub 聚合平台 · 完整详细记录（**归档件 · 2026-09-08 前的历史快照**）

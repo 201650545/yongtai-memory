@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-01T15:27:03.640Z
 type: project
 updated: 2026-10-20
+kind: fact
+status: active
+scope: image_gen_routes
 ---
 
 # 生图通路由实测

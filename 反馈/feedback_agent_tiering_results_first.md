@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-10T11:05:00+08:00
 type: feedback
 updated: 2026-10-10
+kind: fact
+status: active
 ---
 
 # 做事规则：高配规划、低配执行、先成果后合规（2026-10-10 郭老师定，两条一起记）

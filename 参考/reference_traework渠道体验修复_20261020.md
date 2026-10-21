@@ -3,6 +3,8 @@ name: reference-traework-channel-experience-fix-20261020
 description: TRAE Work（traework 渠道）上的 DeepSeek V4.1 Flash 工具调用与多轮体验修复记录：根因、改法、实测证据与已知边界。改的是 buddy2api 的 traework provider。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # TRAE Work 渠道体验修复（2026-10-20）

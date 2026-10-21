@@ -8,6 +8,8 @@ metadata:
   originSessionId: 268c3880-5dca-437e-a181-26e2eebdff49
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 **`opencli browser <s>` 一个 session 同一时刻只持一条 tab 租约。`tab new <url>` / `eval` 都写在这条租约上**:它只能看到/操作自己创建或绑定的那一条,列表(tab list)永远只吐这一条,"新开"其实是在这条租约上改导航。所以拿它会话来给郭老师"开页面",等于把他正看在的那条GPT/工作 tab 盖掉。2026-09-04 我连开问卷+镜像就连盖两次被点名。

@@ -3,6 +3,8 @@ name: reference-qwenwork-1.3.2升级与真根因
 description: 千问办公（qwenwork）从 1.0.4 升到 1.3.2 的完整结论：旧诊断「WASM ABI 不兼容」是错的，真根因是我们的 WASM 字符串传递按字节数而非字符数分配；附 1.3.2 协议要点与解禁条件。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 千问办公（qwenwork）升 1.3.2（2026-10-20）

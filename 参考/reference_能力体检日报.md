@@ -1,6 +1,8 @@
 ---
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 # 能力体检日报（2026-10-20）
 

@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-04
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 **禁止用 `fork` 子 Agent 派发任务。** 委派一律用全新上下文的一般子 Agent（fresh，非 fork），并在派发词里写清它需要的一切上下文；需要我这边判断方向的，直接我亲自执行。

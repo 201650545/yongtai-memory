@@ -7,6 +7,8 @@ metadata:
   modified: 2026-10-20
 type: lesson
 updated: 2026-10-20
+kind: rule
+status: active
 ---
 
 # 定时任务"每天跑但产出为 0"：先查占位符有没有被替换
@@ -58,6 +60,31 @@ BASE_DIR = r"D:\Work\小红书点赞分析"
 - `review_stale.py`（**任务 C 本体，关键**）
 
 改前已按"改前必存"铁律备份到 `scripts\.history\*.bak`。全部 `py_compile` 通过；`route_sync.DATA`、`review_stale.DATA`、`review_stale.STATE_FILE` 均 `os.path.isdir/isfile` 为 True；`review_stale.py --dry-run` 返回 `队列就绪：共 0 篇`，不再报 `Invalid argument`。
+
+## 第二轮：同类占位符还有第二个，别只修一个就收工
+
+2026-10-21 01:00 首跑验证：`Invalid argument` 已消失、任务 C 也正常了，但任务 B 冒出**新的**失败行：
+
+```
+分析完成 ✓ (1119 字)
+入库失败：[WinError 2] 系统找不到指定的文件。
+```
+
+查下去是 `route_sync.py` 第 29 行的**另一个占位符**：
+
+```python
+CLI = r"C:\Users\<USER_NAME>\.trae-cn\plugins\trae-remote-official\lark\1.0.5\bin\lark-cli.exe"
+```
+
+`<USER_NAME>` 从未被替换 → lark-cli 找不到 → 每次入库都失败。修法与前者不同，用环境变量而非硬编码用户名：
+
+```python
+CLI = os.path.expandvars(r"%USERPROFILE%\.trae-cn\plugins\trae-remote-official\lark\1.0.5\bin\lark-cli.exe")
+```
+
+**这条教训的要点**：占位符往往是**成批出现**的（`<PROJECT_DIR>`、`<USER_NAME>`、`{{BASE}}`……）。修完一处必须**全项目再 grep 一遍所有尖括号/花括号占位符**，否则会出现"修好一个、暴露下一个"的挤牙膏，每轮都要等一次真实运行才发现。本次就是修了 5 个文件的 `BASE` 却漏了 `CLI`，多等了一整天才暴露。
+
+**验证方式**：不要只看日志不报错，要**实际调用一次**。本次用修复后的 `write_lark()` 直接补写 3 篇历史分析，返回真实 `record_id`（如 `reczz28Pql8Ak3MS`）才算通。
 
 ## 关联
 

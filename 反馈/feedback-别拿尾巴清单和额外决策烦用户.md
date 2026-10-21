@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-20
 type: feedback
 updated: 2026-10-20
+kind: fact
+status: active
 ---
 
 # 别拿尾巴清单和额外决策烦用户

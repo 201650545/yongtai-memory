@@ -2,6 +2,8 @@
 name: README
 type: rule
 updated: 2026-10-19
+kind: rule
+status: active
 ---
 # handbook · 总规范仓库
 

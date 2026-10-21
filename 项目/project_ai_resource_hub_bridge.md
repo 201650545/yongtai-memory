@@ -8,6 +8,9 @@ metadata:
   modified: 2026-08-11T15:38:38.487Z
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: ai_resource_hub_bridge
 ---
 
 ai-resource-hub（github.com/201650545/ai-resource-hub）公开数据桥 exporter 于 2026-08-11 完成 GPT Extended 审查后全部 10 条加固并实测通过：scanner 不打敏感值、视图 fail-closed、删反推字段、语义 validator（count/主键/引用/字段集/枚举/值形状/数量突变>30% 阻断）、build_id 变更才部署、Secret job/Pages job 拆分、HTTP retry+错误日志清洗、失败通知 job、classification 声明+硬校验（未分类字段默认拒绝导出）。

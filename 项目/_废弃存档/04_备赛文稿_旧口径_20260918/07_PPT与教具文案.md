@@ -2,6 +2,8 @@
 name: 07_PPT与教具文案
 type: project
 updated: 2026-09-18
+kind: fact
+status: archived
 ---
 # PPT、板书与教具文案
 

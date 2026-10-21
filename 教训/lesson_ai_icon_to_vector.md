@@ -3,6 +3,8 @@ name: lesson_ai_icon_to_vector
 description: AI 生图当界面图标的完整可复用流程：位图不能直接上线，必须描轮廓矢量化；含骨架化失败、加粗顺序、textContent 抹图标三个坑
 type: lesson
 updated: 2026-10-20
+kind: rule
+status: active
 ---
 
 # AI 生图 → 界面图标：可复用流程与三个坑

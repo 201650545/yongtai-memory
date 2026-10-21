@@ -7,6 +7,9 @@ metadata:
   modified: 2026-10-19
 type: project
 updated: 2026-10-19
+kind: fact
+status: active
+scope: 项目学习
 ---
 
 # 项目学习 · 外部产品拆解库

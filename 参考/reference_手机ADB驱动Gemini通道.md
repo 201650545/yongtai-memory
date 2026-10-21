@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-16
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 
 # 手机 ADB 驱动 Gemini 通道（第三条通道）

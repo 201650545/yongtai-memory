@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-03T06:52:53.659Z
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 子 Agent（TRAE/codebuddy/逆天执行位）交付汇报文件到 workers/ 或类似路径后，**调度大脑必须在当日（或下次主动调度时）回写**对应项目 STATE/CHANGELOG 的"已完成(最近)"段，**不要等下一次会话才补**——郭老师会问"漏项"，9-1 交付的汇报 9-3 才发现没回写就是反例。

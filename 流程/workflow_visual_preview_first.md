@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-07T00:00:00.000Z
 type: workflow
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 ## 方法：先出预览图 · 再定向生成

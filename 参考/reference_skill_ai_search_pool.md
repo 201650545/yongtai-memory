@@ -3,6 +3,8 @@ name: ai-search-pool Skill（多引擎 AI 搜索聚合）
 description: 用户要「拓展搜索」时用的 skill。把 :3000 AI 搜索网关的逻辑改成了按需调用的 skill —— 无进程、无端口、无开机自启。指针 + 关键事实。
 type: reference
 updated: 2026-10-12
+kind: reference
+status: active
 ---
 
 # ai-search-pool skill —— 用户要「拓展搜索」时用它

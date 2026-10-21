@@ -8,6 +8,9 @@ metadata:
   modified: 2026-10-20
 type: project
 updated: 2026-10-20
+kind: fact
+status: active
+scope: 经纬
 ---
 
 # 经纬 · 无限画布插件

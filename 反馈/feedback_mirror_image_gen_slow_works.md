@@ -8,6 +8,8 @@ metadata:
   originSessionId: mirror-image-gen-curriculum-ideology
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 郭老师（2026-09-12）让经 ChatGPT 镜像站（AI问答宝/wendabao → vip-XX.67673.live，closeai.biz 代理）用 extend 注入海报提示词生图并下载。**更正我中途的错误判断**：我一度判定「镜像 chat 生图走不通/故障」，其实**只是极慢**（图片与文本都要数分钟才回流），最终出图成功。

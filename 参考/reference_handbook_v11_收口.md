@@ -9,6 +9,8 @@ metadata:
   Howtoapply: 他让我盘点 Work 库"哪些项目久没用"时，我先深挖了被 9 个项目当 SSOT 却在停更的 handbook——**SSOT 停更比单项目停更危险**，这条判断可复用
 type: reference
 updated: 2026-10-08
+kind: reference
+status: active
 ---
 
 # handbook v1.1 收口实录（2026-10-08）

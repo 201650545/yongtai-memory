@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-20
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 五篇 AI 文章 · 对口整理（IDEA-016）

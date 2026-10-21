@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（本项目 32 份 .md／2 份 SKILL.md）
 type: workflow
 updated: 2026-10-12
+kind: rule
+status: active
 ---
 
 # 每日管线 A／B／C：怎么跑、什么时候别跑

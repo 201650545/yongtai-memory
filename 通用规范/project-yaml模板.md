@@ -2,6 +2,8 @@
 name: project-yaml模板
 type: rule
 updated: 2026-10-08
+kind: rule
+status: active
 ---
 # project.yaml 模板
 

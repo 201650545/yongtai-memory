@@ -3,6 +3,8 @@ name: lesson_把采集当交付物等于交付流水
 description: 郭老师要的是"本质/观点级"结论而不是被整理过的信息流——AI 当筛选者不做搬运者，每天最多 3 点，决策归他
 type: lesson
 updated: 2026-10-21
+kind: rule
+status: active
 ---
 
 # 教训：把「采集/整理」当成交付物，等于交付流水

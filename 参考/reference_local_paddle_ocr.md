@@ -2,6 +2,8 @@
 name: reference_local_paddle_ocr
 type: reference
 updated: 2026-09-08
+kind: reference
+status: active
 ---
 # 本地 PaddleOCR 通路（扫描件 PDF 文本提取）
 

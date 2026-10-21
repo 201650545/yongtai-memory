@@ -7,6 +7,9 @@ metadata:
   modified: 2026-10-01
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: 跃己
 ---
 
 # 跃己 · 进步挑战平台

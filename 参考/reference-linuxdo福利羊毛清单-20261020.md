@@ -3,6 +3,8 @@ name: reference-linuxdo福利羊毛清单-20261020
 description: 2026-10-20 扫 linux.do「福利羊毛」分区（30 条）整理的可用免费资源清单：免费 API 站、闲置订阅共享 key、学生优惠真相、基础设施类；附各资源的原帖链接与接入可行性判断。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # linux.do 福利羊毛清单（2026-10-20 16:00 扫，30 条最新）

@@ -8,6 +8,9 @@ metadata:
   originSessionId: 8ee5c1ea-99c5-4cbe-bf2c-52824ee32254
 type: project
 updated: 2026-10-12
+kind: fact
+status: active
+scope: trae_solo_control
 ---
 
 **opencli 已能全自动控制 TRAE SOLO CN 对话**（2026-08-30 扩展 trae-solo adapter 落地）：

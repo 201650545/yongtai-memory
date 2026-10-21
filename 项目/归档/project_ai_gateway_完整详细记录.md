@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-01T00:41:14.311Z
 type: project
 updated: 2026-10-08
+kind: fact
+status: archived
+scope: ai_gateway_完整详细记录
 ---
 
 > ⚠️ 2026-10-01 审计：本件是归档快照，其中网关路径已废。运行体真源以 [[项目/project_ai_gateway]] 为准。

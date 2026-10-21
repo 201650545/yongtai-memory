@@ -9,6 +9,9 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661）
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: nitian_theme
 ---
 
 # 逆天主题：这个项目的取舍口径

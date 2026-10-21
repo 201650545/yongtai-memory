@@ -2,6 +2,8 @@
 name: 附录_AI伙伴第一轮论证原文
 type: project
 updated: 2026-09-18
+kind: fact
+status: archived
 ---
 1. 课题归属判断
 结论：选 A，挂第 1 课《最喜欢的课》

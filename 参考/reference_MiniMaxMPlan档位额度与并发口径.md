@@ -9,6 +9,8 @@ metadata:
   实测方式: mmx-cli 1.0.28 OAuth 设备码登录 + 官方 /v1/token_plan/remains 接口实调
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # MiniMax M Plan：档位、额度、并发口径（2026-10-20 实测）

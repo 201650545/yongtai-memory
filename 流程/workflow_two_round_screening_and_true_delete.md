@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory；2026-09-30 自动化到位补记
 type: workflow
 updated: 2026-10-06
+kind: rule
+status: active
 ---
 
 # 两审制与真删：一套可以搬去任何"清库"现场的做法

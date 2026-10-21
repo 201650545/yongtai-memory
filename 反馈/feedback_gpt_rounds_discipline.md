@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-20T00:00:00.000Z
 type: feedback
 updated: 2026-10-19
+kind: fact
+status: active
 ---
 
 用户（2026-09-03）明确的 GPT 镜像站对话轮次纪律（**轮次上限于 2026-09-18 修订**）：

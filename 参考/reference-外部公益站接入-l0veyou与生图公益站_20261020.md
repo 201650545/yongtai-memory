@@ -3,6 +3,8 @@ name: reference-外部公益站接入-l0veyou与生图公益站
 description: 2026-10-20 从 linux.do 找到并接入的两个外部公益站（l0veyou 文本可用/生图不开放；生图公益站 key 有效但余额 0 需兑换），附「自己拿 key」的两条技术路径与安全约定。
 type: reference
 updated: 2026-10-20
+kind: reference
+status: active
 ---
 
 # 外部公益站接入（2026-10-20 下午）

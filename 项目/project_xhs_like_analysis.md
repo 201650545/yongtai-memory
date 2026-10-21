@@ -9,6 +9,9 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 723 份／口径B 661；本项目 32 份 .md、含 2 份 SKILL.md、无 git）
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: xhs_like_analysis
 ---
 
 # 小红书点赞分析：这个项目管什么、不管什么

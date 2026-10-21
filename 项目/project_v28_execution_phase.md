@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-03T10:05:00.000Z
 type: project
 updated: 2026-10-08
+kind: fact
+status: active
+scope: v28_execution_phase
 ---
 
 ## ⚠️ 状态：执行位已到期

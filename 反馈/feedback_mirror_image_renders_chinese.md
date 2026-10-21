@@ -8,6 +8,8 @@ metadata:
   originSessionId: mirror-image-gen-curriculum-ideology
 type: feedback
 updated: 2026-10-12
+kind: fact
+status: active
 ---
 
 郭老师（2026-09-12）明确要求：**别再做「无字底版 + 后期叠字」，直接让镜像的图像模型一次生成「图文并茂」的完整学习单**。实测证明确实可行、且效果好。

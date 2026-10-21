@@ -3,6 +3,8 @@ name: feedback-默认不主动汇报只在出错或待拍板时喊你
 description: 郭老师 2026-10-21 定：默认不主动汇报，完成即静默落盘；只有失败/出错/越权执行/需要他拍板/外部动作（花钱·发消息·发布）才主动喊他
 type: feedback
 updated: 2026-10-21
+kind: fact
+status: active
 ---
 
 # 默认不主动汇报

@@ -8,6 +8,8 @@ metadata:
   modified: 2026-10-20
 type: lesson
 updated: 2026-10-20
+kind: rule
+status: active
 ---
 
 # 前缀是归属声明不是族名；批量替换先划出「不参与的文件」

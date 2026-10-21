@@ -9,6 +9,8 @@ metadata:
   关联批次: 2026-09-29 memory-work-inventory（口径A 713 份／口径B 653）
 type: reference
 updated: 2026-10-19
+kind: reference
+status: active
 ---
 
 # 通用规范去哪查：handbook = 跨项目 SSOT

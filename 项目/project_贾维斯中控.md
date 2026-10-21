@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-30
 type: project
 updated: 2026-10-06
+kind: fact
+status: active
+scope: 贾维斯中控
 ---
 
 # 贾维斯中控（手机语音遥控电脑）

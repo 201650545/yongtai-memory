@@ -7,6 +7,8 @@ metadata:
   created: 2026-09-22
 type: workflow
 updated: 2026-10-19
+kind: rule
+status: active
 ---
 
 # 调度大脑交接手册

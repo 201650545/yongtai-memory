@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-02T14:22:48.014Z
 type: feedback
 updated: 2026-09-03
+kind: fact
+status: active
 ---
 
 codebuddy CLI 默认拒绝所有写操作（Edit/Write/New-Item）。workbuddy_cli.py 必须传 `--permission-mode bypassPermissions` 给 codebuddy 子进程，否则 agent 写任何文件都会被拦下，只能给「调研结论+待授权后落地」汇报。

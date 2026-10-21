@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-12T15:07:50.938Z
 type: feedback
 updated: 2026-09-03
+kind: fact
+status: active
 ---
 
 郭老师指示（2026-08-12）：问 GPT 的方案返回后，**不要再去问他**，直接执行——只要我认为合理、符合项目即可。他看不懂也不看长内容。

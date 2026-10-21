@@ -3,6 +3,8 @@ name: feedback-禁止真模型对比压测
 description: 郭老师明令：不要拿真实上游模型做对比/压测/抽样验证，那些请求烧的是他的额度；验证前先查历史实测记录，确需真请求先问且限 1~3 次。
 type: feedback
 updated: 2026-10-20
+kind: fact
+status: active
 ---
 
 # 禁止用真模型做对比/压测（2026-10-20 郭老师原话）

@@ -7,6 +7,8 @@ metadata:
   created: 2026-09-30
 type: feedback
 updated: 2026-10-08
+kind: fact
+status: active
 ---
 
 # 收尾不是回答完就完：三写＋实测

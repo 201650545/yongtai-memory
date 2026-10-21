@@ -8,6 +8,8 @@ metadata:
   modified: 2026-08-10T16:12:41.722Z
 type: feedback
 updated: 2026-10-06
+kind: fact
+status: active
 ---
 
 郭老师设置飞书 DataHub 的根本目的：让 ChatGPT 官网 / Anthropic 官网通过 **GitHub 连接器** 直接读取飞书导出的公开数据，最先进模型帮他优化多维表格和项目——用官网订阅的现成连接器，避免为最先进模型的昂贵 API 每次调用烧钱。

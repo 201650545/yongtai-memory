@@ -8,6 +8,8 @@ metadata:
   modified: 2026-09-01T16:21:22.467Z
 type: feedback
 updated: 2026-09-03
+kind: fact
+status: active
 ---
 
 codebuddy 任务派发前**必须前置测一次 7890 代理可达性**，不可达先不派或换执行位。

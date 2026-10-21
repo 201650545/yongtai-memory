@@ -7,6 +7,8 @@ metadata:
   modified: 2026-10-01
 type: reference
 updated: 2026-10-08
+kind: reference
+status: active
 ---
 
 # 免费额度三路线 · 工具池与候选站

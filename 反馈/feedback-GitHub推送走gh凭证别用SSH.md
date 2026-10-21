@@ -7,6 +7,8 @@ metadata:
   created: 2026-10-20
 type: feedback
 updated: 2026-10-20
+kind: fact
+status: active
 ---
 
 # GitHub 推送：走 `gh` 的 HTTPS 凭证，别走 SSH

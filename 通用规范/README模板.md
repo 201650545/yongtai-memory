@@ -2,6 +2,8 @@
 name: README模板
 type: rule
 updated: 2026-10-08
+kind: rule
+status: active
 ---
 # {项目名}（README 模板）
 

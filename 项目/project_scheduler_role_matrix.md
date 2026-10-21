@@ -8,6 +8,9 @@ metadata:
   modified: 2026-09-01T15:08:56.896Z
 type: project
 updated: 2026-10-11
+kind: fact
+status: active
+scope: scheduler_role_matrix
 ---
 
 # 调度大脑角色与调度标准（2026-09-01 郭老师拍板）
