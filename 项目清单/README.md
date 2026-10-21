@@ -2,6 +2,8 @@
 name: README
 type: routing
 updated: 2026-10-10
+kind: fact
+status: active
 ---
 # workspace-index · 工作空间索引
 

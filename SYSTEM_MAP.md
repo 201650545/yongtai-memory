@@ -3,6 +3,8 @@ name: SYSTEM_MAP
 type: explainer
 updated: 2026-10-19
 description: 整个工作空间当前真实的分层、仓边界、真源分工与已废弃对象。AI 只读这一页就够，不要再翻旧的 concepts 系列。
+kind: fact
+status: active
 ---
 
 # SYSTEM_MAP · 工作空间当前真实结构（2026-10-19）
