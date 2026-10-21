@@ -1,13 +1,13 @@
 ---
 name: reference-gemini-via-adb-phone-channel
-description: 用 adb 驱动小米 14 上的 Gemini APP（com.google.android.apps.bard）作为第三条 Gemini 通道，绕开 opencli 网页版的活跃标签抢占与代理卡顿；含已验证/未验证清单与操作要点（2026-10-16 建）
+description: 用 adb 驱动小米 14 上的 Gemini APP（com.google.android.apps.bard）作为第三条 Gemini 通道，绕开 opencli 网页版的活跃标签抢占与代理卡顿；含已验证/未验证清单与操作要点（2026-10-16 建，2026-10-21 更正 ListenLoop 包名并标注通道暂缓）
 metadata:
   node_type: memory
   type: reference
   created: 2026-10-16
-  modified: 2026-10-16
+  modified: 2026-10-21
 type: reference
-updated: 2026-10-19
+updated: 2026-10-21
 kind: reference
 status: active
 ---
@@ -79,7 +79,7 @@ $xml = & $adb exec-out cat /sdcard/ui_ab.xml | Out-String
 **坑**：
 1. `adb shell "dumpsys ... | grep ..."` 会报 `Failed to write while dumping service activity: Broken pipe`
    —— **只是 stderr 噪音，结果本身有效**，不要据此判定失败。
-2. **启动 APP 会顶掉郭老师手机当前的前台应用**（本次顶掉的是他自己的 `com.listenloop.listenloop`）。
+2. **启动 APP 会顶掉郭老师手机当前的前台应用**（2026-10-16 实测顶掉的是 `com.shanbay.listen`；2026-10-21 实测顶掉的是 `com.shanbay.listen`——**ListenLoop 真实包名是 `com.shanbay.listen`，不是 `com.listenloop.listenloop`**）。
    ⇒ 动他手机前先说一声；他正在用 ListenLoop 时更要谨慎。
 3. `uiautomator dump` 只覆盖**当前可见**的节点 —— 长回答要配合滚动，否则会以为"它没答完"。
 
@@ -124,8 +124,16 @@ Invoke-WebRequest http://127.0.0.1:9222/json/version     # 应返回 Android-Pac
 | 时序坑 | **先起浏览器再连**；浏览器没起完时表现为 `SocketError: other side closed`（不是"没有 socket"） |
 | 手机上其他 devtools socket | 仅有 `@webview_devtools_remote_<pid>`（WebView，非浏览器） |
 
-**⚠️ 动手机前必说一声**：启动 APP / 浏览器会顶掉郭老师的前台应用（本次顶掉 `com.listenloop.listenloop`）。
-**用完要还回去**：`& $adb shell monkey -p com.listenloop.listenloop -c android.intent.category.LAUNCHER 1`。
+**⚠️ 动手机前必说一声**：启动 APP / 浏览器会顶掉郭老师的前台应用（2026-10-16 顶掉 `com.shanbay.listen`）。
+**用完要还回去**：`& $adb shell monkey -p com.shanbay.listen -c android.intent.category.LAUNCHER 1`（**ListenLoop 真实包名**）。
 
 **定位**：本路虽已探通，但 2026-10-16 郭老师已确认**电脑网页版 Gemini 稳定可用**
 （见 `gemini-web-review` skill），**优先走电脑版**；本条保留为备用。
+
+## 八、2026-10-21 状态更新：Gemini 通道**暂缓**（外部原因 ＋ 他的指示）
+
+- **外部原因**：电脑代理近期不稳，Gemini 判定不到所需国家 ⇒ **网页版通道作废**。
+- **他的指示**（2026-10-21 下午）：「别试了，先不用管 Gemini，等我找到 Gemini 镜像了再跟你说。**你现在就只用 ChatGPT 镜像版跟 DeepSeek skill 就行了**」。
+- **手机 KIWI 路径实测**（当日按他的指示前试过一轮）：手机在线、`heal.ps1` 的 forward/reverse 隧道**建成功**，但 **9222 `FAIL`（"连接被意外关闭"）** ⇒ 没走通；手机前台已用真实包名 `com.shanbay.listen` 归还。
+- **当前有效通道只剩两条**：① **ChatGPT 镜像站**（`external-model-review\components\gpt-mirror-extended-review`）② **DeepSeek 官网**（`...\components\deepseek-web-consult`）。
+- ⇒ **他找到 Gemini 镜像之前，任何"三通道并列"的流程都按"两通道"跑**；本条保持 `status: active`（路径与坑位仍有效），但不作为默认依赖。
