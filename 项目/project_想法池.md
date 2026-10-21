@@ -52,7 +52,7 @@ updated: 2026-10-19
 | IDEA-005 | 2026-09-30 | **P3 浏览器自动化工具的筛选与使用策略**（含 Kimi/opencli 等在用工具与后续 Computer Use） | **done（2026-10-20）**：盘点 → provider 段落地 → 全量铺开三步走完，全库浏览器实现类规定性条款 = 0，能力声明与 provider 清单零缺口 | 元智能浏览器能力域 `docs\04` §七；`docs\07` §八 已给改法（把工具名从 skill 正文赶进安装配置） |
 | IDEA-006 | 2026-09-30 | **P4 用自建 API 模块（网关 `:3100`）配置 Computer Use 控制本机** | **done（2026-10-20 23:15 收口；2026-10-21 00:11 遗留清零）**：唯一遗留＝DSH 需重启才加载 `mcp-computer-use` ＋ `mcp-ai-search-gateway` —— **DSH 已于 10-21 00:11 重启（主进程 PID 23292），computer_use 实测握手通过（serverInfo `computer-use v1.29.1`，工具 `screen`）**；`mcp-ai-search-gateway` 已于 10-20 23:57 随搜索 MCP 层整体删除 ⇒ **两条遗留全部清零，本条结案** | 详见下方"§2 补充：IDEA-006 第一片" |
 | IDEA-007 | 2026-09-30 | 同批 **P1**（运行机制写进全部 Agent 入口）**已落地**；**P2**（网关生效并接入远程控制与 Claude Code）服务端已生效、客户端链待闭环 | **decided（2026-10-20 23:31 他定「7 不做了」）**<br>P1 已落地；**P2 剩余半边（网关 :3100 接入 Claude Code）作废，不再做**。远程通道此前已按他指令关闭（`CodemoteFrpc` 与 `RemoteCodingControl` 已停止且不自启；网关 :3100 服务端不受影响） | 见 [[项目/project_ai_gateway]]、网关客户端链条目 |
-| IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | in_progress<br>**2026-10-20 复述：正式开始做**（他点名先动这条；《称赞》原型资产已核对齐：`D:\listenloop\dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py`） | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
+| IDEA-018 | 2026-10-12 | **课件音频随音逐字高亮/显现（指读跟随模式）**（以《称赞》为首发原型落地） | **done（2026-10-21 他复述「18弄好了」）**——2026-10-20 复述「正式开始做」；**2026-10-21 08:36 他复述「18弄好了」⇒ 本条结案**。落地证据：`D:\listenloop\scratch\真机截图\` 2026-10-21 07:46–07:49 一整套真机验证（`step1-zhongwen-tab` → `step2-xiaokedou-detail` → `step3-read-tab` → `step4-xiaokedou-after-tap` → `step5-readpage-xiaokedou` → `step6-listening` → `final-readpage`，另配 5 份 `_ui-step*.xml`）；原型资产三件俱在：`dist\import_20261007\chengzan-b-dual.lllesson` ＋ `scratch\char_timestamps\chengzan_char_timestamps.json` ＋ `pipeline\align_ctc.py` | ListenLoop `lib/` 播放器与 `pipeline/align_ctc.py` 对齐工序 |
 | — | 2026-09-30 | ⚠️ 他那次列点到"第 4 点"后直接写"第 6 点是。"且无内容，**第 5、6 点缺失** | 等他补 | 不猜、不补、不开工 |
 | IDEA-023 | 2026-10-20 | **改名同步器**：把「批量改名 ＋ 指针同步 ＋ 验收」固化成工具（默认 dry-run） | **done（2026-10-20 21:40 落地）**：技能库 `rename-sync-tool\`，`--selftest` 8/8 PASS；拿当天那次母仓改名回放做真实盘 dry-run ⇒ 将改写 0 文件、20 条残留正确分类（15 declaration ＋ 5 artifact）、**mechanical 真死链 0**，与人工逐条复核结论一致。已登记 README §6 ＋ 能力总账（独立 9→10、自制 29→30） | `D:\Work\元智能\10_AI自成长引擎\技能库\rename-sync-tool\`；配套 [[教训/lesson_命名纪律_前缀即归属且批量替换须排除存档]] |
 
@@ -118,6 +118,19 @@ updated: 2026-10-19
 - **前置依赖**：无（Skill 可直接读）；但"金融/代码/股票"方向要不要接数据源、接哪个，他没说。
 - **未展开的细节（别替他猜）**：他要的是"每天自动推送"还是"我问它才答"？资讯源用现成的还是自己爬？金融/股票是要行情数据还是新闻解读？——**都没说，等他自己开专题。**
 - **红线**：拉第三方仓＝运行第三方代码，按既有规矩**先取确认再 clone**。
+- **2026-10-21 08:40 只读研究（状态仍 captured，决策权仍在他）**：
+  - **事实：这一半早就在跑了**——计划任务 `AIHOTHotSnapshot` 每日 **01:10** 拉 `https://aihot.news/api/v1/hot-topics`
+    （**匿名只读 JSON、无需 Key**），落 `search_gateway\data\leaderboard\aihot_hot_YYYYMMDD.json`（留 7 天）
+    ＋ `D:\记忆\参考\reference_aihot_每日热度快照.md`（每日单写覆盖）。今天 01:10 实跑 `lastResult=0`。
+    ⇒ **他那条"拉第三方仓"的红线不触发了**（这条路没跑任何第三方代码）。
+  - **他卡的三个点现在都有答案**：① 推送形态＝**现状已是「问才答」**；要「每天推」的话**飞书通道现成、零新增依赖**
+    （同租户 p2p `oc_1bb1150b554fed273513bb2e18236e46` ＋ bot 私聊兜底，`lark-cli` 在 PATH，已实测发出）；
+    ② 资讯源＝**已经是现成的**；③ 方向——**上游条目字段里没有 category/tags**
+    （实测 `category` 全空，只有 `rank/id/title/source/links/sourceCount/signalCount/participantCount/sourceNames/latestAt`）
+    ⇒ 「金融/代码/股票」**只能本地做关键词＋信源白名单二次筛选**，不能靠上游参数切。
+  - **只差他点头一个点**：**要不要每天推**。推 ⇒ 默认按「摘要推飞书 ＋ 忆库那份加方向标签（原文不丢）」做；
+    不推 ⇒ 维持现状（零改动，已经能用）。
+  - **完整备忘**：`D:\Work\元智能\10_AI自成长引擎\docs\方案\20261021_IDEA-001_AIHot资讯源_研究备忘.md`
 
 ### IDEA-002 · 链式搜索网关（已有资产，他给了正向评价）
 - **提出**：2026-10-02
