@@ -53,7 +53,6 @@ python indexer.py --vault "D:\Work" --embed
 - 中文叫法：本地检索引擎、本地检索工具、知识检索引擎、知识检索工具、证据检索、断流检索、本地知识库检索
 - 技术术语：RAG（检索增强生成）、Agentic RAG、混合检索、语义检索、向量检索、FTS5、召回
 - 要解决的事：找资料、找文档、查笔记、搜笔记、某个东西在哪、之前怎么定的、省 token、省上下文、省代理流量
-- 反义提醒：它**不是**联网搜索（联网那个是 `ai-search-pool`）
 
 ## 什么时候必须用它
 
@@ -102,6 +101,17 @@ python indexer.py --vault "D:\Work" --embed
   要看真实使用率就数这个文件按 `cwd` 分组，**别再解压几百个会话文件倒推**（2026-10-19 教训）。
 - **看没命中的查询**：`python query_evidence.py --misses`（默认 7 天；零命中或 top score < 0.08 的弱命中）。
   这是别名表的增长回路：哪句搜不到，就把它的口语加进 `aliases.json`。
+- **★ 关系与状态现在真的参与检索了**（2026-10-21 落地，IDEA-024 MemT 评审）：
+  ① **默认排除** `status ∈ ('superseded','archived')` 的条目 ⇒ 记忆仓那 21 条
+  `_废弃存档/`、`归档/`（含一份叫 `_请勿再引用_说明.md` 的）**不再被召回**；要查历史用 `--history`（可逆）。
+  ② `scope` 在**候选阶段**约束（查询里出现"记忆仓"这类 scope 名就只留该 scope）。
+  ③ **requires / 双链做一跳前提扩展**：命中条目的依赖会作为「附带前提」随卡片给出（只一跳、不递归）；
+     作者显式声明的 requires 找不到会**显式告警**。
+  ④ 卡片每条证据多一行 **生效信息**：`元信息: 最后改动: 2026-10-21 | 状态: active | 取代者: 无 | kind: … | scope: …`。
+  ⑤ **时间真源是 git，不是 `updated`**：实测 `updated` 被 2026-10-21 的 239 条字段迁移刷出 87 条"假新"，
+     且有人改文件不 bump ⇒ 索引时用 `git log -1 --format=%as` 落 `git_updated`；
+     结论生效时间用**可选** `effective_at`，没声明就写"未声明"，**不许冒充**。
+  ⑥ 评测台：`10_AI自成长引擎\scripts\knowledge_eval.py`（12 条基础回归，零额度，命中率高 = 1.0）。
 
 ## 它不是什么
 
@@ -114,4 +124,3 @@ python indexer.py --vault "D:\Work" --embed
 - 完整用法与排序规则：`D:\Work\元智能\10_AI自成长引擎\技能库\local-knowledge-engine\SKILL.md`
 - 全局强制条款：`C:\Users\郭永涛\AGENTS.md` §7（严禁全本漫游）
 - 首次广播：[[全局变更广播]]
-- 姊妹工具：[[参考/reference_skill_ai_search_pool]]（那个是**联网**搜索，这个是**本地**检索）
