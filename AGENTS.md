@@ -2,6 +2,8 @@
 name: AGENTS
 type: entry
 updated: 2026-10-19
+kind: fact
+status: active
 ---
 # 本仓只给 AI 读
 

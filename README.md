@@ -3,6 +3,8 @@ name: README
 type: entry
 updated: 2026-10-19
 description: 记忆仓的机器契约：只给 AI 读，检索优先，索引生成，结论入 git。
+kind: fact
+status: active
 ---
 
 # 记忆系统 · 机器契约

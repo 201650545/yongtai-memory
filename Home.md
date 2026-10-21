@@ -3,6 +3,8 @@ name: Home
 type: entry
 updated: 2026-10-19
 description: 记忆仓的极简入口。只给 AI 读：先检索，索引自动生成。
+kind: fact
+status: active
 ---
 
 # 记忆仓
