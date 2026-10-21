@@ -109,7 +109,6 @@ Card 2.0｜header `blue`｜第 1 条做**唯一焦点**（title 字号）｜3 �
   （`Bus: running` / `Active consumers: 1` / `DROPPED 0` 才是健康）。
 
 ### ★ 结局（2026-10-21 13:28）：**手风琴做通了，但他选了折叠面板**
-
 - **手风琴实测 7/7 全成功**：他那 7 次点击（点第 1/2/3 条来回点）**每次都正确互斥**，
   0 失败、0 丢包；日志 `card_accordion_listener.log` 里逐条可查
   （`事件#2 点第2条 → updated:open=1` ⇒ 第 1 条自动收起）。
@@ -121,6 +120,28 @@ Card 2.0｜header `blue`｜第 1 条做**唯一焦点**（title 字号）｜3 �
   每日流程改回 `build_daily_card.build_card()`（折叠面板版）。
   **手风琴代码保留在 `buddy2api\scripts\card_accordion*.py`（未启用、未删）**——
   他哪天想换回去，只要启用任务 ＋ 打开流程里的分支即可（一行开关）。
+
+## 四、模型不可用怎么办（2026-10-21 13:35 郭老师问的三层保底）
+
+郭老师问：「调用什么模型发的？如果那个模型不能用了怎么办？」——**这一问揪出了真隐患**：
+旧备选链 3 个模型**全在 `workbuddy/` 一个渠道** ⇒ 同生共死；而失败时只写日志、不通知
+⇒ 他会以为"今天没值得说的"，其实是我这边挂了（正是"该喊的时候没喊"）。
+
+**现在的三层保底（已实测）**
+1. **跨渠道备选链**（8 个模型，4 条渠道）：
+   `workbuddy/minimax-m3.1-flash`（实测 4.2s）→ `traework/minimax-m3.1-flash` →
+   `workbuddy/glm-5.3-flash` → `traework/glm-5.3-flash` → `loomy/GLM-5.3-Flash` →
+   `raccoon/sn-glm-5-3-flash` → `workbuddy/deepseek-v4.1-flash` → `traework/deepseek-v4.1-flash`（慢，最后兜底）。
+2. **零模型保底**：模型全挂 ⇒ 拉 AIHOT 上游自带的整理稿 `https://aihot.news/api/v1/agent/latest`
+   （**上游服务端生成，不经过任何模型**）⇒ 解析出标题/摘要/推荐理由/原文链接/信源，
+   仍能出一张卡（标注"本次为原始整理稿，未做用途映射"）。实测故障注入（模型全指向不存在的 id）→ 成功出 3 条。
+3. **失败必须通知**：模型全挂且保底稿也失败、或飞书推送失败 ⇒ **主动发告警**给郭老师
+   （走 user 身份 p2p，与卡片不同故障域），文案明说"今天没能发出"＋原因。
+
+**另外抓到的真实不稳定**：上游 AIHOT **偶发 TLS 握手失败**
+（`TLSV1_ALERT_PROTOCOL_VERSION`，实测热榜那次失败、items 那次成功）⇒
+`aihot_hot_snapshot.http_get()` 加了 **curl 兜底**（Windows 自带 `curl.exe --compressed`，
+上游文档也推荐这个组合），失败时自动重试一次；实测连抓 3 次全部正常。
 
 ## 三、关键设计（都是踩过或他定的）
 
