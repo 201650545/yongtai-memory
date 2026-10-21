@@ -45,6 +45,16 @@ updated: 2026-10-21
    修法：绕过 shell，直接 `node <npm>/node_modules/@larksuite/cli/scripts/run.js <args>`（list 传参）。
    验证：带 `--dry-run` 看请求体里 `\n` 是否齐全，**别只信返回码**。
    教训：`D:\记忆\教训\lesson_多行消息只发第一行_告警静默失效.md`。
+8. **视觉增益用「精确 post JSON」（2026-10-21 11:20）**：`--markdown` 只是把 Markdown 转成 post
+   （**无标题栏、单语言、样式受限**）⇒ 改用 `--msg-type post --content <JSON>` 自建富文本。
+   **实测被接受**：`title` 标题栏 ＋ `text` 的 `style:["bold",颜色]`（grey/blue/orange 可用）＋ `hr` 分割线 ＋ emoji。
+   **实测被拒**：`note` tag（`ext=message_content has wrong tag:{note}`）——飞书会直接报出是哪个 tag 错，
+   而**被拒的消息不会到达郭老师** ⇒ 可以安全迭代收敛。
+   还没用上、但飞书 post 支持的：`a` 链接、`at` @提及、`img` 内联图、`code_block` 代码块、
+   `quote` 引用、`bullet`/`ordered` 列表、`collapsible` 折叠。
+   **再往上一档 = `interactive` 卡片**（模块化布局、**按钮**、表单、下拉、**图表**、发后可更新、
+   `card.action.trigger` 回调）——**按飞书规定必须先读 `card/lark-im-card-create.md` 工作流产出 JSON，不能手写**。
+   它的价值在于：每条精选下面直接放「采纳／不采纳／想深聊」按钮 ⇒ **点一下就是决策**。
 
 ## 四、偏好档案在哪、怎么长
 
