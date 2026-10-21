@@ -39,6 +39,12 @@ updated: 2026-10-21
 5. **失败不推**（宁可不发也不发错）；异常写 `search_gateway\data\渠道警报.log`。
 6. **每日清单落 `D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\YYYY-MM-DD.md`**，
    **不进记忆仓**（会过时）；**只有他拍板采纳的结论**才由人写进记忆仓。
+7. ⚠️ **飞书通道的老坑（2026-10-21 11:15 已修）**：`notify_capability.py` 原用 `shell=True` 传多行正文，
+   **Windows 在第一个换行处截断 ⇒ 只发出标题、正文全丢，而返回码/message_id 看起来完全正常**。
+   ⇒ 所有多行告警（能力体检／契约自检／本流水线）**此前一直在只显示标题**。
+   修法：绕过 shell，直接 `node <npm>/node_modules/@larksuite/cli/scripts/run.js <args>`（list 传参）。
+   验证：带 `--dry-run` 看请求体里 `\n` 是否齐全，**别只信返回码**。
+   教训：`D:\记忆\教训\lesson_多行消息只发第一行_告警静默失效.md`。
 
 ## 四、偏好档案在哪、怎么长
 
