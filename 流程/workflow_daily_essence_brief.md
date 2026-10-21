@@ -21,11 +21,31 @@ updated: 2026-10-21
 ## 二、跑起来是什么样（2026-10-21 11:08 首跑实测）
 
 - 候选 34 条 → 模型 `workbuddy/minimax-m3.1-flash` → **3 条，696 字**
-- 飞书推送成功（群「郭樂's AI Assistant」）
+- 飞书推送成功（**注意：是「郭樂's AI Assistant」这个 p2p 单聊，不是群**）
 - 选出来的三条**都落到了他的系统**：
   1. 文档解析 → 记忆仓入库链路（带版面坐标的 Markdown/JSON，给 local-knowledge-engine 用）
   2. 可编辑图层设计模型 → 小红书图文产线（改标题/配色不必整张重做）
   3. 实时语音可控部署 → `:3100` 的 voice-asr/tts/chat/realtime 候选池 ＋ 句读跟读拆分
+
+## 二·补 · 汇报形态的三个版本（2026-10-21 上午一路升级）
+
+| 形态 | 怎么发 | 观感 | 结论 |
+| :-- | :-- | :-- | :-- |
+| ① 纯 text | `--text` | 一坨带 `**` 的原文 | ✗ 首版（且当时还只发得出第一行） |
+| ② markdown→post | `--markdown` | 粗体/换行正常，**无标题栏** | △ 可用但不够 |
+| ③ 精确 post | `--msg-type post --content <JSON>` | 标题栏＋颜色＋分割线 | ✓ 但 **lark-cli 会把 JSON 当 markdown 归一化**，真富文本没完全生效 |
+| ④ **Card 2.0 卡片** | `--msg-type interactive --content <卡片JSON>` | 背景块＋折叠面板＋大标题焦点 | **✅ 现行**（11:37 已实发成功） |
+
+**卡片按飞书规定走工作流产出**（`lark-im/references/card/lark-im-card-create.md`），
+脚本在 `D:\项目\ai-hub\search_gateway\scripts\build_daily_card.py`：
+Card 2.0｜header `blue`｜第 1 条做**唯一焦点**（title 字号）｜3 个带底色 `column_set`（blue-50 / grey-50）｜
+「信号」放进 `collapsible_panel`｜**不含按钮**（按钮回调需服务端 `card.action.trigger`，本机无接收端）。
+
+**踩过的三个坑（飞书侧）**
+1. `note` tag **不被接受**：`ext=message_content has wrong tag:{note}` ⇒ 换成普通 text。
+2. `config.summary.content` **必须是字符串**，给 map 会报 `expected string for content`。
+3. **卡片只能 bot 身份发**（user 身份发不了，应用消息）⇒ 卡片走 **bot 私聊**通道。
+   （`--content` 的 JSON 走 lark-cli 传参时**必须用 Python list 传**；在 PowerShell 里直接传会被吃掉双引号。）
 
 ## 三、关键设计（都是踩过或他定的）
 
