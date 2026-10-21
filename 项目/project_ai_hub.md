@@ -1,6 +1,6 @@
 ---
 name: project-ai-hub
-description: GitHub 统一 AI 聚合管理平台 ai-hub（中央平台:8000 + 网关实例:3000+），多网关 API 聚合、多引擎 AI 搜索、飞书数据同步；2026-09-06 已归档只读，工作并入 ai-platform monorepo
+description: GitHub 统一 AI 聚合管理平台 ai-hub（中央平台:8000 + 网关实例），多网关 API 聚合、飞书数据同步；2026-09-06 已归档只读，工作并入 ai-platform monorepo。
 metadata:
   type: project
   node_type: memory
@@ -44,11 +44,10 @@ scope: ai_hub
 
 - **2026-09-06 · 总网关前端 v2 交付**（GPT 镜像 Extended）：deliverable 解压至 `D:\项目\services\central\generated\总网关前端_v2\`，已部署 :8000 root。三主题（中式留白/Swiss 国际主义/现代黑白玻璃），含深浅模式、WebAudio、10s 网关轮询。协作准则见 `用户/传话筒铁律_与强模型协作准则.md`。
 - **2026-09-06 · 归档 + 仓库清理**：ai-hub 并入 monorepo 后设为归档只读；清理 `refactor/monorepo-20260812`（72 血缘未合并提交，但 blob 内容已并入，无丢失）——opencli 到 `/settings` 解除归档 → 删分支 → 再归档。
-- **2026-08-07 · 创建**：GitHub 建仓 ai-hub，Python 主语言；中央平台 :8000 + 网关实例 :3000 起步。
 
 ## 架构（并入前，5 目录）
 
-`00_中央平台/`（FastAPI :8000，网关注册/发现/统计/飞书同步/管理面板）、`01_网关模板/`、`02_网关实例/`（:3000+，如 ds_v4_cli）、`03_共享组件/`（history/quota）、`04_任务卡/` + `05_执行指令/`。
+`00_中央平台/`（FastAPI :8000，网关注册/发现/统计/飞书同步/管理面板）、`01_网关模板/`、`02_网关实例/`（如 ds_v4_cli）、`03_共享组件/`（history/quota）、`04_任务卡/` + `05_执行指令/`。
 
 ## 源文件
 

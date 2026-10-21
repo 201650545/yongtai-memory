@@ -1,6 +1,6 @@
 ---
 name: project-ai-gateway
-description: 统一 AI 网关（D:\项目\ai-hub\search_gateway；:3000 搜索聚合 + :3100 API 转发，原 D:\游戏\ds_v4_cli 已迁移）——opencli 4 引擎 + LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）
+description: 统一 AI 转发网关（D:\项目\ai-hub\search_gateway；只有 :3100 API 转发）——LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）。
 metadata:
   node_type: memory
   type: project
@@ -20,7 +20,7 @@ scope: ai_gateway
 
 ## 这是什么
 
-统一 AI 搜索聚合网关，运行于 `D:\项目\ai-hub\search_gateway\`（:3000 搜索 + :3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。**文档仓：`D:\Work\API转发网关\`**（`docs\05_design_specs\` 放主题体系与 api_gateway 设计）。
+统一 AI 转发网关，运行于 `D:\项目\ai-hub\search_gateway\`（:3100 转发），原 `D:\游戏\ds_v4_cli\` 已迁移为旧副本。**文档仓：`D:\Work\API转发网关\`**（`docs\05_design_specs\` 放主题体系与 api_gateway 设计）。
 
 > ⚠️ **2026-10-19 路径核实**：旧写法「仓库副本 `D:\Work\AI平台\apps\search-gateway` + `apps\api-gateway`」**已全部失效**——`D:\Work\AI平台` 整棵树不存在，`apps/` 副本未随行。郭老师答复：**AI平台 久已不用，唯一保留下来的是 `API转发网关`，其余作废**。
 > 代码/运行体一律以 `D:\项目\ai-hub\search_gateway\` 为准；文档仓以 `D:\Work\API转发网关\` 为准。`search_gateway.md` 已不存在，勿再引用。
@@ -33,8 +33,7 @@ scope: ai_gateway
 > 所以 116 个提交从 9-05 起就再也没推出去——**本地单机演进是当前唯一现实，别再尝试 push**。
 > **禁止删除、禁止移动该目录。** 详见 `projects.yaml` 的 `ai-hub` 条目。
 
-- **:3000 搜索聚合**：`unified_gateway.py`，多引擎 opencli 浏览器检索 + `/v1/chat/completions` + `/api/search_json`，定位为 AI 的无头搜索工具。
-- **:3100 API 转发**：`api_gateway.py`，OpenAI 兼容 LLM 渠道聚合转发，独立于 :3000，含路由编排/总开关/用量/限流/熔断/记账。
+- **:3100 API 转发**：`api_gateway.py`，OpenAI 兼容 LLM 渠道聚合转发，含路由编排/总开关/用量/限流/熔断/记账。
 - 协同：`D:\项目\config\gateways.json`（3 网关注册）、`runtime.yaml`（服务拓扑真源）、中央平台 :8000。
 
 ## 关键不变量 / 易错点（必读）

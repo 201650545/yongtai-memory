@@ -1,10 +1,8 @@
 ---
 type: reference
-updated: 2026-10-20
-kind: reference
-status: active
+updated: 2026-10-21
 ---
-# 能力体检日报（2026-10-20）
+# 能力体检日报（2026-10-21）
 
 > 自动生成，勿手改。生成者：`10_AI自成长引擎\scripts\capability_probe.py`
 > 作用：**主动播报** —— 能力坏了/新增了/长期没用，主动报出来，不等用户想起来问
@@ -20,7 +18,6 @@ status: active
 | 名字 | 状态 | 备注 |
 |---|---|---|
 | `computer-use` | alive | 1 个工具 |
-| `ai-search-gateway` | alive | 4 个工具 |
 | `api-gateway-media` | alive | 7 个工具 |
 
 ### 网关
@@ -28,8 +25,9 @@ status: active
 | 名字 | 状态 | 备注 |
 |---|---|---|
 | `3100` | alive |  |
-| `3000` | dead | ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。 |
 | `8787` | alive |  |
+| `8787<->switcher` | skipped | port 非数字（8787<->switcher），不是可探活的网关 |
+| `3100<-aihot` | skipped | port 非数字（3100<-aihot），不是可探活的网关 |
 
 ### 技能
 
@@ -57,16 +55,20 @@ status: active
 | `external-model-review` | alive |
 | `gpt-mirror-extended-review` | alive |
 | `gemini-web-review` | alive |
+| `dual-review` | alive |
+| `deepseek-web-consult` | alive |
 | `phrasing-lesson-plan-coauthor` | alive |
 | `local-knowledge-engine` | alive |
 | `ops-task-fleet-watch` | alive |
 | `memory-router` | alive |
-| `ai-search-pool` | alive |
 | `obsidian-canvas-board` | alive |
 | `dsh-our-free-model` | alive |
 | `qidi-parent-notify` | alive |
 | `anatomy` | alive |
 | `computer-use` | alive |
+| `rename-sync-tool` | alive |
+| `opencli-browser-stable-roundtrip` | alive |
+| `gateway-channel-catalog-inventory` | alive |
 
 ### 关键计划任务
 
@@ -96,12 +98,16 @@ status: active
 | `AIHOTHotSnapshot` | alive |
 | `BenchmarkSnapshotSync` | alive |
 | `GatewayHeadBreaker` | alive |
-| `SearchEngineIdleClose` | alive |
 | `DSH_AutoRestart_0300` | alive |
 | `WorkBuddy-TPS-Probe` | alive |
 | `Buddy2API_DailyAutoClaim` | alive |
+| `Buddy2API_DailyCatalogRefresh` | alive |
+| `Buddy2API_DailySyncDSH` | alive |
 | `Buddy2API_Gateway_Watchdog` | alive |
 | `Buddy2API_Gateway` | alive |
+| `Buddy2API_CardAccordionListener` | alive |
+| `Buddy2API_SwitcherSyncCheck` | alive |
+| `AIHOTDailyInsights` | alive |
 | `XHS_LikeManager_Daily` | alive |
 | `XHS_WorkBackup_Daily` | alive |
 | `XHS_Unlike_Resume_0200` | alive |
@@ -118,3 +124,6 @@ status: active
 | `QuarkCloudDriveUpdaterTaskUser1.0.0.11{10F3D0A7-31BC-4F45-8EBE-91A3854A3706}` | alive |
 | `�������Ű�ȫ�ؼ���ȫ�������` | alive |
 | `MetaIntelligence_CapabilityProbe` | alive |
+| `PC_BootSelfCheck` | alive |
+| `MCodeProxyWatchdog` | alive |
+| `SoftLandingCreativeManagementTask` | alive |

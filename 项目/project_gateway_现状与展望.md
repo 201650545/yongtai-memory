@@ -82,7 +82,6 @@ timeline
 
 1. **Jev 决策层**（已激活待接）：意图路由自动选档 → 派发中心打分 → 对外「决策即服务」。毫秒级近零成本，注册送 $5 = 1.2 亿 token。
 2. **语音助手闭环**：ASR（听）→ voice-chat（想，Omni）→ TTS（说）已在网关齐备，差一个前端入口（可挂在 ai-hub 前端或 dispatch 页）。
-3. **RAG 语义检索**：embeddings 端点已就绪，可给 :3000 搜索网关加语义召回（Qwen3-Embedding-8B 4096 维，1.12s/次）。
 4. **活动二红利**：方舟协作奖励计划（每日单模型 200 万免费 token）未领取，领取后 Evolving 日额上限可达 750 万/日——需要郭老师到控制台点「立即参与」。
 5. **闸门智能化**：quota 记账可从「每日快照」升级为「网关侧 token 记账实时扣减」，彻底消除快照间隔窗口。
 6. **nemotron-omni 免费语音对话**：openrouter/nvidia 有免费的 `nemotron-3-nano-omni-30b-a3b`，可加为 voice-chat 免费备席（待拍板）。
