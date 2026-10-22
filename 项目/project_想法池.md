@@ -642,7 +642,7 @@ updated: 2026-10-22
 - **事实（来自两篇文章，2026-10-22 抓取；会过时，用前重查）**：
   - **开放时间**：2026-10-20 腾讯官宣，元宝搜索全面升级并通过**腾讯云**以 API 形式向个人开发者与企业开放。
   - **规模**：支撑腾讯内部 **50 余款**产品、**数千亿级**索引、**157 个**权威信源、**13 大**垂直行业、日均调用**数亿次**。
-  - **免费额度**：开通即得**每月 2000 次**。
+  - **定价（2026-10-22 实查腾讯云官方页，推翻通稿说法）**：官方产品页与计费文档里**没有任何**「免费／试用／赠送／额度」字样（三个可信页面命中数全为 0），只有三档**按量付费**：极速版 **14 元/千次**、标准版 **20 元/千次**、旗舰版 **26 元/千次**。⇒ **两篇公众号所称「开通即得每月 2000 次免费额度」查无实据**，不可当事实用。按本机用量估算（IDEA-028 每日精选每天约 30 次检索），一个月约 900 次，走极速版约 **13 元/月**，不贵但**不是免费**。
   - **三种接入方式**：① **API 直连**：腾讯云控制台「服务 API KEY」页创建明文 Key，配到环境变量 `TENCENTCLOUD_WSA_APIKEY`；标准模式返回 **10 条**结果，每条带 `title/date/site/url/score`。② **MCP**：远程地址 `https://api.wsa.cloud.tencent.com/Mcp`；或用 `npx -y @tencentcloud/yuanbao-mcp-server`，环境变量 `YUANBAO_API_KEY`，启动后工具列表里的 **`SearchPro`** 亮灯即可用。③ **SkillHub**：`https://skillhub.cn/skills/user_f26e0ccb/tencent-yuanbao-standard-search`（技能名 `tencent-yuanbao-standard-search`）。
   - **调用参数**（相对普通搜索最有价值的部分）：`Freshness`（时效范围，如 `d1`/`d7`）、`Industry`（垂直领域，如 `gov` 只检党政机关信源）、`Mode`（`0`=公开网页／`1`=权威垂直 VR 卡／`2`=混合）、`Site`（限定或排除站点）、`Cnt`（返回条数）。
   - **Python SDK**：`tencentcloud.wsa.v20250508` 的 `wsa_client.WsaClient` 加 `models.SearchProRequest()`，设 `req.Query`/`req.Mode`/`req.Freshness` 后 `client.SearchPro(req)`，结果在 `resp.Pages`。
@@ -652,4 +652,5 @@ updated: 2026-10-22
 - **同批情报**：文章提到 **DeepSeek 也在元宝搜索官宣前不久开放了自研 Search API**（为 Agent 与 RAG 提供实时网页检索），这条**未独立核实**，只作线索。
 - **与他现有资产的关系**：本机已有 `local-knowledge-engine`（本地知识检索）与网关 `:3100`/`:8787` 两条模型线；**元宝搜索补的是"公网实时检索"这一环**，与本地检索引擎不冲突（一个查自己，一个查世界）。`Industry=gov` 这类信源约束，正好对应他反复强调的"不要营销号二手通稿"。
 - **未展开的细节**（别替他猜）：要不要接入、接到哪个 Agent（DSH 的 MCP？还是网关？）、2000 次/月够不够用、要不要为它单独建一个 skill 收进技能库，都没说，等他点名。
+- **核实记录（2026-10-22）**：① 定价已按上述官方页核实，通稿的「免费 2000 次」不成立；② 两篇文章承诺的 `Industry=gov`／`Freshness`／`Mode`／`Site`／`Cnt` 等参数**尚未在官方文档核实**（腾讯云是 SPA，参数文档需另抓 `document/product/1806` 子页）；③ MCP 端点 `https://api.wsa.cloud.tencent.com/Mcp` 与本机连通性**未验证**；④ 结论：**这是付费渠道，不是免费渠道**，接不接由郭老师按 13 元/月的量级自己定。
 - **状态**：captured
