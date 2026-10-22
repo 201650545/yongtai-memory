@@ -1,8 +1,8 @@
 ---
 type: reference
-updated: 2026-10-21
+updated: 2026-10-22
 ---
-# 能力体检日报（2026-10-21）
+# 能力体检日报（2026-10-22）
 
 > 自动生成，勿手改。生成者：`10_AI自成长引擎\scripts\capability_probe.py`
 > 作用：**主动播报** —— 能力坏了/新增了/长期没用，主动报出来，不等用户想起来问
@@ -126,4 +126,5 @@ updated: 2026-10-21
 | `MetaIntelligence_CapabilityProbe` | alive |
 | `PC_BootSelfCheck` | alive |
 | `MCodeProxyWatchdog` | alive |
+| `MCodeCleanupDaily` | alive |
 | `SoftLandingCreativeManagementTask` | alive |
