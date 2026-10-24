@@ -6,12 +6,12 @@ kind: reference
 status: active
 scope: 全局（所有 Agent、全部项目）
 requires: 无（资料类条目，不设前提）
-updated: 2026-10-24
+updated: 2026-10-25
 ---
 
 # 资源速查页（生成物 · 请勿手改）
 
-> 生成时间：2026-10-24 16:52:35　生成器：`build_capability_catalog.py`
+> 生成时间：2026-10-25 00:59:16　生成器：`build_capability_catalog.py`
 > 本页由脚本从真源抽取，**配置变了就重跑**，不要手改。手写版 `资源与工具总目录.md` 已过期，以本页为准。
 
 ## 0 · 源文件快照
@@ -20,7 +20,7 @@ updated: 2026-10-24
 | --- | --- | --- | --- |
 | `D:\项目\ai-hub\search_gateway\data\model_routes.json` | 2026-10-24 01:54 | `1ca2850f` | ✅ |
 | `D:\项目\ai-hub\search_gateway\data\gateway_capabilities.json` | 2026-10-23 01:24 | `792c47a8` | ✅ |
-| `C:\Users\郭永涛\.dsh\profiles\desktop\cordis.patch.yml` | 2026-10-24 16:33 | `fb41a014` | ✅ |
+| `C:\Users\郭永涛\.dsh\profiles\desktop\cordis.patch.yml` | 2026-10-25 00:58 | `8c5a0ee5` | ✅ |
 | `D:\Work\元智能\10_AI自成长引擎\技能库\能力总账.json` | 2026-10-24 08:45 | `cf518f29` | ✅ |
 
 ## 1 · 网关入口与鉴权
@@ -88,7 +88,7 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 | `step` | `https://api.stepfun.ai/step_plan/v1` | 1 | ⚠️ 未设 `STEP_API_KEY` |
 
 - profile 内 `- id:` 合计 **33** —— 这是「已配条目数」，不是「可用模型总数」。
-- 默认模型：`deepseek-official / deepseek-flash`（内置适配器，不在上面表里）
+- 默认模型：`buddy2api / workbuddy/deepseek-v4.1-flash`（内置适配器，不在上面表里）
 - 语音 / 生图 / 多模态不进 DSH 选择器，必须直接打端点。
 
 ## 5 · 技能（全部列出，逐条带一句话）
@@ -137,7 +137,7 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 
 | 组件 | 干什么 |
 | --- | --- |
-| `deepseek-web-consult` | 用官方 chat.deepseek.com 网页版直接提问并取回完整回答；也能按「多选批量删除」清聊天记录。原生 fill 输入、原生 Enter 发送、3… |
+| `deepseek-web-consult` ⛔ | **【2026-10-25 起暂停】郭老师 DeepSeek 账号被封 3 天（至 2026-10-28 前后），该通道一律别开；要联网改走 gpt-mirror-extended-review / gemini-web-review / doubao-yuanbao-web-consult** 原描述：用官方 chat.deepseek.com 网页版直接提问并取回完整回答；也能按「多选批量删除」清聊天记录。原生 fill 输入、原生 Enter 发送、3… |
 | `doubao-yuanbao-web-consult` | 用官方 www.doubao.com / yuanbao.tencent.com 网页版直接提问并取回干净正文。豆包可一键把档位从「快速」切到「专家」，元宝… |
 | `dual-review` | 一份提问同时问两个外部强模型（Gemini 4 优先、GPT 镜像站并行对照），或按题型自动路由到更合适的那一个。通用知识/架构/产品判断默认双问再交叉比对… |
 | `gemini-web-review` | 用浏览器能力驱动本机已登录的 Gemini 网页版（AI Ultra），把材料**直接贴进正文**送审、要第二意见。实现见 技能库\naming.yaml … |
@@ -162,6 +162,12 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 | `multi-store-sync-delete` | 多数据源同步真删 SOP——dry-run 校验、分批删云端行、删本地文件与 JSON 键、双向孤儿终检。Use when 批量删除多端同步的笔记/记录或清… |
 | `xhs-like-daily` | 小红书点赞每日管线（A取消旧赞/B新笔记v3分析/C旧信息时效复核）的执行与补跑手册。Use when 用户要求跑或补跑点赞任务、取消旧点赞、分析新点赞笔记… |
 | `xhs-note-publish` | 小红书图文笔记的完整发布流程（图片/标题/正文/话题/原创声明/文件附件/发布）。需要「在已登录的小红书页面完成发布流程（含附件与原创声明）」这一浏览器能力… |
+
+### 5.4 停用中（1）
+
+| 技能 | 状态 | 说明 |
+| --- | --- | --- |
+| `deepseek-web-consult` | ⛔ 2026-10-25 起暂停 | 郭老师 DeepSeek 账号被封 3 天（至 2026-10-28 前后），该通道一律别开；要联网改走 gpt-mirror-extended-review / gemini-web-review / doubao-yuanbao-web-consult |
 
 ### 5.3 归档（21，默认不加载）
 
@@ -198,9 +204,9 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 
 ## 9 · 记忆检索库
 
-- `D:\记忆\.cache\knowledge.db`：50.0 MB · documents 267 · sections 4696
+- `D:\记忆\.cache\knowledge.db`：50.0 MB · documents 268 · sections 4731
 - 查法：`D:\记忆\q.cmd "词"`（跨库加 `--work "D:\Work"`）；精读用 `…\local-knowledge-engine\scripts\locate_anchor.py` 拿行号后再读 ≤50 行。
-- `索引.md` 自述条目：298
+- `索引.md` 自述条目：299
 - ⚠️ 差 31 条（索引与库不同步，重建后核对）
 
 ## 10 · 产物落点与提交
@@ -212,4 +218,4 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 ## 11 · 本次体检
 
 - ⚠️ 账实不符：能力总账有、盘上无 → pagesift-crawler
-- ⚠️ 索引漂移：索引.md 298 vs 库 267（差 31）
+- ⚠️ 索引漂移：索引.md 299 vs 库 268（差 31）
