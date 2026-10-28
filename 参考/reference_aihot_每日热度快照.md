@@ -2,11 +2,11 @@
 name: reference_aihot_每日热度快照
 description: AIHOT 中文 AI 资讯每日热度快照（热度面，非能力榜），每日凌晨定时任务覆盖刷新。
 type: reference
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 # AIHOT 中文 AI 资讯热度快照（每日）
 
-> **同步时间**：2026-10-28 01:10:01 (每日定时任务自动刷新落盘)
+> **同步时间**：2026-10-29 01:10:01 (每日定时任务自动刷新落盘)
 > **数据来源**：https://aihot.news/api/v1/hot-topics（JSON，匿名只读，无需 Key）
 > **保留纪律**：冷快照只保留 7 天，超期每日自动删除；本文件每日单写覆盖。
 >
@@ -16,89 +16,88 @@ updated: 2026-10-28
 
 | 名次 | 事件 | 首发信源 | 信源数 | 信号数 | 参与数 |
 | :---: | :--- | :--- | :---: | :---: | :---: |
-| 1 | OpenAI 发布 GPT-6.1 Terra，API 价格减半 | X：Tibo (@thsottiaux) | 12 | 71 | 83 |
-| 2 | Anthropic 递交 S-1，拟以 ANT 登陆纳斯达克 | Anthropic：Newsroom（网页） | 13 | 76 | 89 |
-| 3 | OpenAI 称 AI 取得三项科学发现，物理证明未公开引呼吁 | IT之家·人工智能 | 7 | 29 | 36 |
-| 4 | 微软向约六万员工发出自愿离职邀约 | X：Oran Ge (@oran_ge) | 1 | 33 | 34 |
-| 5 | Google DeepMind 发布 Genie 4 世界模型研究预览版 | Google DeepMind：Blog（RSS） | 7 | 9 | 16 |
-| 6 | Cohere称Qwen模型在沙箱中尝试外传探针文件 | Hacker News：AI 热帖 | 5 | 20 | 25 |
-| 7 | 英伟达与Meta扩大Muse合作并投资30亿美元 | NVIDIA：Newsroom（RSS） | 4 | 12 | 16 |
-| 8 | 蚂蚁发布灵光2.0，AI助理可跨会话持续办事 | X：卡尔的 AI 沃茨 (@aiwarts) | 3 | 13 | 16 |
-| 9 | 债务市场收紧，200余家NeoCloud面临出清 | X：indigo (@indigox) | 1 | 24 | 25 |
-| 10 | 百度开源 Unlimited OCR 2 长文档识别模型 | X：百度 Baidu (@Baidu_Inc) | 3 | 11 | 14 |
+| 1 | Google DeepMind 发布 Genie 4 世界模型研究预览版 | Google DeepMind：Blog（RSS） | 13 | 57 | 70 |
+| 2 | Anthropic 递交 S-1，拟以 ANT 登陆纳斯达克 | Anthropic：Newsroom（网页） | 13 | 53 | 66 |
+| 3 | OpenAI 发布 GPT-6.1 Terra，API 价格减半 | X：Tibo (@thsottiaux) | 10 | 78 | 88 |
+| 4 | OpenAI 称三项科学发现，物理证明未公开引呼吁 | IT之家·人工智能 | 6 | 35 | 41 |
+| 5 | Anthropic公布药物研发合作，并传收购Mithril Medicine | X：Anthropic (@AnthropicAI) | 2 | 20 | 22 |
+| 6 | Anthropic 一团队取消编程面试，改看原型 | The Decoder：AI News（RSS） | 3 | 11 | 14 |
+| 7 | Artificial Analysis 发布 v5 指数，开源模型差距扩大 | Artificial Analysis 完整文章（网页） | 3 | 9 | 12 |
+| 8 | OpenAI 拟采购谷歌 TPU 并招募工程师适配 | X：Rohan Paul (@rohanpaul_ai) | 2 | 12 | 14 |
+| 9 | 蚂蚁发布灵光2.0，AI助理可跨会话持续办事 | X：卡尔的 AI 沃茨 (@aiwarts) | 3 | 16 | 19 |
+| 10 | 英伟达与Meta扩大Muse合作并投资30亿美元 | NVIDIA：Newsroom（RSS） | 3 | 17 | 20 |
 
 ---
 
 ## 信源明细（每条热点的首发与讨论面）
 
-**1. OpenAI 发布 GPT-6.1 Terra，API 价格减半**  · 最近更新 2026-10-27T16:11:23.000Z
+**1. Google DeepMind 发布 Genie 4 世界模型研究预览版**  · 最近更新 2026-10-28T07:34:58.000Z
 
+  - MarkTechPost（RSS）
+  - X：indigo (@indigox)
+  - X：卡兹克 (@Khazix0918)
+  - 公众号：数字生命卡兹克
+  - X：Demis Hassabis (@demishassabis)
+  - IT之家·人工智能
+
+**2. Anthropic 递交 S-1，拟以 ANT 登陆纳斯达克**  · 最近更新 2026-10-28T15:27:21.000Z
+
+  - X：Rohan Paul (@rohanpaul_ai)
+  - X：Saito 硬地骇客 (@SaitoWu)
+  - IT之家·人工智能
+  - TechCrunch：AI（RSS）
+  - Ars Technica：AI（RSS）
+  - Azeem Azhar：Exponential View（RSS）
+
+**3. OpenAI 发布 GPT-6.1 Terra，API 价格减半**  · 最近更新 2026-10-28T02:01:04.710Z
+
+  - IT之家·人工智能
   - X：Arena (@arena)
   - X：卡兹克 (@Khazix0918)
   - MarkTechPost（RSS）
   - Simon Willison 博客
-  - IT之家·人工智能
   - X：OpenClaw (@openclaw)
 
-**2. Anthropic 递交 S-1，拟以 ANT 登陆纳斯达克**  · 最近更新 2026-10-27T16:51:22.000Z
+**4. OpenAI 称三项科学发现，物理证明未公开引呼吁**  · 最近更新 2026-10-27T20:48:58.000Z
 
   - The Verge：AI（RSS）
-  - IT之家·人工智能
-  - The Decoder：AI News（RSS）
-  - X：卡兹克 (@Khazix0918)
-  - X：indigo (@indigox)
-  - 公众号：数字生命卡兹克
-
-**3. OpenAI 称 AI 取得三项科学发现，物理证明未公开引呼吁**  · 最近更新 2026-10-27T16:00:19.000Z
-
+  - TechCrunch：AI（RSS）
   - X：Rohan Paul (@rohanpaul_ai)
   - The Decoder：AI News（RSS）
-  - X：Yuchen Jin (@Yuchenj_UW)
-  - X：Ethan Mollick (@emollick)
   - IT之家·人工智能
-  - The Verge：AI（RSS）
+  - X：Greg Brockman (@gdb)
 
-**4. 微软向约六万员工发出自愿离职邀约**  · 最近更新 2026-10-27T00:43:54.000Z
-
-  - X：Oran Ge (@oran_ge)
-
-**5. Google DeepMind 发布 Genie 4 世界模型研究预览版**  · 最近更新 2026-10-27T17:02:41.000Z
+**5. Anthropic公布药物研发合作，并传收购Mithril Medicine**  · 最近更新 2026-10-27T20:54:24.000Z
 
   - X：Rohan Paul (@rohanpaul_ai)
-  - X：Ethan Mollick (@emollick)
-  - TechCrunch：AI（RSS）
-  - X：Testing Catalog (@testingcatalog)
-  - X：Sundar Pichai (@sundarpichai)
-  - Ars Technica：AI（RSS）
+  - X：Anthropic (@AnthropicAI)
 
-**6. Cohere称Qwen模型在沙箱中尝试外传探针文件**  · 最近更新 2026-10-27T01:12:21.000Z
+**6. Anthropic 一团队取消编程面试，改看原型**  · 最近更新 2026-10-28T16:26:48.000Z
 
-  - TechCrunch：AI（RSS）
-  - X：Cohere（@cohere）
-  - X：Nathan Lambert (@natolambert)
-  - X：Testing Catalog (@testingcatalog)
-  - Hacker News：AI 热帖
-
-**7. 英伟达与Meta扩大Muse合作并投资30亿美元**  · 最近更新 2026-10-27T12:10:02.000Z
-
-  - X：Testing Catalog (@testingcatalog)
+  - X：Addy Osmani (@addyosmani)
   - The Decoder：AI News（RSS）
   - IT之家·人工智能
-  - NVIDIA：Newsroom（RSS）
 
-**8. 蚂蚁发布灵光2.0，AI助理可跨会话持续办事**  · 最近更新 2026-10-27T13:22:20.000Z
+**7. Artificial Analysis 发布 v5 指数，开源模型差距扩大**  · 最近更新 2026-10-28T15:04:43.000Z
+
+  - The Decoder：AI News（RSS）
+  - Nathan Lambert：Interconnects（RSS）
+  - X：Artificial Analysis (@ArtificialAnlys)
+
+**8. OpenAI 拟采购谷歌 TPU 并招募工程师适配**  · 最近更新 2026-10-28T01:59:45.637Z
+
+  - IT之家·人工智能
+  - X：Rohan Paul (@rohanpaul_ai)
+
+**9. 蚂蚁发布灵光2.0，AI助理可跨会话持续办事**  · 最近更新 2026-10-27T13:22:20.000Z
 
   - X：卡尔的 AI 沃茨 (@aiwarts)
   - 公众号：卡尔的AI沃茨
   - IT之家·人工智能
 
-**9. 债务市场收紧，200余家NeoCloud面临出清**  · 最近更新 2026-10-26T03:20:56.000Z
+**10. 英伟达与Meta扩大Muse合作并投资30亿美元**  · 最近更新 2026-10-27T09:58:16.000Z
 
-  - X：indigo (@indigox)
-
-**10. 百度开源 Unlimited OCR 2 长文档识别模型**  · 最近更新 2026-10-27T12:57:42.000Z
-
-  - X：邵猛 (@shao__meng)
-  - MarkTechPost（RSS）
-  - X：百度 Baidu (@Baidu_Inc)
+  - The Decoder：AI News（RSS）
+  - IT之家·人工智能
+  - NVIDIA：Newsroom（RSS）
 
