@@ -701,11 +701,9 @@ updated: 2026-10-22
 
 - **可以启动**，但：① **每 10 分钟只能问 1 个问题**；② **不准开新对话**，必须始终在**同一个对话内**提问（上下文连续）。
 
-### 9.3 新增两条（2026-10-29 点名）
+### 9.3 新增（2026-10-29 点名）
 
-- **IDEA-035 · 接入 Cursor ＋ Windsurf 两条渠道**：状态 `assigned`。他的原话：「听说还可以接入 Cursor 和 Suffer（＝Windsurf）这两个渠道，可以加的话就加点吧」。**前置**：本机两者都未安装（2026-10-29 实测无 Cursor/Windsurf 进程与安装项）⇒ 需先装客户端并登录，才有凭据可接。
-  可选实现（GitHub 实测星数）：Windsurf → `dwgx/WindsurfAPI`（3110★，10-28 更新，100+ 模型转 OpenAI 兼容）；Cursor → `anyrobert/cursor-api-proxy`（283★，10-21）／`standardagents/composer-api`（348★）／`tagecc/cursor-agent-api-proxy`（64★）。
-- **IDEA-036 · Grok 反代搜索**：状态 `assigned`。他的原话：「把 Grok 也做成反代搜索。就是利用 Opencli 打开这些网站，模拟我的操作，输入问题进行联网搜索，因为 Grok 搜 X 上的信息非常好嘛」。**形态**：不是 API 反代，是**浏览器自动化代理**（opencli 驱动、用他的登录态、静默后台）。备选：`chenyme/grok2api`（7867★，多账号网关，需账号池）；他明确倾向浏览器那路。
+- **IDEA-036 · Grok 反代搜索**：状态 `assigned` → **已固化成 skill `grok-web-consult`（2026-10-29）**。他的原话：「把 Grok 也做成反代搜索。就是利用 Opencli 打开这些网站，模拟我的操作，输入问题进行联网搜索，因为 Grok 搜 X 上的信息非常好嘛」。**形态**：不是 API 反代，是**浏览器自动化代理**（opencli 驱动、用他的登录态）。落地：`技能库\external-model-review\components\grok-web-consult\`（SKILL.md + scripts/grok_ask.py + _grok_common.py，已挂 junction 到 `~\.agents\skills\`）。**手工端到端已验证**（长问题 → 约 1.9 千字中文回答，产物 `D:\Work\_tmp\grok_answer_20261029.md`）；脚本入口的 Enter 仍待一次干净环境复验（本机 Chrome 全部最小化时会被拒发）。
   **前置（2026-10-29 实测更新）**：`grok.com` 经本机代理 `:7890` 返回 **200**，`x.ai` / `accounts.x.ai` 返回 **403**（Cloudflare 挡非浏览器 UA）⇒ **走浏览器自动化可行，走纯 HTTP 不可行**。仍需：浏览器里有 grok 登录态 + 代理在线。
 
 ### 9.4 口径
