@@ -1,8 +1,8 @@
 ---
 name: project_buddy2api_switcher_sync
-description: Buddy2API 网关(:8787) 与 WorkBuddy 账号切换器 的三重隐式耦合与契约自检机制——网关改数据层后切换器必须同步，否则数据静默没打通
+description: Buddy2API 网关(:8787) 与 WorkBuddy 账号切换器 的三重隐式耦合与契约自检机制——网关改数据层后切换器必须同步，否则数据静默没打通；附 2026-10-29 实查的「额度耗尽自动换号」三层机制与补登录态三步流程
 type: project
-updated: 2026-10-21
+updated: 2026-10-29
 kind: fact
 status: active
 scope: buddy2api_switcher_sync
@@ -98,6 +98,7 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
   `auto_ask_poll.py`、`free_model_probe.py`）⇒ 保留原路径当 junction，**这些路径一行没改仍然有效**。
 - **凭据边界**：`profiles/*/workbuddy-desktop-ai.info` 是**加密登录态**（access/refresh token），
   `.gitignore` 已排除 `buddy2api/switcher/profiles/`；提交后核对过**提交内无 profiles 文件**。
+
   另排除 `tps_result.json`、`*.log`、`__pycache__/`、`ui/*.bak*`。
 - **自检脚本跟着改**：`check_switcher_sync.py` 的 `SWITCHER_DIR` 指向**仓内真源**，junction 路径作 fallback。
 - **迁移后复跑**：契约自检 **PASS 全通**，切换器从 junction 路径重启正常（PID 4700）。
@@ -105,4 +106,40 @@ Workbuddy 账号切换器又没有同步更新，导致数据没有打通。」
   —— **2026-10-21 07:42 已清空**：79 个文件全部移入回收站（其中 8 份 `ui/*.bak*` 历史版本
   已先保全到仓内 `ui/`），只剩 12 个**空目录壳**（回收站只收文件、拒收 workspace 外的目录级目标，
   未绕过）；空壳无害，可手动删除。
+
+## 八、账号额度耗尽会自动换号（2026-10-29 实查，别再重复问）
+
+**结论：这个能力 8787 早已具备，不需要额外开发，也不需要把切换器接进网关。**
+
+三层机制（真源在 `D:\项目\ai-hub\buddy2api\src\`）：
+
+| 层 | 位置 | 做什么 |
+| :-- | :-- | :-- |
+| ① 事前摘号 | `auth_manager.py` `_quota_low_watermark_blocks()` | 读官方资源缓存 `available_total`，低于水位线就直接剔除并标 `exhausted` ⇒ **不浪费一次撞空请求** |
+| ② 请求内换号 | `proxy.py` 主循环 `_next_attempt_account(tried_ids)` | 每次失败换下一个账号，已试过的进 `tried_ids` 排除 ⇒ 账号1额度用完自动走账号2 |
+| ③ 耗尽长冷却 | `auth_manager.py` `mark_quota_exhausted()` / `_quota_state_blocks()` | 14018「Credits exhausted」/ 402 时写库 `quota_state=exhausted` + `quota_reset_at`，冷却期内不参选，**重启不丢** |
+
+`pick_account()` 还带：优先级排序、同级粘性（尽量固定同一账号）、**按站点分池**（`site=cn/intl`，中国版与国际版互不干扰）、按「账号+模型」维度的 6004 限流排除。
+
+**顺带两条反例教训**（源码注释里记着）：
+- 早期 429 冷却只有 20 秒 ⇒ 耗尽账号 20 秒后重新参选 ⇒ 实测同一账号连吃 6 次 14018。所以额度耗尽必须用长冷却，不能复用瞬时失败那套。
+- 单账号渠道（如只剩一个国际站号）在 `tried_ids` 排除后一定要有「原地重试同一账号」的兜底，否则一次网络抖动就等于整条渠道不可用（实测 `www.workbuddy.ai` 50% ConnectError）。
+
+### 8.1 补登录态：用切换器三步，不用写新按钮
+
+切换器面板已内置（`switcher.py` `logout_and_relogin` 段）：
+1. 点「退出登录」→ 给 `workbuddy-desktop-ai.info` 写 logged-out 标记并重启 WorkBuddy 客户端
+2. 客户端**自己弹出 Google 登录窗**（不是跳浏览器）
+3. 登录成功后回面板点「完成录入」→ 解密当前登录态拿邮箱，固化成账号档案并**自动同步到 8787**
+
+另有「秒切账号」（用旧档案的认证文件覆盖当前登录态 + 重启客户端）；网关侧兜底是 `/admin/accounts/scan`（重扫本机 auth 文件）与 `/admin/accounts/import`（直接贴 auth JSON）。
+
+### 8.2 只读 HTTP 桥存在但未常驻
+
+`switcher_http.py` 已在 `127.0.0.1:8021` 写好只读桥（`X-Switcher-Token` 鉴权，8 个 `get_*` 白名单：`get_status` / `get_model_quota` / `get_today_quota` / `get_model_capacity` / `get_channel_summary` / `get_model_params` / `get_gateway_status` / `get_profile_stamp`），但**目前没在跑**（2026-10-29 实测不可达）。要做账号看板时才需要把它起成常驻；只做「自动换号」则完全用不上。
+
+### 8.3 何时会真的「无号可用」
+
+只有一种情况：池里所有账号都同时是 `token_expired` 或 `exhausted`。2026-10-29 实测中国站就是这个状态（2 个号：5 号 token 过期、17 号额度耗尽）⇒ 报 `503 No available accounts`。**这不是切换机制坏了，是账号供给空了**，修法是补号或等额度重置，不是改代码。
+
 

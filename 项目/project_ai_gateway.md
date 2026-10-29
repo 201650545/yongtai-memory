@@ -1,13 +1,13 @@
 ---
 name: project-ai-gateway
-description: 统一 AI 转发网关（D:\项目\ai-hub\search_gateway；只有 :3100 API 转发）——LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）。
+description: 统一 AI 转发网关（D:\项目\ai-hub\search_gateway；只有 :3100 API 转发）——LLM 渠道路由 + 统一模型组/光线拖拽编排/总开关/用量记账/派发中心二级页（GATEWAY_ID 陷阱）；2026-10-29 起 Buddy 渠道白名单判据（0 倍率/≤0.2，Loomy 豁免）与中国站停用、全面切 workbuddy-intl。
 metadata:
   node_type: memory
   type: project
   originSessionId: cc570cb5-bfc6-41c1-a63b-84533fa58583
-  modified: 2026-10-08T00:00:00.000Z
+  modified: 2026-10-29T00:00:00.000Z
 type: project
-updated: 2026-10-19
+updated: 2026-10-29
 kind: fact
 status: active
 scope: ai_gateway
@@ -47,6 +47,13 @@ scope: ai_gateway
 
 ## 时间线（近→远）
 
+- **2026-10-29 · Buddy 渠道白名单与编排按郭老师口径重定（中国站停用、全面切国际站）**：
+  - **白名单判据（他口述）**：不是目录里列出来的模型都能用，只留「0 倍率 + ≤0.2 低倍率」；**Loomy 渠道整体豁免**（`GLM-5.3-Flash` 0.8 / `spark-x` 2.5 / `spark-x2.6` 2.6 全保留）；**WorkBuddy 两站定死各 2 个**：中国站 `hy3`+`deepseek-v4.1-flash`、国际站 `hy3`+`deepseek-v4.1-flash`，**不得再新增**；Trae work 只要 `deepseek-v4.1-flash`。
+  - **实测推翻"目录即可用"**：新补进白名单的 17 个里，`workbuddy/*` 全 `503 No available accounts`（中国站账号池空）、`qodercn/*` 全 501（Qoder 中国版只给加密推理端点，本网关未移植 WASM 签名）、`qoder/deepseek-flash` 401、`workbuddy-intl/gpt-5.6-luna` 400（个人免费用户不允许）⇒ 全部回滚；仅 `workbuddy-intl/hy4-preview`、`traework/Doubao-Seed-2.1-Turbo`、`traework/mimo-v2.6-{flash,pro}`、`loomy/spark-x` 实测 200（后三个 36~62s 太慢）。
+  - **中国站停用原因（实测）**：`workbuddy` 7 个账号里，中国站仅 2 个 —— 5 号 `token_expired`（www.codebuddy.cn）、17 号 `quota_state=exhausted`（www.workbuddy.cn，无重置时间）⇒ 池空。国际站 7/10/12 正常，13/14 额度耗尽但 `2026-10-31 23:59` 自动重置。
+  - **编排改动（`routes_writer.apply_change()` 带 approval，全部热加载 + healthz 指纹校验 + 可回滚）**：① `deepseek-v4.1-flash` 主链首席 `buddy/workbuddy/...` → `buddy/workbuddy-intl/deepseek-v4.1-flash`（实测 200 / 1.9s）；② 主备不重叠 → 备链撤掉 workbuddy-intl 席，剩 `traework` + `codearts`；③ `hunyuan-hy3` 撤死席 `buddy/workbuddy/hy3`，只留 `buddy/workbuddy-intl/hy3`（实测 200 / 2.1s）；④ `spark-2.6` 补第 2 席 `buddy/loomy/spark-x`；⑤ **删除别名 `minimax-m3.1-flash`**（两席均不可用）。
+  - **白名单终态 25 个**：`workbuddy-intl` 2 / `raccoon` 4 / `loomy` 3 / `traework` 1 / `cline` 5 / `webimage` 4 / `qwenwork`·`qoder`·`codearts`·`lobster`·`officeace`·`chatshare` 各 1；**`workbuddy`（中国站）已清空**。
+  - 备份：`data/_bak_model_routes_20261029_*_agent:trae.json`（4 份）；白名单快照 `buddy_selected_*.json` 见会话临时目录。
 - **2026-10-08 · 实测核对 + 文档仓对齐（WorkBuddy 接手轮）**：`:3100` 活着（`/healthz` ok），**持有者 PID 6260，父 `nssm.exe`，服务 `ai-gateway-3100`（Auto）** —— 文档仓原记 PID 35192 已过时。实测：路由名 **16**（`/v1/models`）、渠道 **21**（`/api/channels`）、累计 calls 7941 / input 8.14 亿 tok / errors 0。编排席位数 free-flash **14** / free-high **8** / fast **8** / video-gen **1**（`data/model_routes.json`）。
   - **文档仓 `D:\Work\API转发网关` 改 4 处活文档**：`README.md`＋`SYSTEM_OVERVIEW.md` 目录树头 `D:\Work\API转发网关\`→`API转发网关`；`AGENTS.md` **`/api/channels/status` 是错的（实测 not found）→ 正确为 `/api/channels`**；`PROGRESS_TRACKER.md` PID→6260、M3 路径改名。带日期的历史件有意不改。
   - **口径修正（旧结论作废）**：09-30 记的「文档仓 `渠道编排规则.md` 停在 09-22 stale／双真源分叉」**已不成立** —— 该文件现仅存于运行体 `D:\项目\ai-hub\search_gateway\渠道编排规则.md`（40 KB，mtime 09-29 20:16），文档仓已无此文件。
