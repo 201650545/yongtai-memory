@@ -104,4 +104,4 @@ IP 地址不入本库（这仓是 GitHub 发布镜像 `yongtai-memory`），要 
 
 **How to apply:** 谈"某个项目要部署到哪台机器"之前先读本文——**2026-10-29 之后**底座只有
 「本地 PC ＋ 阿里 99」两个位置，**没有第三台**，别脑补；在 10-29 之前腾讯 Hermes 只是"等它到期"。
-相关：[[项目/project_relation_graph]]、[[项目/project_贾维斯中控]]、[[项目/project_ai_gateway]]、[[项目/project_句读]]、[[流程/workflow_work库冷启动接手序]]
+相关：[[项目/project_relation_graph]]、[[项目/project_贾维斯中控]]、[[项目/project_ai_gateway]]、[[项目/project_晨读]]、[[流程/workflow_work库冷启动接手序]]

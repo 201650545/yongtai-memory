@@ -5,7 +5,7 @@ type: lesson
 updated: 2026-10-22
 kind: rule
 status: active
-scope: 句读
+scope: 晨读
 ---
 
 已存在同主题条目：`轮次记录/2026-10-16.md:68-70`；本条为其补充/修正，请合并时替换。

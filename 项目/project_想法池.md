@@ -1,4 +1,4 @@
-﻿---
+---
 name: project-想法池
 description: 郭老师在各 Agent 对话里抛出的想法／需求／指派／红线的**唯一共享登记册**（2026-10-02 建）。所有 Agent 都写这一份，不许各写各的私有记忆。含写入触发词、读出规矩、7 字段模板、防重复规则，以及首日登记的 4 条新想法＋从 Qoder 私有 backlog 迁来的 8 条旧账（computer use、浏览器 skill 治理、卖 skill、AI Hot、多端联动、服务器取舍、大整合、P1–P4 指派）
 metadata:
@@ -144,7 +144,7 @@ updated: 2026-10-22
     官方明确**定时同步/推送走 JSON 接口，别用 /agent/* Markdown 端点**。
   - **本条状态**：资讯源本体 **done**（每天推已跑起来）；**融合四条待他选**（不擅自开工）：
     ③ 对话式检索升级（`/agent/search` ＋ `/agent/stories`，呼应第 11 条「能力召回优先于记忆」）
-    ④ 内容侧选题（小红书/英文工厂/句读，**要他开内容线才有价值**）。
+    ④ 内容侧选题（小红书/英文工厂/晨读，**要他开内容线才有价值**）。
   - **2026-10-21 14:12 定案**：多渠道浏览器搜索实评"内存峰值暴增 ＋ 渠道一更新就坏" ⇒
     **替代路线**：常规检索走**纯 HTTP**（AIHOT／HN／RSS）；多方交叉验证走**外部强模型**；
     浏览器只在"必须登录/必须渲染"时**单次单渠道、用完即关**。
@@ -234,7 +234,7 @@ updated: 2026-10-22
 - **状态**：**dropped（2026-10-20 23:52 他定「十五不做了」）**
 - **研究进展（2026-10-20 23:5x，只读勘察）**：**这条不是从零开发——客户端侧基本已具备**。已有资产（`D:\listenloop`）：`lib\creation\bilibili_source.dart`（支持完整 URL / `?p=N` 分P / b23.tv 短链 / 裸 BV 号）、`BilibiliClient.fetchVideoInfo`（打 `api.bilibili.com/x/web-interface/view` 取 cid）、`fetchStreams`（取最高码率流）、`lib\models\video_source.dart`（provider/bvid/page/cid）、`lib\lesson\lesson_manifest.dart`（manifest 解析）、`lib\player\video_playback_facade.dart`（嵌 `player.bilibili.com` 的 web 播放器驱动播放，**源码注释原文即 "instead of a local audio file"** ⇒ 播放侧本就不依赖本地音频）。外网实测 1 次（零成本）：`view?bvid=BV1Gf4y1y7wc` 返回 `code:0`、996 分P、cid/duration 齐全 ⇒ **取元信息链今天仍通、免登录**。
   **真正缺的只有两处**：①**造包侧**仍强制落盘——`lib\creation\creation_controller.dart:478` 对 link 输入固定产出 `audio.m4a`；②**无网降级策略**未定。
-  **三个取舍**：①B 站字幕是**句级**且 `subtitle_url` 在 view 接口为空（真地址要 `/x/player/v2?cid=`），与句读切分口径不一致 ⇒ 字幕只能当参考、**不能当字轴**；②纯在线直连＝无网即不可用，对一二年级低幼是硬伤 ⇒ 至少留「超轻包（文本+句轴）」与「离线完整版」双模；③**版权面**：B 站片源是第三方上传物，课件拿它当教学音频＝再分发他人作品（测试样本 `BV1Gf4y1y7wc` 本身就是转载合集，页面直接挂夸克网盘链接）。
+  **三个取舍**：①B 站字幕是**句级**且 `subtitle_url` 在 view 接口为空（真地址要 `/x/player/v2?cid=`），与晨读切分口径不一致 ⇒ 字幕只能当参考、**不能当字轴**；②纯在线直连＝无网即不可用，对一二年级低幼是硬伤 ⇒ 至少留「超轻包（文本+句轴）」与「离线完整版」双模；③**版权面**：B 站片源是第三方上传物，课件拿它当教学音频＝再分发他人作品（测试样本 `BV1Gf4y1y7wc` 本身就是转载合集，页面直接挂夸克网盘链接）。
   **实现前第一个要验的点**：播放侧 4 处调用（`library_screen.dart`×2 / `primary_chinese_catalog_screen.dart` / `root_shell.dart`）同时传 `audioAsset` 与 `videoSource` ⇒ 需确认「包内无音频」时 facade 分支是否被正确选中、UI 不会因缺 `audioPath` 报错。
   详细调研单：`D:\Work\元智能\10_AI自成长引擎\docs\调研\20261020_只读调研_IDEA015_019_020_021.md`。
 - **处理单（2026-10-20 23:50）**：`D:\Work\元智能\10_AI自成长引擎\docs\方案\20261020_IDEA015_017_019_020_021_处理单.md` §一 —— 三步（造包侧开关化 / 播放侧分支校验 / 双模落地）＋验收（有网·弱网·无网三态）＋**唯一待他定的一点**：全面取消本地音频 vs 超轻＋离线双模（本单按双模写方案）。**本处理单已作废：他 23:52 定「十五不做了」。**
@@ -244,7 +244,7 @@ updated: 2026-10-22
 - **他的原话**：「这几篇文章是我很喜欢的，你帮我详细总结一下。……你再读一下我在 Work 仓库、记忆仓库中的内容，看看这些文章对我来说有什么用？」
 - **语境**：他连投 5 篇 AI 重磅报道（Karpathy 四招/ASD-STE100、StartLux-Decision、VISTA 视觉记忆、Schwartz「Claude形状的科学」），要总结并判断对他有什么用。
 - **性质**：想法（研究素材，已读已映射，未派工）
-- **关联**：**五篇对口映射已于 2026-10-20 23:40 固化为文档** → `D:\记忆\参考\reference_五篇AI文章对口整理.md`（正文真源在那边，这里只留指针）。一句话结论：①ASD-STE100＋80% 宽松口径→技能库正文书写口径（**未成机制**）；②StartLux-Decision→贾维斯中控小判断路由（**未成机制**）；③VISTA 的 GUIDE/WORKING/历史帧不计步→贾维斯 computer use 模板（**纯构想，模板不存在**）；④Schwartz 形状＋BootLoops→小红书分析/句读等可验证高频任务 ＋ AI自成长引擎 L1→L3（**已兑现**）。**逐篇详细总结正文当时只在会话上下文里、没落盘**，要用正文得重抓（`web_fetch`，禁 `web_search`）。
+- **关联**：**五篇对口映射已于 2026-10-20 23:40 固化为文档** → `D:\记忆\参考\reference_五篇AI文章对口整理.md`（正文真源在那边，这里只留指针）。一句话结论：①ASD-STE100＋80% 宽松口径→技能库正文书写口径（**未成机制**）；②StartLux-Decision→贾维斯中控小判断路由（**未成机制**）；③VISTA 的 GUIDE/WORKING/历史帧不计步→贾维斯 computer use 模板（**纯构想，模板不存在**）；④Schwartz 形状＋BootLoops→小红书分析/晨读等可验证高频任务 ＋ AI自成长引擎 L1→L3（**已兑现**）。**逐篇详细总结正文当时只在会话上下文里、没落盘**，要用正文得重抓（`web_fetch`，禁 `web_search`）。
 - **前置依赖**：无。若他点头开刀，再按 §2 指派走。
 - **未展开的细节**：他是否要把 5 篇文章的要点固化成某份文档、挂哪条机制（通用规范 skill？贾维斯模板？想法池研究进展？）都没说⇒别替他猜。
 - **状态**：captured
@@ -308,7 +308,7 @@ updated: 2026-10-22
   **映射到现有资产（事实）**：`xhs-ops` 的自动化发布/点赞、`external-model-review` 的网页版送审（gpt-mirror / gemini-web）都在 ToS 灰区（AGENTS.md 第 6 条已把「验证码/反爬不许硬闯」写成负向硬约束）；IDEA-012 那条已记「公共实现基本停更/下架 ⇒ 外部压力真实存在」。
   **建议分界**：✅ 分析**自己拥有或已获授权**的对象（自己的 APK、自己的服务、自己的抓包）、调用公开文档/公开 API、**低频**人工辅助自动化、做**工具链**（格式研究/解析器/协议文档化）；❌ 绕过付费/风控/验证码、批量注册养号、破解第三方版权保护、抓取他人内容再分发、在 ToS 明文禁止的站点做自动化。
   ⇒ **最安全的落点是「逆向自己的东西」或「做逆向工具/协议文档化」**，不是「破解别人家的」；这条也正好能和他已有的工程能力接上。
-  **2026-10-21 08:45 追加实做**：他的「B 站直连」需求**在句读产线里已有现成入口**——`lesson manifest.json` 本来就带
+  **2026-10-21 08:45 追加实做**：他的「B 站直连」需求**在晨读产线里已有现成入口**——`lesson manifest.json` 本来就带
   `{"provider":"bilibili","bvid":"BV1WYcwzaEjP","page":12,"cid":36087204599,"offsetMs":0}`，且 B 站那一版（720P，181.7s）
   **与本地朗读音轨等长** ⇒ 音画天然对齐。实测一次拉通（playurl API code=0 ＋ Referer 头），
   已产出「课文精读片」＝**电子课本带注音页 ＋ 本地朗读 ＋ 逐句字幕 ＋ 停顿自动压缩**（1080×1440 / 117.5s / 5.36MB，抽帧验收通过）。
@@ -327,10 +327,10 @@ updated: 2026-10-22
 - **状态**：captured
 - **研究进展（2026-10-20 23:5x，只读盘点）**：**本机根本没装任何 GUI 剪辑器**——剪映/DaVinci/OBS/VLC/mpv/HandBrake/Audacity/mkvmerge/auto-editor/LosslessCut/whisper **全部不在 PATH**；ffmpeg 只以项目依赖形式存在（`D:\listenloop\scratch\ffmpeg\ffmpeg-9.0.2-essentials_build\bin\ffmpeg.exe`，**不在 PATH** ⇒ `pydub` 已在报 "Couldn't find ffmpeg" 警告）。
   **Python 3.12 底座实测**：有 `imageio_ffmpeg`/`PIL`/`numpy`/**`faster_whisper`**（ASR）/`cv2`/`edge_tts`（TTS）/`pydub`；缺 `moviepy`/`torch`/`soundfile`/`librosa`/`matplotlib`。
-  **⇒ 结论：这个工具完全可以用 Python + ffmpeg 做出来，不需要剪映**——ffmpeg 一条命令链覆盖拼接/裁剪/转码/加字幕/抽音轨/变速/封面帧/能量包络（句读产线已在用），PIL+cv2 出动效，faster_whisper 出字幕，edge_tts 出配音。**建议形态：本地网页 UI（localhost）+ Python 后端 + ffmpeg 作业队列**（浏览器打开即用、不装桌面大软件，天然满足他「电脑别卡」的诉求）。
+  **⇒ 结论：这个工具完全可以用 Python + ffmpeg 做出来，不需要剪映**——ffmpeg 一条命令链覆盖拼接/裁剪/转码/加字幕/抽音轨/变速/封面帧/能量包络（晨读产线已在用），PIL+cv2 出动效，faster_whisper 出字幕，edge_tts 出配音。**建议形态：本地网页 UI（localhost）+ Python 后端 + ffmpeg 作业队列**（浏览器打开即用、不装桌面大软件，天然满足他「电脑别卡」的诉求）。
   **卡点（正是他还没说的）**：①常用功能清单（剪/拼/字幕/转码/导出规格）②界面形态 ③素材来源（现有课件包？）④导出规格与目标平台（小红书竖版 1080×1920？视频号？）——不问他就不开做，否则就是第二个剪映。
   详细调研单：`D:\Work\元智能\10_AI自成长引擎\docs\调研\20261020_只读调研_IDEA015_019_020_021.md`。
-- **处理单（2026-10-20 23:50）**：`D:\Work\元智能\10_AI自成长引擎\docs\方案\20261020_IDEA015_017_019_020_021_处理单.md` §五 —— 四步（**先把 ffmpeg 提到可用位置**并解掉 `pydub` 现存警告 / 作业队列原型 / 字幕与配音接 `faster_whisper`＋`edge_tts` / 本地网页 UI＋导出规格）＋验收（拿句读现有课件当素材跑完一条真实任务）＋**唯一待他定的一点**：常用功能清单＋导出目标规格。**状态仍为 captured，不派工。**
+- **处理单（2026-10-20 23:50）**：`D:\Work\元智能\10_AI自成长引擎\docs\方案\20261020_IDEA015_017_019_020_021_处理单.md` §五 —— 四步（**先把 ffmpeg 提到可用位置**并解掉 `pydub` 现存警告 / 作业队列原型 / 字幕与配音接 `faster_whisper`＋`edge_tts` / 本地网页 UI＋导出规格）＋验收（拿晨读现有课件当素材跑完一条真实任务）＋**唯一待他定的一点**：常用功能清单＋导出目标规格。**状态仍为 captured，不派工。**
 - **复述（2026-10-21 00:08，他正式开题）· 原话逐字**：
   > 「我想做一个定制化的视频剪辑程序，这是给 AI 用的。现在 AI 剪视频不是很火吗？还有 AI 自动生成知识类视频，有这种 skill，也有剪视频的 skill，它需要一个平台来承载剪辑视频。
   > 比如，我可能剪口播，或者剪一些简单的视频，根本就不需要那些杂乱的特效和多余的东西。我最近看到有一个程序叫 tchatcut，感觉还行。」
@@ -343,7 +343,7 @@ updated: 2026-10-22
   ③ **工作流/skill 层（最贴他的用法）**：`Endless1936/cut-motion` ★277（**口播素材→精剪**的自然语言工作流，靠 ChatCut Agent 集成）、`Agents365-ai/video-podcast-maker` ★1691（**主题→4K 知识视频**：Remotion＋本地 TTS(Edge 免费/Azure)＋FFmpeg 混音，**直投 B站/YouTube/小红书/抖音/视频号 × zh-CN/en-US**，带中文多音字 phoneme 字典、9:16 竖版切片、设计风格学习）、`yihui-dev/yh-chatcut-skills` ★81（ChatCut skills＋**时间戳精确 SRT**）。
   **⇒ 关键洞察：他缺的不是「又一个剪辑器」，是「承载层」——项目文件即接口 + AI 可驱动 + ffmpeg 只做执行**。`FableCut`（★736，MIT，零 npm 依赖，`node server.js`，**project.json 就是接口**，浏览器 UI 150ms 热更，MCP＋REST 驱动，agent 直接改 JSON）这条路最贴。
   **许可提醒（贴他处境）**：OpenChatCut / pireel 都是 **AGPL-3.0**；他 **Work 仓正在准备公开**，把这类代码或衍生放进公开仓会触发 AGPL 分发义务 ⇒ 选型优先 MIT/Apache：FableCut(MIT)、kinocut(Apache)、cut-motion(Apache-2.0)、video-podcast-maker(MIT)、OpenEdit/video-audio-mcp。
-  **本机已有资产（别重造）**：剪辑指令层 `.openclaw-autoclaw\skills\ffmpeg-video-editor-1.0.0`（自然语言→ffmpeg 命令）＋`video-frames-1.0.0`＋`video-transcript-downloader-1.0.0`（yt-dlp 抽字幕/转录）；ASR＝`skills\openai-whisper`＋Python `faster_whisper`；TTS＝`edge_tts`（免费）＋`skills\podcast-generation`（Azure GPT Realtime Mini，付费）；文案层＝`skills\khazix-writer`（公众号）＋`humanizer`＋`social-content`＋`content-extract`＋`infographics`；**句读产线已产出句级切分/句轴/能量包络**——这正是 AI 剪视频最难的那块（自动切点、字幕对齐），**他已经有了** ⇒ 他的差异化不是「再做一个剪辑器」，而是「把句读句轴接进 AI 剪辑的承载层」。
+  **本机已有资产（别重造）**：剪辑指令层 `.openclaw-autoclaw\skills\ffmpeg-video-editor-1.0.0`（自然语言→ffmpeg 命令）＋`video-frames-1.0.0`＋`video-transcript-downloader-1.0.0`（yt-dlp 抽字幕/转录）；ASR＝`skills\openai-whisper`＋Python `faster_whisper`；TTS＝`edge_tts`（免费）＋`skills\podcast-generation`（Azure GPT Realtime Mini，付费）；文案层＝`skills\khazix-writer`（公众号）＋`humanizer`＋`social-content`＋`content-extract`＋`infographics`；**晨读产线已产出句级切分/句轴/能量包络**——这正是 AI 剪视频最难的那块（自动切点、字幕对齐），**他已经有了** ⇒ 他的差异化不是「再做一个剪辑器」，而是「把晨读句轴接进 AI 剪辑的承载层」。
   **两个坑**：①`remotion` skill 在 `.iflow`/`.kiro`/`.qwen` 三个宿主里是**空壳**（实体不在）；②`video-podcast-maker` 明示新建 Remotion 项目要下 **~2.2GB npm ＋ ~90MB Chrome headless** ⇒ 别新建项目，复用现有的。
   **状态仍为 captured，不派工。**
 - **研究进展（2026-10-21 00:2x，市场验证层）**：**他指出「都没经过市场验证」——GitHub 星数是开发者热度，不是商业验证。补齐市场层（融资/ARR 数字出自我的知识，今天无法用 web_search 逐条核；要核可对具体产品 web_fetch 官网定价页）**：
@@ -352,24 +352,24 @@ updated: 2026-10-22
   - **垂类跑出规模**：OpusClip / Vizard / Submagic / Munch（长视频→短视频批量分发）。
   - **对这条想法参考价值最大的一个：Screen Studio**（独立开发者产品，macOS，4K 录屏口播，刻意砍到 **4 画面＋4 字幕＋9 素材＋12 步、没有时间线**）⇒ **市场验证的结论是「专用工具赢通用工具」，不是「把剪映阉割一下」**——正合他「电脑别卡＋不要杂乱特效」的诉求。
   - **数字人/知识视频层已被彻底商品化且烧钱**（HeyGen / Synthesia / 讯飞智作 / 国内一键成片；Flova 走 Seedance 2.5、avatar-forge 动效剪辑计费）⇒ **不该去卷这条**。
-  - **他的位置**：生成层（数字人/图生视频）没护城河；通用剪辑层（Descript/剪映）巨头占位且只懂词级 ASR；**他手上有全网少有的「中文句级切分＋朗读节奏（句轴/能量包络）」**（句读产线）＋**教材与知识点内容资产** ⇒ 没人做「**中文知识点/口播 → 成片**」这条垂直线。
+  - **他的位置**：生成层（数字人/图生视频）没护城河；通用剪辑层（Descript/剪映）巨头占位且只懂词级 ASR；**他手上有全网少有的「中文句级切分＋朗读节奏（句轴/能量包络）」**（晨读产线）＋**教材与知识点内容资产** ⇒ 没人做「**中文知识点/口播 → 成片**」这条垂直线。
   - **卡点级事实（2026-10-21 实查 `D:\Work\English-Content-Factory`）**：整仓只有 **12 个 .mp3 ＋ 一堆成册图集，0 个 .mp4**；渲染类脚本一个没有（`06_templates` 下只有 `_*_gpt_*.py` 文案脚本）⇒ **内容有了、音频有了，就差「音频＋图集→成片」的装配器**。他要的「平台」**不是通用剪辑器，就是这个装配器 ＋ 一个 AI 能反复改的中间格式（project.json）**。
   - **他手里的市场信号**（自产数据，比外部星数硬）：小红书资产里《我把数字人口播做成了开源的 Skill》（`LycheeAILab/avatar-forge`，MIT，5 步流水线）与《全网300w播放，新手ai教程来啦》（Flova 走 Seedance 2.5 的剧情视频工作流）**双双进了精选保留库** ⇒ 他的受众对 AI 视频是真买单。
-  - **建议的三步（按投入排序）**：①**装配器**（音频＋图集→竖版成片，ffmpeg ＋句读句轴做字幕对齐）⇒ 直接补上 ECF 的最后一公里，最快见市场；②**口播自动剪点**（faster_whisper ＋ 句读能量包络 → 标出口癖/卡顿/长停顿，删句＝中文版 Descript，但用句级不是词级）；③**承载层**（project.json ＋ MCP，让 AI 能反复改/预览/导出）—— 等①②跑通再上，别一开始就造骨架。
+  - **建议的三步（按投入排序）**：①**装配器**（音频＋图集→竖版成片，ffmpeg ＋晨读句轴做字幕对齐）⇒ 直接补上 ECF 的最后一公里，最快见市场；②**口播自动剪点**（faster_whisper ＋ 晨读能量包络 → 标出口癖/卡顿/长停顿，删句＝中文版 Descript，但用句级不是词级）；③**承载层**（project.json ＋ MCP，让 AI 能反复改/预览/导出）—— 等①②跑通再上，别一开始就造骨架。
   **状态仍为 captured，不派工；等他点 ①②③ 哪一个先做。**
 - **研究进展（2026-10-21 00:2x，内存实测 · 这条想法的根约束）**：他补充「**要在他们的剪视频程序里跑，内存占用都很大，所以才要定制化**」⇒ 根约束＝**常驻内存**，不是功能、不是星数、不是市场。
   **本机实测（2026-10-21 00:2x）**：15.2 GB 内存、**总占用 13,217 MB ⇒ 使用率 90.8%、空闲仅 1.3 GB**（已过 AGENTS.md 第 5 条 88% 探针线）；大户＝**chrome 31 个进程 4,435 MB** ＋ **node 18 个 2,410 MB**（多为 `@minimax-ai/code/cli.js`＝Mavis Code 本体，另有 `opencli/dist/src/daemon.js`）＋ **DeepSeek Harness 5 个 1,093 MB** ＋ Defender 452 MB；**Java/Gradle 孤儿 0**。
   ⇒ **「卡」的真凶是 chrome ＋ AI 宿主 ＋ DSH，不是剪辑器**（他本机压根没装任何剪辑器：剪映/DaVinci/OBS/VLC/mpv/HandBrake 全不在 PATH）。
   **ffmpeg 实测**：1080×1920/30fps/10s（libx264 veryfast＋aac）**峰值 RSS 约 7 MB**，**跑完即退 ⇒ 常驻 0**。
-  ⇒ **「定制化」的正式定义＝三不要**：①不要 Electron（桌面剪辑器 200–500MB+）②不要常驻浏览器 UI（本机每标签页几百 MB，chrome 已占 4.4GB）③不要 Remotion/Chrome headless 渲染（500MB–1GB+，新建项目还要下 2.2GB npm）——**只要 project.json（中间格式）＋ ffmpeg 一次性进程 ＋ 句读句轴**。
+  ⇒ **「定制化」的正式定义＝三不要**：①不要 Electron（桌面剪辑器 200–500MB+）②不要常驻浏览器 UI（本机每标签页几百 MB，chrome 已占 4.4GB）③不要 Remotion/Chrome headless 渲染（500MB–1GB+，新建项目还要下 2.2GB npm）——**只要 project.json（中间格式）＋ ffmpeg 一次性进程 ＋ 晨读句轴**。
   ⇒ **预览也不常驻**：要验效果就渲 3 秒 480×854 低分辨率代理（瞬时几十 MB），或按需开静态预览页、用完就关。
   **状态仍为 captured，不派工。**
 - **复述（2026-10-21 00:08 → 01:5x，他派活了）**：他要求「**明天早上给我一个能 AI 自动剪视频的成品**」⇒ 本条**从 captured 升级为已指派任务**（本轮实做，见下）。
 - **本轮实做（2026-10-21 00:30–03:0x，MiniMax Code）**：交付**「零常驻 AI 自动剪视频成品」**，三层结构：
-  ①**编排层** `scripts/autoedit.py`——自动切点（ffmpeg 静音检测 / 句读字级时间轴长间隔 / ASR 口癖词）＋ 自动字幕（句读句级 > 字级 > 离线 faster-whisper）⇒ 产出 `project.json`；
+  ①**编排层** `scripts/autoedit.py`——自动切点（ffmpeg 静音检测 / 晨读字级时间轴长间隔 / ASR 口癖词）＋ 自动字幕（晨读句级 > 字级 > 离线 faster-whisper）⇒ 产出 `project.json`；
   ②**执行层** `scripts/assemble.py`——一个 ffmpeg 一次性进程出竖版 mp4（**常驻 0**），支持区间裁剪＋字幕烧录；
   ③**接口层** `scripts/server.py`——**MCP server（5 个工具：plan / render / transcribe / silence / presets）**，已登记进 **Claude Code / Codex / Cursor**（真源 `D:\项目\ai-hub\search_gateway\mcp\mcp_config.json`）。
-  **真素材端到端跑通（中文）**：句读课件包 `g2x-wozuixiaode-b-dual.lllesson`（音频＋60 句 sentences.json＋封面）→ 自动切静音 → **181.7s 压到 117.4s（64.6%）** → 60 条字幕烧录 → 1080×1920/h264+aac/117.7s/3.05MB 成片，**抽帧肉眼验收通过**（「原来有一丛野蔷薇，」白字深底框）。
+  **真素材端到端跑通（中文）**：晨读课件包 `g2x-wozuixiaode-b-dual.lllesson`（音频＋60 句 sentences.json＋封面）→ 自动切静音 → **181.7s 压到 117.4s（64.6%）** → 60 条字幕烧录 → 1080×1920/h264+aac/117.7s/3.05MB 成片，**抽帧肉眼验收通过**（「原来有一丛野蔷薇，」白字深底框）。
   **内存账（本机实测）**：直喂 2160×2880 原图 447MB → PIL 预缩放 **118MB**；**用 concat 滤镜拼 51 段＝峰值 8209MB**（红线上）→ 改分段落盘后 **1.1GB**。
   **五个坑（写死，别再踩）**：①concat 滤镜拼多段 ⇒ 8GB 峰值 ②`force_style` 在 `-filter_complex` 里**整段失效**（filtergraph 把带逗号的值切碎）③ASS 时间必须 `H:MM:SS.cc`（写成秒数 ⇒ 一条字幕都不显示）④ASS `PlayResX/Y` 要设成画布尺寸（否则字号按 288 基准放大 6.67 倍）⑤宽高必须偶数（否则 libx264 `error -22`）。
   **落地位置**：`D:\Work\元智能\10_AI自成长引擎\草稿区\L3_Skill\video-assembler\`（**草稿态**；固化进技能库需他点头）。

@@ -1,5 +1,5 @@
 ---
-name: project-句读读页hairline根因
+name: project-晨读读页hairline根因
 description: 🟡 2026-10-21 定位并修复「读页只显示一句、其余大片空白」的根因：BoxDecoration 同时给了 borderRadius(10) 与 width:0 的 BorderSide（hairline）⇒ Flutter 规定 hairline 只能配零圆角 ⇒ paint() 阶段抛断言 ⇒ 那一行整行画不出来 ⇒ 只有当前句（width 2）能渲染。真机数据（69 句 chinese）全部正常，**不是数据问题**。修法：左边框宽度恒为 2dp 只换颜色；左内边距所有行一致避免整列横向跳。已配 paint smoke + golden 回归，并验证「改回旧写法测试立刻红」。
 metadata:
   node_type: memory
@@ -10,10 +10,10 @@ type: project
 updated: 2026-10-21
 kind: fact
 status: active
-scope: 句读读页hairline根因
+scope: 晨读读页hairline根因
 ---
 
-# 句读：读页「只显示一句」的根因（2026-10-21）
+# 晨读：读页「只显示一句」的根因（2026-10-21）
 
 ## 症状
 

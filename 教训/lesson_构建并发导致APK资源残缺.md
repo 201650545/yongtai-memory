@@ -5,7 +5,7 @@ type: lesson
 updated: 2026-10-22
 kind: rule
 status: active
-scope: 句读
+scope: 晨读
 ---
 
 # 构建并发导致 APK 资源残缺
@@ -23,7 +23,7 @@ scope: 句读
 - 门禁脚本：`D:\listenloop\tool\verify_apk_assets.py`。
 - **同机同时只允许一个 build 在跑**；要并行就先确认没有第二个 build 进程。
 
-**依据出处**：2026-10-22 句读构建事故（本轮实机复现与修复）；
+**依据出处**：2026-10-22 晨读构建事故（本轮实机复现与修复）；
 合格样本实测：`build/app/outputs/flutter-apk/app-debug.apk` = assets 条目 29、ttf 6 个（含
 `cupertino_icons` 的 `CupertinoIcons.ttf`）、含 `FontManifest.json`、207.3MB。
 门禁脚本路径本轮 `Test-Path` **未命中**（文件尚未落地/改名），落地后须回填真实文件名。

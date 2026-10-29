@@ -5,16 +5,16 @@ updated: 2026-10-19
 kind: reference
 status: active
 ---
-# reference: 句读课程全流程工业化生产套件 Skill (phrasing-course-pipeline)
+# reference: 晨读课程全流程工业化生产套件 Skill (phrasing-course-pipeline)
 
 > 创建日期: 2026-10-16
 > 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-course-pipeline\SKILL.md`
-> 适用范围: 句读（ListenLoop）全生命周期自动化制课、课程包构建、组件化演进与全量验收
+> 适用范围: 晨读（ListenLoop）全生命周期自动化制课、课程包构建、组件化演进与全量验收
 
 ---
 
 ## 1. 架构定位
-本 Skill 是句读课程开发的一键端到端总控套件（Skill Suite）。它确立了“**顶层总装流水线编排 + 内部 6 大独立原子组件解耦**”模式：
+本 Skill 是晨读课程开发的一键端到端总控套件（Skill Suite）。它确立了“**顶层总装流水线编排 + 内部 6 大独立原子组件解耦**”模式：
 - 解决大杂烩 Skill 造成的上下文膨胀与规则混乱；
 - 支持单组件独立演进与就地调试；
 - 支持全流程一键流水线造包。

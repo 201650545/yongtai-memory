@@ -162,12 +162,12 @@ status: active
 **实际在用的仍是 `~/.paddleocr/whl` 的 PP-OCRv4（18 MB）**，paddleocr 2.10 自动加载。
 ⇒ 口径不变：**"下载过"不等于"在用"，OCR 只认能被加载的那一份**。
 另：App 端**不跑 OCR 模型**（手机 `files/models` 下只有 `asr`），它只读课包里的 `ocrSuspects` 字段做人工确认。
-**⚠️ 2026-10-29 查清：句读这条 OCR 链路其实是断的**——`D://listenloop` 里**零处 OCR 代码**，
+**⚠️ 2026-10-29 查清：晨读这条 OCR 链路其实是断的**——`D://listenloop` 里**零处 OCR 代码**，
 `logs/ocr_denoise/` 目录不存在，259 个课包里**带 `ocrSuspects` 字段的是 0 个**
 ⇒ App 侧那套「OCR 疑点清单」永远读到「本课没有疑点」，是个**空跑功能**。
 **OCR 真正在用的地方只有 English-Content-Factory 的试卷扫描**（`90_Automations/hn-english-666/ocr_papers.py`，
 脚本头写明「PaddleOCR（PP-OCRv4）」）——那 18MB 权重就是给它用的。
-⇒ 以后说「句读制课侧跑 OCR」是错的，别再把两者混在一起。
+⇒ 以后说「晨读制课侧跑 OCR」是错的，别再把两者混在一起。
 
 - 必带环境变量 `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python`（paddle 2.6.2 与新版 protobuf 冲突，见 [[参考/reference_local_paddle_ocr]]）。
 
@@ -214,4 +214,4 @@ whisper 档回装 `pip install faster-whisper` 后按名加载即可自取缓存
 - 盘：**D 可用 128 GB**，C 可用 73 GB。
 - 参照物：VLM 型 OCR 在这台机器上是"一页 100 秒"量级（本轮实测 3.0 tok/s），**管线型 OCR 是亚秒级**；同类边界适用于 ASR——大档不等于好用。
 
-**How to apply:** 他问"我机器上有什么模型／能不能跑 X"→ 先答 §一 四档＋§二 一个 OCR；再按 §〇 口径判新候选（**多语言档一律出局**）；给建议必须带 §一 那种实测列，没测就写进 §五 具名缺口，不猜。相关：[[reference_云服务器底座与跨项目联合点]]、[[参考/reference_local_paddle_ocr]]、[[project_句读]]
+**How to apply:** 他问"我机器上有什么模型／能不能跑 X"→ 先答 §一 四档＋§二 一个 OCR；再按 §〇 口径判新候选（**多语言档一律出局**）；给建议必须带 §一 那种实测列，没测就写进 §五 具名缺口，不猜。相关：[[reference_云服务器底座与跨项目联合点]]、[[参考/reference_local_paddle_ocr]]、[[project_晨读]]

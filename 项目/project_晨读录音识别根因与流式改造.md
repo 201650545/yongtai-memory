@@ -1,5 +1,5 @@
 ---
-name: project-句读录音识别根因与流式改造
+name: project-晨读录音识别根因与流式改造
 description: 🔴 2026-10-21 定位「读页录音识别根本做不到」的三层根因并完成改造：① 真机**一个 ASR 模型都没部署**（已推 3 个）；② 引擎传了 sherpa C++ 不认的 `modelType: 'zipformer_ctc'` ⇒ **text 变乱码**（真机实证 text="眼镛"），去掉即正常；③ 架构是「整课麦克风常开 + 每 800ms 离线重转写 7 秒」⇒ 慢、且录进大量回授。改造：真流式（OnlineRecognizer）+ 口令触发 + 逐字实时上色 + 句/全文两种模式 + 底部圆形录音按钮。
 metadata:
   node_type: memory
@@ -10,10 +10,10 @@ type: project
 updated: 2026-10-21
 kind: fact
 status: active
-scope: 句读录音识别根因与流式改造
+scope: 晨读录音识别根因与流式改造
 ---
 
-# 句读：录音识别（2026-10-21）
+# 晨读：录音识别（2026-10-21）
 
 ## 用户诉求（逐字）
 

@@ -15,7 +15,7 @@ status: active
 | 资产 | 路径 | 实测 |
 |---|---|---|
 | **AI 自动剪辑引擎**（主力） | `D:\Work\元智能\10_AI自成长引擎\草稿区\L3_Skill\video-assembler\` | 896 文件，含 `SKILL.md`、`AI_QUICKSTART.md`、`editor\README.md`(63KB) |
-| 句读 60 秒宣传片项目 | `D:\Work\AI视频项目\` | 561 文件，有 `AGENTS.md` + `README.md` |
+| 晨读 60 秒宣传片项目 | `D:\Work\AI视频项目\` | 561 文件，有 `AGENTS.md` + `README.md` |
 | 30 秒知识点短视频 | 只有 `ds-work2\_inbox\知识视频\` 3 份查证文档(201KB) | **无项目目录** |
 | B 站课件音画对齐 | `assemble.py` + `fetch_bilibili_lesson.py` | 已出过 1080×1440 成片（抽帧验收通过） |
 

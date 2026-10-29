@@ -5,7 +5,7 @@ type: lesson
 updated: 2026-10-28
 kind: fact
 status: active
-scope: 句读
+scope: 晨读
 ---
 
 # 无线 adb 推大包会掉线，不是安装被拦
@@ -43,6 +43,6 @@ scope: 句读
 
 ## 关联
 
-- 记忆：[[项目/project_句读]]
+- 记忆：[[项目/project_晨读]]
 - 同类坑：`全局变更广播.md` 第 10 条（MIUI 安装监控拦 `adb install` 的解法）——
   **本条的教训是"别把它当默认答案"**，两种失败长得像、根因不同。

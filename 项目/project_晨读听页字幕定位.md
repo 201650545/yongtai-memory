@@ -1,5 +1,5 @@
 ---
-name: project-句读听页字幕定位
+name: project-晨读听页字幕定位
 description: 2026-10-21 听页字幕「上下流转不平滑」的根因与定案：定位机制收敛成**单一可取消的请求**（animateTo ＋ 代次标记），坐标统一用**全局屏幕 Y**，焦点线不在视口内就**不定位**（不再追负坐标跳到边界），ListView 显式 `EdgeInsets.zero`（默认安全区 padding 会污染坐标），可见行只跟踪**已挂载行**。附：中文注音布局的**字重变化会改字格宽度⇒改行高⇒整列位移**（当前句变粗的隐藏代价）。
 metadata:
   node_type: memory
@@ -10,10 +10,10 @@ type: project
 updated: 2026-10-21
 kind: fact
 status: active
-scope: 句读听页字幕定位
+scope: 晨读听页字幕定位
 ---
 
-# 句读：听页字幕定位（2026-10-21）
+# 晨读：听页字幕定位（2026-10-21）
 
 ## 用户报的现象（原话）
 

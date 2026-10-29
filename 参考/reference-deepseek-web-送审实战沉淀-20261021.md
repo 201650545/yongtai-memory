@@ -12,10 +12,10 @@ updated: 2026-10-21
 
 # DeepSeek 官网送审 · 2026-10-21 实战沉淀
 
-> 这次问的是「句读」读页语音识别的三个问题（多音字假阴性 / 口令常驻 / 录音灵敏度）。
+> 这次问的是「晨读」读页语音识别的三个问题（多音字假阴性 / 口令常驻 / 录音灵敏度）。
 > 材料：<https://raw.githubusercontent.com/201650545/workspace-index/main/reviews/asr-polyphone-wakeup-sensitivity.md>（39,975 字节）
 > 回答落盘：`D:\Work\元智能\20_自适应工作流引擎\runtime\asr_fix\ds_answer.md`（16,828 字节）
-> 与 ChatGPT 镜像版的交叉比对结论见 `D:\记忆\项目\project_句读语音识别三问题根因.md`。
+> 与 ChatGPT 镜像版的交叉比对结论见 `D:\记忆\项目\project_晨读语音识别三问题根因.md`。
 
 ## 一、怎么问（实测有效）
 

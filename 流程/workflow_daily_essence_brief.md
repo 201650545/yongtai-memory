@@ -27,7 +27,7 @@ status: active
 - 选出来的三条**都落到了他的系统**：
   1. 文档解析 → 记忆仓入库链路（带版面坐标的 Markdown/JSON，给 local-knowledge-engine 用）
   2. 可编辑图层设计模型 → 小红书图文产线（改标题/配色不必整张重做）
-  3. 实时语音可控部署 → `:3100` 的 voice-asr/tts/chat/realtime 候选池 ＋ 句读跟读拆分
+  3. 实时语音可控部署 → `:3100` 的 voice-asr/tts/chat/realtime 候选池 ＋ 晨读跟读拆分
 
 ## 二·补 · 汇报形态的三个版本（2026-10-21 上午一路升级）
 

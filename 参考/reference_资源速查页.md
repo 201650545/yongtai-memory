@@ -114,7 +114,7 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 | `obsidian-canvas-board` | 用户语境下的“可视化看板/可画”特指 Obsidian Canvas (.canvas) 原生画布文件 |
 | `opencli-browser-stable-roundtrip` | 在共享浏览器里用 opencli 通道把消息稳定送到对端会话（GPT 镜像站等）并完整取回长回复的操作规程。覆盖：只操作自己新建的标签页、注入前 eval … |
 | `ops-task-fleet-watch` | 本机定时任务舰队巡检 —— 只读核对「我方运维计划任务」还在不在、有没有被停用、退出码对不对、有没有过期没跑。当要回答"某个自动化是不是已经悄悄停摆了""这… |
-| `phrasing-course-pipeline` | 句读/Phrasing 课程全流程生产母仓（Skill Suite）。母目录下 7 个原子组件各守一环，母仓本文件只做路由与编排：篇目核对→字词导图→双模态… |
+| `phrasing-course-pipeline` | 晨读/Phrasing 课程全流程生产母仓（Skill Suite）。母目录下 7 个原子组件各守一环，母仓本文件只做路由与编排：篇目核对→字词导图→双模态… |
 | `phrasing-lesson-plan-coauthor` | 与用户（在职二年级语文教师）逐层共创统编二上语文教案的工作流。核心是「按文体定主线」+ 从课程思政《不会的时候》移植的三条纪律 + 字词先锁环节后写。触发词… |
 | `qidi-parent-notify` | 启迪培训机构家长通知的执行规范（催费 / 课费核对 / 出勤明细图 / 排课通知 / 欠费清单）。当用户说「催费」「清理费用」「课费通知」「家长通知」「出勤… |
 | `rename-sync-tool` | 批量改名/改路径的同步流水线——改目录（git mv）→ 白名单内容替换 → Junction 重指向 → 旧名残留扫描 → 新路径逐条可达性校验 → fr… |
@@ -147,13 +147,13 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 
 | 组件 | 干什么 |
 | --- | --- |
-| `phrasing-dist-audit` | 句读/ListenLoop dist 课包批量三查执行器（只读、幂等）。第1查初读/熟读双口径（卡口 gatekeeper.py §1–§4 + 规范 19… |
-| `phrasing-lesson-build` | 从「教材原文 ＋ B站名师原声」造出句读（ListenLoop）的 .lllesson 双模课包（听读＋视听）。含音源优先级裁定（林鹿鸣＞SeaverTho… |
-| `phrasing-lesson-package-audit` | 句读/ListenLoop 课程包审核、挂接校验与制课验收 SOP。五条真源铁律（教材原文为文本唯一真源 / ASR 只出时间轴 / lessonId 以包… |
+| `phrasing-dist-audit` | 晨读/ListenLoop dist 课包批量三查执行器（只读、幂等）。第1查初读/熟读双口径（卡口 gatekeeper.py §1–§4 + 规范 19… |
+| `phrasing-lesson-build` | 从「教材原文 ＋ B站名师原声」造出晨读（ListenLoop）的 .lllesson 双模课包（听读＋视听）。含音源优先级裁定（林鹿鸣＞SeaverTho… |
+| `phrasing-lesson-package-audit` | 晨读/ListenLoop 课程包审核、挂接校验与制课验收 SOP。五条真源铁律（教材原文为文本唯一真源 / ASR 只出时间轴 / lessonId 以包… |
 | `phrasing-lesson-segmentation` | 课文朗读与听读切分规范 Skill（语文低幼双模态意群切分与精听时间轴统合规范）。用于将课文原文与 ASR 原生时间戳精细切分为“初读（短呼吸节拍）”与“熟… |
-| `phrasing-text-split` | 句读课文初读/熟读怎么切行：初读4~7字短切、见逗号就切、副词介词前也切。含郭老师《犟龟》106句验收用例、二上6篇合规证据、与旧12字顶/卡口阈值的冲突登… |
+| `phrasing-text-split` | 晨读课文初读/熟读怎么切行：初读4~7字短切、见逗号就切、副词介词前也切。含郭老师《犟龟》106句验收用例、二上6篇合规证据、与旧12字顶/卡口阈值的冲突登… |
 | `phrasing-textbook-catalog-sync` | 统编版语文教材篇目核对与同步 SOP。教材篇目核对铁律（教师为唯一真源 / 先查替换时间表 / 只碰标题层）+ 五步同步流程 + 双验证门禁，防止照抄旧版目… |
-| `phrasing-textbook-words-mindmap` | 把统编版语文课本的「会认字 / 会写字 / 词语」按课文挂到句读（ListenLoop）APP「课文思维导图」的三级节点上。真源是**人民教育出版社课本附录… |
+| `phrasing-textbook-words-mindmap` | 把统编版语文课本的「会认字 / 会写字 / 词语」按课文挂到晨读（ListenLoop）APP「课文思维导图」的三级节点上。真源是**人民教育出版社课本附录… |
 
 **xhs-ops**（3）
 

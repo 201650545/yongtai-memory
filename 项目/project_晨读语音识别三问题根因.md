@@ -1,5 +1,5 @@
 ---
-name: project-句读语音识别三问题根因
+name: project-晨读语音识别三问题根因
 description: 2026-10-21 真机三个语音识别问题的根因与定案（含 ChatGPT 镜像版 + DeepSeek 官网双评审的交叉比对）：① **多音字假阴性**（判定把"字"当成"唯一音节"：期望"长出"的"长"=zhang，ASR 吐"常"=chang，zh/ch 不互认 ⇒ 判 substituted ⇒ 红字 ⇒ 游标不推进 ⇒ 整句卡死）；② **口令不常驻**（要点按钮才开麦；用户要进页就常驻、听到口令自动开始）；③ **灵敏度低**（record 包文档明写 autoGain/noiseSuppress "Recording volume may be lowered by using this" ⇒ 系统 AGC 把轻声压弱；且 onPcm 挂在 recorder.start 之后 ⇒ 开麦头几块 PCM 丢）。附：两条渠道必须串行、答案代码块只在 DOM 的 <pre> 里、新会话 cid 带 WEB: 前缀取不到。
 metadata:
   node_type: memory
@@ -10,7 +10,7 @@ type: project
 updated: 2026-10-21
 ---
 
-# 句读：语音识别三问题（2026-10-21）
+# 晨读：语音识别三问题（2026-10-21）
 
 > 用户原话（真机反馈）：
 > 「我读『长出两条后腿』，你竟然识别不了『长』……还有没有这方面的问题，关于多音字识别错误的问题。」

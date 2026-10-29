@@ -5,7 +5,7 @@ updated: 2026-10-19
 kind: reference
 status: active
 ---
-# reference: 句读课文双模态意群与精听时间轴统合切分 Skill
+# reference: 晨读课文双模态意群与精听时间轴统合切分 Skill
 
 > 创建日期: 2026-10-16
 > 真源路径: `D:\Work\元智能\10_AI自成长引擎\技能库\phrasing-course-pipeline\components\phrasing-lesson-segmentation\SKILL.md`
@@ -14,7 +14,7 @@ status: active
 ---
 
 ## 1. 核心定位
-本 Skill 是句读（ListenLoop / AI精听训练器）制作听读/视听课包时关于**文本切分、意群呼吸断句与 ASR 时间轴对齐**的唯一统合真源。
+本 Skill 是晨读（ListenLoop / AI精听训练器）制作听读/视听课包时关于**文本切分、意群呼吸断句与 ASR 时间轴对齐**的唯一统合真源。
 
 它整合了此前分散的语文低幼语义断句口径与算法时间戳停顿参数，避免各 Agent 在制课或审课时标准不一。
 
