@@ -176,6 +176,10 @@ local_only:
     path: D:\Work\经纬
     desc: DeepSeek Harness 的黑白无限画布插件（@local/jingwei）：把一次真跑的 DAG 画在右栏，节点只有标题/模型/耗时，可拖节点、平移、缩放；真跑由主 AI 发两路 subagent，产物落 artifacts，build_manifest.mjs 压成 app/data manifest，画布只读。**2026-10-19 深夜，状态 active（MVP 可用）**：插件已装进 desktop profile（symlink），最新真跑 20261019-212601-a41f（验收 10/10，墙钟 222.65s）；文档收敛为 docs/00–06，v1 dashboard 与旧实验归档到 archive/。登记在 local_only 而非 projects，因为尚无独立 repo
     related: DSH（宿主）、API转发网关（:3100）、客户端凭据网关（:8787）、@local/jingwei（插件包）
+  - name: AI视频项目
+    path: D:\Work\AI视频项目
+    entry: AGENTS.md
+    desc: AI 视频制作（Opus 5.5 + 浏览器渲染的"乐谱"范式：AI 写按时间算帧的代码，浏览器逐帧截图 + FFmpeg 编码）。项目宪法在 AGENTS.md，一手提示词框架在 docs\提示词-亚里888字框架.md。2026-10-23 立项，首个成品＝句读 App 竖版宣传片 v3（6 段×30s + 3 分钟连播版，交付在 D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\）。Obsidian 项目页：项目\project_AI视频项目.md
 
 archived_2026_09_29:
   # 2026-10-19 郭老师定：`D:\Work\_归档\` 整目录已删除（含下列 飞书 与 dsh-personal-host 两项归档；

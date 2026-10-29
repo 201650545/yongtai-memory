@@ -219,3 +219,11 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 
 - ⚠️ 账实不符：能力总账有、盘上无 → pagesift-crawler
 - ⚠️ 索引漂移：索引.md 299 vs 库 268（差 31）
+
+## 12 · 视频能力（2026-10-28 补，防止 Agent 搜不到）
+
+- **AI 自动剪辑引擎**：`D:\Work\元智能\10_AI自成长引擎\草稿区\L3_Skill\video-assembler\`（896 文件，SKILL.md）
+- **宣传片项目**：`D:\Work\AI视频项目\`（561 文件）
+- **项目入口页**：`D:\记忆\项目\project_AI视频项目.md`
+- **底料**：ffmpeg 7.1 **不在 PATH**，用 `imageio_ffmpeg.get_ffmpeg_exe()`；`faster_whisper`(字幕) + `edge_tts`(配音) + `cv2/PIL`(画面) 均已装
+- **成片路径注意**：`D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\` 已不存在（10-24 删除）

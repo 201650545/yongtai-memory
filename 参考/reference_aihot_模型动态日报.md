@@ -2,11 +2,11 @@
 name: reference_aihot_模型动态日报
 description: AIHOT 模型类动态日报（新品发布面），每日定时任务覆盖刷新；每条标注方向与是否已接入本机网关。
 type: reference
-updated: 2026-10-22
+updated: 2026-10-29
 ---
 # AIHOT 模型动态日报（每日）
 
-> **同步时间**：2026-10-22 01:10:03（每日定时任务自动刷新落盘）
+> **同步时间**：2026-10-29 01:10:02（每日定时任务自动刷新落盘）
 > **数据来源**：https://aihot.news/api/v1/items?mode=all&category=ai-models&window=24h
 > **口径**：这是**新品/新发布面**（不是能力榜，也不是热度榜）——「AI 圈最近发布了什么模型」。
 > **接入判定**：`✅ 已接入` = 该型号已在本机网关（:8787）模型清单里；`🆕 未接入` = 有型号但网关里没有，
@@ -14,75 +14,77 @@ updated: 2026-10-22
 
 ## 一、模型动态（过去 24h）
 
-- **Baseten 发布决策模型 mammoth-1（27B）和 elephant-1（9B），开源并免费试用一周** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 mammoth-1
-  - Baseten 研究实验室 Base Labs 发布开源决策模型 mammoth-1（27B）和 elephant-1（9B），基于 Qwen3.5-27B 和 Qwen3.5-9B 在 621 万决策样本上后训练而成。
-- **Artificial Analysis 更新 MLCR-AA 医疗长上下文推理榜单** ｜· 不适用（非具体模型） ｜方向 其他
-  - Artificial Analysis 更新了 Wisedocs 医疗长上下文推理基准 MLCR-AA 的提示与评分方式，Claude Sonnet 5.5（max with fallback）与 GPT-6 Astra（max）以 41.7% 并列第一。
-- **inclusionAI 发布 Ling-3.0-tiny 投机解码草稿模型 Ling3-Tiny-UBTree-B16** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Ling-3.0-tiny
-  - inclusionAI 发布 Ling3-Tiny-UBTree-B16，这是为 Ling-3.0-tiny 配套的 UBTree 投机解码草稿模型，采用 5 层 DFlash 主干加学习式 bigram 选择器，参数量 183.1M、BF16 权重、草稿块大小 16。
-- **Gemini 4 Argon 网络安全测试表现** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Gemini 4
-  - @wiz_io 的研究人员让 Gemini 4 Argon 接受复杂网络威胁的测试。 在真实世界测试中，它发现的漏洞数量是基线模型的两倍多——捕捉到了此前前沿模型遗漏的一项关键风险。 看看他们是如何做到的 ↓
-- **IBM 发布 Granite Speech 5.0 系列语音模型，含 2B 新模型与两个更新版本** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Speech 5.0
-  - IBM 发布 Granite Speech 系列三项更新：新模型 granite-speech-5.0-2b，以及更新版 granite-speech-5.0-470m-turboctc 和 granite-speech-4.1-2b-plus，均采用 Apache 2.0 许可证。
-- **Inception 发布扩散语言模型 Mercury 3，宣称部分基准超越 GPT-6 Luna 和 Claude Haiku 5.5** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Mercury 3
-  - Inception 发布扩散语言模型 Mercury 3，自称在 12 项基准中 8 项领先 GPT-6 Luna 和 Claude Haiku 5.5，生成速度达 1,068 tokens/秒，约为两个对手的 4 到 8 倍。
-- **NVIDIA Kumo Forecast：结合预训练时序表示与历史模式检索的可解释预测模型** ｜· 不适用（非具体模型） ｜方向 其他
-  - NVIDIA 推出 Kumo Forecast 多变量时序预测模型，基于 MOMENT-1-large 骨干，约 3.4 亿参数编码器加可训练预测头，编码器权重冻结。
-- **Black Forest Labs 开源 5.6B 图像生成模型 FLUX 3 Image Klein，8GB 显存可运行** ｜· 不适用（非具体模型） ｜方向 代码
-  - Black Forest Labs 于 10 月 15 日以开放权重形式发布 5.6B 参数图像生成模型 FLUX 3 Image Klein，针对消费级 GPU 优化，INT8 版本可通过 ComfyUI 或 Diffusers 在 8GB 显存的 NVIDIA GeForce RTX GPU 上运行。
-- **NVIDIA 发布 Nemotron 3.5 Embed、Rerank 和 Parse 开源检索模型** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Nemotron 3.5
-  - NVIDIA 扩展 Nemotron Retriever 系列，发布 Nemotron 3.5 Embed（8B BF16、1B BF16、1B NVFP4）、Nemotron 3.5 Rerank 8B BF16 和 631M 参数的 Nemotron 3.5 Parse，均为开放商用权重。
-- **NVIDIA 扩展开源模型家族，覆盖语言、机器人、生物与量子计算以支持欧洲主权智能** ｜· 不适用（非具体模型） ｜方向 代码
-  - NVIDIA 扩展开源模型家族，推出 Nemotron 3.5 Super VL 与 Nemotron 3.5 Bolt、Nemotron Retriever、Kumo 结构化数据模型、Cosmos 3.5 世界模型、Alpamayo 2 Edge 自动驾驶推理模型、BioNeMo RFD4-Proteina 蛋白质设计模型及量子计算 Ising 模型家族。
-- **ElevenLabs 发布 Eleven Realtime Max 和 Mini 语音到语音模型** ｜· 不适用（非具体模型） ｜方向 代码
-  - ElevenLabs 发布 Eleven Realtime Max 和 Mini 两个语音到语音模型。Max 在 Big Bench Audio 上得分 98.8%，起播延迟 0.57s；Mini 面向低成本自然对话场景优化。两个模型均已在 ElevenAgents 平台和 API 上提供。
-- **Devin Fusion 双模型组合 Coding Agent 评测得分 68.1** ｜· 不适用（非具体模型） ｜方向 其他
-  - Artificial Analysis 用 Claude Opus 5.5 (max) 主模型加 GPT-6 Luna (high) 副模型测试 Cognition 的 Devin Fusion CLI，在 Coding Agent Index 上得 68.1 分。
-- **小米 MiMo-V2.5-Pro 模型今日下线，替换为 V2.6-Pro 后支持多模态理解** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 其他 ｜网关模型 `mimo-v2.6-pro`
-  - 小米 MiMo-V2.5-Pro 与 MiMo-V2.5 已于 10 月 21 日上午 10 时正式下线，请求自 10 月 14 日 18 时起自动路由至 MiMo-V2.6-Pro 和 MiMo-V2.6-Flash。
-- **DeepSeek-V4.1-Flash-20261017 (Max) 登顶 Arena 的 Agent 和 Code 两大榜单开源模型第一** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `deepseek-v4.1-flash`
-  - Arena 宣布 DeepSeek-V4.1-Flash-20261017 (Max) 进入 Arena，成为 Agent Arena 和 Code Arena (WebDev) 两个榜单中的开源模型第一。帖中还引用了 @petergostev 用该模型生成的 3D 世界视频演示，并提示排名详情见帖子串。
-- **Krea 3 电商图像一致性获赞** ｜· 不适用（非具体模型） ｜方向 其他
-  - Krea 3 在电商领域无可匹敌。 像素级完美的产品一致性与闪电般的速度。 https://krea.ai/krea-3
-- **Mistral 发布 Voxtral 3 语音转文本与文本转语音模型家族** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Voxtral 3
-  - Mistral 发布 Voxtral 3 语音模型家族，包括语音转文本和文本转语音模型，为其新的 voice agents API 提供能力。Voxtral Small Transcribe 3 在 Artificial Analysis 语音转文本排行榜排第 3，TTS 排名前 12；支持 50+ 语言准确转录，可通过 Mistral 欧盟托管的 API 
-- **Coco Labs 发布首个设计模型 Vyb，可从品牌网站生成分层可编辑营销图** ｜· 不适用（非具体模型） ｜方向 其他
-  - Coco Labs 发布其首个设计模型 Vyb，能根据品牌网站生成分层、可编辑的营销图形。Vyb 将每个元素放在独立图层，可只修改标题而无需重新生成整个设计；它能从公司网站识别 logo 和精确的十六进制色值，产品照片可以以全分辨率嵌入而不被重新生成，成品设计可导出至 Figma 并保留全部图层。
-- **Coco Labs 推出 AI 设计模型 Vyb，分层输出可编辑设计稿** ｜· 不适用（非具体模型） ｜方向 其他
-  - Coco Labs 的 AI 设计模型 Vyb 按图层逐个元素构建设计，文字保持可编辑文本、图形保持矢量、照片保持像素，并从网站自动提取 logo、字体和配色。在 145 款 Google 字体上按像素重叠 IoU 打分，Vyb 达到 90.3%，对比中 最强图像模型为 76.0%，该测试的测量上限为 94.4%。由于每层保留原生格式，导出 Figma 时结
-- **MiniMax M3.1 Flash 登顶搜索效率榜** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 其他 ｜网关模型 `minimax-m3.1-flash`
-  - 感谢 Parallel Web System 提供如此有意义的数据点~ 是的，MiniMax M3.1 Flash 现已在搜索能力排行榜的效率维度上位列第一。而且它很快~
-- **Meta 发布 Muse Wonder Full (Max)，升至 Agent Arena 第 7 名、实验室第 4 位** ｜· 不适用（非具体模型） ｜方向 其他
-  - Arena 宣布 Meta 的 Muse Wonder Full (Max) 在 Agent Arena 排名第 7，净提升 +11.3%，基于超 6.5K 真实智能体会话，将 Meta 推至实验室第 4 位。
-- **SoMark 开源 1.3B 文档解析模型 OXR，登顶 olmOCR-Bench 等三榜** ｜· 不适用（非具体模型） ｜方向 代码
-  - SoMark 团队发布开源文档解析模型 OXR（1.3B 参数），将 PDF 和文档图像转为含布局坐标的 Markdown 或 JSON 的 Agent-Friendly 数据。
-- **ElevenLabs 发布两款面向实时 AI 对话的语音到语音模型 Eleven Realtime** ｜· 不适用（非具体模型） ｜方向 其他
-  - ElevenLabs 于 10 月 20 日发布两款语音到语音模型 Eleven Realtime。
-- **NVIDIA 发布 Cosmos3-H-Dreams 生成式手术模拟模型** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Cosmos3-H-Dreams
-  - NVIDIA 发布 Cosmos3-H-Dreams，将交互式生成模拟扩展到临床胆囊切除术场景，并称其为首个基于临床手术录像训练、支持实时运动学控制的生成式手术模拟器。
-- **Perplexity Decider 在 Vals AI 金融基准上达帕累托最优** ｜· 不适用（非具体模型） ｜方向 其他
-  - Perplexity Decider 在 Vals AI 的 Financial ClaimBench 上达到帕累托最优
-- **Arena：OpenAI GPT-6 Luna 与 GPT-6.1 Sol 占据 Agent Arena Pareto 前沿 11 席中的 6 席** ｜· 不适用（非具体模型） ｜方向 其他
-  - Arena 更新 Agent Arena Pareto 前沿，OpenAI 的 GPT-6 Luna 和 GPT-6.1 Sol 在不同推理档位下占据 11 个前沿位置中的 6 个，加上 GPT-6 Astra (Max) 共 7 席。
-- **Jim Fan 开源机器人数据引擎模型套件 Flora，成本为 Astra 的 1/125** ｜· 不适用（非具体模型） ｜方向 代码
-  - Jim Fan 宣布开源 Flora，一组用于解析物理世界、把原始视频转成训练信号的开放模型，称其以 125 倍更低的成本达到 Astra 级性能。Flora 已用于其内部数据引擎，在 500 块 GPU 上每天标注 20 万小时视频，提供带时间戳的高质量字幕、用于质量控制和 RL 后训练的密集进度奖励，以及用于现实基准测试的 rubrics 评分。
-- **fal 发布 FLUX 3 Max，图生视频 Elo 达 1139 并列第一** ｜· 不适用（非具体模型） ｜方向 其他
-  - fal 发布与 Black Forest Labs 合作后训练的视频模型 FLUX 3 Max，在第三方独立人类偏好评测中获 1139 Elo，与 Seedance 2.5 并列图生视频质量第一梯队。该模型约 12 秒生成一段 10 秒 720/768p 视频，未来三周降价 75%，后续还将继续后训练改进。
-- **OpenAI 称 GPT-6 在 COBOL、Fortran 等遗留编程语言上大幅提升** ｜· 不适用（非具体模型） ｜方向 代码
-  - OpenAI 表示最新模型针对 COBOL、Fortran、Visual Basic 等低资源语言做了改进，这些语言训练代码少但支撑大量关键基础设施，IBM 估计 COBOL 支撑超过 40% 的网上银行系统和 95% 的 ATM 交易。
-- **Mistral 发布 Voxtral 3 语音模型套件** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Voxtral 3
-  - 我们刚刚发布了一套全面的 SOTA 语音模型 https://mistral.ai/news/voxtral-3/ 。语音将成为与 AI 系统交互最重要的接口，我们将语音模型部署在物理上靠近推理模型的位置
+- **Artificial Analysis 发布 AA-Video-I2V v2.1 图像生视频评测基准** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 AA-Video-I2V
+  - Artificial Analysis 发布 AA-Video-I2V v2.1 与 AA-Video-I2V-Silent v2.1 图像生视频评测基准，在 1080p 下按 10 类用例、10 项能力和多种视觉风格对模型排名。
+- **AssemblyAI 发布首个语音合成模型 AssemblyAI-TTS-1，进入 Provider Voice Arena 前 12** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 AssemblyAI-TTS-1
+  - Artificial Analysis 评测了 AssemblyAI 发布的首个语音合成模型 AssemblyAI-TTS-1。该模型在 Provider Voice Arena 以 Elo 1,227 排名第 12，在 Controlled Voice 排名第 10，发音鲁棒性得分 81.7% 排名第 16。
+- **Artificial Analysis 评测 GitHub 新发布的 Copilot Fusion：得分略低于 Opus 5.5，成本减半** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 代码 ｜网关模型 `cline/anthropic/claude-opus-5.5`
+  - Artificial Analysis 在 Coding Agent Index v2.0 中评测 GitHub 新发布的 Copilot Fusion，该系统在 Anthropic 与 OpenAI 模型间动态编排，得分比 Claude Code 中的 Opus 5.5 低 2 分。
+- **Nvidia 开源 Nemotron 3.5 Transcribe 语音识别模型，集成转写、翻译和说话人识别** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `cline/cline-free/nemotron-3.5-super-vl`
+  - Nvidia 发布开源语音识别模型 Nemotron 3.5 Transcribe，可转写 40 种语言、在 31 种语言与英语间互译、识别最多 8 个说话人，支持最长 1 小时的录音，并能通过提示词控制输出或回答音频内容问题。
+- **面壁智能发布 MiniCPM-OCR 1.0，支持在 iPhone 和 iPad 本地运行** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 MiniCPM-OCR 1.0
+  - 面壁智能 OpenBMB 发布 MiniCPM-OCR 1.0，主打 1B 规模下的 SOTA OCR 性能与速度，在 Real5-OmniDocBench 得 93.68、OCRBench v2 得 54.7，并演示在 iPhone 和 iPad 上本地运行。
+- **Nvidia 发布开源语音转写模型 Nemotron 3.5 Transcribe，支持 40 种语言** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `cline/cline-free/nemotron-3.5-super-vl`
+  - Nvidia 发布免费开放权重的语音转写模型 Nemotron 3.5 Transcribe，支持最多 40 种语言，可处理最长 1 小时的录音并区分最多 8 个说话人，还同步发布了第 2 版开源语音数据集 Granary。
+- **NVIDIA 发布 Nemotron 3.5 Transcribe，2.8% WER 并列开放权重语音转文本第一** ｜🔶 目录家族级命中，变体待核 ｜方向 其他 ｜网关模型 `cline/cline-free/nemotron-3.5-super-vl`
+  - NVIDIA 发布开放权重语音转文本模型 Nemotron 3.5 Transcribe，在 Artificial Analysis 非流式榜单上以 2.8% WER 与 Mistral Voxtral Small 并列开放权重第一，总参数 30B、激活 4B。
+- **NVIDIA 发布开放权重语音模型 Nemotron 3.5 Transcribe 及 Granary v2 数据管线** ｜🔶 目录家族级命中，变体待核 ｜方向 其他 ｜网关模型 `cline/cline-free/nemotron-3.5-super-vl`
+  - NVIDIA 发布开放权重语音模型 Nemotron 3.5 Transcribe，现已在 Hugging Face 和 ModelScope 提供，单一模型支持 40 种语言转写、31 种语言翻译、13 种语言说话人分离和音频问答，可处理最长一小时、最多 8 个说话人的录音。
+- **Artificial Analysis 新版 Intelligence Index 扩大开源与闭源模型差距** ｜· 不适用（非具体模型） ｜方向 代码
+  - Artificial Analysis 改版其 Intelligence Index 至版本 5，Kimi K3.1 Pro 从第 4 降至第 9，开源模型与榜首差距从 3 分扩大到 12 分，Grok 4.7 也下跌 12 分。
+- **AtomicChat 实测 MiniCPM-OCR 1.0 在 MacBook 上本地解析 Anthropic 全部 415 页 S-1 文件** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 MiniCPM-OCR 1.0
+  - OpenBMB 转发并感谢 @atomic_chat_hq 的演示：该演示在 M5 Max MacBook 上本地运行 MiniCPM-OCR 1.0，处理 Anthropic S-1 文件全部 415 页，1.2GB 模型约每页 4 秒，数据全程不离开设备。GGUF 权重已发布在 huggingface.co/AtomicChat/MiniCPM-OCR-
+- **面壁智能开源 MiniCPM-OCR 系列，文档解析与 OCR 结果可靠性评估配套** ｜· 不适用（非具体模型） ｜方向 代码
+  - OpenBMB 开源 MiniCPM-OCR 系列模型，把文档解析与 OCR 结果可靠性评估配套提供。MiniCPM-OCR 1.0 是 1.3B 参数的中英文文档解析模型，支持扫描页、拍照文档、倾斜和弯曲页面，可处理表格、公式、PDF 和关键信息抽取，并支持查看 Markdown 源码与预览解析结果；MiniCPM-OCR Jev 是独立模型，用于评估 O
+- **商汤开源 SenseNova 6.8 Code2Video：用代码生成短视频** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `raccoon/sn-sensenova-6-8-flash`
+  - 商汤发布并开源 SenseNova 6.8 Code2Video 轻量级模型，通过生成可执行代码来创作和渲染短视频。模型权重和 Skill 已在 Hugging Face 和 GitHub 开放下载，并附上每条演示视频的提示词与完整生成轨迹；官方称未来将探索视频编辑、动画和 3D 创建。
+- **面壁智能发布并开源 MiniCPM-OCR 系列：1.3B 解析模型与 2B 判别模型** ｜· 不适用（非具体模型） ｜方向 代码
+  - 面壁智能发布并开源 MiniCPM-OCR 系列。MiniCPM-OCR 1.0（1.3B）在 Real5-OmniDocBench 取得 93.68 分、OCRBench v2 取得 54.7 分的 SOTA，经 DSpark 加速后吞吐达 1.217 页/秒，端到端效率提升 55%。
+- **Liquid AI 发布 LFM3 模型家族，首批多款模型均基于 LFM3-1.7B-Base** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 LFM3-1.7B-Base
+  - Liquid AI 于当地时间 27 日发布 LFM3 模型家族，采用全新的三混合层架构，在 22T 词元上预训练。首批包括 LFM-1.7B（文本）、LFM3-VL-2B（视觉）、d1-2B（决策）、LFM3-Audio（音频）、LFM3-Omni-2B（全能）和 d1-Omni-2B（全能决策），均基于 LFM3-1.7B-Base。
+- **Google DeepMind 发布 Genie 4 实时世界模型，原生生成音频并由 Gemini 3.8 Flash 在循环中规划** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - Google DeepMind 发布 Genie 4 世界模型研究预览，可从文本和图像提示实时生成可探索世界，并原生生成环境音、音乐和角色对话。架构上由 Gemini Omni 锚定世界外观，Gemini 3.8 Flash 在模拟循环内解释提示、拆解目标、校验帧并重规划。
+- **面壁智能 OpenBMB 回应第三方对 MiniCPM-OCR 的评测** ｜· 不适用（非具体模型） ｜方向 代码
+  - 面壁智能 OpenBMB 转评 @wikiwayne 对 MiniCPM-OCR 的评测，感谢其透明对比并分享了结果与注意事项，表示期待该模型在 GX10 上的本地测试表现，称这类真实反馈会推动模型持续改进。引用内容提到 MiniCPM-OCR 1.0 为开源 13 亿参数 OCR 模型，与评估结果可靠性的 MiniCPM-OCR Jev 配套，权重已开放于
+- **微软发布 MAI-Image-2.7-Preview 图像编辑模型，AA-Image-Editing v2.1 榜单排名第二** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 MAI-Image-2.7-Preview
+  - 微软于 10 月 27 日推出图像编辑模型 MAI-Image-2.7-Preview，在 Artificial Analysis 的 AA-Image-Editing v2.1 榜单以 1,193 Elo 排名第二，仅次于 OpenAI 的 GPT Image 2.5 Sunburst (max)。
+- **Artificial Analysis 发布 Intelligence Index v5 评测基准** ｜· 不适用（非具体模型） ｜方向 其他
+  - Artificial Analysis 发布 Intelligence Index v5，引入 FrontierCode 2.0 和 Terminal-Bench-Science 两个新基准，并升级 HLE-Diamond、AA-Omniscience v1.1 和 CritPt v2，60% 的指数基于私有测试集或保留答案。
+- **谷歌更新 Android Bench 榜单：Gemini 4 Argon 编程能力落后于 Claude 与 GPT** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `cline/google/gemini-4-argon`
+  - 谷歌更新评估安卓编程辅助能力的 Android Bench 榜单，新增 GPT-6 Sol、GPT-6.1 Sol、Claude Sonnet 5、Claude Sonnet 5.5 和 Gemini 4 Argon 的成绩，并标注各模型推理等级。
+- **Artificial Analysis 发布 Intelligence Index v5 并首次推出 Progress Index v1** ｜· 不适用（非具体模型） ｜方向 其他
+  - Artificial Analysis 发布 Intelligence Index v5，新增 FrontierCode 2.0 和 Terminal-Bench-Science 两项基准，升级 HLE-Diamond、AA-Omniscience v1.1 和 CritPt v2，60% 的指数基于私有测试集。
+- **Google 发布世界模型 Genie 4，支持实时操控与原生音频** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - Google 正式发布下一代世界模型 Genie 4，距上一代 Genie 3 发布过去14个月。相比 Genie 3，它具备更强的照片级真实感、物体碰撞等物理模拟能力，支持键盘或双摇杆实时控制，并可用自然语言修改天气、加入物体和改变事件。
+- **蚂蚁百灵发布灵光 2.0 并开源 Ling-3.1-flash-base 与 Ling-3.1-flash-1019** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `antling/Ling-3.1-flash`
+  - 蚂蚁百灵 10 月 27 日发布灵光 2.0，升级为能主动跟进任务、持续管理复杂事务的个人 AI 助理，并开源了 Ling-3.1-flash-base 与 Ling-3.1-flash-1019。
+- **Google 发布世界模型 Genie 4，支持实时操控与原生音频** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - Google 发布下一代世界模型 Genie 4，相比 Genie 3 在照片级真实感、物体碰撞等物理模拟上有明显进步。用户可用 WASD 和双摇杆实时控制角色或镜头，运行中可用自然语言修改天气和加入物体，模型还能同步生成环境音与人物实时对话。
+- **谷歌 DeepMind 发布 Genie 4 世界模型，皮查伊称其为迄今最逼真、最具互动性** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - 谷歌 DeepMind 于 10 月 27 日发布 Genie 4 世界模型，定位为重大研究里程碑，用户可用自然语言实时改变模拟世界，如改天气、移动镜头、加入新角色，并原生生成与画面同步的音频，物理表现和人物动作也更真实。
+- **Google DeepMind 发布交互式世界模型 Genie 4** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - Demis Hassabis 宣布 Genie 4 发布，称其结合实时物理、推理与音频，并暗示“模拟中的模拟”。引用的 @GoogleDeepMind 介绍称 Genie 4 是迄今最逼真、交互性最强的世界模型，可实时探索动态环境，观察场景响应、声音以及其中人物的移动、反应和说话。
+- **谷歌 DeepMind 发布世界模型 Genie 4：一句话生成可交互虚拟世界并同步音频** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Genie 4
+  - 谷歌 DeepMind 于周二推出世界模型 Genie 4，处于研究预览阶段，可生成拟真度更高的可交互虚拟世界，并首次实现与画面同步的实时音频，包括音乐、环境音和可交互对话。
+- **Cartesia Managed Agents 语音智能体 Elo 达 1115** ｜· 不适用（非具体模型） ｜方向 其他
+  - Cartesia Managed Agents 在 Artificial Analysis Speech Agent Arena 上取得 1115 的 Elo，比此前的语音智能体产品 Cartesia Line（1017）高 98 分，任务成功率从 77.5% 提升至 91.7%。
+- **Liquid AI 发布 LFM3：6 个开源权重 2B 级多模态模型** ｜· 不适用（非具体模型） ｜方向 代码
+  - Liquid AI 发布 LFM3 系列共 6 个开源权重 2B 级模型，基于同一 tri-hybrid 骨干覆盖文本、视觉、音频、omni 和决策任务。
+- **蚂蚁 Ling 3.1 Flash 1019 开源模型评测提升至 44 分** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `antling/Ling-3.1-flash`
+  - 蚂蚁 Ling 3.1 Flash 1019 以 MIT 协议开源，560B 总参数、25B 激活参数、1M token 上下文，在 Artificial Analysis Intelligence Index v4.3 上得分 44，较前代 Ling 3.1 Flash 的 41 分提升 3 分。
+- **Liquid AI 发布 LFM3 系列：一个 1.7B 底座衍生六个 2B 级多模态模型** ｜· 不适用（非具体模型） ｜方向 其他
+  - Liquid AI 在 Hugging Face 发布 LFM3 系列，以 LFM3-1.7B-Base 为共享底座，提供文本、视觉、音频、全模态和决策共六个 2B 级模型，均开放权重。
 
 ## 二、今日热议（热度面，交叉参考）
 
-- DeepSeek 开源生产推理框架 DeepInfer
-- OpenAI称模型协助发现PHP核心漏洞，Wiz披露可致RCE
-- 马斯克称SpaceX与特斯拉已设委员会评估合并
-- 美土安全部令联邦文职机构移除DeepSeek及关联产品
-- OpenAI通报两起模型抑制失准监控事件
-- MiniMax 发布 M3.1 Flash，10 月 23 日开放权重
-- Amodei 回应 Anthropic 安全立场批评
-- OpenAI收购药物研发平台Orchestra Bio并入Rosalind
-- Anthropic三季度收入168亿美元，增速放缓
-- DeepSeek 发布 V4.1-Flash-1017 并开放搜索 API
+- Google DeepMind 发布 Genie 4 世界模型研究预览版
+- Anthropic 递交 S-1，拟以 ANT 登陆纳斯达克
+- OpenAI 发布 GPT-6.1 Terra，API 价格减半
+- OpenAI 称三项科学发现，物理证明未公开引呼吁
+- Anthropic公布药物研发合作，并传收购Mithril Medicine
+- Anthropic 一团队取消编程面试，改看原型
+- Artificial Analysis 发布 v5 指数，开源模型差距扩大
+- OpenAI 拟采购谷歌 TPU 并招募工程师适配
+- 蚂蚁发布灵光2.0，AI助理可跨会话持续办事
+- 英伟达与Meta扩大Muse合作并投资30亿美元
 

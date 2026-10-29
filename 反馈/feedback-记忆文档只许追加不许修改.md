@@ -3,7 +3,8 @@ name: feedback-记忆文档只许追加不许修改
 type: feedback
 updated: 2026-10-22
 kind: rule
-status: active
+status: superseded
+superseded_by: 反馈/feedback-记忆写入权限全面放开.md
 scope: 系统
 requires: 郭老师在对话中明确授权才可改
 ---

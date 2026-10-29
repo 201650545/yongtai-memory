@@ -4,7 +4,8 @@ description: 🔴 郭老师 2026-10-22 最终口径（覆盖此前"只许追加"
 type: feedback
 updated: 2026-10-22
 kind: rule
-status: active
+status: superseded
+superseded_by: 反馈/feedback-记忆写入权限全面放开.md
 ---
 
 # 记忆仓默认全只读 + 变更写独立副本（最终口径）

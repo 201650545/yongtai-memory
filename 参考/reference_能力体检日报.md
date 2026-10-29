@@ -1,15 +1,16 @@
 ---
 type: reference
-updated: 2026-10-22
+updated: 2026-10-29
 ---
-# 能力体检日报（2026-10-22）
+# 能力体检日报（2026-10-29）
 
 > 自动生成，勿手改。生成者：`10_AI自成长引擎\scripts\capability_probe.py`
 > 作用：**主动播报** —— 能力坏了/新增了/长期没用，主动报出来，不等用户想起来问
 > （规矩见 `C:\Users\郭永涛\AGENTS.md` 第 11 条「能力召回优先于记忆」）
 
-## ✅ 本次全部能力在线
+## ❌ 本次发现的问题（1 项）
 
+- 技能缺失：pagesift-crawler（SKILL.md 不存在：D:\Work\元智能\10_AI自成长引擎\技能库\pagesift-crawler\SKILL.md）
 
 ## 明细
 
@@ -69,6 +70,8 @@ updated: 2026-10-22
 | `rename-sync-tool` | alive |
 | `opencli-browser-stable-roundtrip` | alive |
 | `gateway-channel-catalog-inventory` | alive |
+| `pagesift-crawler` | missing |
+| `交付指挥台` | alive |
 
 ### 关键计划任务
 
@@ -98,6 +101,7 @@ updated: 2026-10-22
 | `AIHOTHotSnapshot` | alive |
 | `BenchmarkSnapshotSync` | alive |
 | `GatewayHeadBreaker` | alive |
+| `Gateway_ExpireRemove` | alive |
 | `DSH_AutoRestart_0300` | alive |
 | `WorkBuddy-TPS-Probe` | alive |
 | `Buddy2API_DailyAutoClaim` | alive |
@@ -111,6 +115,7 @@ updated: 2026-10-22
 | `XHS_LikeManager_Daily` | alive |
 | `XHS_WorkBackup_Daily` | alive |
 | `XHS_Unlike_Resume_0200` | alive |
+| `XHS_UnreviewedReview_Daily` | alive |
 | `XHS_QuarkUploadWatchdog` | alive |
 | `ModelScope每日魔粒守护` | alive |
 | `RemoteCodingControl` | alive |

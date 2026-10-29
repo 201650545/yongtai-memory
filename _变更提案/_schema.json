@@ -1,0 +1,24 @@
+{
+  "_note": "记忆变更层（JSONL 提案层）字段契约。正文一律只读，一切变更只落本目录。",
+  "_established": "2026-10-28",
+  "_decided_by": "郭老师对话中定稿形态为 JSONL 提案层",
+  "fields": {
+    "id": "提案号，P-YYYYMMDD-NNN，同日递增",
+    "ts": "创建时间 YYYY-MM-DD HH:MM",
+    "target": "被提案修改的条目，相对 D:\\记忆 的路径",
+    "anchor": "锚点标题（目标文件中唯一的一行标题文本）",
+    "baseline": "提案创建时 target 的 SHA256，全大写十六进制",
+    "op": "create | append_end | append_after | insert_before | insert_after | replace",
+    "old": "原文片段，必须在 target 中唯一出现；append_end 时填文件末尾最后一行",
+    "new": "拟变为的文本（含保留的原文，便于一眼看出改成了什么）",
+    "reason": "为什么改，引用郭老师原话或实测证据",
+    "status": "proposed | approved | applied | rejected | stale",
+    "by": "提案方（模型/会话标识），不写角色归属"
+  },
+  "invariants": [
+    "status=proposed 时绝不改动 target 正文",
+    "applied 前必须比对 target 当前 SHA256 == baseline，不等则置 stale 并重提",
+    "同一 target 同一事实只允许一条有效提案",
+    "本文件与 proposals.jsonl 不经 build_memory_index.py 收录，不进索引"
+  ]
+}
