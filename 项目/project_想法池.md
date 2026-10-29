@@ -181,7 +181,13 @@ updated: 2026-10-22
     过期的自检下限按实测校准（**判据 levels 一个字没动**）。
   - 现状：**冒烟 PASS（exit 0）＋全量 PASS（5628 份 SKILL.md / A 3974 / B 1435 / C 219 / 重名簇 1079 / 分叉簇 582 / 断链 446）**
     ⇒ **这条的第一动作现在可以开工了**（按能力类别打标签出数）。
-  - 遗留：446 条 ORPHAN 死链（目标 `.agents\skills\<名>` 已被删）仍在，清不清理是他的决定。
+  - ~~遗留：446 条 ORPHAN 死链（目标 `.agents\skills\<名>` 已被删）仍在，清不清理是他的决定。~~
+    **已结案（2026-10-20 23:30＋23:47 两轮清完，2026-10-29 复检确认）**：第一轮删 446 条
+    （`.iflow` 148／`.kiro` 149／`.qwen` 149，全部 `is_reparse=True` ＋ `target_exists=False`；
+    删法 `cmd /c rmdir` **不带 /s** ⇒ 只删链接不碰目标）；第二轮补删 17 条 `.zcode` 的 `lark-*`
+    （CSV 未覆盖、`--scan` 现场查出，郭老师 23:47 定「全删、不重指向」）。配置 `broken_links.expected_total` 已 446→1。
+    **2026-10-29 复检**：`enumerate_broken_links.ps1` 实测 **ORPHAN 1／UNREACHABLE 0／SUSPECT 0**，
+    且那 1 条是自检金丝雀 `__canary_broken__`（故意留着做哨兵），双口径一致、SELF-TEST PASS ⇒ **无活可干，不要再当待办报**。
 - **2026-10-20 21:00 第一动作已做完（按能力类别打标出数）**：
   - 产物：人读 `技能库\_中枢\skill-census-08-浏览器类结论.md`｜明细 `runtime\skill-census-08-capability-tags.csv`
     ｜脚本 `10_AI自成长引擎\scripts\census_capability_tags.py`（只读，词表可改可重跑）。
