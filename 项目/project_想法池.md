@@ -709,7 +709,8 @@ updated: 2026-10-22
 
 ### 9.3 新增（2026-10-29 点名）
 
-- **IDEA-036 · Grok 反代搜索**：状态 `assigned` → **已固化成 skill `grok-web-consult`（2026-10-29）**。他的原话：「把 Grok 也做成反代搜索。就是利用 Opencli 打开这些网站，模拟我的操作，输入问题进行联网搜索，因为 Grok 搜 X 上的信息非常好嘛」。**形态**：不是 API 反代，是**浏览器自动化代理**（opencli 驱动、用他的登录态）。落地：`技能库\external-model-review\components\grok-web-consult\`（SKILL.md + scripts/grok_ask.py + _grok_common.py，已挂 junction 到 `~\.agents\skills\`）。**手工端到端已验证**（长问题 → 约 1.9 千字中文回答，产物 `D:\Work\_tmp\grok_answer_20261029.md`）；脚本入口的 Enter 仍待一次干净环境复验（本机 Chrome 全部最小化时会被拒发）。
+- **IDEA-036 · Grok 反代搜索**：**dropped（2026-10-30 郭老师定，不做）**。他的原话：「现在没有代理 Grok，Grok 就不做了」。⇒ **不再复验脚本、不再补登录态、不再推进**；已固化的 skill `grok-web-consult` **保留在库中不删**（能力已建成，将来若恢复代理可直接用），但**从待办中摘除**。
+  历史：2026-10-29 曾状态 `assigned` → 固化成 skill（`技能库\external-model-review\components\grok-web-consult\`，已挂 junction），手工端到端验证通过（约 1.9 千字中文回答），仅剩脚本 Enter 干净环境复验一项——**该项随本条一并作废**。
   **前置（2026-10-29 实测更新）**：`grok.com` 经本机代理 `:7890` 返回 **200**，`x.ai` / `accounts.x.ai` 返回 **403**（Cloudflare 挡非浏览器 UA）⇒ **走浏览器自动化可行，走纯 HTTP 不可行**。仍需：浏览器里有 grok 登录态 + 代理在线。
 
 ### 9.4 口径
