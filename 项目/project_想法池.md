@@ -345,7 +345,11 @@ updated: 2026-10-22
   **许可提醒（贴他处境）**：OpenChatCut / pireel 都是 **AGPL-3.0**；他 **Work 仓正在准备公开**，把这类代码或衍生放进公开仓会触发 AGPL 分发义务 ⇒ 选型优先 MIT/Apache：FableCut(MIT)、kinocut(Apache)、cut-motion(Apache-2.0)、video-podcast-maker(MIT)、OpenEdit/video-audio-mcp。
   **本机已有资产（别重造）**：剪辑指令层 `.openclaw-autoclaw\skills\ffmpeg-video-editor-1.0.0`（自然语言→ffmpeg 命令）＋`video-frames-1.0.0`＋`video-transcript-downloader-1.0.0`（yt-dlp 抽字幕/转录）；ASR＝`skills\openai-whisper`＋Python `faster_whisper`；TTS＝`edge_tts`（免费）＋`skills\podcast-generation`（Azure GPT Realtime Mini，付费）；文案层＝`skills\khazix-writer`（公众号）＋`humanizer`＋`social-content`＋`content-extract`＋`infographics`；**晨读产线已产出句级切分/句轴/能量包络**——这正是 AI 剪视频最难的那块（自动切点、字幕对齐），**他已经有了** ⇒ 他的差异化不是「再做一个剪辑器」，而是「把晨读句轴接进 AI 剪辑的承载层」。
   **两个坑**：①`remotion` skill 在 `.iflow`/`.kiro`/`.qwen` 三个宿主里是**空壳**（实体不在）；②`video-podcast-maker` 明示新建 Remotion 项目要下 **~2.2GB npm ＋ ~90MB Chrome headless** ⇒ 别新建项目，复用现有的。
-  **状态仍为 captured，不派工。**
+- **功能范围已定（2026-10-30 郭老师：先简单，导出只要 9:16 和 16:9）**：
+  - **阶段 1（最小可用，先做这些）**：① 切分（按时间／按句／按静音）② 拼接（多段合并、调顺序）③ 字幕（语音识别出 SRT、可改错字）④ 导出（**只两种规格：9:16 与 16:9**，H.264）。
+  - **阶段 2（阶段 1 跑通再加）**：字幕排版（字体/字号/描边/位置/逐词高亮）、去静音去停顿、删废词口癖（改字幕文本→时间轴联动剪）、音量归一、抽封面帧、`project.json` 即接口 ＋ REST/MCP 双驱动、作业队列与预览。
+  - **明确不做**：复杂特效、转场库、调色、关键帧动画、多轨混音、素材市场——做了就是第二个剪映。
+  - **状态**：`assigned`（他 2026-10-21 00:08 已正式开题，2026-10-30 补齐功能范围与导出规格；**未点"现在开工"，故不动手**）。
 - **研究进展（2026-10-21 00:2x，市场验证层）**：**他指出「都没经过市场验证」——GitHub 星数是开发者热度，不是商业验证。补齐市场层（融资/ARR 数字出自我的知识，今天无法用 web_search 逐条核；要核可对具体产品 web_fetch 官网定价页）**：
   - **口播剪辑的市场标准答案是 Descript**（美国，公开融资到 C 轮）：ASR 出文字稿 → 像改文档一样删句 → 音频画面自动跟着剪（"删掉'嗯'就剪掉那段"）⇒ **口播自动剪辑有人付钱**，但它是**英文＋词级**，靠通用 ASR，**不懂中文句子语义与朗读节奏**。
   - **中国侧已验证**：剪映的「智能剪口播／一键成片／自动字幕」＋必剪（B站）＋火山剪辑 —— 模板化、竖版、知识与口播成片。
