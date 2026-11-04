@@ -47,6 +47,85 @@ scope: ai_gateway
 
 ## 时间线（近→远）
 
+- **2026-11-03 · workbuddy-intl 的 `deepseek-v4.1-flash` 下线（国际站已无免费额度活动），3100 主链首席换回中国版**：
+  - **郭老师指令**：「workbuddy 国际版的 DeepSeek V4.1 flash 可以去掉了，不需要了，因为我发现它没有白嫖活动了。它只有个 HY3 可以白嫖，留着它吧，做一个测试模型吧。如果 buddy 去掉了，那么 DeepSeek harness 这里要同步。」
+  - **8787 侧（真源在 `selected_models`）**：`selected_models["workbuddy-intl"]` 由 `["workbuddy-intl/hy3","workbuddy-intl/deepseek-v4.1-flash"]` 改为 **`["workbuddy-intl/hy3"]`**；
+    `channel_catalog_extras["workbuddy-intl"]` 由 `[deepseek-v4.1-flash, step-5-preview]` 改为 `[step-5-preview]`；
+    另在 `providers/workbuddy_intl/__init__.py` 加 `OFFLINE_MODELS = frozenset({"deepseek-v4.1-flash"})` 过滤（**必须写在 provider 里**：国际站目录是远端拉取的，
+    `channel_catalog_refresh` 对该渠道是 `mode=fallback`（无 usable account），删库里的行只能管一时）。
+    验证：`provider.list_models()` 由 20 个变 **19 个**（不再含 deepseek-v4.1-flash，hy3 仍在）。
+  - **DSH 侧**：网关 `selected_models` 是「同步到 DSH」的唯一事实来源，但**自动同步只重建 provider 的 models 列表**，
+    `compaction-basic` 的 `summarizationModel` / `modelPolicies`、`subagent-model-selection-settings` 的 `allowedModels`
+    这 3 处引用**网关代码里根本没有**（已 grep 确认），必须手工改：`summarizationModel` 与 `modelPolicies` 改指 `workbuddy-intl/hy3`，
+    `allowedModels` 里删掉该条（hy3 已在列）。
+  - **3100 侧（`routes_writer.apply_change()` 带 approval 热加载）**：主链 `deepseek-v4.1-flash` 第一席
+    `buddy/workbuddy-intl/deepseek-v4.1-flash` → **`buddy/workbuddy/deepseek-v4.1-flash`**（仍居首席）；
+    备链 `deepseek-v4.1-flash-backup` **一字未动**（`buddy/traework/...` + `codearts/codearts/...`）。
+    `data/channels.json` 的 buddy 渠道 models **189 → 188**（该条从 8787 的同步副本里删掉，否则 3100 会请求一个 8787 已不存在的模型）；
+    其余 19 条 `workbuddy-intl/*` 全在，`workbuddy-intl/hy3` 保留。
+    healthz 通过（`loaded_routes_sha256` = `a36aee75…af50c05`，与写盘一致，未触发回滚），审计行落 `data/routes_audit.log`。
+  - **为什么换回中国版**：note 里留的实测数据 —— 中国版 `n=5585`、均值 7332ms、**p50 5093ms**、成功率 97.6%、倍率 x0.11、账号 2；
+    国际版 `n=9194`、均值 13399ms、p50 7574ms、成功率 95.5%、**倍率未标（credit 实测 1.0 分/1k token＝收费）**、账号 5。
+    中国版本来就是 10-28 换人之前的首席，换回即复原且更快。
+  - **⚠️ 已知副作用**：`routes_writer.apply_change()` 固定以 `indent=1` 序列化落盘，而原 `model_routes.json` 是 `indent=2`
+    ⇒ 整份文件被重新缩进（**纯格式，数据等价**；语义级 diff 证明只改了 2 处：成员 model + note 末尾追加 247 字符，原 note 前缀完整保留）。
+    这是唯一合法通道自带的行为，不是手改。
+  - **【同日 22:31–22:36 修正 · 上一条『3100 主链首席换回中国版』已作废】**：
+    - **中国站整站不可用（实测）**：`providers/workbuddy/__init__.py:15` `SITE = SITE_CN` 只从 `www.codebuddy.cn`/`www.workbuddy.cn` 域账号选号；
+      CN 池只有 2 个账号且**病因不同**：
+      ① **id5 郭老师 = 个人版**（personal，`www.codebuddy.cn`）—— **refresh_token 被上游判死**：
+      `12153:refresh token failed:400 Bad Request: invalid_grant: Offline user session not found`，status=expired；
+      在盘唯一 token 来自 `Tencent-Cloud.coding-copilot.info`，其 expires/refreshExpires 与库里完全相同 ⇒ 同一枚死 token，重扫无用。
+      ② **id17 meqy633whqa3 = 教育公益版**（ultimate，enterpriseName=`WorkBuddy教育公益版`，departments=`WorkBuddy教育公益版/运营导入/C端/C端1`，
+      `www.workbuddy.cn`）—— **鉴权正常**（access 到 2026-12-03 22:33，refresh 到 2027-01-02 22:32，客户端 2026-11-03 22:33 刚刷新），
+      但 **额度为 0**（上游 available_total=0 < QUOTA_LOW_WATERMARK 5.0 ⇒ mark_quota_exhausted ⇒ quota_state=exhausted）。
+      ⇒ **中国站最后一次成功 chat = 2026-10-28 07:04**，此后 0 次成功。真调 8787 的 `workbuddy/deepseek-v4.1-flash` = **HTTP 503 / 1.8s /
+      `{"error":{"message":"No available accounts"}}`**，且未产生 logs 行（选号阶段即空）。
+      **救活要郭老师动手**：个人版需在客户端重新登录换新 refresh_token（再 scan + PUT status=active）；教育版需补额度（再清 quota_state + 重读资源缓存）。
+      **另发现数据 bug**：id5 的 `extra.auth_path` 现指向 `workbuddy-desktop.info`，而该文件装的是 **id17 的 token** ⇒ 该字段不可信，待修。
+      **另**：磁盘上还有第三个登录态 `workbuddy-desktop-ai.info`（uid `2b2a14c4…b10c`，personal，**`www.workbuddy.ai`** 国际站，2026-11-03 21:45 刷新，expire 到 2027-10-19）—— 尚未作为独立账号入库。
+    - **原排序依据为什么失效**：2026-11-03 21:55 那次换席用的是 note 里的统计（China n=5585 / p50 5093ms / 成功率 97.6%），
+      **数据窗口是 2026-10-02..2026-10-28**，且 note 自己就记着 China 席的「末次=2026-10-28 07:04」—— 当时没往深里看就采信了聚合均值。
+      **教训：排席前必须先查「该席最后一次成功是什么时候」，不能用窗口内的历史成功率代替现状。**
+    - **22:31 郭老师裁定**：中国站从主链撤出，raccoon 提为首席。
+      **22:33:19 经 `routes_writer.apply_change`（approval=cli:郭永涛@2026-11-03）落盘**：
+      主链 members = `[{"channel":"buddy","model":"raccoon/sn-deepseek-v4-1-flash-1017"}]`（中国站席已撤，只剩 1 席）；
+      备链 `deepseek-v4.1-flash-backup` **一字未动**（`buddy/traework/deepseek-v4.1-flash` + `codearts/codearts/deepseek-v4.1-flash`）；
+      写盘 sha == healthz `loaded_routes_sha256` == `loaded_sha` 三者全同（`1a3393bcc0c77a44059913a0963323f36a35b5876c2f1d7612b1179502adf9fa`）；
+      note **纯追加** 912→1886 字（`new.startswith(old)=True`，原 912 字符一字节未改）；其余 10 条 route 的 members/note 对比备份 = NONE 变化；
+      审计行落 `data/routes_audit.log`（22:33:19，APPLIED healthz ok 且指纹一致）。
+      **22:34:20 真调验证通过**：3100 `deepseek-v4.1-flash` → **HTTP 200 / 1.9s / 文本「你好」**，
+      `resolved_model=raccoon/sn-deepseek-v4-1-flash-1017`、`attempted=['buddy']`（单席）、`failures=[]`、`fallback_count=0`，
+      buddy 熔断桶 `state=open / blocked_in=null`（22:34 无新增 blocked）。备链两席本轮未触发，可用性属「未取到」。
+    - **⭐ 挖到的系统性根因（原排序错是表象）**：3100 换席前主链两席**同属 channel「buddy」**，实调 **HTTP 502 / 1.3s**：
+      `所有渠道均不可用：buddy: HTTP 503 [overloaded] No available accounts | buddy: Buddy 本地聚合 触发限流保护（95% 提前切换），本轮跳过`。
+      链路证据：`api_gateway.py:848` 成员循环**没有** break/return（失败会继续下一席）→ `:1012-1023` 503 归类 `OVERLOADED`（`upstream_outcome.py:65-66`，
+      OVERLOADED∈BREAKER_TYPES）→ `:1015-1017`「非 429 的 breaker 也触发熔断」→ `channels.py:1768` mark_shell_failure 合成 429 →
+      `rate_limit.py:249 _resolve` **桶键 = "buddy"，不含 model**（buddy 不在 POLICIES、external_policy=None）→ `blocked_until = now+15s`（BACKOFF_STEPS[0]=15）
+      → 第二席同为 buddy → `channels.py:1729 try_acquire` 挡回 False → `:1763 raise RateLimitSkip` ⇒ **第二席连请求都没发**。
+      日志佐证 `route_log.jsonl`（ts 22:29:56）：`attempted=["buddy","buddy"]`、`seat_fail_ms={"buddy":0}`（只真发了 1 次）。
+      **⇒ 熔断是渠道级粒度：buddy 渠道下任一模型 503，整个渠道 15 秒内全部不可用。**
+      备链是跨渠道的（buddy → codearts）所以还能走（12:06:26 日志 codearts=16ms 真调到了）。
+      **修法（未做，等郭老师点头）**：熔断桶粒度从 `(channel)` 改为 `(channel, model)`；或在编席时保证同一条链的各席**跨渠道**。
+      另注意 `route_log.jsonl` 里的 `resolved_model` **不是成功落点**，只是第 2 席候选被记进了该字段 —— 别拿它当"实际调到了谁"。
+    - **traework 心跳修复 · 线上端到端验证通过（22:23:24，1 次请求）**：
+      `HTTP 200 / text/event-stream` → **10.17s 第 1 个心跳**（空 delta `{}`、`finish_reason: null`）→ **20.18s 第 2 个**（间隔 **10.01s**，
+      与 `HEARTBEAT_INTERVAL_SECONDS=10.0` 一致）→ **23.10s 首段正文**「你好」→ 收尾帧 + `[DONE]`；
+      日志 `('deepseek-v4.1-flash', 200, 'stop', 22890ms)`。**判据成立：正文之前收到了 2 个心跳帧** ⇒ 等待期不再像卡死。
+      （第 3 个 23.10s 的空 delta 是收尾帧 `finish_reason="stop"`+usage，不是心跳 —— 统计时别混。）
+      **但上游延迟本身改不了**：TraeWork 的 agent 每次带 **~27.9k token 内置系统提示**（实测 prompt_tokens=27391～27975）⇒ TTFT≈14.5s 才出正文。
+      **TraeWork 没有裸 `deepseek-v4`（V4.0）**，只有 `DeepSeek-V4-Pro-Official` / `DeepSeek-V4-Flash-Official` / `deepseek-v4.1-flash`。
+    - **CodeArts（华为云）网页端 OAuth 实况**：授权入口 `POST /admin/accounts/codearts/oauth/start` → 网关起本地回调（端口 ≥10000，源码硬要求）→
+      浏览器 302 回 `/admin/accounts/codearts/oauth/callback?state=…` → 换 token → 账号落库（`store.py:195-214` 按 uid upsert，命中同一 uid 会改写 id=20 的 status/updated_at）。
+      **state 是进程内存里 180 秒一次性会话（`OAUTH_CALLBACK_TIMEOUT_SECONDS=180`），网关一重启即清空** ⇒ 今天连发 3 条链接全部作废
+      （21:48–22:10 并发方改 antigravity/aliases/web 代码导致网关被重启 8 次：21:42/21:52/21:54/21:56/22:00/22:01/22:05/22:10）。
+      **截至 22:30 用户那次授权仍未落库**：accounts 表 codearts 仍只有 id=20、status=expired、updated_at 停在 2026-10-30 01:12:02（那次 401 的时刻）；
+      logs 里 codearts 最近一次调用是 10-30 01:12:02 → **401 Unauthorized（APIG.0301 Incorrect IAM authentication）**，10-29 是 400 token expired（APIG.0602）。
+      历史证明流程本身通：Chrome 历史里 **2026-11-02 13:58 有一次成功授权全链路**。
+      渠道静态表 8 个模型：deepseek-v4.1-flash / GLM-5.2 / GLM-5.3 / kimi-k3 / kimi-k2.6-vl / openpangu-2.0-flash / openpangu-2.0-pro / glm-5.2-sft-harmony。
+    - **officeace**：凭据刷新后真调通过 —— **HTTP 200 / 文本「pong」/ 3.0s（服务端 duration_ms=2875）**，usage prompt 35 / completion 32（reasoning 29）/ total 67；
+      刷新前 4 条全是 503「落盘凭据副本也已过期」。新副本 `data/officeace_credential.json` 336 字节，`expires_at 2026-11-03 23:29:39`，`source=officeace_provision.py`。
+      **⚠️ 客户端会话 TTL≈100 分钟 ⇒ 23:29 后会再次 503，根治要 OfficeAce 客户端常驻。**
 - **2026-10-29 · Buddy 渠道白名单与编排按郭老师口径重定（中国站停用、全面切国际站）**：
   - **白名单判据（他口述）**：不是目录里列出来的模型都能用，只留「0 倍率 + ≤0.2 低倍率」；**Loomy 渠道整体豁免**（`GLM-5.3-Flash` 0.8 / `spark-x` 2.5 / `spark-x2.6` 2.6 全保留）；**WorkBuddy 两站定死各 2 个**：中国站 `hy3`+`deepseek-v4.1-flash`、国际站 `hy3`+`deepseek-v4.1-flash`，**不得再新增**；Trae work 只要 `deepseek-v4.1-flash`。
   - **实测推翻"目录即可用"**：新补进白名单的 17 个里，`workbuddy/*` 全 `503 No available accounts`（中国站账号池空）、`qodercn/*` 全 501（Qoder 中国版只给加密推理端点，本网关未移植 WASM 签名）、`qoder/deepseek-flash` 401、`workbuddy-intl/gpt-5.6-luna` 400（个人免费用户不允许）⇒ 全部回滚；仅 `workbuddy-intl/hy4-preview`、`traework/Doubao-Seed-2.1-Turbo`、`traework/mimo-v2.6-{flash,pro}`、`loomy/spark-x` 实测 200（后三个 36~62s 太慢）。

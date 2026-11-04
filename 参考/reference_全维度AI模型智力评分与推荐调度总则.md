@@ -41,7 +41,7 @@ status: active
 1. **打破单模型通吃**：按任务内在属性分配最匹配的模型，不搞盲目追高，杜绝大炮打蚊子；
 2. **高低配协作流水线**：外脑顶配特遣队（ChatGPT 镜像 GPT-6 High）与端内旗舰（MiMo 2.6 Pro / GLM 5.3 / Qwen 3.8 Max）写架构、出方案、定标准；高吞吐低消耗模型（DeepSeek V4.1 Flash / Muse Spark 1.3 Free / Gemini 3.8 Flash）搬砖、写代码、跑批处理；
 3. **成果体验第一**：AI 之间传递代码与 diff，呈报给郭老师的一律是**可点击、可交互、可安装体验的真实成果（新版截图/前后差异/一个明确的拍板选项）**，坚决消灭几千字文字流水账；
-4. **全局唯一真源制（SSOT）**：所有子项目（如 English-Content-Factory、AI精听训练器、小红书点赞分析等）如需选模型，只保留指向本总则的指针，禁止另设模型标准。
+4. **全局唯一真源制（SSOT）**：所有子项目（如 English、AI精听训练器、小红书点赞分析等）如需选模型，只保留指向本总则的指针，禁止另设模型标准。
 
 ---
 
@@ -209,7 +209,7 @@ flowchart TD
   - `D:\Work\元智能\20_自适应工作流引擎\contracts\gpt-mirror-extended-review.yaml`（契约与闸门体系）
   - `D:\Work\元智能\20_自适应工作流引擎\docs\runbooks\GPT镜像站Work模式模型与额度指南.md`（镜像站账号与额度指南）
 - **项目落地真源映射**：
-  - `English-Content-Factory/00_System/01_ListenLoop多模型团队分工方案_最新版.md`
-  - `English-Content-Factory/02_Projects/HN-ENGLISH-666/03_Products/index.html`（交互式任务选择器）
-  - `English-Content-Factory/02_Projects/HN-ENGLISH-666/03_Products/人机协同交互白板_LivingSurface.html`
+  - `English/00_System/01_ListenLoop多模型团队分工方案_最新版.md`
+  - `English/02_Projects/HN-ENGLISH-666/03_Products/index.html`（交互式任务选择器）
+  - `English/02_Projects/HN-ENGLISH-666/03_Products/人机协同交互白板_LivingSurface.html`
   - `D:\Work\AI精听训练器\02_工程架构与系统设计\22_ListenLoop多模型团队分工方案.md`

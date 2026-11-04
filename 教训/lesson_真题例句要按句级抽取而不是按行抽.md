@@ -49,5 +49,5 @@ status: active
 
 ## 相关
 
-- 实现：`D:\Work\English-Content-Factory\02_Projects\HN-ENGLISH-666\06_templates\_assemble_core82.py`
+- 实现：`D:\Work\English\02_Projects\HN-ENGLISH-666\06_templates\_assemble_core82.py`
 - 体检脚本：`..\06_templates\_analyze_examples.py`（缺陷统计 + 抽样）

@@ -74,7 +74,7 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 5. `sensetime / sensenova-u1.5-fast`
 6. `sensetime / sensenova-u1.5-lite`
 
-> 真源 note（可能含历史席位，现行链以上面列表为准）：生图专用链（2026-10-20 19:43 郭老师裁定：肯定选 AGNES，无水印）：AGNES agnes-image-2.5-flash -> AGNES agnes-image-2.1-flash -> Cloudflare flux-1-schnell -> 生图公益站 gpt-image-2.5 -> 豆包/即梦网页版伪 API -> 商汤 u1.5-fast -> 商汤 u1.5-lite（**商汤「日日新」带 logo 水印，降为末席兜底**）。**ark/seedream 是付费通路，已下线。**
+> 真源 note：生图专用链（2026-10-20 郭老师裁定：肯定选 AGNES，无水印）：AGNES agnes-image-2.5-flash -> AGNES agnes-image-2.1-flash -> Cloudflare flux-1-schnell -> 豆包/即梦网页版伪 API -> 商汤 u1.5-fast -> 商汤 u1.5-lite（**商汤「日日新」带 logo 水印，降为末席兜底**）。**ark/seedream（付费通路）与第三方公益镜像站均已彻底下线禁碰。**
 
 生图还有第二个入口：`http://127.0.0.1:8787/v1/models` 里的 `webimage/*` 与 `loomy/*`（`Bearer sk-buddy2api-local`，网页版伪 API）。两边都列，别以为只有 3100。
 

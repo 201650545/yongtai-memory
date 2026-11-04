@@ -56,4 +56,4 @@ view.dispatch(view.state.tr.insertText(txt, view.state.selection.from)); // 插�
 ## 相关
 
 - 完整流程与实现：`<技能库>\xhs-ops\components\xhs-note-publish\SKILL.md`
-- 本轮实操脚本：`D:\Work\English-Content-Factory\02_Projects\HN-ENGLISH-666\06_templates\_publish_note.py`
+- 本轮实操脚本：`D:\Work\English\02_Projects\HN-ENGLISH-666\06_templates\_publish_note.py`

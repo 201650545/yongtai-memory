@@ -251,7 +251,7 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
 - **交接单** `D:\Work\经纬\docs\11-交接单-2026-10-20.md` 八节结构复核完毕，路径逐条 `Test-Path` 通过。
 - **修正 1**：`client.js` 实为 **2930 行**（原写 2898），`orchestrator-v4.js` 869 行。
 - **修正 2**：提交轨迹补最新一笔 `c241988`（加交接单）；并注明 **`D:\Work` 是多项目共仓**，
-  别的项目（AI精听训练器 / English-Content-Factory）有未提交改动 ⇒ **禁止 `git add -A`，只 add `经纬/`**。
+  别的项目（AI精听训练器 / English）有未提交改动 ⇒ **禁止 `git add -A`，只 add `经纬/`**。
 - **修正 3（重要，新发现）**：`D:\小浣熊\jingwei-public` 的本地副本是 **v3.0 旧版**
   （`client.js` 2151 行，无 `dagRank`/`visualRow`/`LAYOUT_VERSION`/「重排版面」；源是 2930 行），
   且 7 个文件有未提交改动。**直接 push 会把 v3.0 发出去**——
@@ -288,7 +288,7 @@ DSH 是 Electron，加 `--remote-debugging-port` 后可用 CDP 直连 renderer�
   > 上面的链里**已没有它**。当前实际链（2026-10-20 22:00 复核）：
   > `agnes-image-2.5-flash` → `agnes-image-2.1-flash` → `cloudflare flux-1-schnell` →
   > `imgpseudo doubao-image` → `sensetime u1.5-fast` → `sensetime u1.5-lite`。
-  > 口径以 [[参考/reference-免费共享镜像站整体撤销与收口_20261020]] 与
+  > 口径以 [[反馈/feedback-彻底放弃公益镜像与免费站_量少难测]] 与
   > `search_gateway/data/model_routes.json` 实际内容为准。
 - **踩坑（已修）**：**AGNES 返回 `url` 形态不是 b64**（商汤/Cloudflare 才给 b64）
   ⇒ 只认 b64 的消费方会挂。已在 `orchestrator-v4.js` 补 url 分支（`fetch(url)` 下载再转 base64），提交 `5350f98`。

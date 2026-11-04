@@ -165,7 +165,7 @@ status: active
 **⚠️ 2026-10-29 查清：晨读这条 OCR 链路其实是断的**——`D://listenloop` 里**零处 OCR 代码**，
 `logs/ocr_denoise/` 目录不存在，259 个课包里**带 `ocrSuspects` 字段的是 0 个**
 ⇒ App 侧那套「OCR 疑点清单」永远读到「本课没有疑点」，是个**空跑功能**。
-**OCR 真正在用的地方只有 English-Content-Factory 的试卷扫描**（`90_Automations/hn-english-666/ocr_papers.py`，
+**OCR 真正在用的地方只有 English 的试卷扫描**（`90_Automations/hn-english-666/ocr_papers.py`，
 脚本头写明「PaddleOCR（PP-OCRv4）」）——那 18MB 权重就是给它用的。
 ⇒ 以后说「晨读制课侧跑 OCR」是错的，别再把两者混在一起。
 

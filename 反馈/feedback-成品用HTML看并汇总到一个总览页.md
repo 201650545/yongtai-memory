@@ -25,7 +25,7 @@ status: active
 
 ## 本项目的落地
 
-- 总览页：`D:\Work\English-Content-Factory\02_Projects\HN-ENGLISH-666\03_Products\00_总览预览\★总览_全部成品_v1_261021.html`
+- 总览页：`D:\Work\English\02_Projects\HN-ENGLISH-666\03_Products\00_总览预览\★总览_全部成品_v1_261021.html`
 - 生成器：`06_templates\_build_overview.py`（改完成品重跑它即可）
 - 自查脚本：`06_templates\_check_overview.py`（查坏图/断链，出截图）
 - ⚠️ 坑：PDF **不能当 `<img>`** 渲染 ⇒ 用「PDF 下载卡片」代替（否则总览页会出现裂图）。

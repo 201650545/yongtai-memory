@@ -33,7 +33,7 @@ status: active
 
 ## Gemini 驱动（本次新写，可直接用）
 
-`D:\Work\English-Content-Factory\02_Projects\HN-ENGLISH-666\06_templates\_gemini_send.py <提问文件> <输出文件>`
+`D:\Work\English\02_Projects\HN-ENGLISH-666\06_templates\_gemini_send.py <提问文件> <输出文件>`
 
 要点：① `tab new` 开新标签（**必须活动标签**，否则 Gemini 静默拒收）→ 轮询到 `.ql-editor` 出现
 → 注入（Quill）→ `keys Enter` → 核对 `user-query` +1 → 轮询 `message-content` 到**长度稳定 ≥2 轮**再落盘。

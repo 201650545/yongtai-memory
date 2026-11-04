@@ -33,20 +33,20 @@ AGNES 是**免费配额**渠道（`billing_type=free_quota`），不产生费用
 | 5 | sensetime | `sensenova-u1.5-fast` | **降为末席兜底（带水印）** |
 | 6 | sensetime | `sensenova-u1.5-lite` | 同上，更慢 |
 
-> ℹ️ **原链里的 loveyy / gpt-image-2.5（生图公益站）已不在表中** ——
-> 它属于 2026-10-20 16:34 郭老师下令撤掉的那批「免费共享/镜像站」渠道
-> （`scripts/drop_free_mirror_channels.py`，连同 cpa / cpa-image / l0veyou 一起撤了），
-> 当前 `channels.json` 与 `model_routes.json` 里已无残留。
+> ℹ️ **原第三方共享/公益中转站已全量剔除** ——
+> 按照郭老师关于「彻底放弃第三方公益镜像站、免费共享站与羊毛站，量少难测」的决议，
+> 相关历史临时渠道（cpa / cpa-image / l0veyou / loveyy 等）已全数物理剥离，
+> 当前 `channels.json` 与 `model_routes.json` 里已无任何残留。
 >
 > ⚠️ **改路由前先确认基线**：拿一份**新鲜**的 `model_routes.json` 快照再动手。
-> 我这次先备份后改，备份恰好是含已废渠道的旧状态，差点照着它把 loveyy 写回链里。
+> 严禁照着包含已废弃共享站的旧备份恢复配置。
 
 配置走 mtime 感知热重载（`catalog_routes` 复用 `channels._cached_json`），**改完不用重启网关**。
 实测 `X-Resolved-Channel: agnes` 确认生效。
 
 ### ⚠️ 踩坑：AGNES 返回 **url 形态**，不是 b64
 
-商汤 / Cloudflare / 公益站返回 `data[0].b64_json`；**AGNES 返回 `data[0].url`**
+商汤 / Cloudflare 等标准通道返回 `data[0].b64_json`；**AGNES 返回 `data[0].url`**
 （`https://platform-outputs.agnes-ai.space/images/t2i/task_xxx/output_xxx.png`），`b64_json` 是空串。
 
 ⇒ 只认 b64 的消费方会直接挂（经纬的 `generateImage` 就抛「生图接口没有返回图片数据」）。

@@ -225,7 +225,7 @@ status: active
 | **P5** | **`reference_Gemini网页版能力与限制.md` 与 `gemini-web-review/SKILL.md` 内部自相矛盾** | 后者 §三 已写"三档思考 2026-10-15 实测打通"（给了 `set_thinking.js`），但 §六「待验证」里**还挂着**"★ 三档思考的控件路径（最优先）：没找到可编程入口"——**该待办未回勾**。照 §六 读会白重做一遍 | 建议：**改 §六 回勾**（纯文档修正，不改行为），我方可代改 |
 | **P6** | **总则里的 LMSYS/学术基准行是否重取？** | 总则那行是 `GPT-6 (Chat High)`：Coding Elo ~1595 / Hard Prompts ~1430 / SWE-bench 62.5% / GPQA 74.8%，**既不含 Argon，命名也对不上现在的谱系**（且 arena.ai 直连已 403，得走镜像） | 建议：**下次顺手重取**；本表已用 AIHOT 分项替代，不阻塞 |
 | **P7** | **arena.ai 长期走哪个镜像？** | arena.ai 主路径与子路径**全被 Cloudflare IP 级 403 拦死**，旧域名 `lmarena.ai` fetch failed —— 本表 LMArena 维度来自 **AITNT(10-08) + 猫目(10-13) + llmrun** 三族镜像，且数值互证（Argon 1525 **五源一致**） | 建议：**定 AITNT 为主镜像**（有 CI 与票数，20+ 子榜最完整），猫目做第二源；**引用一律带快照日期 + 榜单名**（§二口径警告 2） |
-| **P8** | **本表落在哪、要不要在项目侧留指针？** | SSOT 规则：子项目**禁止私设模型筛选规则，只保留指针** | 建议：**留在记忆库 参考/**（已落此），English-Content-Factory 侧只在看板留一行指针，**不复制本表内容** |
+| **P8** | **本表落在哪、要不要在项目侧留指针？** | SSOT 规则：子项目**禁止私设模型筛选规则，只保留指针** | 建议：**留在记忆库 参考/**（已落此），English 侧只在看板留一行指针，**不复制本表内容** |
 | **P9** | **★ 顶层架构推演的席位该给谁？（榜单 vs SSOT 对撞）** | 按榜单：这属于"开放式困难判断"，**Hard Prompts 榜 Argon #1 / 1551，GPT-6.1 Sol 仅 #20 / 1507**（差 44 Elo、名次 1 对 20）→ 应走 Argon。按 SSOT：总则**明令**外脑顶层架构仲裁是 GPT-6 High 的独占席位。**两者直接冲突** | 本表**暂定双跑**（§四 #2）。**是否把该席位改判 Argon 单跑，属 SSOT 变更，必须郭老师裁定**；裁定前维持"GPT 为主 + 双跑" |
 
 ---
@@ -255,4 +255,4 @@ status: active
 - Gemini 通道能力边界：[[reference_Gemini网页版能力与限制]]
 - 通道 skill：`D:\Work\元智能\10_AI自成长引擎\技能库\external-model-review\components\gpt-mirror-extended-review\` ｜ `...\gemini-web-review\`
 - 方法纪律同源 skill：`...\_收存_宿主自产\model-rank-recalibration\SKILL.md`（刻度/覆盖变更须重校准，不得沿用旧阈值、不得混表比较）
-- 项目侧（只留指针，不复制本表）：`English-Content-Factory\02_Projects\HN-ENGLISH-666\00_项目主控与看板\接手单_培优版主线.md` 遗留待办 #5
+- 项目侧（只留指针，不复制本表）：`English\02_Projects\HN-ENGLISH-666\00_项目主控与看板\接手单_培优版主线.md` 遗留待办 #5

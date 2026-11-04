@@ -43,7 +43,7 @@ playwright 起**独立 profile** 的 Chrome（不碰用户那个窗口、不碰�
 
 ## 完整实现
 
-`D:\Work\English-Content-Factory\02_Projects\HN-ENGLISH-666\06_templates\_mirror_isolated.py`
+`D:\Work\English\02_Projects\HN-ENGLISH-666\06_templates\_mirror_isolated.py`
 （`bootstrap` / `run <a> <b> [轮次目录] [输出目录]`，含 base64 注入、三闸、DOM 兜底）
 
 ## 相关
