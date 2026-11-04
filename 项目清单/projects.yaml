@@ -180,6 +180,16 @@ local_only:
     path: D:\Work\AI视频项目
     entry: AGENTS.md
     desc: AI 视频制作（Opus 5.5 + 浏览器渲染的"乐谱"范式：AI 写按时间算帧的代码，浏览器逐帧截图 + FFmpeg 编码）。项目宪法在 AGENTS.md，一手提示词框架在 docs\提示词-亚里888字框架.md。2026-10-23 立项，首个成品＝句读 App 竖版宣传片 v3（6 段×30s + 3 分钟连播版，交付在 D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\）。Obsidian 项目页：项目\project_AI视频项目.md
+  - name: 学校开支账（石坳小学收支 · 飞书 Base）
+    path: D:\Work\飞书
+    entry: AGENTS.md
+    project_yaml: D:\Work\飞书\project.yaml
+    status: active
+    handbook: v1.1
+    desc: 2026-11-04 正式立项。石坳小学月度收支结算的**长期方法真源**，未来一年每月复用 —— 电费按户抄表逐户分摊、伙食费按周按人数平摊、办公费逐笔流水、收入表三列日期各自独立、月费用表累计余额链。规范在 docs/00-04（00 总览 / 01 费用计算 / 02 通知与出图 / 03 登记规程 / 04 每月 SOP），可复用脚本 scripts/月度结算.py。群通知与出图格式由郭老师 2026-10-14 裁定为硬约定。数据真源是线上飞书 Base「学校开支」ShGrbdUVZaskE9szxkycfacLnIh；D:\Work\飞书\飞书多维表格 只是本地审计镜像。登记在 local_only 而非 projects，因为无独立 repo。
+    caution: 与 archived_2026_09_29 段那条「飞书」**同名但不同物** —— 那条是 2026-09-08 停更的 20 张表介绍说明书（已归档、to 路径已失效）；本条是 2026-10-10 起重建、2026-11-04 立项的学校开支账。D:\Work\飞书 这个路径曾被复用，勿据旧归档条目判断本目录状态。
+    related: D:\Work\启迪\02-催费台账（同领域不同项目）、D:\项目\feishu-data-hub（数据同步独立仓，非本项目文档侧）
+    open_items: 公开面隐私（9 份已跟踪 README 含真实姓名金额，待郭老师拍板）；月费用表 9 月伙食费收入归属；周次日期推算待确认；中心校拨款是否入表
 
 archived_2026_09_29:
   # 2026-10-19 郭老师定：`D:\Work\_归档\` 整目录已删除（含下列 飞书 与 dsh-personal-host 两项归档；
