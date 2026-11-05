@@ -1,7 +1,7 @@
 ---
 name: reference_skill_phrasing_course_pipeline
 type: reference
-updated: 2026-10-19
+updated: 2026-11-05
 kind: reference
 status: active
 ---
@@ -27,7 +27,7 @@ status: active
 | :--- | :--- | :--- | :--- | :--- |
 | `components/01_mindmap/` | 课程导图与目录层级 | 统编教材真源 | `lesson_tree.json` | `lessonId` 唯一全等 |
 | `components/02_text_prepare/` | 官方原文与三表挂载 | 国家智慧教育平台教材 | `raw_text.txt` + `words.json` | 识字表/写字表/词语表数字严格吻合 |
-| `components/03_segmentation/` | 双模态意群切分 | `raw_text.txt` | `segments.json` | 初读 4~8 留白禁假逗号；熟读 6~18 禁跨句 |
+| `components/03_segmentation/` | 双模态意群切分 | `raw_text.txt` | `segments.json` | 判据与验收见 `D:\listenloop\scratch\切分案例\_规则归纳_v4.md`：拼接逐字等于教材原文、无 0 汉字/纯标点格、熟读刀口只落在 `。！？；：，、` 后；**字数阈值已废（2026-11-05 v5：初读 4~8 / 熟读 6~18 两条门禁删除，完整短句允许任意短）** |
 | `components/04_audio_slice/` | 名师原声音频切片 | B站白名单 UP 原声 | `clean_audio.wav` + `meta.json` | 纯净语音，1300ms gap 静音切片 |
 | `components/05_asr_align/` | ASR 字级真实时间戳对齐 | 本地 Paraformer 引擎 | `timed_sentences.json` | 原生真戳禁均摊，单句时间戳完全闭合 |
 | `components/06_animation_spec/`| 胶囊动效与跟读评测配置 | 前序产出物 | 标准 `.lllesson` 课包 | 满足播放器变色高亮与红绿双行判定 |
