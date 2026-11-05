@@ -2,7 +2,7 @@
 name: reference_20261104_点赞工具可落地清单
 description: 本周小红书点赞里筛出的 6 个可落地工具/做法，含学什么、怎么用、第一步动作与归属仓库
 type: reference
-updated: 2026-11-04
+updated: 2026-11-05
 kind: reference
 status: active
 ---
@@ -24,6 +24,7 @@ status: active
 - **怎么用**：本机长任务/长会话上下文吃紧，先只装这一个，其余按需。
 - **第一步**：查 DSH 插件安装方式，装 `billion-context`，开一个新会话验证压缩后仍能续接。
 - **归属**：D:\Work（元智能 AI自成长引擎 工具链）
+- **状态**：✅ **已落地（2026-11-05）**：纯 JS 运行时零模型开销；通过 `dsh plugin --profile desktop add billion-context` 成功挂载 DSH bundle，对齐 `compaction-basic: { auto: false }`；全局 `bili doctor` 诊断全绿。
 
 ### 3. Breeze TTS 2（情绪标签 + 4 秒克隆，P1）
 - **学什么**：台词里插"笑/叹气/停顿"等标签控制演技；4 秒样本克隆声线。
