@@ -2,11 +2,11 @@
 name: reference_aihot_模型动态日报
 description: AIHOT 模型类动态日报（新品发布面），每日定时任务覆盖刷新；每条标注方向与是否已接入本机网关。
 type: reference
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 # AIHOT 模型动态日报（每日）
 
-> **同步时间**：2026-11-04 11:52:40（每日定时任务自动刷新落盘）
+> **同步时间**：2026-11-05 01:10:02（每日定时任务自动刷新落盘）
 > **数据来源**：https://aihot.news/api/v1/items?mode=all&category=ai-models&window=24h
 > **口径**：这是**新品/新发布面**（不是能力榜，也不是热度榜）——「AI 圈最近发布了什么模型」。
 > **接入判定**：`✅ 已接入` = 该型号已在本机网关（:8787）模型清单里；`🆕 未接入` = 有型号但网关里没有，
@@ -14,33 +14,41 @@ updated: 2026-11-04
 
 ## 一、模型动态（过去 24h）
 
+- **月之暗面开源 Kimi K3.1 Pro 模型权重** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 代码 ｜网关模型 `codearts/kimi-k3.1-pro`
+  - 月之暗面官方宣布开放 Kimi K3.1 Pro 模型权重，下载地址为 https://huggingface.co/moonshotai/Kimi-K3.1-Pro。官方表示将继续推进 open intelligence（开放智能），未在推文中给出更多模型细节。
+- **LiberAI 发布 World Action Model Liber-0，用于零样本机器人操作** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 Liber-0
+  - 中国机器人初创公司 LiberAI 发布 World Action Model Liber-0，面向零样本机器人操作，包括灵巧的多步任务。在 GPT-6 提出的 60 个任务、600 次尝试中，无需针对这些任务收集机器人演示，整体成功率 36%，其中 pick-and-place 63.5%、其他操作任务 34.0%、多步任务 10.5%。
+- **Anthropic 未发布旗舰 Claude Fable 5.5 实测曝光：2 小时 40 分钟纯代码生成 66 秒动画** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Fable 5.5
+  - 开发者称 Anthropic 尚未发布的 Claude Fable 5.5 连续自主编写运行代码约 2 小时 40 分钟，在未调用图像或视频生成工具的情况下完成 66 秒、1920×804、24fps 动画的画面、配乐与音效，并封装为单个 HTML 文件。
+- **魔芯科技发布基于华为昇腾原生的 4D 世界模型 MoWorld 2.0，场景可互动、编辑、调用** ｜🆕 未发现目录匹配 ｜方向 其他 ｜型号 MoWorld 2.0
+  - 魔芯科技在世界互联网大会发布基于华为昇腾原生的 4D 世界模型 MoWorld 2.0，将重力、弹力、浮力、光照、热力等物理要素融入空间建模与交互，输出可仿真、可实时渲染、可反复调用的 4D 高斯资产。
+- **混元 Hy4 登上 Agent Arena 总榜第14名** ｜· 不适用（非具体模型） ｜方向 代码
+  - Arena 宣布腾讯混元 Hy4 在 Agent Arena 总榜排名第14，基于全球用户 8.5K+ 真实长程智能体会话，净提升 +4.7%，进入 Pareto 前沿。目前为专有模型，作者称权重开放后将与 Kimi K3.1 Pro 并列开源模型第一；其得分与 Kimi K3.1 Pro (Max) 相差不到1个百分点，价格 $0.55/task 比 $1
+- **腾讯微信视觉团队开源 WeVisOne-VL 视觉语言模型，统一检测、OCR、分割与抠图** ｜· 不适用（非具体模型） ｜方向 代码
+  - 腾讯微信视觉团队发布开源视觉语言模型 WeVisOne-VL，提供 2B（2.44B 参数）和 4B（4.83B 参数）两个规格，基于 Qwen3-VL，单一模型覆盖检测、指代、计数、pointing、OCR、分割与 alpha matting，并内置 9.6M 参数像素解码器以输出 mask 和 matte，无需单独的 SAM。
+- **腾讯混元 Hy4 正式版发布，称首次跻身最强开源模型之列** ｜· 不适用（非具体模型） ｜方向 代码
+  - 腾讯混元 11 月 4 日发布大语言模型 Hy4 正式版，官方称 Hy 首次跻身最强开源模型之列，计划近期开源模型权重并发布模型系统卡片。相比 Hy4 preview，该模型扩展了预训练和后训练规模，首次引入视觉能力和电脑操作支持，可执行细粒度图像处理、复杂图表分析、数学视觉推理及结合命令行与图形界面的任务。
+- **腾讯混元 Hy4 正式发布，首次引入视觉与电脑操作能力** ｜· 不适用（非具体模型） ｜方向 其他
+  - 腾讯混元发布 Hy4 正式版，相比 Hy4 preview 扩展预训练与后训练规模，首次引入视觉能力和电脑操作支持，GameDev 与 GameLogic 评测分别提升 19.1% 和 9.8%。
 - **OpenRouter 上线隐身模型 Crouton Alpha** ｜· 不适用（非具体模型） ｜方向 其他
   - 🥷 新隐身模型：Crouton Alpha 一款高效推理模型，专为规模化处理你的智能体全天重复的工作而打造。 - 免费使用 - 1M token 上下文 - 文本、图像、音频和视频输入 - 不使用数据训练
 - **OpenAI 称 GPT-6 Astra 在一周内从零设计出可与 Codex 对话的硬件设备** ｜· 不适用（非具体模型） ｜方向 其他
   - OpenAI 表示其硬件团队把 GPT-6 Astra 用作副业项目，在一周内从零设计出一款让用户与 Codex 编码智能体对话的设备，Astra 负责外壳设计、PCB 布局与元件选型布线、固件和用户界面。
 - **Mistral Large 4 上线 Open Math OS，1.05T 开源权重、1M 上下文** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Large 4
   - Mistral AI 宣布 Mistral Large 4 加入 Open Math OS 模型阵容，拥有 1.05T 开源权重和 1M 上下文窗口，今天起面向获批团队开放。Open Math OS 是一个让数学家与 AI 智能体在共享项目上协作的研究工作区，仅基于开源模型构建，供社区检查和运行，并由社区掌控自己的数据。
-- **Arena 预告腾讯混元 Hy4 即将上线并回顾 Hy4 preview 表现** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 代码 ｜网关模型 `hy4-preview`
+- **Arena 预告腾讯混元 Hy4 即将上线并回顾 Hy4 preview 表现** ｜✅ 目录型号级命中（API 可调用性未核验） ｜方向 代码 ｜网关模型 `workbuddy-intl/hy4-preview`
   - Arena 预告腾讯混元 Hy4 即将推出，届时将在 Arena 排行榜上公布其表现。其引用的数据显示，Hy4 preview 上月以开源模型身份位列 Agent Arena 第 2（总榜第 10），在 14.5K+ 真实智能体会话中净提升 +5.4%，仅落后 Kimi K3 (Max) 的 +6.6%；成本约 $0.26 per median task，比
-- **Sarvam AI 发布决策模型 Sarvam Prism 并开放权重** ｜· 不适用（非具体模型） ｜方向 其他
-  - Sarvam AI 发布基于 Sarvam 105B 的 System One 决策模型 Sarvam Prism，在自测的 25 个决策模型中以 71.8 分、44 ms 响应（B200 GPU）成为 100 ms 内得分最高的模型。
-- **Mistral Large 4 以开放权重发布并附技术报告** ｜🆕 未发现目录匹配 ｜方向 代码 ｜型号 Large 4
-  - Mistral 团队成员 Pierre Stock 宣布 ML4（Mistral Large 4）正式开放权重，称其在代码智能体与网络安全方向具备前沿能力，且比三周前的 Preview 版本更高效、更紧凑。技术报告讲述其研发过程：https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/blob/mai
-- **商汤发布 SenseNova 6.8 Flash，主打办公智能与动态设计** ｜🔶 目录家族级命中，变体待核 ｜方向 代码 ｜网关模型 `raccoon/sn-sensenova-6-8-flash`
-  - 商汤推出 SenseNova 6.8 Flash，主打可靠工作流与精美设计。该模型具备长期记忆与主动交互的办公智能，可记住用户需求并持续推进任务，同时支持动画 PPT、动态海报、交互网站及可编辑 Blender 3D 项目。用户可在 SenseNova Token 计划中免费试用，每 5 小时获 1,500 次免费 API 请求。
-- **商汤发布日日新 SenseNova 6.8 Flash 正式版，支持动态 PPT 与 Blender 3D 创作** ｜🔶 目录家族级命中，变体待核 ｜方向 其他 ｜网关模型 `raccoon/sn-sensenova-6-8-flash`
-  - 商汤科技 11 月 2 日晚发布日日新 SenseNova 6.8 Flash 正式版，重点升级办公协作与设计生成能力，支持长期记忆、跨会话任务协作。
 
 ## 二、今日热议（热度面，交叉参考）
 
 - MIT 称 GPT-6 Astra 可直接改写模型权重
-- Google将引导学习引入Search和Classroom，K-12学生AI工具默认关闭
+- 腾讯混元 Hy4 正式发布，首次引入视觉与电脑操作
 - 苹果 Apple 智能随 iOS 27.3 入华，接入阿里千问
-- Anthropic 递交 S-1 拟以 ANT 登陆纳斯达克
+- Google将AI学习功能引入Search和Classroom，学校禁用AI即失去搜索
 - Anthropic 开源 FlashProve 可验证推理原型
-- 马斯克承认Grok Bot成本高于收入并下调限额
 - Claude Code 产品负责人 Cat Wu 宣布离开 Anthropic
-- OpenAI 称 ChatGPT 搜索量达 Google 两成、周活 12 亿
+- OpenAI宣布收购Pierre，Codex整合其开源工具
+- Anthropic 递交 S-1 拟以 ANT 登陆纳斯达克
 - AMD发布三季度财报，预计2027年营收增长超80%
-- OpenAI新设国家安全顾问，Driscoll出任
+- Canva十年来首次增长放缓，22%员工受裁员重组影响
 
