@@ -7,7 +7,7 @@ metadata:
   originSessionId: 6a9eb06a2520a537297895e1
   modified: 2026-09-07T00:00:00.000Z
 type: workflow
-updated: 2026-10-06
+updated: 2026-11-05
 kind: rule
 status: active
 ---
@@ -21,6 +21,7 @@ status: active
 **How to apply（流程）**：
 1. 先把主题/需求的关键边界（色板、结构、风格、约束）提炼清楚。
 2. 用生图能力先产出一张高保真预览图（控制台首屏类：KPI 舱 + 拓扑 + 导航 + 准入序列都在图里）。
+   ⚠️ 2026-11-05 覆盖：**界面/App 的预览图改为 HTML 代码画＋无头 Chrome 截图**，生图只出素材；见 `C:\Users\郭永涛\.dsh\AGENTS.md` 第七节。
 3. 交付预览图文件路径，等用户审 → 认可/改。
 4. 认可后：以该图作为视觉示范，直接驱动前端实现（或作为提示词注入给协作模型），不再重写需求长文。
 
