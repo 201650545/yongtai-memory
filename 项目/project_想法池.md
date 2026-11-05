@@ -999,7 +999,11 @@ eference_卡兹克_Agent自动化系统一年实践.md
 - **第一步**：建 10 条标注评测集 → 改前改后各跑一遍；验收＝**给出可比数字**，不给"感觉变好了"。
 - **代价**：低
 - **优先级**：P0
-- **状态**：**待与郭老师一起处理**
+- **状态**：**done（2026-11-05 落地）**：
+  1. 落地离线静态规则体检与 Eval 断言工具：`D:\Work\元智能\10_AI自成长引擎\技能库\prompt-eval-kit\scripts\prompt_lint.py`（实现 XML 隔离检测、无效催眠加粗拦截、博弈天平与输出契约核验，支持黄金用例 0 额外 Token 自动化断言）；
+  2. 落地技能：`prompt-eval-kit` 并入库《能力总账》；
+  3. 沉淀参考规范卡：`D:\记忆\参考\reference_Eval驱动提示词优化与Anthropic工程规范.md`（Anthropic 5 大工程法则与 0 额度消耗断言体系）；
+  4. 改造现成靶子：优化 `gpt-mirror-extended-review` 中的 `gpt_ask.py` 送审提示词，静态体检评分从 55 分（FAIL）跃升至 100 分（PASS）。
 
 ### IDEA-058 · lieflat-code-video 运镜/转场模板（只抄清单，不装 Remotion）
 
