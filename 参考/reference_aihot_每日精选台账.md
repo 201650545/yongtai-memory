@@ -2,7 +2,7 @@
 name: reference_aihot_每日精选台账
 description: AIHOT 每日本质精选的**去重台账**（事件级条目粒度，滚动 14 天 / ≤30 行）；由 search_gateway\scripts\aihot_daily_store.py 单写，是「最近推过什么」的唯一真源
 type: reference
-updated: 2026-11-04
+updated: 2026-11-05
 ---
 # AIHOT 每日精选台账（去重真源）
 
@@ -13,8 +13,6 @@ updated: 2026-11-04
 
 | 日期 | 标题 | 概念 | 出处 | 链接 | 条目文件 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2026-10-23 | [[决策模型]]开始替代规则编排 |  | 蚂蚁数科—— | https://www.ithome.com/1/016/633.htm | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-10-23-02.md |
-| 2026-10-24 | 开放权重压低智能体成本 | 稀疏激活 | MiniMax | https://x.com/MiniMax_AI/status/2113452026902589732 | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-10-24-01.md |
 | 2026-10-24 | 世界模型先做交互分镜 | 世界记忆 | 腾讯混元 | https://x.com/TencentHunyuan/status/2113676827114053892 | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-10-24-02.md |
 | 2026-10-24 | 超小TTS把语音搬回端侧 | 端侧语音合成 | Gradium | https://www.marktechpost.com/2026/10/22/gradium-phonon-31m-on-device-tts/ | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-10-24-03.md |
 | 2026-10-25 | **纯语音模型重定义实时交互** | 纯语音端到端 | Block（） | https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/ | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-10-25-01.md |
@@ -43,3 +41,5 @@ updated: 2026-11-04
 | 2026-11-04 | 评测分差来自脚手架而非模型 | 脚手架、候选池 | ARC Prize |  | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-11-04-01.md |
 | 2026-11-04 | 智能体成本大头在重复读 | 上下文复述、前缀缓存 | Arena |  | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-11-04-02.md |
 | 2026-11-04 | 设计交付物升级为可编辑中间层 | 可编辑中间层、免费线 | 商汤 SenseTime |  | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-11-04-03.md |
+| 2026-11-05 | [[视觉任务统一模型]] |  | 腾讯微信视觉团队 — | https://marktechpost.com/2026/11/03/tencent-wevisone-vl-vision-language-model/ | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-11-05-01.md |
+| 2026-11-05 | [[免费长上下文智能体]] |  | OpenRouter — | https://x.com/OpenRouter/status/2117712705901728199 | D:\Work\元智能\20_自适应工作流引擎\runtime\aihot_daily_picks\entries\2026-11-05-02.md |
