@@ -23,7 +23,7 @@ status: active
 ## 二、注意事项（实测踩过的坑）
 
 1. **`video-assembler` 已搬到 `D:\Work\AI视频项目\video-assembler\`（2026-11-01 郭老师定）**。本项目目录 `D:\Work\AI视频项目\` 是 AI 视频相关物的唯一归处（规矩见该项目 `AGENTS.md` §零）；**垃圾与测试文件不进本项目**（PoC、临时帧、废弃版本放 `_tmp\` 或删）。旧位置 `草稿区\L3_Skill\video-assembler\` 已清空（`out\` 730 文件 / 231.4 MB 试验产出已删），只剩一份迁移指针 `README_已迁移.md`。MCP 注册真源（`mcp_config.json`）与 Codex `config.toml` 的路径已同步改新。
-2. 宣传片 README 里写的成片路径 `D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\` **实测已不存在**（2026-10-24 按郭老师指示删除）。
+2. 宣传片 README 里写的成片路径 `D:\Work\_inbox\宣传片_晨读60秒\v2_动效\final_v3\` **实测已不存在**（2026-10-24 按郭老师指示删除）。
 3. 曾存在一个**名字多空格的误建目录** `L3_Skill\video-ass ***embler`；**2026-11-01 复核已不存在**（`Test-Path` 为 false）。
 4. 本页 2026-10-28 之前**从未落盘**（只有 `ds-work2` 里的 `.pre_append.bak` 草稿）。
 

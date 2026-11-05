@@ -9,7 +9,7 @@ status: active
 # 证据摘录 · 评分闸与判据坑（2026-10-24）
 
 全部数字于 **2026-10-24 11:1x–11:2x 现读现核**（当轮跑出），未凭记忆转述。出处用 `文件:行号` 或命令输出。
-**短名对照**（本表里出现的短名一律指下列绝对路径）：`score_node.py` → `D:\Work\经纬\tools\score_node.py`；`gate\*.md` → `D:\Work\_inbox\经纬-画布\gate\*.md`；`19-自评分与审核分层*.md` → `D:\Work\经纬\docs\`；`gen_notes-styles.md` → `D:\Work\_inbox\句读海报\bg\`。
+**短名对照**（本表里出现的短名一律指下列绝对路径）：`score_node.py` → `D:\Work\经纬\tools\score_node.py`；`gate\*.md` → `D:\Work\_inbox\经纬-画布\gate\*.md`；`19-自评分与审核分层*.md` → `D:\Work\经纬\docs\`；`gen_notes-styles.md` → `D:\Work\_inbox\晨读海报\bg\`。
 
 ## §A 候选 1（评分闸第一次完整实践）的可核数据
 
@@ -34,7 +34,7 @@ status: active
 
 | # | 原值 | 出处 |
 |---|---|---|
-| B1 | `style1-ink.png` 右下角 200×200「亮度<120 且 alpha>200」占比 = **100.000%（40000/40000）** > 0.5% 阈值 | `D:\Work\_inbox\句读海报\bg\gen_notes-styles.md:140`、`:45` |
+| B1 | `style1-ink.png` 右下角 200×200「亮度<120 且 alpha>200」占比 = **100.000%（40000/40000）** > 0.5% 阈值 | `D:\Work\_inbox\晨读海报\bg\gen_notes-styles.md:140`、`:45` |
 | B2 | **换提示词重出（P1→P1v2）后该数字仍是 100.000%** —— 判据在深底上的结构性失效 | `gen_notes-styles.md:142`、`:150` |
 | B3 | 深底参数：全图均值亮度 **19.1/22.8/30.7**、角区**中位亮度 23.3**、全角 200×200 亮度范围 **19.5–27.1** | `gen_notes-styles.md:144` |
 | B4 | 局部对比复核：**偏离角区中位亮度 >18 的像素 = 0 个（0.000%）**；25×25 分块标准差 **p50=0.38 / p90=0.61 / max=0.79** | `gen_notes-styles.md:147` |

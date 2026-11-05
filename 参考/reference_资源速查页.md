@@ -226,4 +226,4 @@ $r = Invoke-RestMethod -Uri 'http://127.0.0.1:3100/v1/images/generations' -Metho
 - **宣传片项目**：`D:\Work\AI视频项目\`（561 文件）
 - **项目入口页**：`D:\记忆\项目\project_AI视频项目.md`
 - **底料**：ffmpeg 7.1 **不在 PATH**，用 `imageio_ffmpeg.get_ffmpeg_exe()`；`faster_whisper`(字幕) + `edge_tts`(配音) + `cv2/PIL`(画面) 均已装
-- **成片路径注意**：`D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\` 已不存在（10-24 删除）
+- **成片路径注意**：`D:\Work\_inbox\宣传片_晨读60秒\v2_动效\final_v3\` 已不存在（10-24 删除）

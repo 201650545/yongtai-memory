@@ -16,7 +16,7 @@ status: active
 
 ## 一、前缀 = 归属声明，不是族名
 
-**现象（可复现证据）**：2026-10-20 母仓化整合定了「母仓名一律带 `phrasing-` 前缀」。`phrasing` 是**句读/Phrasing 这个产品**的名字 ⇒ 小红书运营（`phrasing-xhs-ops`）、外部模型送审（`phrasing-external-model-review`）、通用工程陷阱（`phrasing-engineering-traps`）三个**与句读毫无关系**的能力域被一并冠名。执行本身没走样（`轮次记录` 与 `全局变更广播` 第 12 条都记着是裁定），**是裁定本身划错了范围**。
+**现象（可复现证据）**：2026-10-20 母仓化整合定了「母仓名一律带 `phrasing-` 前缀」。`phrasing` 是**晨读/Phrasing 这个产品**的名字 ⇒ 小红书运营（`phrasing-xhs-ops`）、外部模型送审（`phrasing-external-model-review`）、通用工程陷阱（`phrasing-engineering-traps`）三个**与晨读毫无关系**的能力域被一并冠名。执行本身没走样（`轮次记录` 与 `全局变更广播` 第 12 条都记着是裁定），**是裁定本身划错了范围**。
 
 **原因**：把**一次产品改名（ListenLoop→句读）的规则**当成了**通用命名规则**往下推。一刀切裁定天然会连坐——凡是"同属一批"就被当成"同属一个产品"。
 
