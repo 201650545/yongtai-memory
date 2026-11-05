@@ -150,10 +150,6 @@ local_only:
     path: D:\Work\教案与课件设计\07_课件与练习生产
     desc: HTML 交互课件 ＋ DOCX 配套练习卷的生产规范与引擎（2026-10-08 从已删除的 `english-teaching-production` 仓按"只留两点"抽出；2026-10-19 郭老师定并入课程思政教学竞赛——同日改名「教案与课件设计」——成为其 `07_课件与练习生产` 子目录）。含 2 份精简规范 md、12 个 Python 引擎/验证器（语法自检通过）、3 份生成模板、2 份 exam_spec JSON、3 档样例课件，合计 35 文件 / 1.83MB
     caution: 随所在项目仓（教案与课件设计，git）管理，样例课件不入仓；原 english-teaching-production 仓已删 ⇒ 这份是唯一留存，原 1370 文件与 51 次提交不可追
-  - name: 贾维斯中控（原 Remote-Coding-Control / Codemote）
-    path: D:\Work\贾维斯中控
-    desc: 手机遥控电脑（贾维斯愿景）。2026-09-29 改中文名。语音远程控制电脑。手机=语音遥控器，电脑=执行体（Jev 路由 → 能力执行器矩阵）。依赖网关 :3100/v1/jev
-    infra: 阿里 99 ECS（2C2G/3M 固定带宽，99元/年锁价至 2029-03-31）**已在跑 frps 中转＋:3100 网关＋Uptime Kuma**，不是"远端执行体候选"；腾讯轻量 Hermes（2C2G/50G 北京）＝staging，2026-10-29 到期；腾讯 4核4G 109/年＝消耗品定位（活动截止 2026-10-12）。2026-09-29 已裁「云端算力购买话题关闭，现在不买任何服务器」，四条加购触发条件见唯一真源 D:\Work\贾维斯中控\07-Decisions\2026-09-29-服务器与商业化决策记录.md；跨项目联合点（谁与谁同机）见 D:\记忆\参考\reference_云服务器底座与跨项目联合点.md  # 09-30 旧表述"2核2G 作候选／4核4G 在考虑"系按郭老师口述误记，未读 09-29 决策档；同日按决策档改正
   - name: API转发网关（原 api-gateway）
     path: D:\Work\API转发网关
     runtime: D:\项目\ai-hub\search_gateway   # 运行体真源：代码/渠道编排规则.md/model_routes.json/channels.json 都在这里。D:\Work\API转发网关 是文档仓，其 渠道编排规则.md 停在 09-22 已 stale（2026-09-30 验收实测，双真源分叉见元智能待裁定 #28）
@@ -206,6 +202,17 @@ archived_2026_09_29:
     from: D:\Work\微信通知自动化
     to: D:\Work\贾维斯中控\09-Experiments\微信通知自动化
     why: 郭老师 2026-09-29 裁定——已更新为 Codemote 的附属实验；远程控制走模型 computer use 操作整台电脑，独立的微信通知项目不再需要。非归档、是并入
+  # 2026-11-04 补登：English（原 English Content Factory / ECF）。此前**从未登记**在本文件里，
+  #   所以路由查询与 Work/Home.md 子库一览一直查不到它——不是被删了，是一直没写。
+  #   命名口径（郭老师 2026-11-03）：子项目目录名定为 English（原 English-Content-Factory），
+  #   「这里存所有 English 的东西」；旧名括注保留，便于旧环节（脚本名/历史 commit）对得上。
+  #   登记在 local_only 而非 projects，因为无独立 repo（文档仓，代码在 D:\Work 母仓 git 内）。
+  - name: English（原 English Content Factory）
+    path: D:\Work\English
+    entry: AGENTS.md
+    desc: 湖南中考英语教辅内容工厂，多模型工位协同（Kimi/DeepSeek/Qwen/QwenMax/GLM/GPT6extend/SpaceBunny/Step5Preview 共 8 份工位说明）。3 个子项目并行：HN-ENGLISH-666（湖南中考英语 666 词，content_ready）、CN-ENGLISH-MULTI（多地中考英语词汇，analyzing）、HN-ZK-ZHUANXIANG（题型专项，rendered）。出卷唯一标尺＝00_System\规范_湖南中考英语出卷.md（109 行）。2026-10-09 由「英语内容工厂」并入英文命名（English-Content-Factory）；**2026-11-04 郭老师定名简化为 `English`**，目录已 git mv 到 D:\Work\English，两库指针同步完成（活文档机械死链 = 0，验收报告见 D:\临时文件夹\改名English_20261103\验收报告_终版.md）
+    related: API转发网关（:3100/:8787，算力来路）、元智能（能力与技能库）
+    caution: 旧路径 `D:\Work\英语内容工厂\`（2026-10-09 已删）与 `D:\Work\English-Content-Factory\`（2026-11-04 已改名）**均已失效**，勿据旧路径判断本项目状态
 
 archived_2026_10_11:
   - name: AI平台
@@ -214,4 +221,10 @@ archived_2026_10_11:
     from: D:\Work\AI平台
     to: 已彻底删除（释放 620MB）
     why: 2026-09-03 聚合主仓已被实际业务结构演进超越；算力网关运行体在 ai-hub（:3100/:8787），文档并入 API转发网关，记忆在 D:\记忆，自动化与 runbook 在元智能。郭老师 2026-10-11 裁定「旧的没用的直接删除」。有效文档已抢救移交至对应项目（ListenLoop架构方案 → AI精听训练器，网关巡检报告 → API转发网关），本地目录物理彻底删除。
+
+archived_2026_11_04:
+  - name: 贾维斯中控（原 Remote-Coding-Control / Codemote）
+    from: D:\Work\贾维斯中控
+    to: 已彻底删除
+    why: 2026-11-04 郭老师明确裁定「感觉那个贾维斯中控没有做它的必要了，把它删掉吧」。手机遥控电脑文档与相关实验依赖环境（微信自动化 .venv、faster-whisper 模型等）彻底物理删除并从 Git 移除。
 
