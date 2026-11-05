@@ -43,5 +43,5 @@ status: active
 ## 三、已知坑（2026-09-30 实测）
 
 - `D:\Work\API转发网关` 只是**文档仓**；运行体在 `D:\项目\ai-hub\search_gateway`。projects.yaml 已加 `runtime:` 字段注明，Work 副本的 `渠道编排规则.md` 停在 09-22、与运行体 339 行分叉（未决项 #28，见 [[项目/project_ai_gateway]]）。
-- `D:\Work\AI精听训练器\05_发布与问诊` 目录名与内容不符：实为 ListenLoop 发布台＋GPT 问诊工作台（改名等郭老师点头，有 9 处入向引用）。
+- `D:\Work\晨读\05_发布与问诊` 目录名与内容不符：实为 ListenLoop 发布台＋GPT 问诊工作台（改名等郭老师点头，有 9 处入向引用）。
 - 本库 git 最后提交停在 **ffb26ae / 2026-09-22 09:42**，其后累计 **42 项待提交（6 改＋36 新，含 09-30 这批）**，本地 main 比 `origin/main` **ahead 22 个提交**未推 ⇒ **只读本地 `D:\记忆` 的 Agent 能拿到最新，走 GitHub 镜像 `yongtai-memory` 的 Agent 看到的是 09-22 版**。要不要 commit/push 由郭老师定（已问两次未答）。接手前先跑 `git log -1` 与 `git status --porcelain | wc -l` 复测，别引用本行数字。

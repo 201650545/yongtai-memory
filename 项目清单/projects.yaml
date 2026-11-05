@@ -83,14 +83,14 @@ projects:
 
   - id: phrasing-project
     repo: https://github.com/201650545/phrasing-project
-    name: 晨读（原 句读/ListenLoop · AI 精听训练器）发布仓
+    name: 晨读（原 ListenLoop · AI 精听训练器）发布仓
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\AI精听训练器\05_发布与问诊\phrasing-project
+    local: D:\Work\晨读\05_发布与问诊\phrasing-project
     handoff: D:\Work\AI精听训练器\05_GPT问诊台\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"
-    curated: D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓
-    desc: 2026-10-08 已收编——原 `D:\Work\AI精听训练器\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
+    curated: D:\Work\晨读\05_发布与问诊\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓
+    desc: 2026-10-08 已收编——原 `D:\Work\晨读\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
     todo: ~~目录改名~~ 已由郭老师 10-08 裁定「收编并入 ListenLoop」并执行完毕
 
   - id: workspace-index
@@ -105,11 +105,11 @@ projects:
   # —— 2026-10-12 补登记：全盘核实活跃与归档 GitHub 仓 ——
   - id: phrasing-curated
     repo: https://github.com/201650545/phrasing-curated
-    name: 晨读（原 句读/ListenLoop）精选架构问诊仓
+    name: 晨读（原 ListenLoop）精选架构问诊仓
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\AI精听训练器\05_发布与问诊\phrasing-curated
+    local: D:\Work\晨读\05_发布与问诊\phrasing-curated
     desc: ListenLoop 专供高智力模型（ChatGPT 6 等）深度阅读与评审的精选架构、设计与交接包仓
 
   - id: meta-intelligence-facts
@@ -175,7 +175,7 @@ local_only:
   - name: AI视频项目
     path: D:\Work\AI视频项目
     entry: AGENTS.md
-    desc: AI 视频制作（Opus 5.5 + 浏览器渲染的"乐谱"范式：AI 写按时间算帧的代码，浏览器逐帧截图 + FFmpeg 编码）。项目宪法在 AGENTS.md，一手提示词框架在 docs\提示词-亚里888字框架.md。2026-10-23 立项，首个成品＝句读 App 竖版宣传片 v3（6 段×30s + 3 分钟连播版，交付在 D:\Work\_inbox\宣传片_句读60秒\v2_动效\final_v3\）。Obsidian 项目页：项目\project_AI视频项目.md
+    desc: AI 视频制作（Opus 5.5 + 浏览器渲染的"乐谱"范式：AI 写按时间算帧的代码，浏览器逐帧截图 + FFmpeg 编码）。项目宪法在 AGENTS.md，一手提示词框架在 docs\提示词-亚里888字框架.md。2026-10-23 立项，首个成品＝晨读 App 竖版宣传片 v3（6 段×30s + 3 分钟连播版，交付在 D:\Work\_inbox\宣传片_晨读60秒\v2_动效\final_v3\）。Obsidian 项目页：项目\project_AI视频项目.md
   - name: 学校开支账（石坳小学收支 · 飞书 Base）
     path: D:\Work\飞书
     entry: AGENTS.md
