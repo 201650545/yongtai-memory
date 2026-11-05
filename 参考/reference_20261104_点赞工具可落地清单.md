@@ -18,6 +18,7 @@ status: active
 - **怎么用在我们身上**：替换在线转换器和会员工具；课件素材（音频/图片/视频）批量转码走它。
 - **第一步**：从 GitHub Releases 装 Windows 版，跑一次 mp3→wav、png→webp 验证。
 - **归属**：D:\Work（课件与练习生产工具链）
+- **状态**：❌ **已废弃（dropped，2026-11-05 郭老师裁定）**：纯鼠标桌面 GUI 工具，无代码与 Agent API，日常批量转码全走 Python / `ffmpeg` / `Pillow` 脚本处理，无需安装多余套壳软件。
 
 ### 2. DSH billion-context（上下文压缩，P0）
 - **学什么**：`ranxianglei/billion-context` 等 DSH 六件套里的上下文压缩插件。
