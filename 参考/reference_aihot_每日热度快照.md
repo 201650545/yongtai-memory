@@ -2,11 +2,11 @@
 name: reference_aihot_每日热度快照
 description: AIHOT 中文 AI 资讯每日热度快照（热度面，非能力榜），每日凌晨定时任务覆盖刷新。
 type: reference
-updated: 2026-11-05
+updated: 2026-11-06
 ---
 # AIHOT 中文 AI 资讯热度快照（每日）
 
-> **同步时间**：2026-11-05 01:10:01 (每日定时任务自动刷新落盘)
+> **同步时间**：2026-11-06 01:10:02 (每日定时任务自动刷新落盘)
 > **数据来源**：https://aihot.news/api/v1/hot-topics（JSON，匿名只读，无需 Key）
 > **保留纪律**：冷快照只保留 7 天，超期每日自动删除；本文件每日单写覆盖。
 >
@@ -16,79 +16,85 @@ updated: 2026-11-05
 
 | 名次 | 事件 | 首发信源 | 信源数 | 信号数 | 参与数 |
 | :---: | :--- | :--- | :---: | :---: | :---: |
-| 1 | MIT 称 GPT-6 Astra 可直接改写模型权重 | The Decoder：AI News（RSS） | 5 | 55 | 60 |
-| 2 | 腾讯混元 Hy4 正式发布，首次引入视觉与电脑操作 | 公众号：腾讯混元 | 4 | 21 | 25 |
-| 3 | 苹果 Apple 智能随 iOS 27.3 入华，接入阿里千问 | IT之家·人工智能 | 2 | 26 | 28 |
-| 4 | Google将AI学习功能引入Search和Classroom，学校禁用AI即失去搜索 | TechCrunch：AI（RSS） | 6 | 24 | 30 |
-| 5 | Anthropic 开源 FlashProve 可验证推理原型 | Anthropic：Research（发表成果 · 网页） | 6 | 21 | 27 |
-| 6 | Claude Code 产品负责人 Cat Wu 宣布离开 Anthropic | X：Cat Wu（Anthropic，Claude Code 产品负责人） (@ | 1 | 17 | 18 |
-| 7 | OpenAI宣布收购Pierre，Codex整合其开源工具 | OpenAI：官网动态（RSS · 排除企业/客户案例） | 1 | 9 | 10 |
-| 8 | Anthropic 递交 S-1 拟以 ANT 登陆纳斯达克 | Anthropic：Newsroom（网页） | 4 | 22 | 26 |
-| 9 | AMD发布三季度财报，预计2027年营收增长超80% | X：Rohan Paul (@rohanpaul_ai) | 1 | 14 | 15 |
-| 10 | Canva十年来首次增长放缓，22%员工受裁员重组影响 | X：Rohan Paul (@rohanpaul_ai) | 1 | 12 | 13 |
+| 1 | OpenAI 发布 Images 2.6：ChatGPT 可生成 GIF，API 上线两款模型 | OpenAI：官网动态（RSS · 排除企业/客户案例） | 8 | 48 | 56 |
+| 2 | Claude Code 产品负责人 Cat Wu 转投 OpenAI | X：Tibo (@thsottiaux) | 3 | 32 | 35 |
+| 3 | 腾讯混元 Hy4 正式发布，首增视觉与电脑操作 | 公众号：腾讯混元 | 8 | 28 | 36 |
+| 4 | OpenAI宣布收购Pierre，工具将并入Codex | OpenAI：官网动态（RSS · 排除企业/客户案例） | 3 | 24 | 27 |
+| 5 | OpenAI称AI管线单次运行发现并修补948个Linux内核提权漏洞 | OpenAI：官网动态（RSS · 排除企业/客户案例） | 2 | 20 | 22 |
+| 6 | 苹果 Apple 智能随 iOS 27.3 入华，接入阿里千问 | IT之家·人工智能 | 3 | 28 | 31 |
+| 7 | Google将AI学习功能引入Search和Classroom，学校禁用AI即失去搜索 | TechCrunch：AI（RSS） | 4 | 26 | 30 |
+| 8 | 百度开源ERNIE 5.5 Flash Base基座模型 | IT之家·人工智能 | 2 | 13 | 15 |
+| 9 | Meta收购Conductor，产品将逐步关停 | Conductor 官方更新 | 4 | 13 | 17 |
+| 10 | 苹果下调工程师每日AI支出上限至200美元 | IT之家·人工智能 | 4 | 12 | 16 |
 
 ---
 
 ## 信源明细（每条热点的首发与讨论面）
 
-**1. MIT 称 GPT-6 Astra 可直接改写模型权重**  · 最近更新 2026-11-04T15:44:44.000Z
+**1. OpenAI 发布 Images 2.6：ChatGPT 可生成 GIF，API 上线两款模型**  · 最近更新 2026-11-05T07:03:17.000Z
+
+  - MarkTechPost（RSS）
+  - X：Greg Brockman (@gdb)
+  - X：Arena (@arena)
+  - X：Higgsfield AI (@higgsfield)
+  - X：fal (@fal)
+  - IT之家·人工智能
+
+**2. Claude Code 产品负责人 Cat Wu 转投 OpenAI**  · 最近更新 2026-11-05T12:20:35.000Z
+
+  - The Decoder：AI News（RSS）
+  - X：Tibo (@thsottiaux)
+  - X：Cat Wu（Anthropic，Claude Code 产品负责人） (@_catwu)
+
+**3. 腾讯混元 Hy4 正式发布，首增视觉与电脑操作**  · 最近更新 2026-11-05T16:06:31.000Z
 
   - The Decoder：AI News（RSS）
   - IT之家·人工智能
-  - X：indigo (@indigox)
-  - X：Dominik Kundel（OpenAI 开发者体验，Codex） (@dkundel)
-  - X：Rohan Paul (@rohanpaul_ai)
-
-**2. 腾讯混元 Hy4 正式发布，首次引入视觉与电脑操作**  · 最近更新 2026-11-04T07:15:01.000Z
-
+  - X：腾讯混元 (@TencentHunyuan)
+  - X：X.PIN (@thexpin)
+  - X：OpenClaw (@openclaw)
   - X：Arena (@arena)
-  - X：Tencent WorkBuddy (@WorkBuddy_AI)
+
+**4. OpenAI宣布收购Pierre，工具将并入Codex**  · 最近更新 2026-11-05T07:06:27.400Z
+
   - IT之家·人工智能
-  - 公众号：腾讯混元
+  - The Decoder：AI News（RSS）
+  - X：Greg Brockman (@gdb)
 
-**3. 苹果 Apple 智能随 iOS 27.3 入华，接入阿里千问**  · 最近更新 2026-11-04T14:49:55.467Z
+**5. OpenAI称AI管线单次运行发现并修补948个Linux内核提权漏洞**  · 最近更新 2026-11-05T01:06:09.000Z
 
+  - X：Rohan Paul (@rohanpaul_ai)
+  - X：Tibo (@thsottiaux)
+
+**6. 苹果 Apple 智能随 iOS 27.3 入华，接入阿里千问**  · 最近更新 2026-11-04T17:17:16.000Z
+
+  - X：X.PIN (@thexpin)
   - IT之家·人工智能
   - The Verge：AI（RSS）
 
-**4. Google将AI学习功能引入Search和Classroom，学校禁用AI即失去搜索**  · 最近更新 2026-11-04T16:17:22.000Z
+**7. Google将AI学习功能引入Search和Classroom，学校禁用AI即失去搜索**  · 最近更新 2026-11-04T16:17:22.000Z
 
   - TechCrunch：AI（RSS）
   - The Decoder：AI News（RSS）
   - IT之家·人工智能
   - Ars Technica：AI（RSS）
-  - The Verge：AI（RSS）
-  - Hacker News：AI 热帖
 
-**5. Anthropic 开源 FlashProve 可验证推理原型**  · 最近更新 2026-11-04T15:23:49.000Z
+**8. 百度开源ERNIE 5.5 Flash Base基座模型**  · 最近更新 2026-11-05T08:55:26.000Z
+
+  - X：百度 Baidu (@Baidu_Inc)
+  - IT之家·人工智能
+
+**9. Meta收购Conductor，产品将逐步关停**  · 最近更新 2026-11-05T15:01:09.000Z
 
   - The Decoder：AI News（RSS）
   - IT之家·人工智能
   - TechCrunch：AI（RSS）
-  - MarkTechPost（RSS）
-  - X：Rohan Paul (@rohanpaul_ai)
-  - X：Anthropic (@AnthropicAI)
+  - X：Charlie Holtz（@charlieholtz）
 
-**6. Claude Code 产品负责人 Cat Wu 宣布离开 Anthropic**  · 最近更新 2026-11-03T21:33:33.000Z
+**10. 苹果下调工程师每日AI支出上限至200美元**  · 最近更新 2026-11-05T14:03:14.000Z
 
-  - X：Cat Wu（Anthropic，Claude Code 产品负责人） (@_catwu)
-
-**7. OpenAI宣布收购Pierre，Codex整合其开源工具**  · 最近更新 2026-11-04T16:54:47.000Z
-
-  - X：Tibo (@thsottiaux)
-
-**8. Anthropic 递交 S-1 拟以 ANT 登陆纳斯达克**  · 最近更新 2026-11-03T17:07:01.000Z
-
+  - The Decoder：AI News（RSS）
   - TechCrunch：AI（RSS）
   - IT之家·人工智能
-  - X：Rohan Paul (@rohanpaul_ai)
-  - Tomasz Tunguz 博客（VC 分析）
-
-**9. AMD发布三季度财报，预计2027年营收增长超80%**  · 最近更新 2026-11-03T23:14:06.000Z
-
-  - X：Rohan Paul (@rohanpaul_ai)
-
-**10. Canva十年来首次增长放缓，22%员工受裁员重组影响**  · 最近更新 2026-11-03T22:58:03.000Z
-
   - X：Rohan Paul (@rohanpaul_ai)
 
