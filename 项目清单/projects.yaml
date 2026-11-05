@@ -1,7 +1,7 @@
 # AI 路由表：外部 AI 从这里开始定位项目
 workspace:
   owner: 201650545
-  updated_at: 2026-10-07
+  updated_at: 2026-11-05
 
 projects:
   - id: nitian-theme
@@ -88,9 +88,9 @@ projects:
     visibility: public
     entry: README.md
     local: D:\Work\晨读\05_发布与问诊\phrasing-project
-    handoff: D:\Work\AI精听训练器\05_GPT问诊台\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"
+    handoff: D:\Work\晨读\05_发布与问诊\phrasing-curated\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"；2026-11-05 路径随目录改名修正
     curated: D:\Work\晨读\05_发布与问诊\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓
-    desc: 2026-10-08 已收编——原 `D:\Work\晨读\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\AI精听训练器\，代码真源 D:\listenloop\
+    desc: 2026-10-08 已收编——原 `D:\Work\晨读\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\晨读\（2026-11-04 由 AI精听训练器 改名），代码真源 D:\listenloop\
     todo: ~~目录改名~~ 已由郭老师 10-08 裁定「收编并入 ListenLoop」并执行完毕
 
   - id: workspace-index
@@ -162,9 +162,18 @@ local_only:
   - name: 小红书点赞分析
     path: D:\Work\小红书点赞分析
     desc: 小红书每日点赞提取 + AI 总结。宿主 Trae，计划任务 XHS_LikeManager_Daily 每日 01:00（北京时间，2026-10-09 由 10:17 调整）
-  - name: AI精听训练器
-    path: D:\Work\AI精听训练器
-    desc: ListenLoop 文档真源（实测 45 份 .md、6 个子目录：00_项目驾驶舱_可视化中心／01_商业与战略规划／02_工程架构与系统设计／03_研发日志与历史归档／04_Agent机器索引_快速通道／dist），代码真源 D:\listenloop；GitHub 发布台见 phrasing-project  # 2026-10-01 审计修正：原未在 projects/local_only 登记（只在 phrasing-project 的 desc 散文里提过），实测计数后补登
+  - name: 晨读（原 ListenLoop · AI精听训练器）
+    path: D:\Work\晨读
+    entry: README.md
+    desc: 晨读文档真源（2026-11-04 目录由 AI精听训练器 改名为 晨读；2026-11-05 重组为 00_总览／01_商业战略／02_架构设计／03_任务书／04_版本存档／05_发布与问诊／06_历史归档），代码真源 D:\listenloop；GitHub 发布仓见 phrasing-project、phrasing-curated  # 2026-10-01 补登；2026-11-05 路径与结构随改名更新
+  - name: 主控编排
+    path: D:\Work\主控编排
+    entry: README.md
+    desc: DSH 主控 Agent 的预设与全局规矩真源（lead-preset、dsh-AGENTS/user-AGENTS、备份）；D:\主控编排 与 D:\小浣熊\dsh-lead-preset 是指向本目录的 junction。含 token，不对外公开  # 2026-11-05 按 vault_registry.yaml 补登
+  - name: 备份与安检
+    path: D:\Work\备份与安检
+    entry: 备份/README.md
+    desc: 跨项目工具：Work 库与记忆仓打 zip 传夸克网盘＋7 天本地清扫（Work_Backup_PackDaily 01:00／PackWeekly 周日 01:30）＋全库密钥扫描  # 2026-11-05 按 vault_registry.yaml 补登
   - name: 启迪 / 跃己 / 教案与课件设计（原课程思政教学竞赛；项目学习已于 2026-10-19 删除）
     path: D:\Work\
     desc: 见 vault_registry.yaml 与 Home.md 子库一览
