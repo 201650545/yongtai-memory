@@ -212,4 +212,4 @@ flowchart TD
   - `English/00_System/01_ListenLoop多模型团队分工方案_最新版.md`
   - `English/02_Projects/HN-ENGLISH-666/03_Products/index.html`（交互式任务选择器）
   - `English/02_Projects/HN-ENGLISH-666/03_Products/人机协同交互白板_LivingSurface.html`
-  - `D:\Work\AI精听训练器\02_工程架构与系统设计\22_ListenLoop多模型团队分工方案.md`
+  - `D:\Work\晨读\02_架构设计\22_ListenLoop多模型团队分工方案.md`

@@ -25,5 +25,5 @@ scope: 晨读
 - 汇报热更新进度时用「已做 / 部分 / 没做」三档，**不许把「部分」说成「已做」**。
 
 **依据出处**：2026-10-22 逐条核对；规范原文
-`D:\Work\AI精听训练器\02_工程架构与系统设计\2026-10-08_listenloop_hot_update_architecture_review.md`
+`D:\Work\晨读\02_架构设计\2026-10-08_listenloop_hot_update_architecture_review.md`
 （结论原文：「你真正需要的不是 Flutter 代码热更新，而是内容引擎分离」）。
