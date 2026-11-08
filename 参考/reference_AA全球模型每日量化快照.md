@@ -2,11 +2,11 @@
 name: reference_AA全球模型每日量化快照
 description: Artificial Analysis 全球模型每日量化快照（Top25 旗舰，含智力/速度/价格），每日凌晨定时任务覆盖刷新。
 type: reference
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 # AA 全球模型每日量化快照 (Artificial Analysis Daily Snapshot)
 
-> **同步时间**：2026-11-08 01:00:02 (由系统每日凌晨定时任务自动刷新落盘)
+> **同步时间**：2026-11-09 01:00:02 (由系统每日凌晨定时任务自动刷新落盘)
 > **数据来源**：https://artificialanalysis.ai/leaderboards/models (RSC Flight 载荷)
 > **关联真源**：[[reference_全维度AI模型智力评分与推荐调度总则]]
 > **保留纪律**：底层生冷快照与趋势摘要**一律只保留 7 天**，超期每日自动删除；本快照每日单写覆盖。
