@@ -42,37 +42,60 @@ def run_cmd(cmd: str, cwd: str = None) -> tuple[int, str]:
         return -1, "Command not found"
 
 
-def check_subrepo_accessibility(workspace: Path) -> bool:
-    """验证 Home.md 中列出的所有子库目录是否真实存在"""
+def check_subrepo_accessibility(workspace: Path):
+    """验证 Home.md 表格中的子库是否可达。
+
+    子库可能是带数字前缀的嵌套目录（如 10_AI自成长引擎）或跨仓目录
+    （如 通用规范 在记忆仓），因此用「去前缀的目录名集合」做包含匹配，
+    并把兄弟记忆仓纳入搜索范围，避免把合法嵌套/跨仓结构误判为缺失。
+    """
     home_md = workspace / "Home.md"
     if not home_md.exists():
-        return True  # 无 Home.md 则跳过
-    
-    content = home_md.read_text(encoding="utf-8")
-    
-    # 提取表格中的子库名称
-    table_pattern = r"\|\s*([^|\n]+?)\s*\|[^|\n]*\|"
-    matches = re.findall(table_pattern, content)
-    
+        return True, []
+
+    def norm(name: str) -> str:
+        return re.sub(r"^\d+[_\-]?", "", name.strip()).strip("`[]")
+
+    # 收集本仓 + 记忆仓的所有目录名（去前缀归一化）
+    known = set()
+    search_roots = [workspace]
+    memory_vault = Path(r"D:\记忆")
+    if memory_vault.exists() and memory_vault != workspace:
+        search_roots.append(memory_vault)
+    for root in search_roots:
+        for p in root.rglob("*"):
+            if p.is_dir() and not any(part.startswith(".") for part in p.relative_to(root).parts):
+                known.add(norm(p.name))
+
     missing = []
-    for subdir in matches:
-        subdir = subdir.strip().split()[0]  # 取第一个词作为目录名
-        if subdir and not (workspace / subdir).is_dir():
-            missing.append(subdir)
-    
+    in_table = False
+    for line in home_md.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            in_table = False
+            continue
+        cells = [c.strip() for c in stripped.strip("|").split("|")]
+        if not cells or set(cells[0]) <= {"-", ":", " "} or cells[0] in ("子库", ""):
+            in_table = True
+            continue
+        if not in_table:
+            continue
+        name = norm(re.split(r"[（(]", cells[0])[0])
+        if name and name not in known:
+            missing.append(cells[0])
+
     return len(missing) == 0, missing
 
 
 def check_backup_files(workspace: Path, days: int = 7) -> List[str]:
-    """查找超过指定天数的 .bak-* 备份文件"""
-    cmd = f'find "{workspace}" -name "*.bak-*" -mtime +{days} -type f'
-    code, output = run_cmd(cmd)
-    
-    if code != 0 or not output:
-        return []
-    
-    files = [f.strip() for f in output.split('\n') if f.strip()]
-    return files
+    """查找超过指定天数的 .bak-* 备份文件（纯 Python，跨平台）"""
+    import time
+    cutoff = time.time() - days * 86400
+    expired = []
+    for p in workspace.rglob("*.bak-*"):
+        if p.is_file() and p.stat().st_mtime < cutoff:
+            expired.append(str(p))
+    return expired
 
 
 def check_git_status(workspace: Path) -> Dict[str, int]:
@@ -94,32 +117,32 @@ def check_git_status(workspace: Path) -> Dict[str, int]:
 
 
 def scan_secrets_light(workspace: Path, max_files: int = 1000) -> List[Dict]:
-    """轻量级密钥扫描（只扫描文本文件，避免误报）"""
+    """轻量级密钥扫描：纯 Python 遍历文本文件内容，只报位置不回显密钥值"""
     patterns = {
         "Bearer": r"Bearer\s+[A-Za-z0-9_\-\.]{20,}",
-        "API_KEY": r"(?:api[_-]?key|apikey)\s*[=:]\s*['\"]?([A-Za-z0-9_\-\.]{16,})['\"]?",
-        "Token": r"(?:token|secret)\s*[=:]\s*['\"]?([A-Za-z0-9_\-\.]{16,})['\"]?",
+        "API_KEY": r"(?:api[_-]?key|apikey)\s*[=:]\s*['\"]?[A-Za-z0-9_\-\.]{16,}",
+        "Token": r"(?:token|secret)\s*[=:]\s*['\"]?[A-Za-z0-9_\-\.]{16,}",
     }
-    
+    skip_dirs = {".git", ".cache", "node_modules", ".venv", "venv", "_scratch_tmp", "scratch"}
     findings = []
-    code, output = run_cmd(f'find "{workspace}" -type f \\( -name "*.md" -o -name "*.py" -o -name "*.json" \\) -maxdepth 10', cwd=str(workspace.parent))
-    
-    if code != 0:
-        return findings
-    
-    files = [f.strip() for f in output.split('\n') if f.strip()][:max_files]
-    
-    for filepath in files:
+    scanned = 0
+    for p in workspace.rglob("*"):
+        if scanned >= max_files:
+            break
+        if not p.is_file() or p.suffix not in (".md", ".py", ".json"):
+            continue
+        if any(part in skip_dirs for part in p.parts):
+            continue
+        scanned += 1
+        try:
+            text = p.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
         for keyword, pattern in patterns.items():
-            match = re.search(pattern, filepath, re.IGNORECASE)
-            if match:
-                findings.append({
-                    "file": filepath,
-                    "pattern": keyword,
-                    "match": match.group(0)[:50] + "..."
-                })
-    
-    return findings[:20]  # 限制输出数量
+            if re.search(pattern, text, re.IGNORECASE):
+                findings.append({"file": str(p.relative_to(workspace)), "pattern": keyword})
+                break
+    return findings[:20]
 
 
 def generate_health_report(workspace: Path, vault_name: str) -> Dict[str, Any]:
