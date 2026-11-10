@@ -1,3 +1,11 @@
+---
+name: obsidian_optimization_plan
+description: Obsidian 知识库优化方案（8.3→9.5+）：按评分标准逐项修复的优先级清单与可执行命令
+type: reference
+updated: 2026-11-11
+kind: reference
+status: active
+---
 # Obsidian 知识库优化方案（从 8.3 → 9.5+）
 
 ## 🔴 优先级 P0：立即修复（+0.5 分）

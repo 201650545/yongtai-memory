@@ -1,3 +1,11 @@
+---
+name: obsidian_knowledge_structure_scoring
+description: Obsidian 知识库结构与项目编排评分标准（满分 10 分及格 9）：结构/记忆/检索/安全四维权重与硬性扣分项
+type: reference
+updated: 2026-11-11
+kind: reference
+status: active
+---
 # Obsidian 知识库结构与项目编排评分标准 (满分 10 分，及格线 9 分)
 
 ## 📊 评分维度与权重
