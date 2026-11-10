@@ -1,6 +1,6 @@
 ---
 name: project-跃己
-description: 「不比谁更强，只比谁更进一步」——用个人基准算「相对过去的自己进步了多少」的挑战平台。微信小程序 + 腾讯 CloudBase。2026-09-21 冻结产品方向 Challenge Definition Runtime（AI 是规则编译器不是计分器）。文档仓 D:\Work\跃己 有 git，业务代码 D:\code\yueji 独立仓。⚠️ 看板滞后于代码。
+description: 「不比谁更强，只比谁更进一步」——用个人基准算「相对过去的自己进步了多少」的挑战平台。微信小程序 + 腾讯 CloudBase。2026-09-21 冻结产品方向 Challenge Definition Runtime（AI 是规则编译器不是计分器）。文档仓 D:\Work\小程序\跃己 有 git，业务代码 D:\code\yueji 独立仓。⚠️ 看板滞后于代码。
 metadata:
   node_type: memory
   type: 项目
@@ -14,7 +14,7 @@ scope: 跃己
 
 # 跃己 · 进步挑战平台
 
-> 文档仓 `D:\Work\跃己`（**有 git**，实测 9 个 `.md` + `project.yaml`）。业务代码**独立仓** `D:\code\yueji`（**有 git**）。实测日期 2026-10-01。
+> 文档仓 `D:\Work\小程序\跃己`（**有 git**，实测 9 个 `.md` + `project.yaml`）。业务代码**独立仓** `D:\code\yueji`（**有 git**）。实测日期 2026-10-01。
 
 ## 一、这是什么
 
@@ -30,7 +30,7 @@ scope: 跃己
 |---|---|
 | 平台 | 微信原生小程序 |
 | 后端 | 腾讯 CloudBase |
-| 文档仓 | `D:\Work\跃己`（git） |
+| 文档仓 | `D:\Work\小程序\跃己`（git） |
 | 业务代码 | `D:\code\yueji`（git，独立仓） |
 | 产品定义 SSOT | `docs/05-产品定义-v0.3.md`（v0.3，2026-09-17 生效） |
 | 产品方向 SSOT | `docs/06-产品方向定稿-ChallengeDefinitionRuntime.md`（**2026-09-21 冻结**） |
@@ -90,4 +90,4 @@ scope: 跃己
 
 [[project_relation_graph]]、[[reference_handbook_ssot]]、[[project_scheduler_role_matrix]]
 
-**锚点（勿复制正文）**：方向定稿 = `D:\Work\跃己\docs\06-产品方向定稿-ChallengeDefinitionRuntime.md`；任务看板（**滞后**）= `D:\Work\跃己\docs\01-任务看板.md`；实施记录 = `D:\Work\跃己\docs\20-重构方案-C+跃值模型.md` §16/§17；代码 = `D:\code\yueji`
+**锚点（勿复制正文）**：方向定稿 = `D:\Work\小程序\跃己\docs\06-产品方向定稿-ChallengeDefinitionRuntime.md`；任务看板（**滞后**）= `D:\Work\小程序\跃己\docs\01-任务看板.md`；实施记录 = `D:\Work\小程序\跃己\docs\20-重构方案-C+跃值模型.md` §16/§17；代码 = `D:\code\yueji`
