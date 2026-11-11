@@ -2,11 +2,11 @@
 name: reference_aihot_每日热度快照
 description: AIHOT 中文 AI 资讯每日热度快照（热度面，非能力榜），每日凌晨定时任务覆盖刷新。
 type: reference
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 # AIHOT 中文 AI 资讯热度快照（每日）
 
-> **同步时间**：2026-11-11 01:10:01 (每日定时任务自动刷新落盘)
+> **同步时间**：2026-11-12 01:10:01 (每日定时任务自动刷新落盘)
 > **数据来源**：https://aihot.news/api/v1/hot-topics（JSON，匿名只读，无需 Key）
 > **保留纪律**：冷快照只保留 7 天，超期每日自动删除；本文件每日单写覆盖。
 >
@@ -16,48 +16,74 @@ updated: 2026-11-11
 
 | 名次 | 事件 | 首发信源 | 信源数 | 信号数 | 参与数 |
 | :---: | :--- | :--- | :---: | :---: | :---: |
-| 1 | Anthropic 发布 Fable 5.2 与 Mythos 5.2，多项评测登顶 | Anthropic：Newsroom（网页） | 22 | 116 | 138 |
-| 2 | 英伟达董事会调查黄仁勋涉情报事件 | The Verge：AI（RSS） | 9 | 67 | 76 |
-| 3 | Anthropic启动IPO路演，估值预期降至1.25–1.75万亿美元 | Anthropic：Newsroom（网页） | 5 | 37 | 42 |
-| 4 | Meta 发布轻量模型 Muse Ember，主打低成本智能体任务 | Meta AI：Research Blog（网页） | 10 | 26 | 36 |
-| 5 | Perplexity 称 Gemini 4 Carbon 创基准 SoTA，Google 随后正式发布 | Google DeepMind：Blog（RSS） | 4 | 15 | 19 |
-| 6 | Google 一年内交付四款第八代 TPU | X：Google (@Google) | 6 | 25 | 31 |
-| 7 | 字节发布 Seedream 5.5 图像模型，豆包与 Krea 接入 | 字节 Seed：Research Feed（网页内嵌数据） | 5 | 22 | 27 |
-| 8 | 虚实传媒首次在X发布北京六岗招聘 | X：卡兹克 (@Khazix0918) | 1 | 12 | 13 |
-| 9 | Ring发布室内AI无人机摄像头Drone Cam | The Verge：AI（RSS） | 1 | 9 | 10 |
-| 10 | 蚂蚁灵波开源触觉基础模型 LingBot-Touch | IT之家·人工智能 | 3 | 8 | 11 |
+| 1 | Anthropic 发布 Fable 5.2 与 Mythos 5.2，多项评测登顶 | Anthropic：Newsroom（网页） | 23 | 128 | 151 |
+| 2 | Google 开放 Gemini 4 Carbon，Perplexity 同步上线 | Google DeepMind：Blog（RSS） | 9 | 48 | 57 |
+| 3 | Anthropic启动IPO路演，估值预期回落至1.25–1.75万亿美元 | Anthropic：Newsroom（网页） | 7 | 45 | 52 |
+| 4 | 英伟达董事会调查黄仁勋涉情报事件 | The Verge：AI（RSS） | 4 | 45 | 49 |
+| 5 | Claude 新增白板、表格与数据三类 artifact | Claude：Blog（网页） | 6 | 31 | 37 |
+| 6 | MiniMax 开源 H3-Image，多平台接入 | MiniMax：Blog（网页） | 6 | 20 | 26 |
+| 7 | Meta 发布轻量模型 Muse Ember，主打低成本智能体任务 | Meta AI：Research Blog（网页） | 10 | 28 | 38 |
+| 8 | OpenAI 在 ChatGPT 测试企业智能体与 Business Hub | X：Tibo (@thsottiaux) | 5 | 14 | 19 |
+| 9 | OpenAI第三季度营收首破百亿美元，亏损扩大 | The Decoder：AI News（RSS） | 2 | 14 | 16 |
+| 10 | 字节发布 Seedream 5.5，多平台接入 | 字节 Seed：Research Feed（网页内嵌数据） | 7 | 16 | 23 |
 
 ---
 
 ## 信源明细（每条热点的首发与讨论面）
 
-**1. Anthropic 发布 Fable 5.2 与 Mythos 5.2，多项评测登顶**  · 最近更新 2026-11-10T14:59:09.000Z
+**1. Anthropic 发布 Fable 5.2 与 Mythos 5.2，多项评测登顶**  · 最近更新 2026-11-11T16:12:10.000Z
 
+  - X：OpenClaw (@openclaw)
+  - X：Lydia Hallie（Anthropic，Claude Code） (@lydiahallie)
   - MarkTechPost（RSS）
   - The Decoder：AI News（RSS）
   - X：indigo (@indigox)
   - IT之家·人工智能
-  - X：Arena (@arena)
-  - Simon Willison 博客
 
-**2. 英伟达董事会调查黄仁勋涉情报事件**  · 最近更新 2026-11-10T14:33:22.000Z
+**2. Google 开放 Gemini 4 Carbon，Perplexity 同步上线**  · 最近更新 2026-11-10T22:43:37.660Z
 
-  - X：Rohan Paul (@rohanpaul_ai)
-  - ChinaTalk（RSS）
-  - The Verge：AI（RSS）
-  - TechCrunch：AI（RSS）
-  - Ars Technica：AI（RSS）
-  - Big Technology（热点 RSS）
-
-**3. Anthropic启动IPO路演，估值预期降至1.25–1.75万亿美元**  · 最近更新 2026-11-10T14:06:54.000Z
-
-  - The Verge：AI（RSS）
-  - TechCrunch：AI（RSS）
-  - The Decoder：AI News（RSS）
   - IT之家·人工智能
-  - Anthropic：Newsroom（网页）
+  - Simon Willison 博客
+  - The Decoder：AI News（RSS）
+  - X：Google DeepMind (@GoogleDeepMind)
+  - X：Aravind Srinivas（Perplexity CEO） (@AravSrinivas)
+  - X：Rohan Paul (@rohanpaul_ai)
 
-**4. Meta 发布轻量模型 Muse Ember，主打低成本智能体任务**  · 最近更新 2026-11-10T07:28:21.000Z
+**3. Anthropic启动IPO路演，估值预期回落至1.25–1.75万亿美元**  · 最近更新 2026-11-11T15:11:59.000Z
+
+  - Simon Willison 博客
+  - X：Rohan Paul (@rohanpaul_ai)
+  - TechCrunch：AI（RSS）
+  - Gary Marcus：The Road to AI We Can Trust（RSS）
+  - The Verge：AI（RSS）
+  - The Decoder：AI News（RSS）
+
+**4. 英伟达董事会调查黄仁勋涉情报事件**  · 最近更新 2026-11-11T16:16:07.000Z
+
+  - TechCrunch：AI（RSS）
+  - X：Rohan Paul (@rohanpaul_ai)
+  - The Verge：AI（RSS）
+  - ChinaTalk（RSS）
+
+**5. Claude 新增白板、表格与数据三类 artifact**  · 最近更新 2026-11-10T22:43:46.407Z
+
+  - IT之家·人工智能
+  - The Decoder：AI News（RSS）
+  - X：Rohan Paul (@rohanpaul_ai)
+  - TechCrunch：AI（RSS）
+  - The Verge：AI（RSS）
+  - Claude：YouTube（RSS）
+
+**6. MiniMax 开源 H3-Image，多平台接入**  · 最近更新 2026-11-11T15:25:06.000Z
+
+  - X：MiniMax (@MiniMax_AI)
+  - X：MiniMax Design (H3) (@Hailuo_AI)
+  - IT之家·人工智能
+  - X：Arena (@arena)
+  - X：fal (@fal)
+  - Comfy Blog
+
+**7. Meta 发布轻量模型 Muse Ember，主打低成本智能体任务**  · 最近更新 2026-11-10T07:28:21.000Z
 
   - Simon Willison 博客
   - MarkTechPost（RSS）
@@ -66,41 +92,25 @@ updated: 2026-11-11
   - X：OpenRouter (@OpenRouter)
   - X：opencode (@opencode)
 
-**5. Perplexity 称 Gemini 4 Carbon 创基准 SoTA，Google 随后正式发布**  · 最近更新 2026-11-10T16:12:36.000Z
+**8. OpenAI 在 ChatGPT 测试企业智能体与 Business Hub**  · 最近更新 2026-11-10T22:55:36.787Z
 
-  - X：Google AI (@GoogleAI)
+  - IT之家·人工智能
+  - X：Tibo (@thsottiaux)
+  - The Decoder：AI News（RSS）
+  - TechCrunch：AI（RSS）
   - The Verge：AI（RSS）
-  - Gemini API：更新日志（网页）
-  - Hacker News：AI 热帖
 
-**6. Google 一年内交付四款第八代 TPU**  · 最近更新 2026-11-10T15:54:08.000Z
+**9. OpenAI第三季度营收首破百亿美元，亏损扩大**  · 最近更新 2026-11-11T16:14:44.000Z
 
   - TechCrunch：AI（RSS）
-  - X：Sundar Pichai (@sundarpichai)
-  - MarkTechPost（RSS）
-  - X：Lisa Su（AMD CEO） (@LisaSu)
-  - Hacker News：AI 热帖
   - The Decoder：AI News（RSS）
 
-**7. 字节发布 Seedream 5.5 图像模型，豆包与 Krea 接入**  · 最近更新 2026-11-10T16:00:15.000Z
+**10. 字节发布 Seedream 5.5，多平台接入**  · 最近更新 2026-11-11T13:30:13.000Z
 
+  - X：PixVerse (@PixVerse)
+  - X：卡尔的 AI 沃茨 (@aiwarts)
+  - Comfy Blog
   - X：Krea AI (@krea_ai)
   - 公众号：卡尔的AI沃茨
   - IT之家·人工智能
-  - The Decoder：AI News（RSS）
-  - 公众号：火山引擎
-
-**8. 虚实传媒首次在X发布北京六岗招聘**  · 最近更新 2026-11-10T11:24:00.000Z
-
-  - X：卡兹克 (@Khazix0918)
-
-**9. Ring发布室内AI无人机摄像头Drone Cam**  · 最近更新 2026-11-10T13:30:00.000Z
-
-  - The Verge：AI（RSS）
-
-**10. 蚂蚁灵波开源触觉基础模型 LingBot-Touch**  · 最近更新 2026-11-10T15:53:43.000Z
-
-  - X：Rohan Paul (@rohanpaul_ai)
-  - IT之家·人工智能
-  - Robbyant 蚂蚁灵波（官方 X）
 
