@@ -1166,3 +1166,12 @@ eference_卡兹克_Agent自动化系统一年实践.md
 - **scaffold 工具降级**：`workbuddy_miniprogram_scaffold` 报 `template_unavailable`（app.js 哈希不匹配），查明是 Windows CRLF vs manifest LF 的行尾差异，9 个模板文件 LF 版哈希全部匹配、资产完好；未改系统文件，按 manifest 原文复制为基线并逐文件 sha256 校验。已如实记入方案第十一节与自评（执行维度扣 0.2）。
 - **实现中修掉一处真缺陷**：公开线索初版在 room 云函数与 mock 里按身份额外过滤，与 phase「统一按 all 写入」不一致 ⇒ 统一为只读 `rooms.publicClues`，并加静态防回归断言。
 - **剩余平台侧一步（非代码缺口）**：云端未部署 —— 需郭老师在微信开发者工具扫码开通云开发、填 AppID、部署 3 个云函数、粘贴权限规则；代码与配置已全写好，`useMock:false` 即切真云端。
+- **2026-11-11 08:00 郭老师「你到网上找一个默认剧本导进去啊」**：先按 v3.1 标准（先定后做）查证来源 —— 上海三中院判例明确剧本杀盒装本属文字作品、无版号也受著作权保护 ⇒ **不导入任何商业本／盗版电子版**。改从 Project Gutenberg #1661 取回 Arthur Conan Doyle《A Scandal in Bohemia》(1892，作者 1930 年逝世，公版) 的**逐字原文**，做成 `pd-sherlock-001`「公版推理摘录 · 结构演示本」（4 人 2 轮、8 段连续切分、4 条共享线索，投票议题留空）。库内现 2 本，新本默认选中。
+- **同步升级**：`数据契约.md` 第九节加 `source/sourceUrl/license/attribution/excerptFile` 必填与两类本子规则；`check.js` 按 `placeholder` 分档（占位本全空 / 正式本逐字比对＋来源声明）；新增 `import.js` 一键导入（落盘＋加索引＋自动 build/check）与 `给伙伴AI的指令.md`（要中文原创本时转给别的 Agent）。H5 与小程序库页按 `status` 显示标签与来源。
+- **口径说明**：该本为**英文公版摘录演示本，不是完整中文剧本杀本**，界面与 README 已显著标注；按零创作红线，中文台词不由本 Agent 写。第 5 轮按 v3.1 自评 **9.7/10 合格**，`node check.js` 8 项全绿（含逐字摘录比对）。
+
+### 更新 2026-11-11：小程序游戏 v3 已交付并过评分闸
+- 位置：D:\Work\小程序\文明演进\（index.html 上帝视角 2D Canvas 单文件 + README）
+- 已实现：4 时代（石器/青铜/铁器/盛唐）、角色 XP 升级、敌人 Lv+1 ×1.15 成长、敌人游走+追击两态 AI
+- 评分闸：第一轮 8.5（3 条扣分）→ 返工 → 第二轮复评 10.0 合格（ gate 记录在 D:\Work\scratch\china-civ-game\gate\ ）
+- 待办：郭老师明日实机体验反馈调数值
