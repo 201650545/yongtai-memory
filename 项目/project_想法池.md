@@ -1173,6 +1173,10 @@ eference_卡兹克_Agent自动化系统一年实践.md
 - **修复**：① `backend.js` 存储层内存兜底 + 自动降级（`save` 不抛、`reload` 不回滚）；② 新增共用 `demoStart(scriptId)` / `addVirtual()` —— 点本子即自动补齐虚拟玩家、洗牌分发、直达角色卡，**真云端 `useMock:false` 明确拒绝**（不伪造身份）；③ H5 加 `showErr` 红条与 `bind()` 统一 catch、notice 引导；④ 小程序端 4 页 + `page.js` 同步（含 `addPlayer` 不再写 `juben_identity`、不再按 `members.length` 撞 ID）；⑤ 清掉 H5 与 `index.wxml` 里「全部为结构占位、没有一句台词」的过时声明。
 - **防回归**：`check.js` 升到 **9 项**，新增「点击链路与受限存储」（不回滚／非 A 视角不撞 ID／正式本 4 视角隔离／线索全员一致／发言投票生效／9 步到 end／9 席被拒／定时到点真推进）与「H5 真实点击冒烟」（正常 + 受限存储都要跳角色页并显示真实原文）。第 6 轮按 v3.2 自评 **9.8/10 合格**；build 幂等、预览与磁盘 md5 一致。
 - **仍未验证（如实）**：真实浏览器点击由郭老师在预览面板终审；小程序端未在微信开发者工具模拟器实测；云端仍未部署。
+- **2026-11-11 11:20 郭老师「点我的角色，看不到角色描述和故事线；多人同时进入能不能自动分发且不出错？每人只看自己的故事线？」**：**先定 `评分标准.md` v3.3 再修**。复核出 7 条真缺陷，逐条修完：① 角色卡只有 `roleId/round/content`，`name` 是空串（界面不是没渲染，是数据里没有）→ 契约升 `juben-script/0.2`，补 `name/identity/profile/storyline/goal/secret` 与 `acts[].task`，H5 与小程序两端渲染五个分区；② `rooms`（`read:true`）里被写进了 `assignments`，客户端直读即可拿到全员映射，**「看不到别人的」原本是假隔离** → 映射只写 `role_assignments`（`read:false`，`_id=roomId`）；③ `role_assignments` 原用 `.add()` 且取 `data[0]`，并发会读到两份不同映射 → 改固定 `_id` 的 `set()`；④ `dealRoles`/`advancePhase` 非事务 → 均 `runTransaction`，推进加 `expectPhase` CAS（否则四人同时点会连跳四级）；⑤ `social.castVote` 用 `where().update()`，首票 `updated:0` 不抛错 ⇒ **第一次投票被静默丢弃** → 先查再写；⑥ 云端 `publicView` 缺 `tally/voted/voteCount/canStart` 等、`messages` 返回对象 → 字段补齐并加「与 mock 字段集完全一致」断言；⑦ 满员后仍要手动点分发 → 最后一个 join 在**同一事务内**自动洗牌分发。另发现存储层「静默失败」未触发降级（`setItem` 被包装吞异常、`get` 恒 null），`store.set` 改为写入后回读校验即刻降级。
+- **隔离改成结构性保证**：`profile`/`storyline` 必须落在该角色**自己的 `acts` 之内**（`check.js` 与 `import.js` 双断言），这样「A 的卡里出现 B 的段落」在数据形状上就不可能，而不是靠前端自觉。
+- **验证方式升级**：新增 `tests/cloudsim.js`（内存版云开发，串行事务等价可串行化），把 `cloudfunctions/*` **真实代码**跑起来做并发断言 —— 8 人同时进房恰好 8 席、只产生 1 份映射、角色不重复、第 9 人被拒、重复分发不换表、并发推进只前进一步、云端视图字段与 mock 完全一致。`check.js` 升至 **10 项全绿**。第 7 轮按 v3.3 自评 **9.8/10 合格**（视觉④与执行⑤各扣 0.1：长英文段落未真机截图、小程序端未在开发者工具实测）。
+- **仍未验证（如实）**：云端仍未部署，真实云环境的事务重试／watch 延迟／定时触发器精度未实测；演示本仍是英文公版逐字摘录，中文原创本需走 `给伙伴AI的指令.md` + `node import.js`。
 
 ### 更新 2026-11-11：小程序游戏 v3 已交付并过评分闸
 - 位置：D:\Work\小程序\文明演进\（index.html 上帝视角 2D Canvas 单文件 + README）
