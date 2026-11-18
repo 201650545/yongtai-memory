@@ -46,7 +46,7 @@ status: active
 
 **接口有，但上游活动没开**（指上面那 5 个国际站账号）：
 
-客户端 `D:\workbuddy internet\WorkBuddyAI\resources\app.asar` → `/main/account.js`：
+客户端 `D:\wbuddy 国际版\WorkBuddyAI\resources\app.asar`（2026-11-18 核实：原 `D:\workbuddy internet` 已改名）→ `/main/account.js`：
 
 - `POST /billing/meter/checkin-status` ← **注意不带 `/v2`**
 - `POST /billing/meter/daily-checkin`
