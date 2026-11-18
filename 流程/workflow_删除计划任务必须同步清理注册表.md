@@ -76,6 +76,36 @@ $content[$lastStart..($content.Count-1)]
 1. **`capability-*.json` / `heartbeat-status.json` / `ops-task-fleet.runtime.json` 里的同名记录不用改** —— 那些是历史运行快照，不是活配置。判据：文件里带日期戳的是历史，带 `probe:`/`executor:` 的是活配置。
 2. **日志里出现的已删任务名是正常的** —— 巡检日志累加写，历史段不会自己消失。只核最后一次。
 
+## 🔴 漏检陷阱：任务名带下划线/数字后缀时搜不到（2026-11-18 实踩）
+
+`Work_DailyReport_0800` 删除时，我搜 `DailyReport|daily_report` 报「无残留」，删完跑巡检却仍然红：
+
+```
+🔴 task_work_dailyreport_0800：actual=未找到｜任务计划程序里找不到名为「Work_DailyReport_0800」的任务
+```
+
+**原因**：`Select-String -Pattern 'xxx' -SimpleMatch` 在 PowerShell 里对含下划线的模式会漏匹配（`-SimpleMatch` 与 `-Pattern` 组合行为不一致）。
+
+**正确做法：用逐行正则扫，不要依赖 Select-String + SimpleMatch：**
+```powershell
+$c = Get-Content 'D:\Work\元智能\40_定时任务\registry.yaml' -Encoding UTF8
+for($i=0;$i -lt $c.Count;$i++){
+  if($c[$i] -match '<任务名或其小写形式>'){ 'L{0}: {1}' -f ($i+1), $c[$i] }
+}
+```
+
+**并且必须搜四种形态**：原名 `Work_DailyReport_0800`、小写 `work_dailyreport_0800`（fleet 契约惯用）、去后缀 `Work_DailyReport`、全小写去后缀 `work_dailyreport`。
+
+**另一种漏检**：删了条目后**注释里还留着任务名**（如 `# 例外：GatewaySpeedTestDaily 用 ...`）。注释不影响探针，但会误导后来的人以为任务还在——顺手改成「原 X 条目已于 YYYY-MM-DD 删除」。
+
+## 最终验证标准（必做）
+
+跑 `patrol-daily.ps1` 后，取**最后一段**巡检，确认：
+- `已删任务名` 在段内 **0 次命中**
+- `GATE|PATROL|` 行的 `red=` **数值下降**
+
+2026-11-18 实绩：删 4 个任务（`GatewaySpeedTestDaily` / `FreeCandidateRefresh` / `AutoSeatOrchestrate` / `Work_DailyReport_0800`），`red 14 → 11`、`condition_red 13 → 10`，4 个任务名全部不再出现。
+
 ## 相关
 
 - 巡检本体：`D:\Work\元智能\runners\patrol-daily.ps1`
