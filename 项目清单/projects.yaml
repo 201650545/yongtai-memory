@@ -100,9 +100,9 @@ projects:
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\晨读\05_发布与问诊\phrasing-project
-    handoff: D:\Work\晨读\05_发布与问诊\phrasing-curated\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"；2026-11-05 路径随目录改名修正
-    curated: D:\Work\晨读\05_发布与问诊\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓
+    local: D:\Work\晨读\06_历史归档\旧代码快照_20261116\phrasing-project   # 2026-11-18 复核修正：原 05_发布与问诊\ 下已无此目录，实际归档在 06_历史归档\旧代码快照_20261116\
+    handoff: D:\Work\晨读\06_历史归档\旧代码快照_20261116\phrasing-curated\HANDOFF-2026-09-29.md   # 2026-10-08 已复核：该交接包三件新增件均已落地（审计 G 节），非"挂着没接"；2026-11-18 路径随归档修正
+    curated: D:\Work\晨读\06_历史归档\旧代码快照_20261116\phrasing-curated      # github.com/201650545/phrasing-curated，评审/调研文档仓；2026-11-18 路径随归档修正
     desc: 2026-10-08 已收编——原 `D:\Work\晨读\05_发布与问诊\` 这个"名不副实的工作台目录"已撤销（郭老师裁定：收编并入 ListenLoop）：两个发布仓迁入 `AI精听训练器\05_发布与问诊\`，GPT 问诊台（ask/reply turn 全套）迁入 `05_GPT问诊台\`，431.9MB 的 `_tmp` 垃圾（236MB test_new.txt ＋ 192MB anki 安装包）已删。文档真源 D:\Work\晨读\（2026-11-04 由 AI精听训练器 改名），代码真源 D:\listenloop\
     todo: ~~目录改名~~ 已由郭老师 10-08 裁定「收编并入 ListenLoop」并执行完毕
 
@@ -122,7 +122,7 @@ projects:
     status: active
     visibility: public
     entry: README.md
-    local: D:\Work\晨读\05_发布与问诊\phrasing-curated
+    local: D:\Work\晨读\06_历史归档\旧代码快照_20261116\phrasing-curated   # 2026-11-18 复核修正：原 05_发布与问诊\ 下已无此目录
     desc: ListenLoop 专供高智力模型（ChatGPT 6 等）深度阅读与评审的精选架构、设计与交接包仓
 
   - id: meta-intelligence-facts
