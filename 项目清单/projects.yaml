@@ -1,7 +1,20 @@
 # AI 路由表：外部 AI 从这里开始定位项目
+#
+# ⚠️ 登记口径（2026-11-18 补注，原文见 SYSTEM_MAP.md §五「进 projects.yaml 的判定」）
+#   全表分两块，别只看 projects 就说"漏登记"：
+#
+#   ① `projects:` —— 收「能作为独立 Git 仓被陌生 Agent 直接进入」的一级责任单元。
+#      同时满足四条才进：a) 一级责任单元 b) 有独立 Git 仓/版本生命周期
+#                         c) 有稳定入口（README/project.yaml） d) 外部 Agent 有合理场景直接路由进入
+#   ② `local_only:` —— 无独立远程仓、但有稳定本地路径与入口的本地项目（13 条）。
+#
+#   ⇒ `D:\记忆\项目\` 下的项目卡（43 张）**不等于**本表：卡是本地项目文档，多数没有独立远程仓，
+#     故意不登记进 `projects:`。**不要因为「卡比表多」就判定表有缺失。**
+#   ⇒ 反查某项目：先 `D:\记忆\q.cmd "关键词"` 或看 `项目\project_*.md` 与 `local_only`。
+#   ⇒ 已删除/已改名的对象见 SYSTEM_MAP.md §六，别再去追。
 workspace:
   owner: 201650545
-  updated_at: 2026-11-05
+  updated_at: 2026-11-18
 
 projects:
   - id: nitian-theme
